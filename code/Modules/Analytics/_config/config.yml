@@ -1,0 +1,7 @@
+SiteConfig:
+  extensions:
+    - AnalyticsConfig
+
+AnalyticsAdmin:
+  extensions:
+    - FlashMessageConfig

@@ -1,0 +1,271 @@
+/*!
+======================================================================
+    Typography
+======================================================================
+*/
+
+a {
+    text-decoration: none;
+    &:active,
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+/*---------------------------------------------*\
+    Regular
+\*---------------------------------------------*/
+
+body {
+    font-family: $font-family-base;
+}
+
+/*---------------------------------------------*\
+    Semi-Bold
+\*---------------------------------------------*/
+
+strong{
+    font-family: $font-family-base;
+}
+
+/*---------------------------------------------*\
+    Bold
+\*---------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-top: 0;
+    color: $font-heading-base-color;
+    font-family: $font-family-heading;
+    font-weight: $font-family-heading-weight;
+    a {
+        color: $font-heading-base-color;
+        text-decoration: none;
+        &:hover, &:active {
+            text-decoration: none;
+        }
+    }
+}
+
+/*======================================================================*\
+    Fonts / Images - Typography
+\*======================================================================*/
+
+.typography{
+    &.light{
+        color: $brand-inverse-color;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $brand-inverse-color;
+        }
+    }
+    .text-primary {
+        color: $brand-primary;
+    }
+    .text-secondary {
+        color: $brand-secondary;
+    }
+}
+
+/*---------------------------------------------*\
+    Headings
+\*---------------------------------------------*/
+
+h1,
+.h1 {
+    font-size: $font-size-h1;
+}
+h2,
+.h2 {
+    font-size: $font-size-h2;
+}
+h3,
+.h3 {
+    font-size: $font-size-h3;
+}
+h4,
+.h4 {
+    font-size: $font-size-h4;
+}
+h5,
+.h5 {
+    font-size: $font-size-h5;
+}
+
+/*---------------------------------------------*\
+    Text
+\*---------------------------------------------*/
+
+p{
+    line-height: 1.7em;
+    letter-spacing: .1px;
+    margin: 0 0 $gap-md 0;
+}
+em{
+    font-style: italic;
+}
+blockquote{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+@media (min-width: $screen-sm-min) {
+    p, ul, ol, pre, code {
+        margin-bottom: $gap-md;
+    }
+}
+
+/*---------------------------------------------*\
+    Images
+\*---------------------------------------------*/
+
+img{
+    &.left{
+        float: left;
+        max-width: 50%;
+        margin: $gap-xs $gap-lg $gap-lg 0;
+    }
+    &.right{
+        float: right;
+        max-width: 50%;
+        margin: $gap-xs 0 $gap-lg $gap-lg;
+    }
+    &.leftAlone{
+        float: left;
+        margin-right: 100%;
+        margin-bottom: $gap-sm;
+        clear: both;
+    }
+    &.center {
+        float: none;
+        margin: 0 auto $gap-sm auto;
+        display: block;
+        clear: both;
+    }
+}
+.captionImage{
+    width: 100%;
+    margin-top: $gap-xs;
+    img{
+        margin: 0;
+    }
+    &.left,
+    &.right {
+        img{
+            float: none;
+            max-width: none;
+            width: 100%;
+        }
+    }
+    &.left{
+        float: left;
+        margin: $gap-xs $gap-lg $gap-md 0;
+        img{
+            margin-right: -$gap-sm;
+        }
+    }
+    &.right{
+        float: right;
+        margin: $gap-xs 0 $gap-md $gap-lg;
+        img,
+        p {
+            margin-left: -$gap-sm;
+        }
+        p{
+            text-align: left;
+        }
+    }
+    &.left[style],
+    &.right[style]{
+        max-width: 50%;
+    }
+    &.leftAlone{
+        float: none;
+        margin: 0 $gap-md $gap-md 0;
+    }
+    &.center{
+        margin: 0 auto $gap-md;
+    }
+    p{
+        clear: both;
+        margin: $gap-sm 0;
+        font-style: italic;
+        font-size: 0.9em;
+    }
+}
+
+/*---------------------------------------------*\
+    Content
+\*---------------------------------------------*/
+
+.content-light {
+    color: $brand-primary-color;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    ul,
+    ol,
+    li,
+    strong,
+    td,
+    i,
+    blockquote {
+        color: $brand-primary-color;
+    }
+}
+
+/*---------------------------------------------*\
+    Lists
+\*---------------------------------------------*/
+
+%customList {
+    padding-left: 0;
+    li {
+        padding-left: 1.2em;
+        list-style: none;
+        &:before {
+            content: $fa-var-check;
+            font-family: FontAwesome;
+            color: $btn-success-bg;
+            display: inline-block;
+            margin-left: -1.2em;
+            width: 1.2em;
+        }
+    }
+}
+ul {
+    &.checklist {
+        @extend %customList;
+    }
+    &.deletelist {
+        @extend %customList;
+        li {
+            &:before {
+                content: $fa-var-times;
+                color: $btn-danger-bg;
+            }
+        }
+    }
+    li {
+        @media(min-width: $screen-sm-min){
+            margin-bottom: $gap-sm;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+.#{$fa-css-prefix}-times:before { content: $fa-var-times; }
+.#{$fa-css-prefix}-file-o:before { content: $fa-var-file-o; }
+.#{$fa-css-prefix}-bars:before { content: $fa-var-bars; }
+.#{$fa-css-prefix}-picture-o:before { content: $fa-var-picture-o; }
+.#{$fa-css-prefix}-share-square-o:before { content: $fa-var-share-square-o; }
+.#{$fa-css-prefix}-check-circle:before { content: $fa-var-check-circle; }
+.#{$fa-css-prefix}-question-circle:before { content: $fa-var-question-circle; }
+.#{$fa-css-prefix}-exclamation-circle:before { content: $fa-var-exclamation-circle; }
+.#{$fa-css-prefix}-exclamation-triangle:before { content: $fa-var-exclamation-triangle; }
+.#{$fa-css-prefix}-chevron-up:before { content: $fa-var-chevron-up; }
+.#{$fa-css-prefix}-chevron-down:before { content: $fa-var-chevron-down; }
+.#{$fa-css-prefix}-caret-down:before { content: $fa-var-caret-down; }
+.#{$fa-css-prefix}-envelope:before { content: $fa-var-envelope; }
+.#{$fa-css-prefix}-angle-left:before { content: $fa-var-angle-left; }
+.#{$fa-css-prefix}-angle-right:before { content: $fa-var-angle-right; }
+.#{$fa-css-prefix}-angle-up:before { content: $fa-var-angle-up; }
+.#{$fa-css-prefix}-angle-down:before { content: $fa-var-angle-down; }
+.#{$fa-css-prefix}-quote-left:before { content: $fa-var-quote-left; }
+.#{$fa-css-prefix}-folder-open-o:before { content: $fa-var-folder-open-o; }
+.#{$fa-css-prefix}-file-text:before { content: $fa-var-file-text; }
+
+// Social
+.#{$fa-css-prefix}-twitter:before { content: $fa-var-twitter; }
+.#{$fa-css-prefix}-youtube:before { content: $fa-var-youtube; }
+.#{$fa-css-prefix}-facebook:before { content: $fa-var-facebook; }
+.#{$fa-css-prefix}-google-plus:before { content: $fa-var-google-plus; }

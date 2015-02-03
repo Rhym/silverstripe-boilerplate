@@ -1,0 +1,163 @@
+/*---------------------------------------------*\
+    Events
+\*---------------------------------------------*/
+
+.calendar {
+    .actions {
+        @extend %margin-default;
+        .prev,
+        .next {
+            .full {
+                display: none;
+                @media(min-width: $screen-sm-min) {
+                    display: inline;
+                }
+            }
+        }
+        .prev {
+
+        }
+        .date {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            @media(min-width: $screen-sm-min) {
+                font-size: $font-size-h4;
+                line-height: 2em;
+            }
+        }
+        .next {
+            text-align: right;
+        }
+    }
+    .calendar-table {
+        background: shade($calendar-background, 40);
+        padding: 0 $gap-sm $gap-sm $gap-sm;
+        margin-bottom: $gap-lg;
+        width: 100%;
+        @media(min-width: $screen-sm-min) {
+            padding: 0 $gap-xl $gap-xl $gap-xl;
+            margin-bottom: $gap-xl;
+        }
+        .calendar-row {
+            @include clearfix();
+        }
+        .calendar-day-head,
+        .calendar-day-np,
+        .calendar-day {
+            width: 14.2857%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding: 2px;
+            font-weight: bold;
+            &.has-events {
+                .inner {
+                    cursor: pointer;
+                    background: $calendar-background;
+                    color: $calendar-color;
+                    &:hover {
+                        background: shade($calendar-background, 5);
+                    }
+                }
+            }
+            .inner {
+                padding: $gap-xs;
+                position: relative;
+                background: $calendar-color;
+                min-height: 33px;
+                transition: .1s linear background-color;
+                @media(min-width: $screen-sm-min) {
+                    min-height: 84px;
+                    font-size: $font-size-h4;
+                    padding: $gap-md;
+                }
+                @media(min-width: $screen-md-min) {
+                    min-height: 116px;
+                }
+                @media(min-width: $screen-lg-min) {
+                    min-height: 141px;
+                }
+                .events {
+                    display: none;
+                    @media(min-width: $screen-md-min) {
+                        display: block;
+                        position: absolute;
+                        left: $gap-md;
+                        bottom: $gap-md;
+                    }
+                }
+            }
+        }
+        .calendar-day-np,
+        .calendar-day {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-name: fadeIn;
+            opacity: 0;
+        }
+        .calendar-day-np {
+            .inner {
+                background: shade($calendar-background, 30);
+            }
+        }
+        .calendar-day-head {
+            padding: 0;
+            .inner {
+                text-transform: uppercase;
+                color: $calendar-color;
+                background: transparent none;
+                text-align: center;
+                min-height: 1px;
+                padding: $gap-sm 0;
+                font-weight: bold;
+                @media(min-width: $screen-sm-min) {
+                    min-height: 1px;
+                    line-height: $gap-xl;
+                    font-size: $font-size-h4;
+                    padding: 0;
+                }
+                @media(min-width: $screen-md-min) {
+                    min-height: 1px;
+                }
+                @media(min-width: $screen-lg-min) {
+                    min-height: 1px;
+                }
+            }
+        }
+        .events-toggle {
+            display: none;
+            padding: 2px;
+            .inner {
+                background: $calendar-color;
+                padding: $gap-sm;
+                @media(min-width: $screen-sm-min) {
+                    padding: $gap-md;
+                }
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                li {
+                    list-style: none;
+                    margin: 0;
+                    & + li {
+                        margin-top: $gap-sm;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: $font-base-color;
+                        transition: .1s linear color;
+                        &:hover {
+                            color: $calendar-background;
+                        }
+                    }
+                }
+            }
+            &.active {
+                width: 99.9999%; // width of the 7 day elements combined.
+                display: block;
+            }
+        }
+    }
+}

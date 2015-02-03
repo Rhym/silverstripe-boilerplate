@@ -1,0 +1,44 @@
+/*---------------------------------------------*\
+    Header
+\*---------------------------------------------*/
+
+#header {
+    padding: $gap-md 0;
+    margin-bottom: $gap-md;
+    position: relative;
+    z-index: 2;
+    @media (min-width: $screen-sm-min) {
+        margin-bottom: $gap-lg;
+        padding: $gap-lg 0;
+        // Remove space between elements.
+        font-size: 0;
+    }
+    #logoContainer {
+        .heading {
+            font-size: $font-size-h3;
+            margin: 0;
+        }
+        .tagline {
+            font-size: $font-size-h5;
+            margin: 0;
+        }
+        a {
+            display: block;
+        }
+    }
+    @media (min-width: $screen-sm-min) {
+        #logoContainer,
+        #navigationContainer{
+            // Set font size after removing space between inline-block elements.
+            font-size: $font-size-base;
+            display: inline-block;
+            vertical-align: middle;
+            float: none;
+        }
+    }
+}
+.has-slider{
+    #header{
+        margin-bottom: 0;
+    }
+}

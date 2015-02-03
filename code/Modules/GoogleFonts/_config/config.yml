@@ -1,0 +1,7 @@
+SiteConfig:
+  extensions:
+    - GoogleFontConfig
+
+ContentController:
+  extensions:
+    - GoogleFontPageExtension

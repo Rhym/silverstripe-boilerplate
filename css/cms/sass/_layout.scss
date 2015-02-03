@@ -1,0 +1,240 @@
+/*======================================================================*\
+    Structure
+\*======================================================================*/
+
+$extend-header: true !default;
+$header-height: 72px !default;
+$button-padding: 0.6em 1.2em;
+$sidebar-width: 240px !default;
+
+$content-gutter: 24px;
+
+/*---------------------------------------------*\
+    Left Menu
+\*---------------------------------------------*/
+
+.cms {
+    .cms-menu {
+        width: $sidebar-width !important;
+        background: #fff;
+        box-shadow: 1px 0 0 $gray-light;
+        @if($extend-header == true){
+            top: $header-height !important; // override JS
+        }
+        .cms-logo-header {
+            background: transparent none;
+            margin-bottom: $gap-sm;
+            border-bottom: 1px solid $gray-light;
+            .cms-logo {
+                display: none;
+                border-width: 0;
+                @include filter(grayscale(100%));
+                span {
+                    color: $gray;
+                    font-weight: 400;
+                }
+            }
+            .cms-login-status {
+                padding: 0;
+                margin: $gap-md 0;
+                border-width: 0;
+                .logout-link {
+                    @include filter(brightness(30%) invert(1));
+                }
+                span {
+                    color: $gray-dark;
+                    a {
+                        color: $brand-primary;
+                    }
+                }
+            }
+        }
+        .cms-menu-list {
+            li {
+                &.current {
+                    a {
+                        background: $gray-light;
+                        color: $gray-darker;
+                    }
+                }
+                a {
+                    background: transparent none;
+                    border-width: 0;
+                    text-shadow: none;
+                    font-family: $cms-font-base;
+                    font-weight: 700;
+                    font-size: 13px;
+                    .icon {
+                        display: none;
+                    }
+                    .text {
+                        margin-left: $gap-md;
+                    }
+                }
+            }
+        }
+        .cms-panel-toggle {
+            &.south {
+                box-shadow: none;
+                border-color: $gray-light;
+            }
+        }
+    }
+    .cms-panel {
+        .cms-panel-content {
+            padding-top: $gap-md;
+        }
+    }
+}
+
+/*---------------------------------------------*\
+    Main Content
+\*---------------------------------------------*/
+
+.cms {
+    .cms-content {
+        background: $gray-lighter;
+        @if($extend-header == true){
+            z-index: 81;
+            border-left: 1px solid $gray-light;
+        }
+        .cms-content-tools {
+            background: $brand-default;
+            box-shadow: none;
+            border-color: $gray-light;
+            .cms-panel-toggle {
+                &.south {
+                    box-shadow: none;
+                    border-color: $gray-light;
+                }
+            }
+            #cms-content-treeview {
+                .cms-tree-expand-trigger {
+                    span.ui-button-text {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+        .cms-content-header {
+            position: relative;
+            padding-top: $gap-md;
+            padding-bottom: $gap-md;
+            background: $brand-primary;
+            color: $brand-primary-color;
+            box-sizing: border-box;
+            height: $header-height !important; // override JS
+            box-shadow: 0 3px 5px rgba(0,0,0,0.07);
+            @if($extend-header == true){
+                z-index: 9999;
+                left: -$sidebar-width !important; // override JS
+                right: 0 !important; // override JS
+                width: auto !important; // override JS
+            }
+            &.north {
+                .breadcrumbs-wrapper {
+                    #page-title-heading {
+                        font-size: $font-size-h2;
+                        font-weight: 300;
+                    }
+                }
+                .cms-content-header-tabs {
+                    position: absolute;
+                    float: none;
+                    right: $gap-md;
+                    bottom: 0;
+                    .ui-tabs-nav {
+                        margin: 0;
+                        border-width: 0;
+                        li {
+                            box-shadow: none;
+                            padding: 0;
+                            background: $brand-primary;
+                            border-width: 0;
+                            border-bottom: 2px solid $brand-primary !important;
+                            &.ui-tabs-active {
+                                border-color: $brand-secondary !important;
+                            }
+                            a {
+                                text-transform: uppercase;
+                                padding-bottom: $gap-md - 5px;
+                                font-weight: 400;
+                                outline: 0;
+                                height: 100%;
+                                color: $brand-primary-color;
+                                text-shadow: none;
+                                @include filter(brightness(0) invert(1));
+                            }
+                        }
+                    }
+                }
+                .cms-content-header-info {
+                    .section-icon {
+                        opacity: 1;
+                        @include filter(brightness(0) invert(1));
+                    }
+                }
+            }
+            a {
+                color: $brand-primary-color;
+            }
+        }
+        .cms-content-actions,
+        .cms-preview-controls {
+            box-shadow: none;
+            border-color: $gray-light;
+            background: $brand-default;
+            .ui-button {
+                margin-right: $gap-sm;
+
+                .ui-button-text {
+                    margin-left: 16px;
+                }
+                .ui-icon {
+                    background: transparent none;
+                    height: 1.4em;
+                    width: 1.4em;
+                    line-height: 1.4em;
+                }
+                &.loading {
+                    .ui-icon {
+                        content: url(../icons/ic_sync_24px.svg);
+                        -webkit-animation: spin 2s infinite linear;
+                        animation: spin 2s infinite linear;
+                        fill: #fff !important;
+                    }
+                }
+                .btn-icon-accept {
+                    content: url(../icons/ic_done_24px.svg);
+                }
+                .btn-icon-disk {
+                    content: url(../icons/ic_save_24px.svg);
+                }
+                .btn-icon-addpage {
+                    content: url(../icons/ic_note_add_24px.svg);
+                }
+            }
+            .ss-tabset {
+                margin: 0;
+                .ui-tabs-nav {
+                    li {
+                        padding: 0;
+                        margin: 0;
+                        a.ui-tabs-anchor {
+                            line-height: 1.4em;
+                            font-size: 11px;
+                            border-width: 0;
+                            padding: $button-padding;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .cms-content-fields {
+        background: $gray-lighter;
+        .ss-tabset {
+            margin-top: $gap-xl;
+        }
+    }
+}

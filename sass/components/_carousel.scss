@@ -1,0 +1,71 @@
+/*---------------------------------------------*\
+    Carousel
+\*---------------------------------------------*/
+
+.slider .carousel-inner .item {
+    margin: 0;
+}
+.carousel-inner {
+    > .item {
+        transition: 0.5s ease left;
+    }
+}
+.carousel-indicators {
+    .active {
+        background: $brand-primary;
+        border-color: $brand-primary;
+    }
+}
+.carousel-control {
+    width: $gap-lg * 3;
+    text-shadow: none;
+    @include opacity(1);
+    &:hover{
+        .fa-angle-left, .fa-angle-right {
+            background: $brand-primary;
+        }
+    }
+    &.right, &.left {
+        background: 0 none;
+        filter: none;
+    }
+    .fa-angle-left, .fa-angle-right {
+        width: $gap-lg;
+        height: $gap-lg;
+        background: $brand-secondary;
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        line-height: $gap-lg;
+        left: 50%;
+        display: inline-block;
+        font-size: 20px;
+        margin-top: -($gap-lg /2);
+        margin-left: -($gap-lg /2);
+        @include border-radius();
+        transition: .1s linear background;
+    }
+}
+.mobile-slider-controls{
+    font-size: 0;
+    background: $brand-secondary;
+    text-align: right;
+    a{
+        line-height: 20px;
+        font-size: 18px;
+        color: $btn-secondary-color;
+        display: inline-block;
+        padding: $gap-sm $gap-md;
+        width: 50%;
+        &:first-child{
+            text-align: left;
+        }
+    }
+}
+.carousel-indicators{
+    bottom: -($gap-sm + (20px));
+    margin-bottom: 0;
+    @media (min-width: $screen-sm-min) {
+        bottom: $gap-lg;
+    }
+}

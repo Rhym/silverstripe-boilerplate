@@ -1,0 +1,7 @@
+SiteConfig:
+  extensions:
+    - SliderSiteConfigExtension
+
+Page:
+  extensions:
+    - SliderConfig

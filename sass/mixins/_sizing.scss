@@ -1,0 +1,36 @@
+/*======================================================================*\
+    Sizing
+\*======================================================================*/
+
+%margin-default {
+    margin: $gap-md 0;
+    @media (min-width: $screen-sm-min) {
+        margin: $gap-lg 0;
+    }
+}
+%padding-default {
+    padding: $gap-md;
+    @media (min-width: $screen-sm-min) {
+        padding: $gap-lg;
+    }
+}
+%padding-default-x {
+    padding: $gap-md 0;
+    @media (min-width: $screen-sm-min) {
+        padding: $gap-lg 0;
+    }
+}
+%padding-xl-x {
+    padding: $gap-lg 0;
+    @media (min-width: $screen-sm-min) {
+        padding: $gap-xl 0;
+    }
+}
+%box-default {
+    @extend %margin-default;
+    @extend %padding-default-x;
+}
+%box-xl {
+    @extend %margin-default;
+    @extend %padding-xl-x;
+}

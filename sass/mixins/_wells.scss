@@ -1,0 +1,37 @@
+/*---------------------------------------------*\
+    Wells -bootstraps mixin overrides <a> tags
+\*---------------------------------------------*/
+
+@mixin well($color: $btn-default-color, $brand: $gray-lighter) {
+    color: $color;
+    background-color: $brand;
+    border-color: shade($brand, 5);
+    a,
+    label {
+        color: $color;
+    }
+    .btn-default{
+        color: $btn-default-color;
+    }
+    .btn-primary{
+        color: $btn-primary-color;
+    }
+    .btn-secondary{
+        color: $btn-secondary-color;
+    }
+    .btn-inverse{
+        color: $btn-inverse-color;
+    }
+    .btn-info{
+        color: $btn-info-color;
+    }
+    .btn-warning{
+        color: $btn-warning-color;
+    }
+    .btn-success{
+        color: $btn-success-color;
+    }
+    .btn-danger{
+        color: $btn-danger-color;
+    }
+}

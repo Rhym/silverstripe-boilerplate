@@ -1,0 +1,140 @@
+/*======================================================================*\
+    Site Size
+\*======================================================================*/
+
+$site-xl: false;
+
+/*======================================================================*\
+    Colors
+\*======================================================================*/
+
+$gray-darker: #212121; // Text
+$gray-dark: #757575; // Secondary Text / Icons
+$gray: #BDBDBD; // Hint Text
+$gray-light: #E0E0E0; // Dividers
+$gray-lighter: #f9f9f9;
+
+$brand-default: #fff;
+$brand-default-dark: shade($brand-default, 10);
+$brand-default-light: tint($brand-default, 10);
+$brand-default-color: $gray-darker;
+
+$brand-primary: #2196F3;
+$brand-primary-dark: shade($brand-primary, 10);
+$brand-primary-light: tint($brand-primary, 10);
+$brand-primary-color: #fff;
+
+$brand-secondary: #FF4081;
+$brand-secondary-dark: shade($brand-secondary, 10);
+$brand-secondary-light: tint($brand-secondary, 10);
+$brand-secondary-color: #fff;
+
+$brand-inverse: #212121;
+$brand-inverse-dark: shade($brand-inverse, 10);
+$brand-inverse-light: tint($brand-inverse, 10);
+$brand-inverse-color: #fff;
+
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+
+/*======================================================================*\
+    Fonts
+\*======================================================================*/
+
+$font-base-color: #555B66;
+$font-heading-base-color: $font-base-color;
+$font-size-base: 14px;
+$font-family-base: sans-serif;
+$font-family-heading: sans-serif;
+$font-family-heading-weight: bold;
+
+$font-size-h1: 36px;
+$font-size-h2: 30px;
+$font-size-h3: 24px;
+$font-size-h4: 20px;
+$font-size-h5: 12px;
+
+/*======================================================================*\
+    Navigation
+\*======================================================================*/
+
+$navigation-font-size: 14px;
+
+/*======================================================================*\
+    Sidebar
+\*======================================================================*/
+
+$sidebar-font-size: 14px;
+
+/*======================================================================*\
+    Colors - Buttons
+\*======================================================================*/
+
+$btn-default-color: $gray;
+$btn-default-bg: $brand-default;
+$btn-default-border: shade($btn-default-bg, 5);
+
+$btn-primary-color: $brand-primary-color;
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: shade($btn-primary-bg, 5);
+
+$btn-secondary-color: $brand-secondary-color;
+$btn-secondary-bg: $brand-secondary;
+$btn-secondary-border: shade($btn-secondary-bg, 5);
+
+$btn-inverse-color: $brand-inverse-color;
+$btn-inverse-bg: $brand-inverse;
+$btn-inverse-border: shade($btn-inverse-bg, 5);
+
+/*======================================================================*\
+    Colors - Panels
+\*======================================================================*/
+
+$panel-secondary-text: $brand-secondary-color;
+$panel-secondary-border: $brand-secondary;
+$panel-secondary-heading-bg: $brand-secondary;
+
+/*======================================================================*\
+    Gaps
+\*======================================================================*/
+
+$gutter: 30px;
+
+$gap-xl: 64px;
+$gap-lg: 32px;
+$gap-md: 16px;
+$gap-sm: 8px;
+$gap-xs: 4px;
+
+/*======================================================================*\
+    Border Radii
+\*======================================================================*/
+
+$border-radius-base: 0px;
+
+/*======================================================================*\
+    Animation
+\*======================================================================*/
+
+$animation-distance: 30px !default;
+
+/*======================================================================*\
+    Events
+\*======================================================================*/
+
+$calendar-background: $brand-primary;
+$calendar-color: $brand-primary-color;
+
+/*======================================================================*\
+    Popout Menu
+\*======================================================================*/
+
+$popout-item-size: 40px !default;
+
+$popout-menu-background: $brand-primary !default;
+$popout-menu-color: $brand-primary-color !default;
+
+$popout-btn-background: $brand-secondary !default;
+$popout-btn-color: $brand-secondary-color !default;

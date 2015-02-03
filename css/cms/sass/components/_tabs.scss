@@ -1,0 +1,68 @@
+/*---------------------------------------------*\
+    Tabs
+\*---------------------------------------------*/
+
+.cms {
+    .cms-content {
+        .ui-tabs {
+            .ui-tabs-nav {
+                padding-right: 24px;
+                margin: 0;
+                li {
+                    padding: 0;
+                    margin: 0;
+                    border-radius: 0;
+                    border-width: 0;
+                    a {
+                        padding: $button-padding;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        border-bottom: 3px solid $gray-lighter;
+                        &:focus,
+                        &:active {
+                            outline: 0;
+                        }
+                    }
+                    &.ui-state-default {
+                        background: transparent none;
+                        a {
+                            text-shadow: none;
+                        }
+                    }
+                    &.ui-state-active {
+                        background: transparent none;
+                        border-bottom-color: $gray;
+                        a {
+                            border-bottom-color: $gray-light;
+                        }
+                    }
+                }
+                ~ .ui-tabs-panel {
+                    border-color: $gray-light;
+                }
+            }
+            img {
+                //@extend %ImageEntrance;
+            }
+        }
+    }
+}
+
+@keyframes ImageEntrance {
+    0% {
+        opacity: 0;
+        filter: saturate(20%);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        filter: saturate(100%);
+    }
+}
+%ImageEntrance {
+    @extend %animated;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-name: ImageEntrance;
+}

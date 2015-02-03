@@ -1,0 +1,23 @@
+/*---------------------------------------------*\
+    Transformations
+\*---------------------------------------------*/
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+@mixin transform($transformation) {
+    -webkit-transform: $transformation;
+    -ms-transform: $transformation;
+    // IE9+ transform: $transformation;
+}

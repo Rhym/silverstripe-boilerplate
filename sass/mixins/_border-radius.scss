@@ -1,0 +1,20 @@
+/*---------------------------------------------*\
+    Border Radii
+\*---------------------------------------------*/
+
+@mixin border-radius($radius: $border-radius-base) {
+    @include border-top-radius($radius);
+    @include border-bottom-radius($radius);
+}
+@mixin border-top-left-radius($radius: $border-radius-base) {
+    border-top-left-radius: $radius;
+}
+@mixin border-top-right-radius($radius: $border-radius-base) {
+    border-top-right-radius: $radius;
+}
+@mixin border-bottom-left-radius($radius: $border-radius-base) {
+    border-bottom-left-radius: $radius;
+}
+@mixin border-bottom-right-radius($radius: $border-radius-base) {
+    border-bottom-right-radius: $radius;
+}

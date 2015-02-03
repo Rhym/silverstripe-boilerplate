@@ -1,0 +1,6 @@
+## ignorance is bliss
+
+.DS_Store
+*.sublime-*
+*.map
+/.sass-cache/

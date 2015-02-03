@@ -1,0 +1,32 @@
+/*---------------------------------------------*\
+    Sidebar
+\*---------------------------------------------*/
+
+.sidebar {
+    font-size: $sidebar-font-size;
+    .widget {
+        ul {
+            margin: 0;
+            padding:0;
+            li {
+                list-style: none;
+                .heading {
+                    margin-top: 0;
+                }
+                a {
+                    color: $link-color;
+                    display: block;
+                    padding: $gap-xs 0;
+                }
+                a:hover {
+                    color: $link-hover-color;
+                    text-decoration: none;
+                }
+                .current,
+                .current:hover {
+                    color: $gray-dark;
+                }
+            }
+        }
+    }
+}

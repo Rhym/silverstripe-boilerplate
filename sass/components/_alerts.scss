@@ -1,0 +1,49 @@
+/*---------------------------------------------*\
+    Alerts
+\*---------------------------------------------*/
+
+.alert {
+    padding: $gap-md;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+        margin-top: 0;
+    }
+    a {
+        text-decoration: underline
+    }
+    p{
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    &.alert-success {
+        @include alert-variant($alert-success-bg, shade($alert-success-border, 15), $alert-success-text);
+        a {
+            color: $alert-success-text
+        }
+    }
+    &.alert-info {
+        @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
+        a {
+            color: $alert-info-text
+        }
+    }
+    &.alert-warning {
+        @include alert-variant($alert-warning-bg, shade($alert-warning-border, 15), $alert-warning-text);
+        a {
+            color: $alert-warning-text
+        }
+    }
+    &.alert-danger {
+        @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
+        a {
+            color: $alert-danger-text
+        }
+    }
+}

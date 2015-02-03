@@ -1,0 +1,28 @@
+/*---------------------------------------------*\
+    Accordions
+\*---------------------------------------------*/
+
+.cms {
+    .ui-accordion {
+        border-radius: 4px;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+        .ui-accordion-header {
+            text-transform: uppercase;
+            padding: $gap-md $gap-md $gap-md $gap-lg;
+            border-color: $gray-light;
+            border-radius: 4px;
+            &.ui-state-active {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            &.ui-state-default {
+                background: $brand-default;
+            }
+        }
+        .ui-accordion-content {
+            border-color: $gray-light;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+}

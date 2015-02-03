@@ -1,0 +1,172 @@
+/*!
+======================================================================
+    Forms
+======================================================================
+*/
+
+/*---------------------------------------------*\
+    Inputs
+\*---------------------------------------------*/
+
+%form-control-static{
+    color: $font-base-color;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    line-height: inherit;
+    background: transparent none;
+    border-width: 0;
+    box-shadow: none;
+    border-radius: 0;
+    transition: none;
+}
+%input-static{
+    color: $font-base-color;
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: $gap-md;
+    height: auto;
+    box-shadow: none;
+    @include border-radius();
+    &:focus {
+        outline: 0;
+        border-color: $brand-primary;
+        box-shadow: none;
+    }
+}
+textarea {
+    resize: vertical;
+}
+form{
+    .field{
+        &.form-control{
+            @extend %form-control-static;
+            .form-control{
+                &.text,
+                &.textarea{
+                    @extend %input-static;
+                }
+                &.input-sm{
+                    padding: $gap-xs;
+                }
+                &.readonly{
+                    border-width: 0;
+                    height: auto;
+                    padding: 0;
+                }
+            }
+        }
+        &.checkbox{
+            margin-bottom: $gap-md;
+            li{
+                list-style: none;
+            }
+        }
+        &.optionset{
+            padding: 0;
+            margin-bottom: $gap-md;
+            > label{
+                font-weight:700;
+            }
+            .radio{
+                li{
+                    margin-bottom: $gap-xs;
+                    list-style: none;
+                }
+            }
+        }
+        &.confirmedpassword{
+            @extend %form-control-static;
+            margin-bottom: 0;
+            input.password{
+                @extend %input-static;
+                margin-bottom: $gap-md;
+            }
+        }
+        &.creditcard{
+            input{
+                @extend %input-static;
+                width: auto;
+                display: inline-block;
+            }
+        }
+        &.phonenumber{
+            input{
+                @extend %input-static;
+            }
+        }
+        &.file{
+            input{
+                border-width: 0;
+                padding: 0;
+                height: auto;
+                @include box-shadow(none);
+                &:focus{
+                    outline: 0;
+                }
+            }
+        }
+    }
+    input:focus, textarea:focus, .form-control:focus {
+        box-shadow: none;
+    }
+    .form-control {
+        margin-bottom: $gap-md;
+    }
+    .holder-required {
+        input, input:focus, textarea, textarea:focus {
+            border-color: $btn-danger-border;
+        }
+    }
+}
+label{
+    font-weight: normal;
+}
+.checkbox input[type=checkbox],
+.checkbox-inline input[type=checkbox],
+.radio input[type=radio],
+.radio-inline input[type=radio]{
+    margin-left: 0;
+}
+
+/*---------------------------------------------*\
+    Messages
+\*---------------------------------------------*/
+
+.message {
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    margin: $gap-xs 0;
+    display: block;
+    padding: $gap-md;
+    border-width: 1px;
+    border-style: solid;
+    @extend .alert-info;
+    @media (min-width: $screen-sm-min) {
+        margin: $gap-sm 0;
+    }
+    > p {
+        margin-bottom: 0;
+    }
+    > p + p {
+        margin-top: $gap-xs;
+    }
+    &.required, &.validation {
+        @extend .alert-danger;
+    }
+}
+
+/*---------------------------------------------*\
+    Search
+\*---------------------------------------------*/
+
+#SearchForm_SearchForm {
+    .form-group {
+        margin: 0;
+    }
+    .modal-footer {
+        margin: 0;
+    }
+}

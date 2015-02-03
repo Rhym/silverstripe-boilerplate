@@ -1,0 +1,31 @@
+GDBackend:
+  default_quality: 100
+
+Security:
+  extensions:
+    - SecurityExtension
+
+SiteConfig:
+  extensions:
+    - BoilerplateConfig
+
+Page:
+  extensions:
+    - PageExtension
+
+GalleryPage:
+  extensions:
+    - ColumnsPageExtension
+
+GalleryPage_Controller:
+  extensions:
+    - ColumnsPageControllerExtension
+
+ContentController:
+  extensions:
+    - PageControllerExtension
+
+#LeftAndMain:
+#  extra_requirements_css:
+#    - http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100
+#    - boilerplate/css/cms/css/cms.min.css

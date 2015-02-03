@@ -1,0 +1,122 @@
+/*---------------------------------------------*\
+    Buttons
+\*---------------------------------------------*/
+
+%btn-static {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+    padding: 0.75em 1em;
+    white-space: normal;
+    border-width: 0;
+    &:focus {
+        outline: 0;
+    }
+}
+.btn {
+    @extend %btn-static;
+    &:focus,
+    &:active {
+        box-shadow: none;
+    }
+}
+.btn-default {
+    color: $brand-default-color;
+    &:hover {
+        color: $brand-default-color;
+        background: shade($brand-default, 5);
+    }
+    &:active {
+        color: $brand-default-color;
+        background: $brand-default-dark;
+    }
+}
+.btn-secondary {
+    @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+.btn-inverse {
+    @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
+}
+
+/*---------------------------------------------*\
+    Button Links
+\*---------------------------------------------*/
+
+.btn-link {
+    background: transparent none;
+    text-decoration: none;
+    transition: .1s linear color;
+    &:hover {
+        background: transparent none;
+        text-decoration: none;
+    }
+    &:active,
+    &:focus {
+        text-decoration: none;
+        background: $gray-lighter;
+    }
+    &.btn-default {
+        @include button-link($brand-default-color);
+    }
+    &.btn-primary {
+        @include button-link($brand-primary);
+    }
+    &.btn-secondary {
+        @include button-link($brand-secondary);
+    }
+    &.btn-inverse {
+        @include button-link($brand-inverse);
+    }
+    &.btn-success {
+        @include button-link($brand-success);
+    }
+    &.btn-info {
+        @include button-link($brand-info);
+    }
+    &.btn-warning {
+        @include button-link($brand-warning);
+    }
+    &.btn-danger {
+        @include button-link($brand-danger);
+    }
+}
+
+/*---------------------------------------------*\
+    Bordered Buttons
+\*---------------------------------------------*/
+
+.btn-bordered {
+    background: transparent none;
+    border-width: 2px;
+    border-style: solid;
+    transition: .1s linear color, .1s linear border-color;
+    &:hover,
+    &:focus,
+    &:active {
+        background: transparent none;
+    }
+    &.btn-default {
+        @include button-bordered($brand-default-color);
+    }
+    &.btn-primary {
+        @include button-bordered($brand-primary);
+    }
+    &.btn-secondary {
+        @include button-bordered($brand-secondary);
+    }
+    &.btn-inverse {
+        @include button-bordered($brand-inverse-color);
+    }
+    &.btn-success {
+        @include button-bordered($brand-success);
+    }
+    &.btn-info {
+        @include button-bordered($brand-info);
+    }
+    &.btn-warning {
+        @include button-bordered($brand-warning);
+    }
+    &.btn-danger {
+        @include button-bordered($brand-danger);
+    }
+}

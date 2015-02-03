@@ -1,0 +1,30 @@
+/*---------------------------------------------*\
+    Portfolio
+\*---------------------------------------------*/
+
+.portfolio.loop{
+    .item {
+        a {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+.portfolio.page {
+    .item {
+        margin-bottom: $gap-md;
+        @media (min-width: $screen-sm-min) {
+            margin-bottom: $gutter;
+            &.last {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .caption-right{
+        margin-top: $gap-md;
+        @media (min-width: $screen-sm-min) {
+            margin-top: 0;
+        }
+    }
+}

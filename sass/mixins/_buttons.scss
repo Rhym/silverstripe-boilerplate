@@ -1,0 +1,23 @@
+/*---------------------------------------------*\
+    Buttons
+\*---------------------------------------------*/
+
+@mixin button-link($color) {
+    color: $color;
+    &:hover,
+    &:active,
+    &:focus {
+        color: shade($color, 10);
+    }
+}
+
+@mixin button-bordered($color) {
+    border-color: $color;
+    color: $color;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color;
+        border-color: $color;
+    }
+}

@@ -9,6 +9,8 @@ class NewsletterHolder extends Page {
 
     private static $description = 'Newsletter Holder Page';
 
+    private static $can_be_root = false;
+
     /**
      * @return FieldList
      */

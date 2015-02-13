@@ -191,14 +191,18 @@ class AnalyticsAdmin extends LeftAndMain {
      */
     public function SEOSnippet() {
         $meta = get_meta_tags(Director::absoluteBaseURL(), false);
+        $metaDescription = '';
         $siteConfig = SiteConfig::current_site_config();
         $title = $siteConfig->Title;
+        if(isset($meta['description'])){
+            $metaDescription = $meta['description'];
+        }
         if($tagline = $siteConfig->Tagline) $title.=' - '.$tagline;
         $arrayList = new ArrayList();
         $arrayList->push(new ArrayData(array(
             'Title' => $title,
             'URL' => Director::absoluteBaseURL(),
-            'Description' => $meta['description'],
+            'Description' => $metaDescription,
         )));
         return $arrayList;
     }

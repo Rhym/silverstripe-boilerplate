@@ -363,7 +363,6 @@ img {
 	background-color: #fff;
 	border: 1px solid #ddd;
 	border-radius: 0px;
-	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 	display: inline-block;
 	max-width: 100%;
@@ -1027,7 +1026,6 @@ output {
 	border: 1px solid #ccc;
 	border-radius: 0px;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
@@ -1915,7 +1913,6 @@ input[type="button"].btn-block {
 
 .fade {
 	opacity: 0;
-	-webkit-transition: opacity 0.15s linear;
 	transition: opacity 0.15s linear;
 }
 
@@ -1945,11 +1942,8 @@ tbody.collapse.in {
 	position: relative;
 	height: 0;
 	overflow: hidden;
-	-webkit-transition-property: height, visibility;
 	transition-property: height, visibility;
-	-webkit-transition-duration: 0.35s;
 	transition-duration: 0.35s;
-	-webkit-transition-timing-function: ease;
 	transition-timing-function: ease;
 }
 
@@ -3385,7 +3379,7 @@ button.close {
 	-webkit-transform: translate(0, -25%);
 	-ms-transform: translate(0, -25%);
 	transform: translate(0, -25%);
-	-webkit-transition: -webkit-transform 0.3s ease-out;
+	transition: -webkit-transform 0.3s ease-out;
 	transition: transform 0.3s ease-out;
 }
 
@@ -3529,7 +3523,6 @@ button.close {
 .carousel-inner > .item {
 	display: none;
 	position: relative;
-	-webkit-transition: 0.6s ease-in-out left;
 	transition: 0.6s ease-in-out left;
 }
 
@@ -3594,7 +3587,6 @@ button.close {
 }
 
 .carousel-control.left {
-	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
@@ -3603,7 +3595,6 @@ button.close {
 .carousel-control.right {
 	left: auto;
 	right: 0;
-	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
@@ -4028,8 +4019,8 @@ section.section {
 	content: "";
 }
 
-.fa-align-justify:before {
-	content: "";
+.fa-bars:before {
+	content: "";
 }
 
 .fa-picture-o:before {
@@ -4772,7 +4763,6 @@ fieldset[disabled] .btn-inverse.active {
 .btn-link {
 	background: transparent none;
 	text-decoration: none;
-	-webkit-transition: .1s linear color;
 	transition: .1s linear color;
 }
 
@@ -4883,7 +4873,6 @@ fieldset[disabled] .btn-inverse.active {
 	background: transparent none;
 	border-width: 2px;
 	border-style: solid;
-	-webkit-transition: .1s linear color, .1s linear border-color;
 	transition: .1s linear color, .1s linear border-color;
 }
 
@@ -5053,7 +5042,6 @@ fieldset[disabled] .btn-inverse.active {
 }
 
 .carousel-inner > .item {
-	-webkit-transition: 0.5s ease left;
 	transition: 0.5s ease left;
 }
 
@@ -5099,7 +5087,6 @@ fieldset[disabled] .btn-inverse.active {
 	border-top-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
-	-webkit-transition: .1s linear background;
 	transition: .1s linear background;
 }
 
@@ -5159,7 +5146,6 @@ form .field.confirmedpassword,
 	border-width: 0;
 	box-shadow: none;
 	border-radius: 0;
-	-webkit-transition: none;
 	transition: none;
 }
 
@@ -5549,7 +5535,6 @@ label {
 	line-height: 2em;
 	text-align: center;
 	border-radius: 50%;
-	-webkit-transition: .2s linear background-color, .1s linear color;
 	transition: .2s linear background-color, .1s linear color;
 }
 
@@ -5599,7 +5584,6 @@ img {
 	-webkit-overflow-scrolling: touch;
 	height: 100%;
 	width: 100%;
-	-webkit-transition: .1s linear opacity;
 	transition: .1s linear opacity;
 }
 
@@ -5849,7 +5833,6 @@ section.section .backgrounds .right {
 	display: block;
 	border-width: 0;
 	background: transparent none;
-	-webkit-transition: .1s linear padding;
 	transition: .1s linear padding;
 }
 
@@ -5943,7 +5926,6 @@ section.section .backgrounds .right {
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	padding: 16px 0;
-	-webkit-transition: .2s ease right;
 	transition: .2s ease right;
 }
 
@@ -6036,7 +6018,7 @@ section.section .backgrounds .right {
 }
 
 .menu-wrap .parent .open-children i {
-	-webkit-transition: .2s linear -webkit-transform;
+	transition: .2s linear -webkit-transform;
 	transition: .2s linear transform;
 }
 
@@ -6294,7 +6276,6 @@ section.section .backgrounds .right {
 	position: relative;
 	background: #fff;
 	min-height: 33px;
-	-webkit-transition: .1s linear background-color;
 	transition: .1s linear background-color;
 }
 
@@ -6360,7 +6341,6 @@ section.section .backgrounds .right {
 .calendar .calendar-table .events-toggle ul li a {
 	text-decoration: none;
 	color: #555B66;
-	-webkit-transition: .1s linear color;
 	transition: .1s linear color;
 }
 
@@ -6420,7 +6400,7 @@ input[type="month"].input-lg {
 @media all and (transform-3d), (-webkit-transform-3d) {
 
 .carousel-inner > .item {
-	-webkit-transition: -webkit-transform .6s ease-in-out;
+	transition: -webkit-transform .6s ease-in-out;
 	transition: transform .6s ease-in-out;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
@@ -7092,6 +7072,7 @@ section.section .backgrounds .left {
 
 section.section .backgrounds .right {
 	left: 50%;
+	right: 0;
 }
 
 .content.typography {

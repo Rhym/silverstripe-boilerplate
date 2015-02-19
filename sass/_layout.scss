@@ -90,6 +90,7 @@ section.section {
         .right {
             @media(min-width: $screen-sm-min) {
                 left: 50%;
+                right: 0;
             }
         }
     }

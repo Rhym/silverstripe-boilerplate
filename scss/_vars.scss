@@ -43,6 +43,8 @@ $brand-danger: #d9534f;
     Fonts
 \*======================================================================*/
 
+$fa-font-path: '../../../../components/public/components-font-awesome/fonts' !default;
+
 $font-base-color: #555B66;
 $font-heading-base-color: $font-base-color;
 $font-size-base: 14px;

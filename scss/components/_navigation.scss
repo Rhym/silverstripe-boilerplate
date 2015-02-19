@@ -86,6 +86,7 @@
         padding:0;
     }
     .menu-icon {
+        background: transparent none;
         padding: 0;
         border-width: 0;
         position: absolute;
@@ -94,11 +95,18 @@
         top: 50%;
         margin-top: -($popout-item-size / 2);
         height: $popout-item-size;
-        width: $popout-item-size;
         text-align: center;
         line-height: $popout-item-size;
         @include border-radius();
+        .text {
+            text-transform: uppercase;
+            font-size: $font-size-base;
+            margin: 0 $gap-sm 0 0;
+            line-height: $popout-item-size;
+            display: inline-block;
+        }
         i {
+            float: right;
             line-height: $popout-item-size;
         }
         &.search {

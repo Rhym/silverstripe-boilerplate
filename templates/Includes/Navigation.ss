@@ -20,7 +20,7 @@
         <% end_if %>
     </ul><!-- /.nav navbar-nav pull-right hidden-xs -->
     <div class="select-overlay hidden-lg">
-        <button class="menu-icon toggle-menu btn-secondary"><i class="fa fa-bars"></i></button><!-- /.menu-icon -->
+        <button class="menu-icon toggle-menu"><span class="text">Menu</span><i class="fa fa-bars"></i></button><!-- /.menu-icon -->
         <%--<% include Navigation_Select %>--%>
         <div class="clearfix"></div><!-- /.clearfix -->
     </div><!-- /.select-overlay hidden-lg -->

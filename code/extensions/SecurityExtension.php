@@ -16,7 +16,7 @@ class SecurityExtension extends Extension {
          */
         if($action = $this->owner->getURLParams('Action')){
             if($action['Action'] =='lostpassword' || $action['Action'] == 'login'){
-                Requirements::css('boilerplate/css/main.min.css');
+                Requirements::css(BOILERPLATE_MODULE.'/css/main.min.css');
             }
         }
 

@@ -28,6 +28,7 @@ class PageItemConfig extends DataExtension {
             $this->owner->PageItems(),
             $config
         );
+        // TODO: Re-enable
         //$fields->addFieldToTab('Root.PageBuilder', $gridField);
 
         /* -----------------------------------------

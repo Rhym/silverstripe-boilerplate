@@ -30,7 +30,7 @@ class PageControllerExtension extends Extension {
             'combined.min.css',
             array(
                 CSS_DIR.'/main.min.css',
-                project().'css/main.min.css'
+                project().'/css/main.min.css'
             )
         );
 

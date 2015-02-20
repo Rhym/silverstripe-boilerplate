@@ -6,10 +6,10 @@ ContentController:
   extensions:
     - PageItemControllerExtension
 
-LeftAndMain:
-  extra_requirements_css:
-    - boilerplate/code/Modules/PageItems/css/main.min.css
-    - boilerplate/code/Modules/PageItems/css/lib/gridster.min.css
-  extra_requirements_javascript:
-    - boilerplate/code/Modules/PageItems/javascript/lib/gridster.min.js
-    - boilerplate/code/Modules/PageItems/javascript/scaffold.js
+#LeftAndMain:
+#  extra_requirements_css:
+#    - boilerplate/code/Modules/PageItems/css/main.min.css
+#    - boilerplate/code/Modules/PageItems/css/lib/gridster.min.css
+#  extra_requirements_javascript:
+#    - boilerplate/code/Modules/PageItems/javascript/lib/gridster.min.js
+#    - boilerplate/code/Modules/PageItems/javascript/scaffold.js

@@ -26,7 +26,13 @@ class PageControllerExtension extends Extension {
          * CSS
          =========================================*/
 
-        Requirements::css(CSS_DIR.'/main.min.css');
+        Requirements::combine_files(
+            'combined.min.css',
+            array(
+                CSS_DIR.'/main.min.css',
+                project().'css/main.min.css'
+            )
+        );
 
         /* =========================================
          * IE Shivs

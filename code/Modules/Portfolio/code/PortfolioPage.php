@@ -19,6 +19,10 @@ class PortfolioPage extends Page {
         'ShowInMenus' => 0
     );
 
+    private static $allowed_children = 'none';
+
+    private static $can_be_root = false;
+
     private static $description = 'Portfolio content page';
 
     /**

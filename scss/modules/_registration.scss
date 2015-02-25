@@ -2,34 +2,11 @@
     Registration
 \*---------------------------------------------*/
 
-#MemberLoginForm_LoginForm {
-    #ForgotPassword {
-        margin-top: $gap-sm
-    }
-}
 #editProfile {
     margin-top: $gap-md;
 }
-@media (min-width: $screen-sm-min) {
-    #MemberLoginForm_LoginForm,
-    #Form_RegistrationForm,
-    #MemberLoginForm_LostPasswordForm {
+#Form_RegistrationForm {
+    @media (min-width: $screen-sm-min) {
         max-width: 50%;
-    }
-}
-// Login Form
-#MemberLoginForm_LoginForm,
-#MemberLoginForm_LostPasswordForm {
-    .text {
-        @extend %form-control-static;
-        input{
-            @extend %input-static;
-            margin-bottom: $gap-md;
-        }
-    }
-    .action {
-        @extend .btn;
-        @extend .btn-primary;
-        @extend .btn-lg;
     }
 }

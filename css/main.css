@@ -6823,9 +6823,9 @@ form .field.form-control .form-control.textarea,
 form .field.confirmedpassword input.password,
 form .field.creditcard input,
 form .field.phonenumber input,
-.menu-wrap .search input[type="text"],
 #MemberLoginForm_LoginForm .text input,
-#MemberLoginForm_LostPasswordForm .text input {
+#MemberLoginForm_LostPasswordForm .text input,
+.menu-wrap .search input[type="text"] {
 	color: #555B66;
 	display: block;
 	width: 100%;
@@ -6844,9 +6844,9 @@ form .field.form-control .form-control.textarea:focus,
 form .field.confirmedpassword input.password:focus,
 form .field.creditcard input:focus,
 form .field.phonenumber input:focus,
-.menu-wrap .search input[type="text"]:focus,
 #MemberLoginForm_LoginForm .text input:focus,
-#MemberLoginForm_LostPasswordForm .text input:focus {
+#MemberLoginForm_LostPasswordForm .text input:focus,
+.menu-wrap .search input[type="text"]:focus {
 	outline: 0;
 	border-color: #2196F3;
 	box-shadow: none;
@@ -6972,6 +6972,23 @@ label {
 
 #SearchForm_SearchForm .modal-footer {
 	margin: 0;
+}
+
+/*---------------------------------------------*\
+    Forgot Password
+\*---------------------------------------------*/
+
+#MemberLoginForm_LoginForm #ForgotPassword {
+	margin-top: 8px;
+}
+
+/*---------------------------------------------*\
+    Login / Lost Password
+\*---------------------------------------------*/
+
+#MemberLoginForm_LoginForm .text input,
+#MemberLoginForm_LostPasswordForm .text input {
+	margin-bottom: 16px;
 }
 
 /*---------------------------------------------*\
@@ -7771,17 +7788,8 @@ section.section .backgrounds .right {
     Registration
 \*---------------------------------------------*/
 
-#MemberLoginForm_LoginForm #ForgotPassword {
-	margin-top: 8px;
-}
-
 #editProfile {
 	margin-top: 16px;
-}
-
-#MemberLoginForm_LoginForm .text input,
-#MemberLoginForm_LostPasswordForm .text input {
-	margin-bottom: 16px;
 }
 
 /*---------------------------------------------*\
@@ -8705,6 +8713,11 @@ ul li {
 	margin: 8px 0;
 }
 
+#MemberLoginForm_LoginForm,
+#MemberLoginForm_LostPasswordForm {
+	max-width: 50%;
+}
+
 #header {
 	margin-bottom: 32px;
 	padding: 32px 0;
@@ -8827,9 +8840,7 @@ section.section .backgrounds .right {
 	margin-top: 0;
 }
 
-#MemberLoginForm_LoginForm,
-#Form_RegistrationForm,
-#MemberLoginForm_LostPasswordForm {
+#Form_RegistrationForm {
 	max-width: 50%;
 }
 

@@ -170,3 +170,36 @@ label{
         margin: 0;
     }
 }
+
+/*---------------------------------------------*\
+    Forgot Password
+\*---------------------------------------------*/
+
+#MemberLoginForm_LoginForm {
+    #ForgotPassword {
+        margin-top: $gap-sm
+    }
+}
+
+/*---------------------------------------------*\
+    Login / Lost Password
+\*---------------------------------------------*/
+
+#MemberLoginForm_LoginForm,
+#MemberLoginForm_LostPasswordForm {
+    @media (min-width: $screen-sm-min) {
+        max-width: 50%;
+    }
+    .text {
+        @extend %form-control-static;
+        input{
+            @extend %input-static;
+            margin-bottom: $gap-md;
+        }
+    }
+    .action {
+        @extend .btn;
+        @extend .btn-primary;
+        @extend .btn-lg;
+    }
+}

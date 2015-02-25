@@ -1,5 +1,5 @@
 <% include PageHeader %>
-
+<% cached LastEdited %>
 <div class="container">
     <div class="row">
         <div class="hidden-xs"><% include BlogSideBar %></div><!-- /.hidden-xs -->
@@ -17,5 +17,5 @@
         </div><!-- /.col-sm-8 col-lg-9 -->
     </div><!-- /.row -->
 </div><!-- /.container -->
-
+<% end_cached %>
 <% include ImageNavigation %>

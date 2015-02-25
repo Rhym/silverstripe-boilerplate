@@ -1,5 +1,5 @@
 <% include PageHeader %>
-
+<% cached LastEdited %>
 <div class="container">
     <% include Content %>
     <% if $PortfolioImages %>
@@ -36,5 +36,5 @@
         </section><!-- /.portfolio page -->
     <% end_if %>
 </div><!-- /.container -->
-
+<% end_cached %>
 <% include ImageNavigation %>

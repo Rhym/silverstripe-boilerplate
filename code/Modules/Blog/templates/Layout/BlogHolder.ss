@@ -9,6 +9,7 @@
                 <section class="blog loop">
                     <div class="row">
                         <% loop $PaginatedPages %>
+                        <% cached LastEdited %>
                             <article class="item {$Top.ColumnClass} {$FirstLast} {$EvenOdd}">
                                 <div class="typography">
                                     <% if $BlogImage %>
@@ -29,6 +30,7 @@
                             <% if $MultipleOf($Top.ColumnMultiple) %>
                                 <div class="clearfix"></div><!-- /.clearfix -->
                             <% end_if %>
+                        <% end_cached %>
                         <% end_loop %>
                     </div><!-- /.row -->
                 </section><!-- /.blog loop -->

@@ -6541,7 +6541,13 @@ section.section .backgrounds .right {
 \*---------------------------------------------*/
 
 #slider {
-	margin-bottom: 16px;
+	margin-bottom: 16px; /**
+   * Single default image set in Siteconfig
+   */
+}
+
+#slider.has-multiple-items .item:hover {
+	cursor: col-resize;
 }
 
 #slider .container {
@@ -6554,10 +6560,6 @@ section.section .backgrounds .right {
 
 #slider .item {
 	position: relative;
-}
-
-#slider .item:hover {
-	cursor: col-resize;
 }
 
 #slider .item img {

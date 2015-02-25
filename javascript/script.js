@@ -2,6 +2,17 @@
     $(document).ready(function(){
 
         /*---------------------------------------------*\
+            Carousel
+        \*---------------------------------------------*/
+
+        $('.owl-carousel').owlCarousel({
+            singleItem: true,
+            pagination: false,
+            paginationNumbers: false,
+            loop: true
+        });
+
+        /*---------------------------------------------*\
             Animation - https://github.com/imakewebthings/waypoints
         \*---------------------------------------------*/
 

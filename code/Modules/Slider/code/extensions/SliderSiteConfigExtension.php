@@ -14,7 +14,7 @@ class SliderSiteConfigExtension extends Extension {
     );
 
     public static $defaults = array(
-        'DefaultSliderHeight' => 400
+        'DefaultSliderHeight' => 0
     );
 
     /**

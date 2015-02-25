@@ -10,10 +10,12 @@
     @media (min-width: $screen-sm-min) {
         margin-bottom: $gap-lg;
         padding: $gap-lg 0;
-        // Remove space between elements.
+        /**
+         * Remove space between elements.
+         */
         font-size: 0;
     }
-    #logoContainer {
+    #logo {
         .heading {
             font-size: $font-size-h3;
             margin: 0;
@@ -27,18 +29,115 @@
         }
     }
     @media (min-width: $screen-sm-min) {
-        #logoContainer,
-        #navigationContainer{
-            // Set font size after removing space between inline-block elements.
+        #logo,
+        #navigation {
+            /**
+             * Set font size after removing space between inline-block elements.
+             */
             font-size: $font-size-base;
             display: inline-block;
             vertical-align: middle;
             float: none;
         }
     }
+    ul {
+        margin: 0;
+        padding: 0;
+        float: right;
+        list-style: none;
+        @include clearfix();
+        li {
+            margin: 0;
+        }
+        > li {
+            position: relative;
+            display: none;
+            float: left;
+            @media(min-width: $screen-lg-min) {
+                display: inline-block;
+            }
+            /**
+             * Active, and Ancestor menu styling.
+             */
+            &.section, &.current {
+                > a {
+
+                }
+            }
+            &:hover {
+                > .dropdown-menu {
+                    @media (min-width: $screen-lg-min) {
+                        display: block;
+                    }
+                }
+            }
+            /**
+             * Align the sub-menu to the right if it's the last menu item in the loop.
+             */
+            &.last {
+                .dropdown-menu {
+                    left: auto;
+                    right: 0;
+                }
+            }
+            > a {
+                padding: 0.75em 1.5em;
+                display: block;
+                margin-bottom: $gap-xs;
+            }
+            .dropdown-menu {
+                position: absolute;
+                font-size: $navigation-font-size;
+                box-shadow: none;
+                margin-top: 0;
+                padding: 0;
+                left: 0;
+                min-width: 160px;
+                right: auto;
+                border-width: 0;
+                background: transparent none;
+                display: none;
+                border-radius: 0;
+                > li {
+                    display: block;
+                    float: none;
+                    > a {
+                        margin: 0;
+                        padding: 0.75em 1.5em;
+                        background: $brand-default;
+                        color: $brand-default-color;
+                    }
+                }
+            }
+        }
+    }
+    .hamburger-menu {
+        display: block;
+        @media(min-width: $screen-lg-min) {
+            display: none;
+        }
+        .menu-icon {
+            background: transparent none;
+            padding: 0;
+            border-width: 0;
+            text-align: center;
+            .text {
+                text-transform: uppercase;
+                font-size: $font-size-base;
+                margin: 0 $gap-sm 0 0;
+                display: inline-block;
+            }
+            i {
+                float: right;
+            }
+            &.search {
+                right: $popout-item-size + $gap-sm;
+            }
+        }
+    }
 }
-.has-slider{
-    #header{
+.has-slider {
+    #header {
         margin-bottom: 0;
     }
 }

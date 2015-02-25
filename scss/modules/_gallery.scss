@@ -6,6 +6,9 @@
     .item {
         a {
             display: block;
+            &:hover {
+                cursor: zoom-in;
+            }
         }
         button {
             border-width: 0;
@@ -35,7 +38,7 @@
                 padding: 0;
             }
                 .inner {
-                    display: inline-block;
+                    display: block;
                     position: relative;
                 }
                     .actions {

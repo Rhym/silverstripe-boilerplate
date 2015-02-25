@@ -8,7 +8,6 @@ class SliderItem extends DataObject{
     private static $db = array (
         'Caption' => 'HTMLText',
         'SortOrder' => 'Int',
-        'ColorScheme' => 'Boolean(0)',
         'ExternalLink' => 'Text'
     );
 
@@ -43,7 +42,6 @@ class SliderItem extends DataObject{
 
         $fields->addFieldToTab('Root.Main', $image = new UploadField('Image'));
         $image->setFolderName('Uploads/slider');
-        $fields->addFieldToTab('Root.Main', new CheckboxField('ColorScheme', 'Light Text'));
         $fields->addFieldToTab('Root.Main', $caption = new HtmlEditorField('Caption'));
         $caption->setRows(15);
         $fields->addFieldToTab('Root.Main', new HeaderField('', 'Link', 4));

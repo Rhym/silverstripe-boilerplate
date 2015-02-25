@@ -89,13 +89,6 @@
                 }
             }
         }
-        .calendar-day-np,
-        .calendar-day {
-            animation-duration: 1s;
-            animation-fill-mode: both;
-            animation-name: fadeIn;
-            opacity: 0;
-        }
         .calendar-day-np {
             .inner {
                 background: shade($calendar-background, 30);
@@ -157,6 +150,24 @@
             &.active {
                 width: 99.9999%; // width of the 7 day elements combined.
                 display: block;
+            }
+        }
+    }
+}
+/**
+ * If the browser supports transitions then make the days fade in.
+ */
+.csstransitions {
+    .calendar {
+        .calendar-table {
+            .calendar-day-np,
+            .calendar-day {
+                @media(min-width: $screen-sm-min) {
+                    opacity: 0;
+                    animation-duration: 1s;
+                    animation-fill-mode: both;
+                    animation-name: fadeIn;
+                }
             }
         }
     }

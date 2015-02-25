@@ -2,7 +2,7 @@
     Slider
 \*---------------------------------------------*/
 
-#sliderContainer {
+#slider {
     margin-bottom: $gap-md;
     @media (min-width: $screen-sm-min) {
         margin-bottom: $gap-xl;
@@ -16,20 +16,16 @@
             width: 100%;
         }
     }
-    #pageSlider {
-        &.full-width {
-            > .carousel-inner {
-                > .item {
-                    a img, img {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
     .item{
+        position: relative;
         @media (max-width: $screen-sm-max) {
             max-height: none !important;
+        }
+        &:hover {
+            cursor: col-resize;
+        }
+        img {
+            width: 100%;
         }
     }
     .caption{
@@ -45,28 +41,6 @@
         h5,
         h6 {
             margin-top: 0;
-        }
-        .light{
-            color: $font-base-color;
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                color: $font-heading-base-color;
-            }
-            @media(min-width: $screen-sm-min) {
-                color: $brand-inverse-color;
-                h1,
-                h2,
-                h3,
-                h4,
-                h5,
-                h6 {
-                    color: $brand-inverse-color;
-                }
-            }
         }
         @media (min-width: $screen-sm-min) {
             background: transparent none;
@@ -91,7 +65,7 @@
  * If the browser supports CSS transformations then use translate to center the caption.
  */
 .csstransforms {
-    #sliderContainer {
+    #slider {
         .caption {
             @media (min-width: $screen-sm-min) {
                 top: 50%;

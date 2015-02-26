@@ -49,10 +49,3 @@ if (basename(dirname(__FILE__)) != BOILERPLATE_MODULE) {
 //    'shortcodeGenerator' => Director::absoluteBaseURL().JS_DIR.'/shortcodeGenerator/editor_plugin.js'
 //));
 //HtmlEditorConfig::get('cms')->addButtonsToLine(1, 'shortcodeGenerator');
-
-/* -----------------------------------------
- * Hide Unfinished Modules
-------------------------------------------*/
-
-CMSMenu::remove_menu_item('AnalyticsAdmin');
-CMSMenu::remove_menu_item('NewsletterAdmin');

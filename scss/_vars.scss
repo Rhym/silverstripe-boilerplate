@@ -43,8 +43,6 @@ $brand-danger: #d9534f;
     Fonts
 \*======================================================================*/
 
-$fa-font-path: '../../../../components/public/components-font-awesome/fonts' !default;
-
 $font-base-color: #555B66;
 $font-heading-base-color: $font-base-color;
 $font-size-base: 14px;
@@ -123,20 +121,13 @@ $border-radius-base: 0px;
 $animation-distance: 30px !default;
 
 /*======================================================================*\
-    Events
-\*======================================================================*/
-
-$calendar-background: $brand-primary;
-$calendar-color: $brand-primary-color;
-
-/*======================================================================*\
     Popout Menu
 \*======================================================================*/
 
-$popout-item-size: 40px !default;
+$popout-item-size: 40px;
 
-$popout-menu-background: $brand-default !default;
-$popout-menu-color: $brand-default-color !default;
+$popout-menu-background: $brand-default;
+$popout-menu-color: $brand-default-color;
 
-$popout-btn-background: $brand-inverse !default;
-$popout-btn-color: $brand-inverse-color !default;
+$popout-btn-background: $brand-inverse;
+$popout-btn-color: $brand-inverse-color;

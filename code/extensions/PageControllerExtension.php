@@ -14,17 +14,11 @@ class PageControllerExtension extends Extension {
         Requirements::combine_files(
             'combined.js',
             array(
-                // jQuery
                 BOWER_COMPONENTS_DIR.'/jquery/dist/jquery.min.js',
-                // Modernizr
                 BOWER_COMPONENTS_DIR.'/modernizr/modernizr.js',
-                // Owl Carousel
                 BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.carousel.min.js',
-                // Boostrap
                 BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
-                // Pop-out menu module
                 BOILERPLATE_MODULE.'/code/Modules/PopoutMenu/javascript/popout-menu.js',
-                // Application scripts
                 JS_DIR.'/script.js'
             )
         );
@@ -33,6 +27,7 @@ class PageControllerExtension extends Extension {
          * CSS
          =========================================*/
 
+        Requirements::css(BOWER_COMPONENTS_DIR.'/components-font-awesome/css/font-awesome.min.css');
         Requirements::combine_files(
             'combined.min.css',
             array(
@@ -40,8 +35,6 @@ class PageControllerExtension extends Extension {
                 BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.carousel.css',
                 BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.theme.css',
                 BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.transition.css',
-                // Boilerplate styles
-                CSS_DIR.'/main.min.css',
                 // Application styles
                 project().'/css/main.min.css'
             )

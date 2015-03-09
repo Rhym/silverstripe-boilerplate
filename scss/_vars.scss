@@ -2,117 +2,117 @@
     Site Size
 \*======================================================================*/
 
-$site-xl: false;
+$site-xl: false !default;
 
 /*======================================================================*\
     Colors
 \*======================================================================*/
 
-$gray-darker: #212121; // Text
-$gray-dark: #757575; // Secondary Text / Icons
-$gray: #BDBDBD; // Hint Text
-$gray-light: #E0E0E0; // Dividers
-$gray-lighter: #f9f9f9;
+$gray-darker: #212121 !default; // Text
+$gray-dark: #757575 !default; // Secondary Text / Icons
+$gray: #BDBDBD !default; // Hint Text
+$gray-light: #E0E0E0 !default; // Dividers
+$gray-lighter: #f9f9f9 !default;
 
-$brand-default: #fff;
-$brand-default-dark: shade($brand-default, 10);
-$brand-default-light: tint($brand-default, 10);
-$brand-default-color: $gray-darker;
+$brand-default: #fff !default;
+$brand-default-dark: shade($brand-default, 10) !default;
+$brand-default-light: tint($brand-default, 10) !default;
+$brand-default-color: $gray-darker !default;
 
-$brand-primary: #2196F3;
-$brand-primary-dark: shade($brand-primary, 10);
-$brand-primary-light: tint($brand-primary, 10);
-$brand-primary-color: #fff;
+$brand-primary: #2196F3 !default;
+$brand-primary-dark: shade($brand-primary, 10) !default;
+$brand-primary-light: tint($brand-primary, 10) !default;
+$brand-primary-color: #fff !default;
 
-$brand-secondary: #FF4081;
-$brand-secondary-dark: shade($brand-secondary, 10);
-$brand-secondary-light: tint($brand-secondary, 10);
-$brand-secondary-color: #fff;
+$brand-secondary: #FF4081 !default;
+$brand-secondary-dark: shade($brand-secondary, 10) !default;
+$brand-secondary-light: tint($brand-secondary, 10) !default;
+$brand-secondary-color: #fff !default;
 
-$brand-inverse: #212121;
-$brand-inverse-dark: shade($brand-inverse, 10);
-$brand-inverse-light: tint($brand-inverse, 10);
-$brand-inverse-color: #fff;
+$brand-inverse: #212121 !default;
+$brand-inverse-dark: shade($brand-inverse, 10) !default;
+$brand-inverse-light: tint($brand-inverse, 10) !default;
+$brand-inverse-color: #fff !default;
 
-$brand-success: #5cb85c;
-$brand-info: #5bc0de;
-$brand-warning: #f0ad4e;
-$brand-danger: #d9534f;
+$brand-success: #5cb85c !default;
+$brand-info: #5bc0de !default;
+$brand-warning: #f0ad4e !default;
+$brand-danger: #d9534f !default;
 
 /*======================================================================*\
     Fonts
 \*======================================================================*/
 
-$font-base-color: #555B66;
-$font-heading-base-color: $font-base-color;
-$font-size-base: 14px;
-$font-family-base: sans-serif;
-$font-family-heading: sans-serif;
-$font-family-heading-weight: bold;
+$font-base-color: #555B66 !default;
+$font-heading-base-color: $font-base-color !default;
+$font-size-base: 14px !default;
+$font-family-base: sans-serif !default;
+$font-family-heading: sans-serif !default;
+$font-family-heading-weight: bold !default;
 
-$font-size-h1: 36px;
-$font-size-h2: 30px;
-$font-size-h3: 24px;
-$font-size-h4: 20px;
-$font-size-h5: 12px;
+$font-size-h1: 36px !default;
+$font-size-h2: 30px !default;
+$font-size-h3: 24px !default;
+$font-size-h4: 20px !default;
+$font-size-h5: 12px !default;
 
 /*======================================================================*\
     Navigation
 \*======================================================================*/
 
-$navigation-font-size: 14px;
+$navigation-font-size: 14px !default;
 
 /*======================================================================*\
     Sidebar
 \*======================================================================*/
 
-$sidebar-font-size: 14px;
+$sidebar-font-size: 14px !default;
 
 /*======================================================================*\
     Colors - Buttons
 \*======================================================================*/
 
-$btn-default-color: $gray;
-$btn-default-bg: $brand-default;
-$btn-default-border: shade($btn-default-bg, 5);
+$btn-default-color: $gray !default;
+$btn-default-bg: $brand-default !default;
+$btn-default-border: shade($btn-default-bg, 5) !default;
 
-$btn-primary-color: $brand-primary-color;
-$btn-primary-bg: $brand-primary;
-$btn-primary-border: shade($btn-primary-bg, 5);
+$btn-primary-color: $brand-primary-color !default;
+$btn-primary-bg: $brand-primary !default;
+$btn-primary-border: shade($btn-primary-bg, 5) !default;
 
-$btn-secondary-color: $brand-secondary-color;
-$btn-secondary-bg: $brand-secondary;
-$btn-secondary-border: shade($btn-secondary-bg, 5);
+$btn-secondary-color: $brand-secondary-color !default;
+$btn-secondary-bg: $brand-secondary !default;
+$btn-secondary-border: shade($btn-secondary-bg, 5) !default;
 
-$btn-inverse-color: $brand-inverse-color;
-$btn-inverse-bg: $brand-inverse;
-$btn-inverse-border: shade($btn-inverse-bg, 5);
+$btn-inverse-color: $brand-inverse-color !default;
+$btn-inverse-bg: $brand-inverse !default;
+$btn-inverse-border: shade($btn-inverse-bg, 5) !default;
 
 /*======================================================================*\
     Colors - Panels
 \*======================================================================*/
 
-$panel-secondary-text: $brand-secondary-color;
-$panel-secondary-border: $brand-secondary;
-$panel-secondary-heading-bg: $brand-secondary;
+$panel-secondary-text: $brand-secondary-color !default;
+$panel-secondary-border: $brand-secondary !default;
+$panel-secondary-heading-bg: $brand-secondary !default;
 
 /*======================================================================*\
     Gaps
 \*======================================================================*/
 
-$gutter: 30px;
+$gutter: 30px !default;
 
-$gap-xl: 64px;
-$gap-lg: 32px;
-$gap-md: 16px;
-$gap-sm: 8px;
-$gap-xs: 4px;
+$gap-xl: 64px !default;
+$gap-lg: 32px !default;
+$gap-md: 16px !default;
+$gap-sm: 8px !default;
+$gap-xs: 4px !default;
 
 /*======================================================================*\
     Border Radii
 \*======================================================================*/
 
-$border-radius-base: 0px;
+$border-radius-base: 0px !default;
 
 /*======================================================================*\
     Animation
@@ -124,10 +124,10 @@ $animation-distance: 30px !default;
     Popout Menu
 \*======================================================================*/
 
-$popout-item-size: 40px;
+$popout-item-size: 40px !default;
 
-$popout-menu-background: $brand-default;
-$popout-menu-color: $brand-default-color;
+$popout-menu-background: $brand-default !default;
+$popout-menu-color: $brand-default-color !default;
 
-$popout-btn-background: $brand-inverse;
-$popout-btn-color: $brand-inverse-color;
+$popout-btn-background: $brand-inverse !default;
+$popout-btn-color: $brand-inverse-color !default;

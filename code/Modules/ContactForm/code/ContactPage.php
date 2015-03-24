@@ -18,7 +18,9 @@ class ContactPage extends Page {
         'MapColor' => 'Varchar(255)',
         'WaterColor' => 'Varchar(255)',
         'MapZoom' => 'Int(14)',
-        'MapMarker' => 'Boolean(1)'
+        'MapMarker' => 'Boolean(1)',
+        'ReCaptchaSiteKey' => 'Varchar(255)',
+        'ReCaptchaSecretKey' => 'Varchar(255)'
     );
 
     private static $has_many = array(
@@ -48,32 +50,49 @@ class ContactPage extends Page {
         ------------------------------------------*/
 
         $fields->addFieldToTab('Root.Main', new HeaderField('Settings'), 'Content');
-        $fields->addFieldToTab('Root.Main', $mailTo = new TextField('MailTo', _t('ContactPage.MailToLabel', 'Email')), 'Content');
+        $fields->addFieldToTab('Root.Main', $mailTo = new TextField('MailTo', 'Email'), 'Content');
         $mailTo->setRightTitle('Choose an email address for the contact page to send to');
-        $fields->addFieldToTab('Root.Main', $mailCC = new TextField('MailCC', _t('ContactPage.MailCCLabel', 'Cc')), 'Content');
+        $fields->addFieldToTab('Root.Main', $mailCC = new TextField('MailCC', 'Cc'), 'Content');
         $mailCC->setRightTitle('Choose an email, or emails to CC (separate emails with a comma and no space e.g: email1@website.com,email2@website.com)');
-        $fields->addFieldToTab('Root.Main', $mailBCC = new TextField('MailBCC', _t('ContactPage.MailBCCLabel', 'Bcc')), 'Content');
-        $fields->addFieldToTab('Root.Main', $submissionText = new TextareaField('SubmitText', _t('ContactPage.SubmitTextLabel', 'Submission Text')), 'Content');
+        $fields->addFieldToTab('Root.Main', $mailBCC = new TextField('MailBCC', 'Bcc'), 'Content');
+        $fields->addFieldToTab('Root.Main', $submissionText = new TextareaField('SubmitText', 'Submission Text'), 'Content');
         $submissionText->setRightTitle('Text for contact form submission once the email has been sent i.e "Thank you for your enquiry"');
+        $fields->addFieldToTab('Root.Main', new HeaderField('', 'reCaptcha', 4), 'Content');
+        $fields->addFieldToTab('Root.Main', new LiteralField('',
+            '<p>By filling in the Site Key, and Secret Key fields a reCaptcha field will be added to the form to protect against spam.</p>'
+        ), 'Content');
+        $fields->addFieldToTab('Root.Main', new LiteralField('',
+            '<div class="message"><p><strong>Note:</strong> you can get your SiteKey, and SecretKey at this address <a href="https://www.google.com/recaptcha/" target="_blank">https://www.google.com/recaptcha/</a></p></div>'
+        ), 'Content');
+        $fields->addFieldToTab('Root.Main', new TextField('ReCaptchaSiteKey', 'Site Key'), 'Content');
+        $fields->addFieldToTab('Root.Main', new TextField('ReCaptchaSecretKey', 'Secret Key'), 'Content');
 
         /* -----------------------------------------
          * Google Map
         ------------------------------------------*/
 
-        $fields->addFieldToTab('Root.Map', new Textfield('GoogleAPI', _t('ContactPage.GoogleAPILabel', 'Maps API (Optional)')));
-        $fields->addFieldToTab('Root.Map', new Textfield('Latitude', _t('ContactPage.LatitudeLabel', 'Latitude')));
-        $fields->addFieldToTab('Root.Map', new Textfield('Longitude', _t('ContactPage.LongitudeLabel', 'Longitude')));
+        $fields->addFieldToTab('Root.Map', new HeaderField('', 'Map'));
+        $fields->addFieldToTab('Root.Map', new LiteralField('',
+            '<p>The map is displayed below the contact form. The Latitude and Longitude fields are required to be populated in order for the map to be displayed.</p>'
+        ));
+        $fields->addFieldToTab('Root.Map', new Textfield('GoogleAPI', 'Maps API (Optional)'));
+        $fields->addFieldToTab('Root.Map', new Textfield('Latitude', 'Latitude'));
+        $fields->addFieldToTab('Root.Map', new Textfield('Longitude', 'Longitude'));
         $fields->addFieldToTab('Root.Map', new LiteralField('', '<div class="field"><label class="right"><a href="https://support.google.com/maps/answer/18539" target="_blank">How do I find my latitude/longitude?</a></label></div>'));
-        $fields->addFieldToTab('Root.Map', $mapZoom = new NumericField('MapZoom', _t('ContactPage.MapZoomLabel', 'Zoom')));
-        $mapZoom->setRightTitle(_t('ContactPage.MapZoomTitle', 'Zoom level: 0-22 - The higher the number the more zoomed in the map will be.'));
-        $fields->addFieldToTab('Root.Map', new ColorField('MapColor', _t('ContactPage.MapColorLabel', 'Map Colour (Optional)')));
-        $fields->addFieldToTab('Root.Map', new ColorField('WaterColor', _t('ContactPage.WaterColorLabel', 'Water Colour (Optional)')));
-        $fields->addFieldToTab('Root.Map', new CheckboxField('MapMarker', _t('ContactPage.MapMarkerLabel', 'Show map marker')));
+        $fields->addFieldToTab('Root.Map', $mapZoom = new NumericField('MapZoom', 'Zoom'));
+        $mapZoom->setRightTitle('Zoom level: 0-22 - The higher the number the more zoomed in the map will be.');
+        $fields->addFieldToTab('Root.Map', new ColorField('MapColor', 'Map Colour (Optional)'));
+        $fields->addFieldToTab('Root.Map', new ColorField('WaterColor', 'Water Colour (Optional)'));
+        $fields->addFieldToTab('Root.Map', new CheckboxField('MapMarker', 'Show map marker'));
 
         /* -----------------------------------------
          * Info Windows
         ------------------------------------------*/
 
+        $fields->addFieldToTab('Root.MapMarkers', new HeaderField('', 'Map Markers'));
+        $fields->addFieldToTab('Root.MapMarkers', new LiteralField('',
+            '<p>Map markers are used to display points of interest on your map.</p>'
+        ));
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldDeleteAction());
         $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
@@ -102,6 +121,13 @@ class ContactPage_Controller extends Page_Controller {
 		parent::init();
 
         /**
+         * reCaptcha
+         */
+        if($this->ReCaptchaSiteKey && $this->ReCaptchaSecretKey) {
+            Requirements::javascript('https://www.google.com/recaptcha/api.js');
+        }
+
+        /**
          * Get all info windows
          */
         $infoWindowList = $this->InfoWindows();
@@ -118,6 +144,9 @@ class ContactPage_Controller extends Page_Controller {
             Requirements::customScript("var infoWindowObject = $InfoWindows;");
         }
 
+        /**
+         * Map
+         */
         if($this->Latitude && $this->Longitude){
             if($this->MapColor != ''){
                 $mapColor = "'".$this->MapColor."'";
@@ -144,140 +173,18 @@ JS
 	}
 
     /**
-     * @return static
+     * @return ContactForm
      */
     public function ContactForm() {
-
-        /* -----------------------------------------
-         * Scaffolding
-        ------------------------------------------*/
-
-        $row = new LiteralField('', '<div class="row">');
-        $column = new LiteralField('', '<div class="col-xs-12 col-sm-6">');
-        $close = new LiteralField('', '</div>');
-
-        /* -----------------------------------------
-         * Fields
-        ------------------------------------------*/
-
-        $firstName = new TextField('FirstName', 'First Name');
-        $firstName->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
-
-        $lastName = new TextField('LastName', 'Last Name');
-        $lastName->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
-
-        $email = new EmailField('Email', 'Email Address');
-        $email->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
-
-        $phone = new TextField('Phone', 'Phone Number (optional)');
-        $phone->addExtraClass('form-control');
-
-        $suburb = new TextField('Suburb', 'Suburb');
-        $suburb->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
-
-        $city = new TextField('City', 'City');
-        $city->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
-
-        $message = new TextareaField('Message', 'Message');
-        $message->setAttribute('placeholder', _t('ContactPage.MessagePlaceholder', 'Enter your message'))
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
-
-        $fields = new FieldList(
-            $row,
-                $column,
-                    $firstName,
-                $close,
-                $column,
-                    $lastName,
-                $close,
-            $close,
-            $row,
-                $column,
-                    $email,
-                $close,
-                $column,
-                    $phone,
-                $close,
-            $close,
-//            $row,
-//                $column,
-//                    $suburb,
-//                $close,
-//                $column,
-//                    $city,
-//                $close,
-//            $close,
-            $message
-        );
-
-        $action = new FormAction('SendContactForm', _t('ContactPage.SubmitText', 'Submit'));
-        $action->addExtraClass('btn btn-primary');
-
-        $actions = new FieldList(
-            $action
-        );
-
-        $validator = new RequiredFields(
-            'FirstName',
-            'LastName',
-            'Email',
-            'Message'
-        );
-
-        $form = Form::create($this, 'ContactForm', $fields, $actions, $validator);
-        if($formData = Session::get('FormInfo.Form_ContactForm.data')) {
-            $form->loadDataFrom($formData);
-        }
-
-        return $form;
-    }
-
-    /**
-     * @param $data
-     * @param $form
-     * @return bool|SS_HTTPResponse
-     */
-    public function SendContactForm($data, $form) {
-
-        Session::set('FormInfo.Form_ContactForm.data', $data);
-
-        $data['Logo'] = SiteConfig::current_site_config()->LogoImage();
-        $From = $data['Email'];
-        $To = $this->MailTo;
-        $Subject = _t('ContactPage.EmailSubject', SiteConfig::current_site_config()->Title.' - Contact message');
-        $email = new Email($From, $To, $Subject);
-        if($cc = $this->MailCC){
-            $email->setCc($cc);
-        }
-        if($bcc = $this->MailBCC){
-            $email->setBcc($bcc);
-        }
-        $email->setTemplate('ContactEmail')
-            ->populateTemplate($data)
-            ->send();
-        if($this->SubmitText){
-            $submitText = $this->SubmitText;
-        }else{
-            $submitText = _t('ContactPage.SubmitText', 'Thank you for contacting us, we will get back to you as soon as possible.');
-        }
-        $this->setFlash($submitText, 'success');
-
-        //Create record
-        $contactMessage = new ContactMessage();
-        $form->saveInto($contactMessage);
-        $contactMessage->write();
-
-        // Clear the form state
-        Session::clear('FormInfo.Form_ContactForm.data');
-
-        return $this->redirect($this->Link("?success=1"));
-
+        return new ContactForm($this, 'ContactForm', array(
+            'MailTo' => $this->MailTo,
+            'MailCC' => $this->MailCC,
+            'MailBCC' => $this->MailBCC,
+            'SubmitText' => $this->SubmitText,
+            'Link' => $this->Link('?success=1'),
+            'ReCaptchaSiteKey' => $this->ReCaptchaSiteKey,
+            'ReCaptchaSecretKey' => $this->ReCaptchaSecretKey
+        ));
     }
 
     /**

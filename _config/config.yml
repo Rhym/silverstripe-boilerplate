@@ -24,8 +24,3 @@ GalleryPage_Controller:
 ContentController:
   extensions:
     - PageControllerExtension
-
-#LeftAndMain:
-#  extra_requirements_css:
-#    - http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100
-#    - boilerplate/css/cms/css/cms.min.css

@@ -19,28 +19,44 @@ class RegistrationPage_Controller extends Page_Controller {
      */
     public function RegistrationForm(){
 
-        // Email
+        /**
+         * If the user is logged in, redirect to the Homepage with a flash message prompting logout.
+         */
+        if($member = Member::currentUser()){
+            $this->setFlash('You\'re currently logged in as <strong>'.$member->Name.'</strong>. To log in as a different user <a href="'.Director::absoluteBaseURL().'Security/logout?BackURL='.$this->Link().'">log out.</a>', 'warning');
+            return $this->redirect(Director::absoluteBaseURL());
+        }
+
+        /**
+         * Email
+         */
         $email = new EmailField('Email');
         $email->setAttribute('placeholder', _t('RegistrationPage.EmailPlaceholder', 'Enter your email address'))
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
-        // Password Conformation
+        /**
+         * Password Conformation
+         */
         $password = new PasswordField('Password');
         $password->setAttribute('placeholder', _t('RegistrationPage.PasswordPlaceholder', 'Enter your password'))
             ->setCustomValidationMessage(_t('RegistrationPage.PasswordValidationText', 'Your passwords do not match'), 'validation')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
-        // Generate the fields
+        /**
+         * Generate the fields
+         */
         $fields = new FieldList(
             $email,
             $password
         );
 
-        // Submit Button
+        /**
+         * Submit Button
+         */
         $action = new FormAction('Register', 'Register');
-        $action->addExtraClass('btn btn-primary btn-lg');
+        $action->addExtraClass('btn btn-primary');
 
         $actions = new FieldList($action);
 
@@ -62,7 +78,9 @@ class RegistrationPage_Controller extends Page_Controller {
      */
     public function Register($data, $form){
 
-        // Set session array individually as setting the password breaks the form.
+        /**
+         * Set session array individually as setting the password breaks the form.
+         */
         $sessionArray = array(
             'Email' => $data['Email']
         );
@@ -74,13 +92,17 @@ class RegistrationPage_Controller extends Page_Controller {
             return $this->redirectBack();
         }
 
-        // Otherwise create new member and log them in
+        /**
+         * Otherwise create new member and log them in
+         */
         $Member = new Member();
         $form->saveInto($Member);
         $Member->write();
         $Member->login();
 
-        // Find or create the 'user' group
+        /**
+         * Find or create the 'user' group
+         */
         if(!$userGroup = DataObject::get_one('Group', "Code = 'users'")){
             $userGroup = new Group();
             $userGroup->Code = 'users';
@@ -88,10 +110,14 @@ class RegistrationPage_Controller extends Page_Controller {
             $userGroup->Write();
             $userGroup->Members()->add($Member);
         }
-        // Add member to user group
+        /**
+         * Add member to user group
+         */
         $userGroup->Members()->add($Member);
 
-        // Get profile page otherwise display warning.
+        /**
+         * Get profile page otherwise display warning.
+         */
         if($ProfilePage = DataObject::get_one('EditProfilePage')){
             $this->setFlash(_t('RegistrationPage.RegisteredSuccessText', 'Welcome ' .$data['Email'].', your account has been created!'), 'success');
             return $this->redirect($ProfilePage->Link());

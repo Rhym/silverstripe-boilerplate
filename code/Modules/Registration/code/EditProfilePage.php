@@ -22,41 +22,44 @@ class EditProfilePage_Controller extends Page_Controller {
     public function EditProfileForm(){
 
         if(!Member::currentUser()){
-            $this->setFlash(_t('EditProfilePage.LoginWarning', 'Please login to edit your profile'), 'warning');
+            $this->setFlash('Please <a href="'.Director::absoluteBaseURL().'Security/login?BackURL='.$this->Link().'">log in</a> to edit your profile.', 'warning');
             return $this->redirect(Director::absoluteBaseURL());
         }
 
         $firstName = new TextField('FirstName');
-        $firstName->setAttribute('placeholder', _t('EditProfilePage.FirstNamePlaceholder', 'Enter your first name'))
+        $firstName->setAttribute('placeholder', 'Enter your first name')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
         $surname = new TextField('Surname');
-        $surname->setAttribute('placeholder', _t('EditProfilePage.SurnamePlaceholder', 'Enter your surname'))
+        $surname->setAttribute('placeholder', 'Enter your surname')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
         $email = new EmailField('Email');
-        $email->setAttribute('placeholder', _t('EditProfilePage.EmailPlaceholder', 'Enter your email address'))
+        $email->setAttribute('placeholder', 'Enter your email address')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
         $jobTitle = new TextField('JobTitle');
-        $jobTitle->setAttribute('placeholder', _t('EditProfilePage.JobTitlePlaceholder', 'Enter your job title'))
+        $jobTitle->setAttribute('placeholder', 'Enter your job title')
             ->addExtraClass('form-control');
 
         $website = new TextField('Website');
-        $website->setAttribute('placeholder', _t('EditProfilePage.WebsitePlaceholder', 'Enter your website'))
+        $website->setAttribute('placeholder', 'Enter your website')
             ->addExtraClass('form-control');
 
         $blurb = new TextareaField('Blurb');
-        $blurb->setAttribute('placeholder', _t('EditProfilePage.BlurbPlaceholder', 'Enter your blurb'))
+        $blurb->setAttribute('placeholder', 'Enter your blurb')
             ->addExtraClass('form-control');
 
-        $confirmPassword = new ConfirmedPasswordField('Password', _t('EditProfilePage.PasswordLabel', 'New Password'));
+        $confirmPassword = new ConfirmedPasswordField('Password', 'New Password');
         $confirmPassword->canBeEmpty = true;
-        $confirmPassword->setAttribute('placeholder', _t('EditProfilePage.PasswordPlaceholder', 'Enter your password'))
+        $confirmPassword->setAttribute('placeholder', 'Enter your password')
             ->addExtraClass('form-control');
+
+        $passwordToggle = new LiteralField('', '<p><button class="btn btn-default btn-link" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
+        $passwordToggleClose = new LiteralField('', '</div>');
 
         $fields = new FieldList(
             $firstName,
@@ -65,11 +68,13 @@ class EditProfilePage_Controller extends Page_Controller {
             $jobTitle,
             $website,
             $blurb,
-            $confirmPassword
+            $passwordToggle,
+            $confirmPassword,
+            $passwordToggleClose
         );
 
-        $action = new FormAction('SaveProfile', _t('EditProfilePage.SaveProfileText', 'Update Profile'));
-        $action->addExtraClass('btn btn-primary btn-lg');
+        $action = new FormAction('SaveProfile', 'Update Profile');
+        $action->addExtraClass('btn btn-primary');
         $actions = new FieldList(
             $action
         );
@@ -97,14 +102,14 @@ class EditProfilePage_Controller extends Page_Controller {
 
         if($CurrentMember = Member::currentUser()){
             if($member = DataObject::get_one('Member', "Email = '". Convert::raw2sql($data['Email']) . "' AND ID != " . $CurrentMember->ID)){
-                $form->addErrorMessage('Email', _t('EditProfilePage.EmailErrorText', 'Sorry, that Email already exists.'), 'validation');
+                $form->addErrorMessage('Email', 'Sorry, that Email already exists.', 'validation');
                 return $this->redirectBack();
             }else{
                 // If no password don't save the field
                 if(!isset($data['password'])){
                     unset($data['password']);
                 }
-                $this->setFlash(_t('EditProfilePage.EmailSuccessText', 'Your profile has been updated'), 'success');
+                $this->setFlash('Your profile has been updated', 'success');
                 $form->saveInto($CurrentMember);
                 $CurrentMember->write();
                 return $this->redirect($this->Link());

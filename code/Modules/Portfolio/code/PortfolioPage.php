@@ -35,21 +35,23 @@ class PortfolioPage extends Page {
         $fields->removeByName('Slider');
         $fields->removeByName('PageBuilder');
 
-        $fields->addFieldToTab('Root.Main', new TextField('SubTitle', _t('PortfolioPage.SubTitleLabel', 'Sub Title')), 'Content');
+        $fields->addFieldToTab('Root.Main', $subTitle = new TextField('SubTitle', 'Sub Title'), 'Content');
+        $subTitle->setRightTitle('Subtitles are displayed on PortfolioHolder pages under the title.');
 
         /* -----------------------------------------
-         * Images
+         * Portfolio Images
         ------------------------------------------*/
 
+        $fields->addFieldToTab('Root.PortfolioImages', new HeaderField('', 'Portfolio Images'));
+        $fields->addFieldToTab('Root.PortfolioImages', new LiteralField('',
+            '<p>Portfolio Images are displayed under the page\'s content. Items can be full width, or have content displayed to the left or right hand side of the image.</p>'
+        ));
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldSortableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
-        $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-            'Thumbnail' => 'Thumbnail'
-        ));
         $gridField = new GridField(
             'PortfolioImages',
-            _t('PortfolioPage.PortfolioImagesLabel', 'Images'),
+            'Images',
             $this->owner->PortfolioImages(),
             $config
         );

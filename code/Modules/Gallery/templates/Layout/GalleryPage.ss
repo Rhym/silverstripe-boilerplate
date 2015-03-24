@@ -39,4 +39,3 @@
     <% include Pagination %>
 </div><!-- /.container -->
 <% end_cached %>
-<% include PageItems %>

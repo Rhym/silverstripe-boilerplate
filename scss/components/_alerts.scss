@@ -2,7 +2,12 @@
     Alerts
 \*---------------------------------------------*/
 
-.alert {
+/**
+ * Alerts have many &.classes due to supporting SS default messages.
+ */
+.alert,
+%alert {
+    display: block;
     padding: $gap-md;
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
@@ -22,28 +27,51 @@
             margin-bottom: 0;
         }
     }
-    &.alert-success {
+    &.alert-success,
+    &.success,
+    &.good {
         @include alert-variant($alert-success-bg, shade($alert-success-border, 15), $alert-success-text);
         a {
             color: $alert-success-text
         }
     }
-    &.alert-info {
-        @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
-        a {
-            color: $alert-info-text
-        }
+    &.alert-info,
+    &.notice {
+        /**
+         * Use an extension so that the .message class can be set as info by default.
+         */
+        @extend %alert-info;
     }
-    &.alert-warning {
+    &.alert-warning,
+    &.warning {
         @include alert-variant($alert-warning-bg, shade($alert-warning-border, 15), $alert-warning-text);
         a {
             color: $alert-warning-text
         }
     }
-    &.alert-danger {
+    &.alert-danger,
+    &.required,
+    &.validation,
+    &.bad,
+    &.error {
         @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
         a {
             color: $alert-danger-text
         }
+    }
+    .error-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            margin: 0;
+        }
+    }
+}
+
+%alert-info {
+    @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
+    a {
+        color: $alert-info-text
     }
 }

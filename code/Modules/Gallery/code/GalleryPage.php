@@ -9,7 +9,7 @@ class GalleryPage extends Page {
 
     private static $db = array(
         'Items' => 'Int',
-        'NoMargin' => 'Boolean(0)'
+        'NoMargin' => 'Boolean'
     );
 
     public static $many_many = array(
@@ -49,8 +49,11 @@ class GalleryPage extends Page {
      * @return PaginatedList
      */
     public function PaginatedPages() {
-        // Protect against "Division by 0" error
-        if($this->Items == null || $this->Items == 0) $this->Items = 1;
+        /**
+         * Protect against "Division by 0" error
+         */
+        if($this->Items == null || $this->Items == 0) $this->Items = 10;
+
         $pagination = new PaginatedList($this->Images(), Controller::curr()->request);
         $pagination->setPageLength($this->Items);
         return $pagination;

@@ -5,9 +5,9 @@
                 {$MenuTitle.XML}
             </a>
             <% if $Children %>
-                <ul>
-                    <% include SidebarMenu %>
-                </ul>
+            <ul>
+                <% include SidebarMenu %>
+            </ul>
             <% end_if %>
         </li>
     <% end_loop %>

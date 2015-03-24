@@ -4,5 +4,3 @@
     <% include Content %>
     {$RegistrationForm}
 </div><!-- /.container -->
-
-<% include PageItems %>

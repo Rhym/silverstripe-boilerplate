@@ -2,12 +2,6 @@
 
 $formats = array(
     array(
-        'title' => 'Heading - Page Heading',
-        'selector' => 'h1,h2,h3,h4,h5,h6',
-        'classes' => 'page-heading',
-        'wrapper' => false,
-    ),
-    array(
         'title' => 'Heading - h1',
         'selector' => 'h1,h2,h3,h4,h5,h6',
         'classes' => 'h1',
@@ -40,11 +34,10 @@ $formats = array(
         'merge_siblings' => false
     ),
     array(
-        'title' => 'Text - Light',
-        'block' => 'div',
-        'classes' => 'content-light',
-        'wrapper' => true,
-        'merge_siblings' => false
+        'title' => 'Button - Default',
+        'selector' => 'a, button',
+        'classes' => 'btn btn-default',
+        'wrapper' => false,
     ),
     array(
         'title' => 'Button - Primary',
@@ -56,36 +49,6 @@ $formats = array(
         'title' => 'Button - Secondary',
         'selector' => 'a, button',
         'classes' => 'btn btn-secondary',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Button - Inverse',
-        'selector' => 'a, button',
-        'classes' => 'btn btn-inverse',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Button - Success',
-        'selector' => 'a, button',
-        'classes' => 'btn btn-success',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Button - Info',
-        'selector' => 'a, button',
-        'classes' => 'btn btn-info',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Button - Warning',
-        'selector' => 'a, button',
-        'classes' => 'btn btn-warning',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Button - Danger',
-        'selector' => 'a, button',
-        'classes' => 'btn btn-danger',
         'wrapper' => false,
     ),
     array(
@@ -110,74 +73,6 @@ $formats = array(
         'title' => 'Button - Small',
         'selector' => 'a, button',
         'classes' => 'btn-sm',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Button - Full Width',
-        'selector' => 'a, button',
-        'classes' => 'btn-block',
-        'wrapper' => false,
-    ),
-    array(
-        'title' => 'Well - Default',
-        'block' => 'div',
-        'classes' => 'well well-default',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Primary',
-        'block' => 'div',
-        'classes' => 'well well-primary',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Secondary',
-        'block' => 'div',
-        'classes' => 'well well-secondary',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Inverse',
-        'block' => 'div',
-        'classes' => 'well well-inverse',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Info',
-        'block' => 'div',
-        'classes' => 'well well-info',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Warning',
-        'block' => 'div',
-        'classes' => 'well well-warning',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Danger',
-        'block' => 'div',
-        'classes' => 'well well-danger',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Well - Small',
-        'block' => 'div',
-        'classes' => 'well well-sm',
-        'wrapper' => true,
-        'merge_siblings' => false
-    ),
-    array(
-        'title' => 'Button - Default',
-        'selector' => 'a, button',
-        'classes' => 'btn btn-default',
         'wrapper' => false,
     ),
     array(
@@ -260,7 +155,13 @@ HtmlEditorConfig::get('cms')->setOption('theme_advanced_blockformats','p,h2,h3,h
  * Text Colour
 ------------------------------------------*/
 
-HtmlEditorConfig::get('cms')->insertButtonsAfter('formatselect', 'forecolor');
+/**
+ * Remove buttons from TinyMCE
+ */
+HtmlEditorConfig::get('cms')->setButtonsForLine(1, 'styleselect', 'formatselect', 'separator', 'bullist', 'numlist', 'sslink', 'unlink', 'separator', 'bold', 'blockquote');
+HtmlEditorConfig::get('cms')->setButtonsForLine(2, '');
+HtmlEditorConfig::get('cms')->setButtonsForLine(3, '');
+HtmlEditorConfig::get('cms')->disablePlugins('table', 'contextmenu');
 
 /* -----------------------------------------
  * Pricing Table

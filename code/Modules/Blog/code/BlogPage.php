@@ -13,11 +13,11 @@ class BlogPage extends Page {
     );
 
     private static $has_one = array(
-        'BlogImage' => 'Image'
+        'Image' => 'Image'
     );
 
     private static $many_many = array(
-        'BlogTags' => 'BlogTag'
+        'Tags' => 'BlogTag'
     );
 
     private static $defaults = array(
@@ -30,6 +30,12 @@ class BlogPage extends Page {
 
     private static $can_be_root = false;
 
+    public static $many_many_extraFields=array(
+        'Tags' => array(
+            'SortOrder' => 'Int'
+        )
+    );
+
     /**
      * @return FieldList
      */
@@ -40,25 +46,25 @@ class BlogPage extends Page {
         $fields->removeByName('Slider');
         $fields->removeByName('PageBuilder');
 
-        $fields->addFieldToTab('Root.Main', $blogImage = new UploadField('BlogImage', _t('BlogPage.BlogImageLabel', 'Featured blog image')), 'Content');
+        $fields->addFieldToTab('Root.Main', $blogImage = new UploadField('Image', 'Image'), 'Content');
+        $blogImage->setRightTitle('Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.');
         $blogImage->setFolderName('Uploads/blog');
-        $fields->addFieldToTab('Root.Main', $dateField = new DateField('Date', _t('BlogPage.DateLabel', 'Article Date')), 'Content');
+        $fields->addFieldToTab('Root.Main', $dateField = new DateField('Date', 'Article Date'), 'Content');
         $dateField->setConfig('showcalendar', true);
         $fields->addFieldToTab('Root.Main', $dateField, 'Content');
-        $fields->addFieldToTab('Root.Main', new TextField('Author', _t('BlogPage.AuthorLabel', 'Author')), 'Content');
+        $fields->addFieldToTab('Root.Main', new TextField('Author', 'Author'), 'Content');
 
         /* =========================================
          * Tags
          =========================================*/
 
-        $config = GridFieldConfig_RecordEditor::create();
-        $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-            'Title' => 'Title'
-        ));
+        $config = GridFieldConfig_RelationEditor::create(10);
+        $config->addComponent(new GridFieldSortableRows('SortOrder'))
+            ->addComponent(new GridFieldDeleteAction());
         $gridField = new GridField(
-            'BlogTags',
             'Tags',
-            $this->owner->BlogTags(),
+            'Tags',
+            $this->Tags(),
             $config
         );
         $fields->addFieldToTab('Root.Tags', $gridField);

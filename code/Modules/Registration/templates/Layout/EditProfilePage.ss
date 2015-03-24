@@ -9,5 +9,3 @@
         </div><!-- /.col-xs-12 col-sm-9 -->
     </div><!-- /.row -->
 </div><!-- /.container -->
-
-<% include PageItems %>

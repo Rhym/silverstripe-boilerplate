@@ -4,6 +4,10 @@
 ======================================================================
 */
 
+.form {
+    @extend %margin-default;
+}
+
 /*---------------------------------------------*\
     Inputs
 \*---------------------------------------------*/
@@ -136,31 +140,17 @@ label{
     margin-left: 0;
 }
 
+.recaptcha {
+    @extend %margin-default;
+}
+
 /*---------------------------------------------*\
     Messages
 \*---------------------------------------------*/
 
 .message {
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin: $gap-xs 0;
-    display: block;
-    padding: $gap-md;
-    border-width: 1px;
-    border-style: solid;
-    @extend .alert-info;
-    @media (min-width: $screen-sm-min) {
-        margin: $gap-sm 0;
-    }
-    > p {
-        margin-bottom: 0;
-    }
-    > p + p {
-        margin-top: $gap-xs;
-    }
-    &.required, &.validation {
-        @extend .alert-danger;
-    }
+    @extend %alert;
+    @extend %alert-info;
 }
 
 /*---------------------------------------------*\
@@ -192,9 +182,6 @@ label{
 
 #MemberLoginForm_LoginForm,
 #MemberLoginForm_LostPasswordForm {
-    @media (min-width: $screen-sm-min) {
-        max-width: 50%;
-    }
     .text {
         @extend %form-control-static;
         input{
@@ -205,6 +192,5 @@ label{
     .action {
         @extend .btn;
         @extend .btn-primary;
-        @extend .btn-lg;
     }
 }

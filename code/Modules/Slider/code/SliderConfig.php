@@ -18,6 +18,14 @@ class SliderConfig extends DataExtension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
+
+        $fields->addFieldToTab('Root.Slider', new HeaderField('', 'Slider'));
+        $fields->addFieldToTab('Root.Slider', new LiteralField('',
+            '<p>The slider is displayed below the header of the page. If there is more than one slide, the slider will become a carousel.</p>'
+        ));
+        $fields->addFieldToTab('Root.Slider', new LiteralField('',
+            '<div class="message"><p><strong>Note:</strong> A default slider image can be set across all pages under "Settings > Slider" in the left-hand menu</p></div>'
+        ));
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldSortableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
@@ -26,7 +34,7 @@ class SliderConfig extends DataExtension {
         ));
         $gridField = new GridField(
             'SliderItems',
-            _t('SliderConfig.SliderItemsLabel', 'Slider Items'),
+            'Slides',
             $this->owner->SliderItems(),
             $config
         );
@@ -36,9 +44,9 @@ class SliderConfig extends DataExtension {
          * Settings
         ------------------------------------------*/
 
-        $fields->addFieldToTab('Root.Slider', new HeaderField('Settings'));
-        $fields->addFieldToTab('Root.Slider', new CheckboxField('FullWidth', _t('SliderConfig.FullWidthLabel', 'Set slider to be full width')));
-        $fields->addFieldToTab('Root.Slider', $height = new NumericField('Height', _t('SliderConfig.HeightLabel', 'Height of slider (optional)')));
+        $fields->addFieldToTab('Root.Slider', new HeaderField('', 'Settings', 4));
+        $fields->addFieldToTab('Root.Slider', new CheckboxField('FullWidth', 'Set slider to be full width'));
+        $fields->addFieldToTab('Root.Slider', $height = new NumericField('Height', 'Height of slider (optional)'));
     }
 
     /**

@@ -32,31 +32,37 @@ class BlogHolder extends Page {
          * Settings
         ------------------------------------------*/
 
-        $fields->addFieldToTab('Root.Main', $columns = new OptionsetField('Columns', _t('BlogHolder.ColumnsLabel', 'Columns (items)'), array(
+        $fields->addFieldToTab('Root.Main', $columns = new OptionsetField('Columns', 'Columns (items)', array(
             'One (full width)',
             'Two',
             'Three',
             'Four'
         )), 'Content');
         $columns->setRightTitle('Items per row');
-        $fields->addFieldToTab('Root.Main', $items = new NumericField('Items', _t('BlogHolder.ItemsLabel', 'Items')), 'Content');
+        $fields->addFieldToTab('Root.Main', $items = new NumericField('Items', 'Items'), 'Content');
         $items->setRightTitle('Items displayed per page');
 
         /* -----------------------------------------
          * Blog Sidebar
         ------------------------------------------*/
 
-        $fields->addFieldToTab('Root.BlogSidebar', new HtmlEditorField('BlogSidebarContent', _t('BlogHolder.BlogSidebarLabel', 'Content For the Sidebar')));
+        $fields->addFieldToTab('Root.BlogSidebar', new HeaderField('', 'Sidebar'));
+        $fields->addFieldToTab('Root.BlogSidebar', new LiteralField('',
+            '<p>The content for the sidebar will be displayed in the left-hand side of this page.</p>'
+        ));
+        $fields->addFieldToTab('Root.BlogSidebar', new HtmlEditorField('BlogSidebarContent', 'Content'));
 
         return $fields;
     }
 
     /**
+     * Return a ArrayList of all blog children of this page.
+     *
      * @return PaginatedList
      */
     public function PaginatedPages() {
         // Protect against "Division by 0" error
-        if($this->Items == null || $this->Items == 0) $this->Items = 1;
+        if($this->Items == null || $this->Items == 0) $this->Items = 10;
         $pagination = new PaginatedList($this->AllChildren(), Controller::curr()->request);
         $pagination->setPageLength($this->Items);
         return $pagination;

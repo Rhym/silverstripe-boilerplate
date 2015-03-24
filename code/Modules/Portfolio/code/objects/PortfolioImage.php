@@ -7,8 +7,8 @@ class PortfolioImage extends DataObject{
 
     private static $db = array (
         'SortOrder' => 'Int',
-        'Content' => 'HTMLText',
-        'TextRight' => 'Boolean(0)'
+        'ContentPosition' => 'Enum(array("Left", "Right"))',
+        'Content' => 'HTMLText'
     );
 
     private static $has_one = array (
@@ -16,11 +16,42 @@ class PortfolioImage extends DataObject{
         'Image' => 'Image'
     );
 
+    private static $singular_name = 'Item';
+    private static $plural_name = 'Items';
+
     public static $summary_fields = array(
-        'Thumbnail'=>'Thumbnail'
+        'Thumbnail' => 'Thumbnail',
+        'ContentPosition' => 'Content Position',
+        'ContentSummary' => 'Content'
+    );
+
+    private static $defaults = array(
+        'TextPosition' => 'Left'
     );
 
     private static $default_sort = 'SortOrder';
+
+    /**
+     * @return RequiredFields
+     */
+    public function getCMSValidator() {
+        return new RequiredFields(array(
+            'TextPosition',
+            'Image'
+        ));
+    }
+
+    /**
+     * @return string
+     */
+    public function getContentSummary() {
+        if($this->Content) {
+            $html = HTMLText::create();
+            $html->setValue($this->dbObject('Content')->summary());
+            return $html;
+        }
+        return '(none)';
+    }
 
     /**
      * @return string
@@ -39,10 +70,13 @@ class PortfolioImage extends DataObject{
     public function getCMSFields() {
         $fields = FieldList::create(TabSet::create('Root'));
 
+        $fields->addFieldToTab('Root.Main', new HeaderField('', 'Image'));
         $fields->addFieldToTab('Root.Main', $image = new UploadField('Image'));
         $image->setFolderName('Uploads/portfolio');
-        $fields->addFieldToTab('Root.Main', new CheckboxField('TextRight', 'Display the content on the right hand side'));
-        $fields->addFieldToTab('Root.Main', new HtmlEditorField('Content'));
+        $fields->addFieldToTab('Root.Main', $contentPosition = new OptionsetField('ContentPosition', 'Content Position', $this->dbObject('ContentPosition')->enumValues()));
+        $contentPosition->setRightTitle('Display the content on the left or right hand side.');
+        $fields->addFieldToTab('Root.Main', $content = new HtmlEditorField('Content'));
+        $content->setRows(5);
 
         return $fields;
     }

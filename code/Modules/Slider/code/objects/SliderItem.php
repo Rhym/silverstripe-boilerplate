@@ -6,8 +6,8 @@
 class SliderItem extends DataObject{
 
     private static $db = array (
-        'Caption' => 'HTMLText',
         'SortOrder' => 'Int',
+        'Caption' => 'HTMLText',
         'ExternalLink' => 'Text'
     );
 
@@ -17,9 +17,18 @@ class SliderItem extends DataObject{
         'InternalLink' => 'SiteTree'
     );
 
+    private static $singular_name = 'Slide';
+    private static $plural_name = 'Slides';
+
     public static $summary_fields = array(
-  		'Thumbnail'=>'Thumbnail'
+  		'Thumbnail' => 'Thumbnail'
  	);
+
+    public function getCMSValidator() {
+        return new RequiredFields(array(
+            'Image'
+        ));
+    }
 
     private static $default_sort = 'SortOrder';
 
@@ -40,8 +49,12 @@ class SliderItem extends DataObject{
     public function getCMSFields() {
         $fields = FieldList::create(TabSet::create('Root'));
 
+        $fields->addFieldToTab('Root.Main', new HeaderField('', 'Slide'));
         $fields->addFieldToTab('Root.Main', $image = new UploadField('Image'));
         $image->setFolderName('Uploads/slider');
+        $fields->addFieldToTab('Root.Main', new LiteralField('',
+            '<div class="message"><p><strong>Note:</strong> Captions and links are optional</p></div>'
+        ));
         $fields->addFieldToTab('Root.Main', $caption = new HtmlEditorField('Caption'));
         $caption->setRows(15);
         $fields->addFieldToTab('Root.Main', new HeaderField('', 'Link', 4));

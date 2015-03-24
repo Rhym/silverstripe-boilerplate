@@ -18,6 +18,7 @@ class PageControllerExtension extends Extension {
                 BOWER_COMPONENTS_DIR.'/modernizr/modernizr.js',
                 BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.carousel.min.js',
                 BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
+                BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
                 BOILERPLATE_MODULE.'/code/Modules/PopoutMenu/javascript/popout-menu.js',
                 JS_DIR.'/script.js'
             )

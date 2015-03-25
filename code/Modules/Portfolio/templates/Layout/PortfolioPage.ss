@@ -1,10 +1,12 @@
 <% include PageHeader %>
-<% cached $LastEdited %>
 <div class="container">
+    <% cached $LastEdited %>
     <% include Content %>
+    <% end_cached %>
     <% if $PortfolioImages %>
         <section class="portfolio page">
             <% loop $PortfolioImages %>
+            <% cached $LastEdited %>
             <div class="item">
             <% if $Content %>
                 <div class="row">
@@ -32,9 +34,9 @@
                 {$Image.setWidth(1140)}
             <% end_if %>
             </div><!-- /.item -->
+            <% end_cached %>
             <% end_loop %>
         </section><!-- /.portfolio page -->
     <% end_if %>
 </div><!-- /.container -->
-<% end_cached %>
 <% include ImageNavigation %>

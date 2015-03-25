@@ -1,5 +1,5 @@
 <% include PageHeader %>
-<% cached LastEdited %>
+<% cached $LastEdited %>
 <div class="container">
     <% include Content %>
     <% if $PaginatedPages %>

@@ -2,6 +2,7 @@
 <div class="container">
     <% cached $LastEdited %>
     <% include Content %>
+    <% end_cached %>
     <% if $PaginatedPages %>
         <section class="portfolio loop">
             <div class="row">
@@ -28,6 +29,5 @@
             </div><!-- /.row -->
         </section><!-- /.portfolio loop -->
     <% end_if %>
-    <% end_cached %>
     <% include Pagination %>
 </div><!-- /.container -->

@@ -49,13 +49,13 @@ class BlogPage extends Page {
         $fields->addFieldToTab('Root.Main', $blogImage = new UploadField('Image', 'Image'), 'Content');
         $blogImage->setRightTitle('Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.');
         $blogImage->setFolderName('Uploads/blog');
-        $fields->addFieldToTab('Root.Main', $dateField = new DateField('Date', 'Article Date'), 'Content');
+        $fields->addFieldToTab('Root.Main', $dateField = new DateField('Date', 'Article Date (optional)'), 'Content');
         $dateField->setConfig('showcalendar', true);
         $fields->addFieldToTab('Root.Main', $dateField, 'Content');
-        $fields->addFieldToTab('Root.Main', new TextField('Author', 'Author'), 'Content');
+        $fields->addFieldToTab('Root.Main', new TextField('Author', 'Author (optional)'), 'Content');
 
         /* =========================================
-         * Tags
+         * Tags - Disabled by default
          =========================================*/
 
         $config = GridFieldConfig_RelationEditor::create(10);
@@ -67,7 +67,7 @@ class BlogPage extends Page {
             $this->Tags(),
             $config
         );
-        $fields->addFieldToTab('Root.Tags', $gridField);
+        //$fields->addFieldToTab('Root.Tags', $gridField);
 
         return $fields;
 
@@ -78,7 +78,7 @@ class BlogPage extends Page {
      * @return mixed
      */
     public function FeaturedImage() {
-        return $this->BlogImage();
+        return $this->Image();
     }
 
     /**
@@ -90,9 +90,11 @@ class BlogPage extends Page {
         switch($direction){
             case 'next':
                 $sort = 'Sort:GreaterThan';
+                $sortDirection = 'Sort ASC';
                 break;
             case 'prev':
                 $sort = 'Sort:LessThan';
+                $sortDirection = 'Sort DESC';
                 break;
             default:
                 return false;
@@ -100,7 +102,7 @@ class BlogPage extends Page {
         $page = BlogPage::get()->filter(array(
             'ParentID' => $this->ParentID,
             $sort => $this->Sort
-        ))->sort('Sort ASC')->first();
+        ))->sort($sortDirection)->first();
 
         return $page;
     }

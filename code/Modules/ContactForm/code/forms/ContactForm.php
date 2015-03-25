@@ -211,7 +211,6 @@ class ContactForm extends Form {
         Session::clear('FormInfo.Form_'.$this->name.'.data');
 
         return $this->controller->redirect($this->controller->data()->Link);
-
     }
 
     /**

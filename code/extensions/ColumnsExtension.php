@@ -6,7 +6,13 @@
 class ColumnsPageExtension extends DataExtension {
 
     private static $db = array(
-        'Columns' => 'Int'
+        'Columns' => 'Int',
+        'Items' => 'Int'
+    );
+
+    private static $defaults = array(
+        'Columns' => 1,
+        'Items' => 10
     );
 
     /**
@@ -15,24 +21,20 @@ class ColumnsPageExtension extends DataExtension {
      */
     public function updateCMSFields(FieldList $fields) {
 
-        $fields->addFieldToTab('Root.Gallery', new HeaderField('Settings'));
-        $fields->addFieldToTab('Root.Gallery', $columns = new OptionsetField('Columns', _t('GalleryPage.ColumnsLabel', 'Columns (items)'), array(
+        $fields->addFieldToTab('Root.Main', new HeaderField('', 'Display', 4), 'Content');
+        $fields->addFieldToTab('Root.Main', $columns = new OptionsetField('Columns', 'Columns (items)', array(
             'One (Full Width)',
             'Two',
             'Three',
             'Four',
-            'Six',
-            'Twelve'
-        )));
-        $columns->setRightTitle('How many items to display on each row');
+            'Six'
+        )), 'Content');
+        $columns->setRightTitle('How many items to display on each row i.e "Two" will be displayed as two items taking up half the content space and displayed beside each other.');
+        $fields->addFieldToTab('Root.Main', $items = new NumericField('Items', 'Items'), 'Content');
+        $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
 
         return $fields;
-
     }
-
-    private static $defaults = array(
-        'Columns' => 2
-    );
 
 }
 

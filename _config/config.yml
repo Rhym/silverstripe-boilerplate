@@ -1,18 +1,35 @@
 GDBackend:
   default_quality: 100
 
+# Security
 Security:
   extensions:
     - SecurityExtension
 
+# SiteConfig
 SiteConfig:
   extensions:
     - BoilerplateConfig
 
+# Page
 Page:
   extensions:
     - PageExtension
 
+ContentController:
+  extensions:
+    - PageControllerExtension
+
+# Blog
+BlogHolder:
+  extensions:
+    - ColumnsPageExtension
+
+BlogHolder_Controller:
+  extensions:
+    - ColumnsPageControllerExtension
+
+# Gallery
 GalleryPage:
   extensions:
     - ColumnsPageExtension
@@ -21,6 +38,11 @@ GalleryPage_Controller:
   extensions:
     - ColumnsPageControllerExtension
 
-ContentController:
+# Portfolio
+PortfolioHolder:
   extensions:
-    - PageControllerExtension
+    - ColumnsPageExtension
+
+PortfolioHolder_Controller:
+  extensions:
+    - ColumnsPageControllerExtension

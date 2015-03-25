@@ -8,16 +8,11 @@ class GalleryPage extends Page {
     private static $icon = 'boilerplate/code/Modules/Gallery/images/folder-open-image.png';
 
     private static $db = array(
-        'Items' => 'Int',
         'NoMargin' => 'Boolean'
     );
 
     public static $many_many = array(
         'Images' => 'Image'
-    );
-
-    private static $defaults = array(
-        'Items' => 10
     );
 
     private static $description = 'Displays a lightbox gallery of images';
@@ -29,16 +24,16 @@ class GalleryPage extends Page {
 
         $fields = parent::getCMSFields();
 
-        $fields->addFieldToTab('Root.Gallery', $items = new NumericField('Items', _t('GalleryPage.ItemsLabel', 'Items')));
-        $items->setRightTitle('How many items to display on each page');
-        $fields->addFieldToTab('Root.Gallery', new CheckboxField('NoMargin', 'Remove margin from between gallery items'));
-
         /* -----------------------------------------
          * Gallery Images
         ------------------------------------------*/
 
-        $fields->addFieldToTab('Root.Gallery', new HeaderField('Images'));
-        $fields->addFieldToTab('Root.Gallery', $images = new UploadField('Images', _t('GalleryPage.ImagesLabel', 'Images'), $this->owner->Images()));
+        $fields->addFieldToTab('Root.Gallery', new HeaderField('', 'Gallery'));
+        $fields->addFieldToTab('Root.Gallery', new LiteralField('',
+            '<p>Images below are displayed in a grid format (grid is set under "Main content > Display") as thumbnails, with the ability to open the images in full size.</p>'
+        ));
+        $fields->addFieldToTab('Root.Gallery', new CheckboxField('NoMargin', 'Remove margin from between images'));
+        $fields->addFieldToTab('Root.Gallery', $images = new UploadField('Images', 'Images', $this->owner->Images()));
         $images->setFolderName('Uploads/gallery');
 
         return $fields;

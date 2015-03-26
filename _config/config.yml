@@ -1,11 +1,6 @@
 GDBackend:
   default_quality: 100
 
-# Security
-Security:
-  extensions:
-    - SecurityExtension
-
 # SiteConfig
 SiteConfig:
   extensions:

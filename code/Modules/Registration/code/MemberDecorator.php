@@ -15,11 +15,9 @@ class MemberDecorator extends DataExtension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
-
         $fields->addFieldToTab('Root.Profile', new TextField('JobTitle', _t('MemberDecorator.JobTitleLabel', 'Job Title')));
         $fields->addFieldToTab('Root.Profile', new TextField('Website', _t('MemberDecorator.WebsiteLabel', 'Website'), 'http://'));
         $fields->addFieldToTab('Root.Profile', new TextareaField('Blurb', _t('MemberDecorator.BlurbLabel', 'Blurb')));
-
     }
 
     /**

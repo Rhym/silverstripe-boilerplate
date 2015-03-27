@@ -3,7 +3,6 @@
         $(document).on('click', function(e){
             if (!$(e.target).is(".color-picker, .iris-picker, .iris-picker-inner")) {
                 $('.color-picker').iris('hide');
-                return false;
             }
         });
         $('.color-picker').entwine({

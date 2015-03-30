@@ -7,10 +7,10 @@
     .form-container {
         background: $brand-default;
         padding: $gap-lg;
-        margin: $gap-lg 0 0 0;
+        margin: ($gutter / 2) 0;
         @media(min-width: $screen-sm-min) {
             padding: $gap-xl;
-            margin: $gap-xl 0 0 0;
+            margin: $gap-xl 0;
         }
         .logo {
             text-align: center;

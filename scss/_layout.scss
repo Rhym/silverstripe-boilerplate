@@ -109,10 +109,11 @@ section.section {
 .loop{
     .item {
         position: relative;
-        margin-bottom: $gap-md;
-        &.last{
-            margin-bottom: 0;
+        margin: 0 0 $gap-md 0;
+        @media (min-width: $screen-sm-min) {
+            margin: 0 0 $gap-lg 0;
         }
+        &.last {}
         a{
             cursor: pointer;
         }
@@ -125,12 +126,6 @@ section.section {
         }
         .meta{
             color: $gray;
-        }
-        @media (min-width: $screen-sm-min) {
-            margin-bottom: $gap-lg;
-            &.last{
-                margin-bottom: $gap-lg;
-            }
         }
     }
     &.no-margin{

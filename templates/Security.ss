@@ -2,7 +2,7 @@
 <html class="no-js" lang="{$ContentLocale}">
 <head>
 <% include HeaderMeta %>
-<link rel="stylesheet" type="text/css" href="{$BaseHref}/{$Project}/css/main.min.css?m=1427404819" />
+<link rel="stylesheet" type="text/css" href="{$BaseHref}/{$Project}/css/main.min.css" />
 </head>
 <body class="{$ClassName} {$SliderClass}" id="{$URLSegment}">
     {$TrackingCodeTop.RAW}

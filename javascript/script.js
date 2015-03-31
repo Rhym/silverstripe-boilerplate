@@ -6,10 +6,8 @@
         \*---------------------------------------------*/
 
         $('.owl-carousel').owlCarousel({
-            singleItem: true,
-            pagination: false,
-            paginationNumbers: false,
-            loop: true
+            items: 1,
+            dots: false
         });
 
         /*---------------------------------------------*\

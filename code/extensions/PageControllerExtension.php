@@ -16,7 +16,7 @@ class PageControllerExtension extends Extension {
             array(
                 BOWER_COMPONENTS_DIR.'/jquery/dist/jquery.min.js',
                 BOWER_COMPONENTS_DIR.'/modernizr/modernizr.js',
-                BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.carousel.min.js',
+                BOWER_COMPONENTS_DIR.'/owl.carousel/dist/owl.carousel.min.js',
                 BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
                 BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
                 BOILERPLATE_MODULE.'/code/Modules/PopoutMenu/javascript/popout-menu.js',
@@ -33,9 +33,8 @@ class PageControllerExtension extends Extension {
             'combined.min.css',
             array(
                 // Owl Carousel
-                BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.carousel.css',
-                BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.theme.css',
-                BOWER_COMPONENTS_DIR.'/owlcar/owl-carousel/owl.transition.css',
+                BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.carousel.min.css',
+                BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.theme.default.min.css',
                 // Application styles
                 project().'/css/main.min.css'
             )

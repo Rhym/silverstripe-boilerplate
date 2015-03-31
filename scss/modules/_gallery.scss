@@ -4,110 +4,14 @@
 
 .gallery.loop {
     .item {
-        a {
-            display: block;
-            &:hover {
-                cursor: zoom-in;
-            }
+        display: block;
+        &:hover {
+            cursor: -webkit-grab;
+            cursor: -moz-grab;
         }
-        button {
-            border-width: 0;
-            padding: 0;
-            margin: 0;
-            &:focus {
-                outline: 0;
-            }
+        &:active {
+            cursor: -webkit-grabbing;
+            cursor: -moz-grabbing;
         }
-    }
-}
-.gallery.modal {
-    .modal-dialog {
-        width: auto;
-        @media(min-width: $screen-sm-min) {
-            max-width: 80%;
-        }
-        .modal-content {
-            background: transparent none;
-            text-align: center;
-            box-shadow: none;
-            border-width: 0;
-            border-radius: 0;
-        }
-            .modal-body {
-                position: relative;
-                padding: 0;
-            }
-                .inner {
-                    display: block;
-                    position: relative;
-                }
-                    .actions {
-                        position: relative;
-                        z-index: 11;
-                        text-align: right;
-                        padding-bottom: $gap-md;
-                        button {
-                            background: transparent none;
-                            color: $brand-inverse-color;
-                            font-size: $font-size-h1;
-                        }
-                    }
-                    .nav {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        .prev,
-                        .next {
-                            position: absolute;
-                            top: 0;
-                            right: 50%;
-                            bottom: 0;
-                            left: 0;
-                            &:hover {
-                                .modal-navigation {
-                                    //padding: 0 0 0 ($gap-xl - $gap-xs);
-                                }
-                            }
-                            .modal-navigation {
-                                padding: 0 0 0 5%;
-                                text-align: left;
-                                position: absolute;
-                                top: 0;
-                                right: 0;
-                                bottom: 0;
-                                left: 0;
-                                width: 100%;
-                                display: block;
-                                border-width: 0;
-                                background: transparent none;
-                                transition: .1s linear padding;
-                                @media(min-width: $screen-sm-min) {
-                                    padding: 0 0 0 $gap-lg;
-                                }
-                                i {
-                                    font-size: $font-size-h1;
-                                    color: $brand-inverse-color;
-                                }
-                            }
-                        }
-                        .next {
-                            left: 50%;
-                            right: 0;
-                            &:hover {
-                                .modal-navigation {
-                                    //padding: 0 ($gap-xl - $gap-sm) 0 0;
-                                }
-                            }
-                            .modal-navigation {
-                                padding: 0 5% 0 0;
-                                text-align: right;
-                                @media(min-width: $screen-sm-min) {
-                                    padding: 0 $gap-lg 0 0;
-                                }
-                            }
-                        }
-                    }
     }
 }

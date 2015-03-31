@@ -24,15 +24,6 @@ BlogHolder_Controller:
   extensions:
     - ColumnsPageControllerExtension
 
-# Gallery
-GalleryPage:
-  extensions:
-    - ColumnsPageExtension
-
-GalleryPage_Controller:
-  extensions:
-    - ColumnsPageControllerExtension
-
 # Portfolio
 PortfolioHolder:
   extensions:

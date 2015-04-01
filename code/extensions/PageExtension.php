@@ -15,10 +15,17 @@ class PageExtension extends DataExtension {
      * @return FieldList
      */
     public function updateSettingsFields(FieldList $fields) {
-        $fields->addFieldToTab('Root.Settings', new HeaderField('SidebarHeading', 'Sidebar', 4));
-        $fields->addFieldToTab('Root.Settings', new CheckboxField('HideSidebar', 'Hide the sidebar from this page'));
-        $fields->addFieldToTab('Root.Settings', new HeaderField('SliderHeading', 'Slider', 4));
-        $fields->addFieldToTab('Root.Settings', new CheckboxField('HideDefaultSlider', 'Hide the slider from this page'));
+        /**
+         * Use FieldGroups to set left titles for the checkboxes.
+         */
+        $fields->addFieldToTab('Root.Settings', $hideSidebar = new FieldGroup(
+            new CheckboxField('HideSidebar', 'Hide the sidebar from this page')
+        ));
+        $hideSidebar->setTitle('Sidebar');
+        $fields->addFieldToTab('Root.Settings', $hideDefaultSlider = new FieldGroup(
+            new CheckboxField('HideDefaultSlider', 'Hide the slider from this page')
+        ));
+        $hideDefaultSlider->setTitle('Slider');
         return $fields;
     }
 

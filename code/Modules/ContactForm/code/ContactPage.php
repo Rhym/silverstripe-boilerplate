@@ -18,6 +18,7 @@ class ContactPage extends Page {
         'MapColor' => 'Varchar(255)',
         'WaterColor' => 'Varchar(255)',
         'MapZoom' => 'Int(14)',
+        'MapSaturation' => 'Varchar(4)',
         'MapMarker' => 'Boolean(1)',
         'ReCaptchaSiteKey' => 'Varchar(255)',
         'ReCaptchaSecretKey' => 'Varchar(255)'
@@ -29,6 +30,7 @@ class ContactPage extends Page {
 
     private static $defaults = array(
         'MapZoom' => 14,
+        'MapSaturation' => 0,
         'SubmitText' => 'Thank you for contacting us, we will get back to you as soon as possible.'
     );
 
@@ -83,6 +85,8 @@ class ContactPage extends Page {
         $mapZoom->setRightTitle('Zoom level: 0-22 - The higher the number the more zoomed in the map will be.');
         $fields->addFieldToTab('Root.Map', new ColorField('MapColor', 'Map Colour (Optional)'));
         $fields->addFieldToTab('Root.Map', new ColorField('WaterColor', 'Water Colour (Optional)'));
+        $fields->addFieldToTab('Root.Map', $mapSaturation = new TextField('MapSaturation', 'Saturation (Optional)'));
+        $mapSaturation->setRightTitle('A range of -100 to 100, -100 being completely grayscale.');
         $fields->addFieldToTab('Root.Map', new CheckboxField('MapMarker', 'Show map marker'));
 
         /* -----------------------------------------
@@ -163,7 +167,7 @@ class ContactPage_Controller extends Page_Controller {
             Requirements::customScript(<<<JS
 (function($) {
     $(document).ready(function(){
-        getMap('map-canvas', $this->Latitude, $this->Longitude, $mapColor, $waterColor, $this->MapMarker, infoWindowObject, $this->MapZoom)
+        getMap('map-canvas', $this->Latitude, $this->Longitude, $mapColor, $waterColor, $this->MapMarker, infoWindowObject, $this->MapZoom, $this->MapSaturation)
     })
 })(jQuery);
 JS

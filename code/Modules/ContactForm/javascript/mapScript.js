@@ -4,7 +4,7 @@ var map,
 
 var MY_MAPTYPE_ID = 'custom_style';
 
-function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoom) {
+function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoom, saturation) {
 
     center = new google.maps.LatLng(lat, long);
 
@@ -16,13 +16,23 @@ function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoo
                     {hue: mapColor},
                     {visibility: 'simplified'},
                     {gamma: 0.5},
-                    {weight: 0.5}
+                    {weight: 0.5},
+                    {saturation: saturation}
                 ]
             },
             {
                 featureType: 'water',
                 stylers: [
-                    {color: waterColor}
+                    {color: waterColor},
+                    {saturation: saturation}
+                ]
+            }
+        ];
+    } else {
+        featureOpts = [
+            {
+                stylers: [
+                    {saturation: saturation}
                 ]
             }
         ];
@@ -33,7 +43,7 @@ function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoo
         center: center,
         scrollwheel: false,
         mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
         },
         mapTypeId: MY_MAPTYPE_ID
     };

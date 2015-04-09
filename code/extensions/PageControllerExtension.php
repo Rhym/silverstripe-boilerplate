@@ -11,6 +11,11 @@ class PageControllerExtension extends Extension {
          * Combine JS
          =========================================*/
 
+        /**
+         * Set All JS to be right before the closing </body> tag.
+         */
+        Requirements::set_force_js_to_bottom(true);
+
         Requirements::combine_files(
             'combined.js',
             array(

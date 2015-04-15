@@ -16,22 +16,30 @@ $gray-lighter: #f9f9f9 !default;
 
 $brand-default: #fff !default;
 $brand-default-dark: shade($brand-default, 10) !default;
+$brand-default-darker: shade($brand-default, 30) !default;
 $brand-default-light: tint($brand-default, 10) !default;
+$brand-default-lighter: tint($brand-default, 30) !default;
 $brand-default-color: $gray-darker !default;
 
 $brand-primary: #2196F3 !default;
 $brand-primary-dark: shade($brand-primary, 10) !default;
+$brand-primary-darker: shade($brand-primary, 30) !default;
 $brand-primary-light: tint($brand-primary, 10) !default;
+$brand-primary-lighter: tint($brand-primary, 30) !default;
 $brand-primary-color: #fff !default;
 
 $brand-secondary: #4c5357 !default;
 $brand-secondary-dark: shade($brand-secondary, 10) !default;
+$brand-secondary-darker: shade($brand-secondary, 30) !default;
 $brand-secondary-light: tint($brand-secondary, 10) !default;
+$brand-secondary-lighter: tint($brand-secondary, 30) !default;
 $brand-secondary-color: #fff !default;
 
 $brand-inverse: #212121 !default;
 $brand-inverse-dark: shade($brand-inverse, 10) !default;
+$brand-inverse-darker: shade($brand-inverse, 30) !default;
 $brand-inverse-light: tint($brand-inverse, 10) !default;
+$brand-inverse-lighter: tint($brand-inverse, 30) !default;
 $brand-inverse-color: #fff !default;
 
 $brand-success: #5cb85c !default;

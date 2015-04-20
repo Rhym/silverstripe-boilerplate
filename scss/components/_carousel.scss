@@ -19,7 +19,7 @@
 .carousel-control {
     width: $gap-lg * 3;
     text-shadow: none;
-    @include opacity(1);
+    opacity: 1;
     &:hover{
         .fa-angle-left, .fa-angle-right {
             background: $brand-primary;

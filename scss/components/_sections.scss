@@ -1,0 +1,9 @@
+/*-------------------------------------------------------*\
+    Sections
+\*-------------------------------------------------------*/
+
+section.section {
+    @include margin-default();
+    @include padding-default();
+    position: relative;
+}

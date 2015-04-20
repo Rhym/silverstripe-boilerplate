@@ -4,10 +4,10 @@
     <% include Content %>
     <% end_cached %>
     <% if $PortfolioImages %>
-        <section class="portfolio page">
+        <section class="portfolio section">
             <% loop $PortfolioImages %>
             <% cached $LastEdited %>
-            <div class="item">
+            <div class="item {$EvenOdd} {$FirstLast}">
             <% if $Content %>
                 <div class="row">
                     <% if $ContentPosition = 'Right' %>
@@ -36,7 +36,7 @@
             </div><!-- /.item -->
             <% end_cached %>
             <% end_loop %>
-        </section><!-- /.portfolio page -->
+        </section><!-- /.portfolio section -->
     <% end_if %>
 </div><!-- /.container -->
 <% include ImageNavigation %>

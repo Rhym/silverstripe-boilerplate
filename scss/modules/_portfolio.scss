@@ -11,7 +11,9 @@
         }
     }
 }
-.portfolio.page {
+.portfolio.section {
+    @include margin-none();
+    @include padding-none();
     .item {
         margin-bottom: $gap-md;
         @media (min-width: $screen-sm-min) {

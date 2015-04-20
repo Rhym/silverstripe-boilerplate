@@ -2,10 +2,6 @@
     Blog
 \*---------------------------------------------*/
 
-.blog.loop{
-    .item {}
-}
-.blog.page {}
 .sharer {
     input {
         background: transparent none;
@@ -35,5 +31,5 @@
     }
 }
 #disqusComments {
-    @extend %margin-default;
+    @include margin-default();
 }

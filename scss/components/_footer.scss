@@ -3,8 +3,5 @@
 \*---------------------------------------------*/
 
 #footer {
-    padding: $gap-md 0;
-    @media (min-width: $screen-sm-min) {
-        padding: $gap-lg 0;
-    }
+    @include padding-default();
 }

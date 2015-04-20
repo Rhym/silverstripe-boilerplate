@@ -4,15 +4,17 @@
 ======================================================================
 */
 
+$radio-size: 20px;
+
 .form {
-    @extend %margin-default;
+    @include margin-default();
 }
 
 /*---------------------------------------------*\
     Inputs
 \*---------------------------------------------*/
 
-%form-control-static{
+%form-control-static {
     color: $font-base-color;
     display: block;
     width: 100%;
@@ -25,7 +27,7 @@
     border-radius: 0;
     transition: none;
 }
-%input-static{
+%input-static {
     color: $font-base-color;
     display: block;
     width: 100%;
@@ -33,7 +35,7 @@
     padding: $gap-md;
     height: auto;
     box-shadow: none;
-    @include border-radius();
+    border-radius: $border-radius-base;
     &:focus {
         outline: 0;
         border-color: $brand-primary;
@@ -43,45 +45,26 @@
 textarea {
     resize: vertical;
 }
-form{
+form {
     .field{
-        &.form-control{
+        &.form-control {
             @extend %form-control-static;
-            .form-control{
+            .form-control {
                 &.text,
-                &.textarea{
+                &.textarea {
                     @extend %input-static;
                 }
-                &.input-sm{
+                &.input-sm {
                     padding: $gap-xs;
                 }
-                &.readonly{
+                &.readonly {
                     border-width: 0;
                     height: auto;
                     padding: 0;
                 }
             }
         }
-        &.checkbox{
-            margin-bottom: $gap-md;
-            li{
-                list-style: none;
-            }
-        }
-        &.optionset{
-            padding: 0;
-            margin-bottom: $gap-md;
-            > label{
-                font-weight:700;
-            }
-            .radio{
-                li{
-                    margin-bottom: $gap-xs;
-                    list-style: none;
-                }
-            }
-        }
-        &.confirmedpassword{
+        &.confirmedpassword {
             @extend %form-control-static;
             margin-bottom: 0;
             input.password{
@@ -89,25 +72,25 @@ form{
                 margin-bottom: $gap-md;
             }
         }
-        &.creditcard{
+        &.creditcard {
             input{
                 @extend %input-static;
                 width: auto;
                 display: inline-block;
             }
         }
-        &.phonenumber{
+        &.phonenumber {
             input{
                 @extend %input-static;
             }
         }
-        &.file{
-            input{
+        &.file {
+            input {
                 border-width: 0;
                 padding: 0;
                 height: auto;
-                @include box-shadow(none);
-                &:focus{
+                box-shadow: none;
+                &:focus {
                     outline: 0;
                 }
             }
@@ -130,18 +113,18 @@ fieldset {
     padding: 0;
     border-width: 0;
 }
-label{
+label {
     font-weight: normal;
 }
 .checkbox input[type=checkbox],
 .checkbox-inline input[type=checkbox],
 .radio input[type=radio],
-.radio-inline input[type=radio]{
+.radio-inline input[type=radio] {
     margin-left: 0;
 }
 
 .recaptcha {
-    @extend %margin-default;
+    @include margin-default();
 }
 
 /*---------------------------------------------*\
@@ -184,7 +167,7 @@ label{
 #MemberLoginForm_LostPasswordForm {
     .text {
         @extend %form-control-static;
-        input{
+        input {
             @extend %input-static;
             margin-bottom: $gap-md;
         }

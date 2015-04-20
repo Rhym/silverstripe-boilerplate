@@ -3,6 +3,7 @@
 \*---------------------------------------------*/
 
 #map-canvas {
+    @include margin-default();
     width: 100%;
     display: block;
     height: 300px;

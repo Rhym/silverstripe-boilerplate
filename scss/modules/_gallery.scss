@@ -3,30 +3,6 @@
 \*---------------------------------------------*/
 
 .gallery.loop {
-//    margin: 0 (-200px);
-//    .owl-stage {
-//        &.owl-grab {
-//            .owl-item-active {
-//                @media(min-width: $screen-sm-min) {
-//                    opacity: 1;
-//                    transform: scale(1);
-//                }
-//            }
-//        }
-//    }
-//    .owl-item {
-//        @media(min-width: $screen-sm-min) {
-//            transform: scale(0.9);
-//            opacity: 0.2;
-//            transition: .2s linear opacity, .2s linear transform;
-//        }
-//        &.active {
-//            @media(min-width: $screen-sm-min) {
-//                opacity: 1;
-//                transform: scale(1);
-//            }
-//        }
-//    }
     .item {
         display: block;
         &:hover {
@@ -57,7 +33,6 @@
             position: absolute;
             top: 0;
             left: 0;
-//            left: 200px;
             padding: 0;
             background: transparent none;
             font-size: 50px;
@@ -70,7 +45,6 @@
         }
         .owl-next {
             right: 0;
-//            right: 200px;
             left: auto;
             margin: (-0.5em) 0.5em 0 0;
         }

@@ -88,38 +88,53 @@ h6,
 
 h1,
 .h1 {
-    font-size: $font-size-h1;
+    font-size: floor($font-size-h1 * 0.85);
+    @media(min-width: $screen-sm-min) {
+        font-size: $font-size-h1;
+    }
 }
 h2,
 .h2 {
-    font-size: $font-size-h2;
+    font-size: floor($font-size-h2 * 0.85);
+    @media(min-width: $screen-sm-min) {
+        font-size: $font-size-h2;
+    }
 }
 h3,
 .h3 {
-    font-size: $font-size-h3;
+    font-size: floor($font-size-h3 * 0.85);
+    @media(min-width: $screen-sm-min) {
+        font-size: $font-size-h3;
+    }
 }
 h4,
 .h4 {
-    font-size: $font-size-h4;
+    font-size: floor($font-size-h4 * 0.85);
+    @media(min-width: $screen-sm-min) {
+        font-size: $font-size-h4;
+    }
 }
 h5,
 .h5 {
-    font-size: $font-size-h5;
+    font-size: floor($font-size-h5 * 0.85);
+    @media(min-width: $screen-sm-min) {
+        font-size: $font-size-h5;
+    }
 }
 
 /*---------------------------------------------*\
     Text
 \*---------------------------------------------*/
 
-p{
+p {
     line-height: 1.7em;
     letter-spacing: .1px;
     margin: 0 0 $gap-md 0;
 }
-em{
+em {
     font-style: italic;
 }
-blockquote{
+blockquote {
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -134,17 +149,17 @@ blockquote{
 \*---------------------------------------------*/
 
 img{
-    &.left{
+    &.left {
         float: left;
         max-width: 50%;
         margin: $gap-xs $gap-lg $gap-lg 0;
     }
-    &.right{
+    &.right {
         float: right;
         max-width: 50%;
         margin: $gap-xs 0 $gap-lg $gap-lg;
     }
-    &.leftAlone{
+    &.leftAlone {
         float: left;
         margin-right: 100%;
         margin-bottom: $gap-sm;
@@ -157,7 +172,7 @@ img{
         clear: both;
     }
 }
-.captionImage{
+.captionImage {
     width: 100%;
     margin-top: $gap-xs;
     img{
@@ -171,36 +186,36 @@ img{
             width: 100%;
         }
     }
-    &.left{
+    &.left {
         float: left;
         margin: $gap-xs $gap-lg $gap-md 0;
         img{
             margin-right: -$gap-sm;
         }
     }
-    &.right{
+    &.right {
         float: right;
         margin: $gap-xs 0 $gap-md $gap-lg;
         img,
         p {
             margin-left: -$gap-sm;
         }
-        p{
+        p {
             text-align: left;
         }
     }
     &.left[style],
-    &.right[style]{
+    &.right[style] {
         max-width: 50%;
     }
-    &.leftAlone{
+    &.leftAlone {
         float: none;
         margin: 0 $gap-md $gap-md 0;
     }
-    &.center{
+    &.center {
         margin: 0 auto $gap-md;
     }
-    p{
+    p {
         clear: both;
         margin: $gap-sm 0;
         font-style: italic;

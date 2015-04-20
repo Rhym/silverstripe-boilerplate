@@ -1,0 +1,41 @@
+/*---------------------------------------------*\
+    Image Navigation
+\*---------------------------------------------*/
+
+.image-navigation {
+    @include margin-default();
+    .container {
+        position: relative;
+        padding: 0;
+        @media (min-width: $screen-sm-min) {
+            padding: 0 ($gutter / 2);
+        }
+    }
+    a {
+        display: block;
+    }
+    .image {
+        background: $brand-primary;
+    }
+    .heading {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: $gutter / 2;
+        right: $gutter / 2;
+        margin: 0;
+        color: $btn-primary-color;
+        text-shadow: 0 0 5px rgba(0,0,0,0.3);
+        transform: translate(0, -50%);
+    }
+    .icon {
+        margin-bottom: $gap-sm;
+        position: absolute;
+        color: $btn-primary-color;
+        bottom: 0;
+        width: $gap-xl;
+        text-align: center;
+        margin-left: -$gap-lg;
+        left: 50%;
+    }
+}

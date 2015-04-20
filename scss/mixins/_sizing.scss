@@ -2,35 +2,56 @@
     Sizing
 \*======================================================================*/
 
-%margin-default {
-    margin: $gap-md 0;
+/*-------------------------------------------------------*\
+    Margin
+\*-------------------------------------------------------*/
+
+@mixin margin($xs: $gap-md, $sm: $gap-lg) {
+    margin: $xs 0;
     @media (min-width: $screen-sm-min) {
-        margin: $gap-lg 0;
+        margin: $sm 0;
     }
 }
-%padding-default {
-    padding: $gap-md;
+
+@mixin margin-none() {
+    @include margin(0, 0);
+}
+
+@mixin margin-sm() {
+    @include margin($gap-sm, $gap-md);
+}
+
+@mixin margin-default() {
+    @include margin();
+}
+
+@mixin margin-lg() {
+    @include margin($gap-lg, $gap-xl);
+}
+
+/*-------------------------------------------------------*\
+    Padding
+\*-------------------------------------------------------*/
+
+@mixin padding($xs: $gap-md, $sm: $gap-lg) {
+    padding: $xs 0;
     @media (min-width: $screen-sm-min) {
-        padding: $gap-lg;
+        padding: $sm 0;
     }
 }
-%padding-default-x {
-    padding: $gap-md 0;
-    @media (min-width: $screen-sm-min) {
-        padding: $gap-lg 0;
-    }
+
+@mixin padding-none() {
+    @include padding(0, 0);
 }
-%padding-xl-x {
-    padding: $gap-lg 0;
-    @media (min-width: $screen-sm-min) {
-        padding: $gap-xl 0;
-    }
+
+@mixin padding-sm() {
+    @include padding($gap-sm, $gap-md);
 }
-%box-default {
-    @extend %margin-default;
-    @extend %padding-default-x;
+
+@mixin padding-default() {
+    @include padding();
 }
-%box-xl {
-    @extend %margin-default;
-    @extend %padding-xl-x;
+
+@mixin padding-lg() {
+    @include padding($gap-lg, $gap-xl);
 }

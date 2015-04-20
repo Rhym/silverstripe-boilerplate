@@ -28,13 +28,13 @@ img {
     Content
 \*======================================================================*/
 
-#wrapper{
+#wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-.content-wrap{
+.content-wrap {
     position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -44,129 +44,9 @@ img {
     transition: .1s linear opacity;
 }
 
-/*======================================================================*\
-    Pages
-\*======================================================================*/
-
-/*======================================================================*\
-    Classes
-\*======================================================================*/
-
-/*-------------------------------------------------------*\
-    Section
-\*-------------------------------------------------------*/
-
-section.section {
-    @extend %box-xl;
-    padding-top: 0;
-    position: relative;
+.content.typography {
+    margin: 0 0 $gap-md 0;
     @media(min-width: $screen-sm-min) {
-        padding-top: 0;
-    }
-    .heading {
-        margin-top: $gap-lg;
-        @media(min-width: $screen-sm-min) {
-            margin-top: $gap-xl;
-        }
-    }
-    .backgrounds {
-        .left,
-        .right {
-            display: none;
-            @media(min-width: $screen-sm-min) {
-                display: block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
-        }
-        .left {
-            @media(min-width: $screen-sm-min) {
-                right: 50%;
-            }
-        }
-        .right {
-            @media(min-width: $screen-sm-min) {
-                left: 50%;
-                right: 0;
-            }
-        }
-    }
-}
-.content.typography{
-    margin-bottom: $gap-md;
-    @media (min-width: $screen-sm-min) {
-        margin-bottom: $gap-lg;
-    }
-}
-
-/*-------------------------------------------------------*\
-    Loops
-\*-------------------------------------------------------*/
-
-.loop{
-    .item {
-        position: relative;
-        margin: 0 0 $gap-md 0;
-        @media (min-width: $screen-sm-min) {
-            margin: 0 0 $gap-lg 0;
-        }
-        &.last {}
-        a{
-            cursor: pointer;
-        }
-        .image {
-            position: relative;
-            display: block;
-        }
-        .heading {
-            margin: $gap-md 0 0;
-        }
-        .meta{
-            color: $gray;
-        }
-    }
-    &.no-margin{
-        .row{
-            margin: 0;
-        }
-        .item{
-            padding: 0;
-            margin: 0;
-            &.last{
-                // overrides the media query
-                margin-bottom: 0;
-            }
-        }
-        margin-bottom: $gap-lg;
-    }
-}
-
-/*-------------------------------------------------------*\
-    Pages
-\*-------------------------------------------------------*/
-
-.page{
-    .image{
-        margin-bottom: $gap-md;
-        @media(min-width: $screen-sm-min){
-            margin-bottom: 0;
-        }
-    }
-    .meta{
-        color: $gray;
-    }
-}
-
-/*-------------------------------------------------------*\
-    Breadcrumbs
-\*-------------------------------------------------------*/
-
-.breadcrumbs {
-    margin: $gap-md 0;
-    @media(min-width: $screen-sm-min) {
-        margin: $gap-lg 0;
+        margin: 0 0 $gap-lg 0;
     }
 }

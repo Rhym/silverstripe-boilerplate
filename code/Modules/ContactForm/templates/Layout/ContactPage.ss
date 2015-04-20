@@ -5,9 +5,11 @@
         <section class="sidebar col-sm-3">
             <aside class="navigation">
                 <ul class="contact-info">
-                    <% if $SiteConfig.Phone %><li>{$SiteConfig.Phone}</li><% end_if %>
-                    <% if $SiteConfig.Email %><li><a href="mailto:{$SiteConfig.Email}">{$SiteConfig.Email}</a></li><% end_if %>
-                    <% if $SiteConfig.Address %><li>{$SiteConfig.Address}</li><% end_if %>
+                    <% with $SiteConfig %>
+                    <% if $Phone %><li>{$Phone}</li><% end_if %>
+                    <% if $Email %><li><a href="mailto:{$Email}">{$Email}</a></li><% end_if %>
+                    <% if $Address %><li>{$Address}</li><% end_if %>
+                    <% end_with %>
                 </ul><!-- /.contact-info -->
             </aside><!-- /.navigation -->
         </section><!-- /.sidebar col-sm-3 -->

@@ -13,6 +13,11 @@ class ContactForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
+        /**
+         * Add front-end validation
+         */
+        Requirements::javascript(BOWER_COMPONENTS_DIR . '/parsleyjs/dist/parsley.min.js');
+
         /** -----------------------------------------
          * Scaffolding
         -------------------------------------------*/
@@ -27,14 +32,17 @@ class ContactForm extends Form {
 
         $firstName = new TextField('FirstName', 'First Name');
         $firstName->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $lastName = new TextField('LastName', 'Last Name');
         $lastName->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Last Name</strong>');
 
         $email = new EmailField('Email', 'Email Address');
         $email->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
         $phone = new TextField('Phone', 'Phone Number (optional)');
@@ -42,15 +50,18 @@ class ContactForm extends Form {
 
         $suburb = new TextField('Suburb', 'Suburb');
         $suburb->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Suburb</strong>');
 
         $city = new TextField('City', 'City');
         $city->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
             ->setCustomValidationMessage('Please enter your <strong>City</strong>');
 
         $message = new TextareaField('Message', 'Message');
         $message->setAttribute('placeholder', 'Enter your message')
             ->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Message</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Message</strong>');
 
         $reCaptcha = new LiteralField('', '');
@@ -104,13 +115,14 @@ class ContactForm extends Form {
             'Message'
         );
 
-        $form = Form::create($this, $name, $fields, $actions, $required);
+        $form = new Form($this, $name, $fields, $actions, $required);
         if($formData = Session::get('FormInfo.Form_'.$name.'.data')) {
             $form->loadDataFrom($formData);
         }
 
         parent::__construct($controller, $name, $fields, $actions, $required);
 
+        $this->setAttribute('data-parsley-validate', true);
         $this->addExtraClass('form');
     }
 

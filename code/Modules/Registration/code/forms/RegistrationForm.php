@@ -14,25 +14,32 @@ class RegistrationForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
+        /**
+         * Add front-end validation
+         */
+        Requirements::javascript(BOWER_COMPONENTS_DIR . '/parsleyjs/dist/parsley.min.js');
+
         /** -----------------------------------------
          * Fields
         -------------------------------------------*/
 
         $firstName = new TextField('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
+            ->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
+            ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $email = new EmailField('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
+            ->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
+            ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
         $password = new PasswordField('Password');
         $password->setAttribute('placeholder', 'Enter your password')
-            ->setCustomValidationMessage('Your passwords do not match', 'validation')
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
+            ->addExtraClass('form-control')
+            ->setCustomValidationMessage('Please enter your <strong>Password</strong>', 'validation')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Password</strong>');
 
         $fields = new FieldList(
             $email,
@@ -62,6 +69,7 @@ class RegistrationForm extends Form {
 
         parent::__construct($controller, $name, $fields, $actions, $required);
 
+        $this->setAttribute('data-parsley-validate', true);
         $this->addExtraClass('form');
     }
 

@@ -41,6 +41,15 @@ $radio-size: 20px;
         border-color: $brand-primary;
         box-shadow: none;
     }
+    /**
+     * Javascript validation
+     */
+    &.parsley-error {
+        border-color: $brand-danger;
+        &::placeholder {
+            color: $brand-danger;
+        }
+    }
 }
 textarea {
     resize: vertical;
@@ -175,5 +184,20 @@ label {
     .action {
         @extend .btn;
         @extend .btn-primary;
+    }
+}
+
+/*---------------------------------------------*\
+    ParsleyJS - Validation
+\*---------------------------------------------*/
+
+.parsley-errors-list {
+    padding: 0;
+    margin: 0;
+    li {
+        @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
+        a {
+            color: $alert-danger-text
+        }
     }
 }

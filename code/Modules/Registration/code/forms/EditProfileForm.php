@@ -14,24 +14,32 @@ class EditProfileForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
+        /**
+         * Add front-end validation
+         */
+        Requirements::javascript(BOWER_COMPONENTS_DIR . '/parsleyjs/dist/parsley.min.js');
+
         /** -----------------------------------------
          * Fields
         -------------------------------------------*/
 
         $firstName = new TextField('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
+            ->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
+            ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $surname = new TextField('Surname');
         $surname->setAttribute('placeholder', 'Enter your surname')
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
+            ->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Surname</strong>')
+            ->setCustomValidationMessage('Please enter your <strong>Surname</strong>');
 
         $email = new EmailField('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
-            ->setAttribute('required', 'required')
-            ->addExtraClass('form-control');
+            ->addExtraClass('form-control')
+            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
+            ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
         $jobTitle = new TextField('JobTitle');
         $jobTitle->setAttribute('placeholder', 'Enter your job title')
@@ -75,7 +83,11 @@ class EditProfileForm extends Form {
         /**
          * Validation
          */
-        $required = new RequiredFields('FirstName', 'Email');
+        $required = new RequiredFields(
+            'FirstName',
+            'Surname',
+            'Email'
+        );
 
         /**
          * Create form
@@ -90,6 +102,7 @@ class EditProfileForm extends Form {
 
         parent::__construct($controller, $name, $fields, $actions, $required);
 
+        $this->setAttribute('data-parsley-validate', true);
         $this->addExtraClass('form');
     }
 

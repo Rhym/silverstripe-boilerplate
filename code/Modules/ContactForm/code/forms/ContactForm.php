@@ -90,10 +90,8 @@ class ContactForm extends Form {
         /**
          * Actions
          */
-        $action = new FormAction('Submit', 'Submit');
-        $action->addExtraClass('btn btn-primary');
         $actions = new FieldList(
-            $action
+            FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn btn-primary')
         );
 
         /**
@@ -210,7 +208,7 @@ class ContactForm extends Form {
          */
         Session::clear('FormInfo.Form_'.$this->name.'.data');
 
-        return $this->controller->redirect($this->controller->data()->Link);
+        return $this->controller->redirect($this->controller->data()->Link('?success=1'));
     }
 
     /**

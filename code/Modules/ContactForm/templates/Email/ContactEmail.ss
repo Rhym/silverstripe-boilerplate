@@ -9,7 +9,7 @@
         <table border="0" cellpadding="0" cellspacing="0">
             <% if $Logo %>
                 <tr>
-                    <td colspan="2" style="padding: 0 0 10px 0;"><a href="{$BaseHref}">{$Logo}</a></td>
+                    <td colspan="2" style="padding: 0 0 10px 0;"><a href="{$BaseHref}">{$Logo.setHeight(50)}</a></td>
                 </tr>
             <% end_if %>
             <tr>

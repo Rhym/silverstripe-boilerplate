@@ -185,7 +185,6 @@ JS
             'MailCC' => $this->MailCC,
             'MailBCC' => $this->MailBCC,
             'SubmitText' => $this->SubmitText,
-            'Link' => $this->Link('?success=1'),
             'ReCaptchaSiteKey' => $this->ReCaptchaSiteKey,
             'ReCaptchaSecretKey' => $this->ReCaptchaSecretKey
         ));

@@ -14,6 +14,10 @@ class EditProfileForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
+        /** -----------------------------------------
+         * Fields
+        -------------------------------------------*/
+
         $firstName = new TextField('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
             ->setAttribute('required', 'required')
@@ -61,10 +65,11 @@ class EditProfileForm extends Form {
             $passwordToggleClose
         );
 
-        $action = new FormAction('Save', 'Update Profile');
-        $action->addExtraClass('btn btn-primary');
+        /**
+         * Actions
+         */
         $actions = new FieldList(
-            $action
+            FormAction::create('Save')->setTitle('Update Profile')->addExtraClass('btn btn-primary')
         );
 
         /**

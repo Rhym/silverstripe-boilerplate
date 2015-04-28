@@ -1,13 +1,11 @@
 <?php
 
-/*
- *
+/**
+ * Class PortfolioHolder
  */
 class PortfolioHolder extends Page {
 
     private static $icon = 'boilerplate/code/Modules/Portfolio/images/blogs-stack.png';
-
-    private static $db = array();
 
     private static $allowed_children = array('PortfolioPage');
 
@@ -17,22 +15,17 @@ class PortfolioHolder extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
-
         $fields = parent::getCMSFields();
-
-        /* -----------------------------------------
-         * Advanced
-        ------------------------------------------*/
-
         return $fields;
-
     }
 
     /**
      * @return PaginatedList
      */
     public function PaginatedPages() {
-        // Protect against "Division by 0" error
+        /**
+         * Protect against "Division by 0" error
+         */
         if($this->Items == null || $this->Items == 0) $this->Items = 1;
         $pagination = new PaginatedList($this->AllChildren(), Controller::curr()->request);
         $pagination->setPageLength($this->Items);
@@ -40,6 +33,10 @@ class PortfolioHolder extends Page {
     }
 
 }
+
+/**
+ * Class PortfolioHolder_Controller
+ */
 class PortfolioHolder_Controller extends Page_Controller {
 
     /**

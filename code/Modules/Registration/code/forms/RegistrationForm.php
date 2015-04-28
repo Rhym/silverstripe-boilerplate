@@ -14,45 +14,37 @@ class RegistrationForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
-        /**
-         * First Name
-         */
+        /** -----------------------------------------
+         * Fields
+        -------------------------------------------*/
+
         $firstName = new TextField('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
-        /**
-         * Email
-         */
         $email = new EmailField('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
-        /**
-         * Password Conformation
-         */
         $password = new PasswordField('Password');
         $password->setAttribute('placeholder', 'Enter your password')
             ->setCustomValidationMessage('Your passwords do not match', 'validation')
             ->setAttribute('required', 'required')
             ->addExtraClass('form-control');
 
-        /**
-         * Generate the fields
-         */
         $fields = new FieldList(
             $email,
             $password
         );
 
         /**
-         * Submit Button
+         * Actions
          */
-        $action = new FormAction('Register', 'Register');
-        $action->addExtraClass('btn btn-primary');
-        $actions = new FieldList($action);
+        $actions = new FieldList(
+            FormAction::create('Register')->setTitle('Register')->addExtraClass('btn btn-primary')
+        );
 
         /**
          * Validation
@@ -107,7 +99,7 @@ class RegistrationForm extends Form {
         /**
          * Find or create the 'user' group
          */
-        if(!$userGroup = DataObject::get_one('Group', "Code = 'users'")){
+        if(!$userGroup = DataObject::get_one('Group', "Code = 'users'")) {
             $userGroup = new Group();
             $userGroup->Code = 'users';
             $userGroup->Title = 'Users';
@@ -122,10 +114,10 @@ class RegistrationForm extends Form {
         /**
          * Get profile page otherwise display warning.
          */
-        if($ProfilePage = DataObject::get_one('EditProfilePage')){
+        if($ProfilePage = DataObject::get_one('EditProfilePage')) {
             $this->controller->setFlash('Welcome ' .$data['Email'].', your account has been created!', 'success');
             return $this->controller->redirect($ProfilePage->Link());
-        }else{
+        } else {
             $this->controller->setFlash('Please add a "Edit Profile Page" in your SiteTree to enable profile editing', 'warning');
             return $this->controller->redirect(Director::absoluteBaseURL());
         }

@@ -16,12 +16,12 @@ class GoogleFontConfig extends DataExtension {
      */
     public function updateCMSFields(FieldList $fields) {
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Fonts
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.GoogleFonts', 'Google Fonts');
-        $fields->addFieldToTab('Root.Settings.GoogleFonts', $fontAPI = new TextField('FontAPI', _t('GoogleFontConfig.FontAPILabel', 'Google Fonts API Key')));
+        $fields->addFieldToTab('Root.Settings.GoogleFonts', $fontAPI = new TextField('FontAPI', 'Google Fonts API Key'));
         if(!SiteConfig::current_site_config()->FontAPI){
             $fontAPI->setRightTitle('Once you\'ve saved your API key more font choices will be available');
         }
@@ -35,8 +35,8 @@ class GoogleFontConfig extends DataExtension {
             }
             $fields->addFieldsToTab('Root.Settings.GoogleFonts',
                 array(
-                    new DropdownField('FontHeadings', _t('GoogleFontConfig.FontHeadingsLabel', 'Headings'), $googleFontsDropdownArray),
-                    new DropdownField('FontBody', _t('GoogleFontConfig.FontBodyLabel', 'Body'), $googleFontsDropdownArray)
+                    new DropdownField('FontHeadings', 'Headings', $googleFontsDropdownArray),
+                    new DropdownField('FontBody', 'Body', $googleFontsDropdownArray)
                 )
             );
         }
@@ -51,7 +51,9 @@ class GoogleFontConfig extends DataExtension {
 
         $fontFile = Director::baseFolder().'/'.BOILERPLATE_MODULE.'/fonts/google-web-fonts.txt';
 
-        //Total time the file will be cached in seconds, set to a week
+        /**
+         * Total time the file will be cached in seconds, set to a week
+         */
         $cacheTime = 86400 * 7;
 
         if(file_exists($fontFile) && $cacheTime < filemtime($fontFile)){

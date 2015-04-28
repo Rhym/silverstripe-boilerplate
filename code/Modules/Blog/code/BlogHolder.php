@@ -21,9 +21,9 @@ class BlogHolder extends Page {
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Blog Sidebar
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->addFieldToTab('Root.BlogSidebar', new HeaderField('', 'Sidebar'));
         $fields->addFieldToTab('Root.BlogSidebar', new LiteralField('',
@@ -41,7 +41,9 @@ class BlogHolder extends Page {
      * @return PaginatedList
      */
     public function PaginatedPages() {
-        // Protect against "Division by 0" error
+        /**
+         * Protect against "Division by 0" error
+         */
         if($this->Items == null || $this->Items == 0) $this->Items = 10;
         $pagination = new PaginatedList($this->AllChildren(), Controller::curr()->request);
         $pagination->setPageLength($this->Items);
@@ -49,4 +51,8 @@ class BlogHolder extends Page {
     }
 
 }
+
+/**
+ * Class BlogHolder_Controller
+ */
 class BlogHolder_Controller extends Page_Controller {}

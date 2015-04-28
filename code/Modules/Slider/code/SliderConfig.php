@@ -40,9 +40,9 @@ class SliderConfig extends DataExtension {
         );
         $fields->addFieldToTab('Root.Slider', $gridField);
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Settings
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->addFieldToTab('Root.Slider', new HeaderField('', 'Settings', 4));
         $fields->addFieldToTab('Root.Slider', new CheckboxField('FullWidth', 'Set slider to be full width'));
@@ -55,9 +55,9 @@ class SliderConfig extends DataExtension {
      * If the page of SiteConfig has a max height set apply it to the Slider.
      */
     public function getSliderHeight() {
-        if($height = $this->owner->Height){
+        if($height = $this->owner->Height) {
             return $height;
-        }else if($siteConfigHeight = SiteConfig::current_site_config()->DefaultSliderHeight){
+        } else if($siteConfigHeight = SiteConfig::current_site_config()->DefaultSliderHeight) {
             return $siteConfigHeight;
         }
         return false;

@@ -10,6 +10,9 @@ class EditProfilePage extends Page {
 
 }
 
+/**
+ * Class EditProfilePage_Controller
+ */
 class EditProfilePage_Controller extends Page_Controller {
 
     private static $allowed_actions = array('EditProfileForm');

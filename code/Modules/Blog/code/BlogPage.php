@@ -54,9 +54,9 @@ class BlogPage extends Page {
         $fields->addFieldToTab('Root.Main', $dateField, 'Content');
         $fields->addFieldToTab('Root.Main', new TextField('Author', 'Author (optional)'), 'Content');
 
-        /* =========================================
+        /** =========================================
          * Tags - Disabled by default
-         =========================================*/
+         ==========================================*/
 
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldSortableRows('SortOrder'))
@@ -133,4 +133,7 @@ class BlogPage extends Page {
 
 }
 
+/**
+ * Class BlogPage_Controller
+ */
 class BlogPage_Controller extends Page_Controller {}

@@ -24,9 +24,9 @@ class GalleryPage extends Page {
 
         $fields = parent::getCMSFields();
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Gallery Images
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->addFieldToTab('Root.Gallery', new HeaderField('', 'Gallery'));
         $fields->addFieldToTab('Root.Gallery', new LiteralField('',

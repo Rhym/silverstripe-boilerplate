@@ -18,14 +18,10 @@ class ContactPage extends Page {
         'MapColor' => 'Varchar(255)',
         'WaterColor' => 'Varchar(255)',
         'MapZoom' => 'Int(14)',
-        'MapSaturation' => 'Varchar(4)',
+        'MapSaturation' => 'Int(0)',
         'MapMarker' => 'Boolean(1)',
         'ReCaptchaSiteKey' => 'Varchar(255)',
         'ReCaptchaSecretKey' => 'Varchar(255)'
-    );
-
-    private static $has_many = array(
-        'InfoWindows' => 'InfoWindow'
     );
 
     private static $defaults = array(
@@ -43,13 +39,13 @@ class ContactPage extends Page {
 
         $fields = parent::getCMSFields();
 
-        /* =========================================
+        /** =========================================
          * Settings
-         =========================================*/
+         ==========================================*/
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Contact Page
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->addFieldToTab('Root.Main', new HeaderField('Settings'), 'Content');
         $fields->addFieldToTab('Root.Main', $mailTo = new TextField('MailTo', 'Email'), 'Content');
@@ -69,9 +65,9 @@ class ContactPage extends Page {
         $fields->addFieldToTab('Root.Main', new TextField('ReCaptchaSiteKey', 'Site Key'), 'Content');
         $fields->addFieldToTab('Root.Main', new TextField('ReCaptchaSecretKey', 'Secret Key'), 'Content');
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Google Map
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->addFieldToTab('Root.Map', new HeaderField('', 'Map'));
         $fields->addFieldToTab('Root.Map', new LiteralField('',
@@ -82,33 +78,20 @@ class ContactPage extends Page {
         $fields->addFieldToTab('Root.Map', new Textfield('Longitude', 'Longitude'));
         $fields->addFieldToTab('Root.Map', new LiteralField('', '<div class="field"><label class="right"><a href="https://support.google.com/maps/answer/18539" target="_blank">How do I find my latitude/longitude?</a></label></div>'));
         $fields->addFieldToTab('Root.Map', $mapZoom = new NumericField('MapZoom', 'Zoom'));
-        $mapZoom->setRightTitle('Zoom level: 0-22 - The higher the number the more zoomed in the map will be.');
+        $mapZoom->setRightTitle('Zoom level: 1-22 - The higher the number the more zoomed in the map will be.');
+        /**
+         * If only one of the colours is set, display a warning.
+         */
+        if(!$this->MapColor && $this->WaterColor || $this->MapColor && !$this->WaterColor) {
+            $fields->addFieldToTab('Root.Map', new LiteralField('',
+                '<div class="message warning"><p><strong>Note:</strong> To activate the map styling, both Map Colour and Water Colour must be set.</p></div>'
+            ));
+        }
         $fields->addFieldToTab('Root.Map', new ColorField('MapColor', 'Map Colour (Optional)'));
         $fields->addFieldToTab('Root.Map', new ColorField('WaterColor', 'Water Colour (Optional)'));
         $fields->addFieldToTab('Root.Map', $mapSaturation = new TextField('MapSaturation', 'Saturation (Optional)'));
         $mapSaturation->setRightTitle('A range of -100 to 100, -100 being completely grayscale.');
         $fields->addFieldToTab('Root.Map', new CheckboxField('MapMarker', 'Show map marker'));
-
-        /* -----------------------------------------
-         * Info Windows
-        ------------------------------------------*/
-
-        $fields->addFieldToTab('Root.MapMarkers', new HeaderField('', 'Map Markers'));
-        $fields->addFieldToTab('Root.MapMarkers', new LiteralField('',
-            '<p>Map markers are used to display points of interest on your map.</p>'
-        ));
-        $config = GridFieldConfig_RelationEditor::create(10);
-        $config->addComponent(new GridFieldDeleteAction());
-        $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-            'Title' => 'Title'
-        ));
-        $gridField = new GridField(
-            'InfoWindows',
-            'Markers',
-            $this->owner->InfoWindows(),
-            $config
-        );
-        $fields->addFieldToTab('Root.MapMarkers', $gridField);
 
         return $fields;
 
@@ -132,46 +115,30 @@ class ContactPage_Controller extends Page_Controller {
         }
 
         /**
-         * Get all info windows
+         * Set defaults for map.
          */
-        $infoWindowList = $this->InfoWindows();
-        if ($infoWindowList) {
-            $InfoWindows = array();
-            foreach($infoWindowList as $obj){
-                $InfoWindows['Objects'][] = array(
-                    'title' => $obj->Title,
-                    'lat' => $obj->Lat,
-                    'long' => $obj->Long
-                );
-            }
-            $InfoWindows = Convert::array2json($InfoWindows);
-            Requirements::customScript("var infoWindowObject = $InfoWindows;");
-        }
+        $latitude = ($this->Latitude ? $this->Latitude : "false");
+        $longitude = ($this->Longitude ? $this->Longitude : "false");
+        $mapColor = ($this->MapColor != '' ? "'".$this->MapColor."'" : "false");
+        $waterColor = ($this->WaterColor != '' ? "'".$this->WaterColor."'" : "false");
+        $mapMarker = ($this->MapMarker ? $this->MapMarker : "false");
+        $mapZoom = ($this->MapZoom ? $this->MapZoom : 14);
+        $mapSaturation = ($this->MapSaturation ? $this->MapSaturation : 0);
 
         /**
-         * Map
+         * Map scripts
          */
-        if($this->Latitude && $this->Longitude){
-            if($this->MapColor != ''){
-                $mapColor = "'".$this->MapColor."'";
-            }else{
-                $mapColor = 'false';
-            }
-            if($this->WaterColor != ''){
-                $waterColor = "'".$this->WaterColor."'";
-            }else{
-                $waterColor = 'false';
-            }
+        if($latitude && $longitude){
             Requirements::javascript('https://maps.googleapis.com/maps/api/js?key='.$this->GoogleAPI.'&sensor=false');
-            Requirements::javascript(CONTACT_FORM_MODULE_DIR.'/javascript/mapScript.js');
-            Requirements::customScript(<<<JS
-(function($) {
-    $(document).ready(function(){
-        getMap('map-canvas', $this->Latitude, $this->Longitude, $mapColor, $waterColor, $this->MapMarker, infoWindowObject, $this->MapZoom, $this->MapSaturation)
-    })
-})(jQuery);
-JS
-);
+            Requirements::javascriptTemplate(CONTACT_FORM_MODULE_DIR.'/javascript/mapScript.js', array(
+                'latitude' => $latitude,
+                'longitude' => $longitude,
+                'mapColor' => $mapColor,
+                'waterColor' => $waterColor,
+                'mapMarker' => $mapMarker,
+                'mapZoom' => $mapZoom,
+                'mapSaturation' => $mapSaturation
+            ));
         }
 
 	}

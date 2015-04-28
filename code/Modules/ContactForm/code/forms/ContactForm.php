@@ -13,17 +13,17 @@ class ContactForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Scaffolding
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $row = new LiteralField('', '<div class="row">');
         $column = new LiteralField('', '<div class="col-xs-12 col-sm-6">');
         $close = new LiteralField('', '</div>');
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Fields
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $firstName = new TextField('FirstName', 'First Name');
         $firstName->addExtraClass('form-control')

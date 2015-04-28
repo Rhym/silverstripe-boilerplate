@@ -4,12 +4,17 @@ var map,
 
 var MY_MAPTYPE_ID = 'custom_style';
 
-function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoom, saturation) {
+function getMap(mapID, lat, long, mapColor, waterColor, showMarker, zoom, saturation) {
 
     center = new google.maps.LatLng(lat, long);
 
+    /**
+     * Set the stylers that control map colours.
+     *
+     * @type {Array}
+     */
     featureOpts = [];
-    if(mapColor && mapColor) {
+    if(mapColor && waterColor) {
         featureOpts = [
             {
                 stylers: [
@@ -38,6 +43,11 @@ function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoo
         ];
     }
 
+    /**
+     * Set map options
+     *
+     * @type {{zoom: *, center: google.maps.LatLng, scrollwheel: boolean, mapTypeControlOptions: {mapTypeIds: *[]}, mapTypeId: string}}
+     */
     var mapOptions = {
         zoom: zoom,
         center: center,
@@ -48,43 +58,38 @@ function getMap(mapID, lat, long, mapColor, waterColor, marker, InfoWindows, zoo
         mapTypeId: MY_MAPTYPE_ID
     };
 
+    /**
+     * Create Map
+     *
+     * @type {exports.ecmaIdentifiers.Map}
+     */
     map = new google.maps.Map(document.getElementById(mapID), mapOptions);
 
-    var styledMapOptions = {
-        name: 'Stylised'
-    };
-
-    var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-
-    if(marker){
+    if(showMarker){
         var marker = new google.maps.Marker({
             position: center,
             map: map
         });
     }
 
-    if(InfoWindows.Objects){
-        var locations = [],
-            marker,
-            infowindow = new google.maps.InfoWindow();
-        for(i = 0;i < InfoWindows.Objects.length;i++){
-            locations.push([InfoWindows.Objects[i].title, InfoWindows.Objects[i].lat, InfoWindows.Objects[i].long, InfoWindows.Objects[i].phone, InfoWindows.Objects[i].email]);
-        }
-        for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map
-            });
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                    infowindow.setContent(
-                        '<strong>'+locations[i][0]+'</strong>'
-                    );
-                    infowindow.open(map, marker);
-                }
-            })(marker, i));
-        }
-    }
+    /**
+     * Set the styled map
+     *
+     * @type {{name: string}}
+     */
+    var styledMapOptions = {
+            name: 'Stylised'
+        },
+        customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
 
     map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 }
+
+/**
+ * Initiate the map
+ */
+(function($) {
+    $(document).ready(function() {
+        getMap('map-canvas', $latitude, $longitude, $mapColor, $waterColor, $mapMarker, $mapZoom, $mapSaturation)
+    })
+})(jQuery);

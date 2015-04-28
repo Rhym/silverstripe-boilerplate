@@ -16,9 +16,9 @@ class BlogConfig extends DataExtension {
      */
     public function updateCMSFields(FieldList $fields) {
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Comments
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Comments', 'Comments');
         $fields->addFieldsToTab('Root.Settings.Comments',

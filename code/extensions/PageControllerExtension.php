@@ -7,9 +7,9 @@ class PageControllerExtension extends Extension {
 
 	public function onBeforeInit() {
 
-        /* =========================================
+        /** =========================================
          * Combine JS
-         =========================================*/
+         ==========================================*/
 
         /**
          * Set All JS to be right before the closing </body> tag.
@@ -29,25 +29,29 @@ class PageControllerExtension extends Extension {
             )
         );
 
-        /* =========================================
+        /** =========================================
          * CSS
-         =========================================*/
+         ==========================================*/
 
         Requirements::css(BOWER_COMPONENTS_DIR.'/components-font-awesome/css/font-awesome.min.css');
         Requirements::combine_files(
             'combined.min.css',
             array(
-                // Owl Carousel
+                /**
+                 * Owl Carousel
+                 */
                 BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.carousel.min.css',
                 BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.theme.default.min.css',
-                // Application styles
+                /**
+                 * Application styles
+                 */
                 project().'/css/main.min.css'
             )
         );
 
-        /* =========================================
+        /** =========================================
          * Ancient Browser Shivs
-         =========================================*/
+         ==========================================*/
 
         $baseHref = Director::BaseURL();
         Requirements::insertHeadTags('<!--[if lt IE 9]>

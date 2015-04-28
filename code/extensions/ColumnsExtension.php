@@ -44,6 +44,8 @@ class ColumnsPageExtension extends DataExtension {
 class ColumnsPageControllerExtension extends Extension {
 
     /**
+     * Return column classes - based on boostrap classes.
+     *
      * @return string
      */
     public function ColumnClass(){
@@ -69,6 +71,8 @@ class ColumnsPageControllerExtension extends Extension {
     }
 
     /**
+     * Return columns - based on boostrap columns.
+     *
      * @return int
      */
     public function ColumnMultiple(){

@@ -38,9 +38,9 @@ class PortfolioPage extends Page {
         $fields->addFieldToTab('Root.Main', $subTitle = new TextField('SubTitle', 'Sub Title'), 'Content');
         $subTitle->setRightTitle('Subtitles are displayed on PortfolioHolder pages under the title.');
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Portfolio Images
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->addFieldToTab('Root.PortfolioImages', new HeaderField('', 'Portfolio Images'));
         $fields->addFieldToTab('Root.PortfolioImages', new LiteralField('',
@@ -119,4 +119,7 @@ class PortfolioPage extends Page {
 
 }
 
+/**
+ * Class PortfolioPage_Controller
+ */
 class PortfolioPage_Controller extends Page_Controller {}

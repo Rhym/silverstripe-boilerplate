@@ -10,6 +10,9 @@ class RegistrationPage extends Page {
 
 }
 
+/**
+ * Class RegistrationPage_Controller
+ */
 class RegistrationPage_Controller extends Page_Controller {
 
     private static $allowed_actions = array('RegistrationForm');

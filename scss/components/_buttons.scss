@@ -2,34 +2,24 @@
     Buttons
 \*---------------------------------------------*/
 
-%btn-static {
+@mixin btn-static() {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-radius: 2px;
     padding: 0.75em 1em;
     white-space: normal;
     border-width: 0;
-    &:focus {
-        outline: 0;
-    }
-}
-.btn {
-    @extend %btn-static;
     &:focus,
     &:active {
+        outline: 0;
         box-shadow: none;
     }
 }
+.btn {
+    @include btn-static;
+}
 .btn-default {
-    color: $brand-default-color;
-    &:hover {
-        color: $brand-default-color;
-        background: shade($brand-default, 5);
-    }
-    &:active {
-        color: $brand-default-color;
-        background: $brand-default-dark;
-    }
+    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
 }
 .btn-secondary {
     @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);

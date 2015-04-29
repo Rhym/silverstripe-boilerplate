@@ -109,7 +109,7 @@
         padding-top: $gap-lg;
         border-top: 1px solid shade($popout-menu-background, 5);
         input[type="text"]{
-            @extend %input-static;
+            @include input-static;
             border-color: $popout-menu-color;
             box-shadow: none;
             &:focus{

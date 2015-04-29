@@ -250,7 +250,7 @@ img{
     Lists
 \*---------------------------------------------*/
 
-%customList {
+@mixin customList() {
     padding-left: 0;
     li {
         padding-left: 1.2em;
@@ -267,10 +267,10 @@ img{
 }
 ul {
     &.checklist {
-        @extend %customList;
+        @include customList;
     }
     &.deletelist {
-        @extend %customList;
+        @include customList;
         li {
             &:before {
                 content: $fa-var-times;

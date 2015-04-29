@@ -5,8 +5,7 @@
 /**
  * Alerts have many &.classes due to supporting SS default messages.
  */
-.alert,
-%alert {
+.alert {
     &.alert-success,
     &.success,
     &.good {
@@ -17,10 +16,10 @@
     }
     &.alert-info,
     &.notice {
-        /**
-         * Use an extension so that the .message class can be set as info by default.
-         */
-        @extend %alert-info;
+        @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
+        a {
+            color: $alert-info-text
+        }
     }
     &.alert-warning,
     &.warning {
@@ -46,12 +45,5 @@
         li {
             margin: 0;
         }
-    }
-}
-
-%alert-info {
-    @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
-    a {
-        color: $alert-info-text
     }
 }

@@ -2,9 +2,10 @@
     Mixins
 \*======================================================================*/
 
-@import 'mixins/sizing';
 @import 'mixins/alerts';
 @import 'mixins/border-radius';
 @import 'mixins/buttons';
+@import 'mixins/forms';
+@import 'mixins/sizing';
 @import 'mixins/transformations';
 @import 'mixins/wells';

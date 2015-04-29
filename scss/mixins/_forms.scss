@@ -1,0 +1,37 @@
+@mixin form-control-static() {
+    color: $font-base-color;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    line-height: inherit;
+    background: transparent none;
+    border-width: 0;
+    box-shadow: none;
+    border-radius: 0;
+    transition: none;
+}
+@mixin input-static() {
+    color: $font-base-color;
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: $gap-md;
+    height: auto;
+    box-shadow: none;
+    border-radius: $border-radius-base;
+    &:focus {
+        outline: 0;
+        border-color: $brand-primary;
+        box-shadow: none;
+    }
+    /**
+     * Javascript validation
+     */
+    &.parsley-error {
+        border-color: $brand-danger;
+        &::placeholder {
+            color: $brand-danger;
+        }
+    }
+}

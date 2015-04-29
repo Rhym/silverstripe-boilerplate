@@ -14,54 +14,17 @@ $radio-size: 20px;
     Inputs
 \*---------------------------------------------*/
 
-%form-control-static {
-    color: $font-base-color;
-    display: block;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    line-height: inherit;
-    background: transparent none;
-    border-width: 0;
-    box-shadow: none;
-    border-radius: 0;
-    transition: none;
-}
-%input-static {
-    color: $font-base-color;
-    display: block;
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: $gap-md;
-    height: auto;
-    box-shadow: none;
-    border-radius: $border-radius-base;
-    &:focus {
-        outline: 0;
-        border-color: $brand-primary;
-        box-shadow: none;
-    }
-    /**
-     * Javascript validation
-     */
-    &.parsley-error {
-        border-color: $brand-danger;
-        &::placeholder {
-            color: $brand-danger;
-        }
-    }
-}
 textarea {
     resize: vertical;
 }
 form {
     .field{
         &.form-control {
-            @extend %form-control-static;
+            @include form-control-static;
             .form-control {
                 &.text,
                 &.textarea {
-                    @extend %input-static;
+                    @include input-static;
                 }
                 &.input-sm {
                     padding: $gap-xs;
@@ -74,23 +37,23 @@ form {
             }
         }
         &.confirmedpassword {
-            @extend %form-control-static;
+            @include form-control-static;
             margin-bottom: 0;
             input.password{
-                @extend %input-static;
+                @include input-static;
                 margin-bottom: $gap-md;
             }
         }
         &.creditcard {
             input{
-                @extend %input-static;
+                @include input-static;
                 width: auto;
                 display: inline-block;
             }
         }
         &.phonenumber {
             input{
-                @extend %input-static;
+                @include input-static;
             }
         }
         &.file {
@@ -141,8 +104,10 @@ label {
 \*---------------------------------------------*/
 
 .message {
-    @extend %alert;
-    @extend %alert-info;
+    @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
+    a {
+        color: $alert-info-text
+    }
 }
 
 /*---------------------------------------------*\
@@ -175,15 +140,15 @@ label {
 #MemberLoginForm_LoginForm,
 #MemberLoginForm_LostPasswordForm {
     .text {
-        @extend %form-control-static;
+        @include form-control-static;
         input {
-            @extend %input-static;
+            @include input-static;
             margin-bottom: $gap-md;
         }
     }
     .action {
-        @extend .btn;
-        @extend .btn-primary;
+        @include btn-static;
+        @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
     }
 }
 

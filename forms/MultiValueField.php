@@ -28,6 +28,9 @@ class MultiValueField extends DBField implements CompositeDBField {
         return $this->value;
     }
 
+    /**
+     * @return mixed
+     */
     public function getValues() {
         return $this->getValue();
     }
@@ -150,9 +153,9 @@ class MultiValueField extends DBField implements CompositeDBField {
         if(isset($value)) {
             $out = '';
 
-            /*---------------------------------------------*\
-                Sizing
-            \*---------------------------------------------*/
+            /** -----------------------------------------
+             * Sizing
+            -------------------------------------------*/
 
             $out .= '@media (min-width: 768px){' . $value[0] . '{';
 
@@ -183,9 +186,9 @@ class MultiValueField extends DBField implements CompositeDBField {
 
             $out .= '}}';
 
-            /*---------------------------------------------*\
-                Colors / Background
-            \*---------------------------------------------*/
+            /** -----------------------------------------
+             * Colours / Background
+            -------------------------------------------*/
 
             if(isset($value[13]) || isset($value[14]) || isset($value[16]) || $backgroundImage->exists()) {
                 $out .= $value[0] . '{';
@@ -197,9 +200,9 @@ class MultiValueField extends DBField implements CompositeDBField {
                 $out .= '}';
             }
 
-            /*---------------------------------------------*\
-                Typography
-            \*---------------------------------------------*/
+            /** -----------------------------------------
+             * Typography
+            -------------------------------------------*/
 
             if(isset($value[15])) {
                 $out .= $value[0] . ' h2,' .

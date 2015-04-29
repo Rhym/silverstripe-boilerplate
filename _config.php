@@ -22,15 +22,10 @@ define('BOWER_COMPONENTS_DIR', 'components/public');
 
 define('MODULE_DIR', BOILERPLATE_MODULE.'/code/Modules');
 
-define('ANALYTICS_MODULE_DIR', MODULE_DIR.'/Analytics');
 define('BLOG_MODULE_DIR', MODULE_DIR.'/Blog');
 define('CONTACT_FORM_MODULE_DIR', MODULE_DIR.'/ContactForm');
-define('EVENTS_MODULE_DIR', MODULE_DIR.'/Events');
 define('FLASH_MESSAGE_MODULE_DIR', MODULE_DIR.'/FlashMessage');
 define('GALLERY_MODULE_DIR', MODULE_DIR.'/Gallery');
-define('GOOGLE_FONTS_MODULE_DIR', MODULE_DIR.'/GoogleFonts');
-define('NEWSLETTER_MODULE_DIR', MODULE_DIR.'/Newsletter');
-define('PAGE_ITEMS_MODULE_DIR', MODULE_DIR.'/PageItems');
 define('POPOUT_MENU_MODULE_DIR', MODULE_DIR.'/PopoutMenu');
 define('PORTFOLIO_MODULE_DIR', MODULE_DIR.'/Portfolio');
 define('REGISTRATION_MODULE_DIR', MODULE_DIR.'/Registration');

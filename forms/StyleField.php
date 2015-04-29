@@ -156,7 +156,9 @@ class StyleField extends FormField {
      */
     public function setValue($v) {
         if (is_array($v)) {
-            // we've been set directly via the post - lets prune any empty values
+            /**
+             * we've been set directly via the post - lets prune any empty values
+             */
             foreach ($v as $key => $val) {
                 if (!strlen($val)) {
                     unset($v[$key]);

@@ -29,17 +29,17 @@ class BoilerplateConfig extends DataExtension {
      */
     public function updateCMSFields(FieldList $fields) {
 
-        /* =========================================
+        /** =========================================
          * Settings
-         =========================================*/
+         ==========================================*/
 
         if (!$fields->fieldByName('Root.Settings')){
             $fields->addFieldToTab('Root', new TabSet('Settings'));
         }
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Images
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Images', 'Images');
         $fields->addFieldsToTab('Root.Settings.Images',
@@ -53,9 +53,9 @@ class BoilerplateConfig extends DataExtension {
         $mobileLogo->setRightTitle('(optional) Choose a Logo to Display in the Pop-out Menu');
         $favicon->setRightTitle('Choose an Image For Your Favicon (16x16)');
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Company Details
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Details', 'Details');
         $fields->addFieldsToTab('Root.Settings.Details',
@@ -72,9 +72,9 @@ class BoilerplateConfig extends DataExtension {
         );
         $address->setRows(8);
 
-        /* -----------------------------------------
+        /** -----------------------------------------
          * Analytics
-        ------------------------------------------*/
+        -------------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Analytics', 'Analytics');
         $fields->addFieldsToTab('Root.Settings.Analytics',

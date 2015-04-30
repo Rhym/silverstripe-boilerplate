@@ -2,23 +2,23 @@
 
 define('BOILERPLATE_MODULE', 'boilerplate');
 
-/* -----------------------------------------
+/** -----------------------------------------
  * CSS
-------------------------------------------*/
+-------------------------------------------*/
 
 define('CSS_DIR', BOILERPLATE_MODULE.'/css');
 
-/* -----------------------------------------
+/** -----------------------------------------
  * Javascript
-------------------------------------------*/
+-------------------------------------------*/
 
 define('JS_DIR', BOILERPLATE_MODULE.'/javascript');
 define('JS_LIB_DIR', JS_DIR.'/lib');
 define('BOWER_COMPONENTS_DIR', 'components/public');
 
-/* -----------------------------------------
+/** -----------------------------------------
  * Modules
-------------------------------------------*/
+-------------------------------------------*/
 
 define('MODULE_DIR', BOILERPLATE_MODULE.'/code/Modules');
 
@@ -38,9 +38,3 @@ define('SLIDER_MODULE_DIR', MODULE_DIR.'/Slider');
 if (basename(dirname(__FILE__)) != BOILERPLATE_MODULE) {
     throw new Exception(BOILERPLATE_MODULE . ' module not installed in correct directory');
 }
-
-//// TinyMCE plugin
-//HtmlEditorConfig::get('cms')->enablePlugins(array(
-//    'shortcodeGenerator' => Director::absoluteBaseURL().JS_DIR.'/shortcodeGenerator/editor_plugin.js'
-//));
-//HtmlEditorConfig::get('cms')->addButtonsToLine(1, 'shortcodeGenerator');

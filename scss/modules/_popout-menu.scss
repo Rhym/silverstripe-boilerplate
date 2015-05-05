@@ -2,130 +2,135 @@
     Popout Menu
 \*---------------------------------------------*/
 
-.menu-wrap {
-    position: absolute;
-    background: $popout-menu-background;
-    width: 100%;
-    z-index: 1001;
-    bottom: 0;
-    top: 0;
-    right: -100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: $gap-md 0;
-    transition: .2s ease right;
-    @media(min-width: $screen-sm-min) {
-        padding: $gap-lg 0;
-    }
-    .container {
-        position: relative;
-    }
-    .toggle-menu {
-        padding: 0;
-        border-width: 0;
+/**
+ * If there's a Popout Menu
+ */
+@if $has-popout-menu == true {
+    .menu-wrap {
         position: absolute;
+        background: $popout-menu-background;
+        width: 100%;
+        z-index: 1001;
+        bottom: 0;
         top: 0;
-        right: $gutter / 2;
-        font-size: ($popout-item-size / 2);
-        height: $popout-item-size;
-        width: $popout-item-size;
-        text-align: center;
-        line-height: $popout-item-size;
-        @include border-radius();
-        background: $popout-btn-background;
-        color: $popout-btn-color;
-    }
-    .logo {
-        width: 50%;
-        margin-bottom: $popout-item-size + $gap-md;
-        @include clearfix();
-        a {
-            display: block;
+        right: -100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: $gap-md 0;
+        transition: .2s ease right;
+        @media(min-width: $screen-sm-min) {
+            padding: $gap-lg 0;
         }
-    }
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        li{
-            margin: 0;
-            border-bottom: 1px solid shade($popout-menu-background, 5);
-            &.last {
-                border-width: 0;
-            }
-            a{
-                text-decoration: none;
-                color: $popout-menu-color;
-            }
+        .container {
+            position: relative;
         }
-    }
-    .parent {
-        padding-right: $popout-item-size;
-        position: relative;
-        > a{
-            min-height: $popout-item-size;
-            line-height: $popout-item-size;
-            display: block;
-        }
-        .open-children {
-            background: shade($popout-menu-background, 5);
-            cursor: pointer;
-            position: absolute;
-            right: 0;
-            top: 0;
-            display: block;
-            width: $popout-item-size;
-            height:$popout-item-size;
-            line-height: $popout-item-size;
-            text-align: center;
-            font-size: 1.3em;
-            color: $popout-menu-color;
-            i{
-                transition: .2s linear transform;
-            }
-            &.active {
-                i {
-                    transform: rotate(180deg);
-                }
-            }
-        }
-    }
-    .children {
-        height: 0;
-        overflow: hidden;
-        &.active {
-            height: auto;
-        }
-        li {
+        .toggle-menu {
+            padding: 0;
             border-width: 0;
+            position: absolute;
+            top: 0;
+            right: $gutter / 2;
+            font-size: ($popout-item-size / 2);
+            height: $popout-item-size;
+            width: $popout-item-size;
+            text-align: center;
+            line-height: $popout-item-size;
+            @include border-radius();
+            background: $popout-btn-background;
+            color: $popout-btn-color;
+        }
+        .logo {
+            width: 50%;
+            margin-bottom: $popout-item-size + $gap-md;
+            @include clearfix();
             a {
-                padding: 0.75em 0;
                 display: block;
             }
         }
-    }
-    .search {
-        margin-top: $gap-md;
-        padding-top: $gap-lg;
-        border-top: 1px solid shade($popout-menu-background, 5);
-        input[type="text"]{
-            @include input-static;
-            border-color: $popout-menu-color;
-            box-shadow: none;
-            &:focus{
-                border-color: $popout-menu-color;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                margin: 0;
+                border-bottom: 1px solid shade($popout-menu-background, 5);
+                &.last {
+                    border-width: 0;
+                }
+                a {
+                    text-decoration: none;
+                    color: $popout-menu-color;
+                }
             }
         }
-        input[type="submit"]{
-            display: none;
+        .parent {
+            padding-right: $popout-item-size;
+            position: relative;
+            > a {
+                min-height: $popout-item-size;
+                line-height: $popout-item-size;
+                display: block;
+            }
+            .open-children {
+                background: shade($popout-menu-background, 5);
+                cursor: pointer;
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: block;
+                width: $popout-item-size;
+                height: $popout-item-size;
+                line-height: $popout-item-size;
+                text-align: center;
+                font-size: 1.3em;
+                color: $popout-menu-color;
+                i {
+                    transition: .2s linear transform;
+                }
+                &.active {
+                    i {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+        .children {
+            height: 0;
+            overflow: hidden;
+            &.active {
+                height: auto;
+            }
+            li {
+                border-width: 0;
+                a {
+                    padding: 0.75em 0;
+                    display: block;
+                }
+            }
+        }
+        .search {
+            margin-top: $gap-md;
+            padding-top: $gap-lg;
+            border-top: 1px solid shade($popout-menu-background, 5);
+            input[type="text"] {
+                @include input-static;
+                border-color: $popout-menu-color;
+                box-shadow: none;
+                &:focus {
+                    border-color: $popout-menu-color;
+                }
+            }
+            input[type="submit"] {
+                display: none;
+            }
         }
     }
-}
-.show-menu {
-    .menu-wrap {
-        right: 0;
-    }
-    .content-wrap {
-        opacity: 0.3;
+    .show-menu {
+        .menu-wrap {
+            right: 0;
+        }
+        .content-wrap {
+            opacity: 0.3;
+        }
     }
 }

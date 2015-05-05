@@ -24,7 +24,7 @@
                                 <p class="meta"><%t BlogHolder.PostedOn "Posted on {Date} by {Author}" Date=$Date.Nice Author=$Author %></p><!-- /.meta -->
                                 <% end_if %>
                                 <p class="summary">$Content.LimitWordCountXML(40)</p><!-- /.summary -->
-                                <a href="$Link" class="btn btn-primary btn-sm" title="<%t BlogHolder.ReadMore "Read more on &quot;{MenuTitle}&quot;" Title=$Title %>">Read more</a>
+                                <a href="$Link" class="btn btn-primary btn-sm" title="<%t BlogHolder.ReadMore "Read more on &quot;{Title}&quot;" Title=$Title %>">Read more</a>
                             </div><!-- /.typography -->
                             <% end_cached %>
                         </article><!-- /.item -->

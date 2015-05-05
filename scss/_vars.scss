@@ -74,7 +74,7 @@ $sidebar-font-size: 14px !default;
     Colors - Buttons
 \*======================================================================*/
 
-$btn-default-color: $gray !default;
+$btn-default-color: $brand-default-color !default;
 $btn-default-bg: $brand-default !default;
 $btn-default-border: shade($btn-default-bg, 5) !default;
 

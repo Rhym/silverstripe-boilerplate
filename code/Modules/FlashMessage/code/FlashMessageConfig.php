@@ -22,7 +22,7 @@ class FlashMessageConfig extends DataExtension {
     public function getFlashMessage(){
         if($message = Session::get('FlashMessage')){
             Session::clear('FlashMessage');
-            $array = new ArrayData($message);
+            $array = ArrayData::create($message);
             return $array->renderWith('FlashMessage');
         }
         return false;

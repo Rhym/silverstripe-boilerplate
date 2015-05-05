@@ -29,15 +29,15 @@ class ColorField extends TextField {
 		$this->addExtraClass('color-picker');
 		$style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff'). '; color: ' . ($this->getTextColor()) . ';';
 		$attributes = array(
-			'type' => 'text',
-			'class' => 'text' . ($this->extraClass() ? $this->extraClass() : ''),
-			'id' => $this->id(),
-			'name' => $this->getName(),
-			'value' => $this->value,
-			'tabindex' => $this->getAttribute('tabindex'),
+			'type'      => 'text',
+			'class'     => 'text' . ($this->extraClass() ? $this->extraClass() : ''),
+			'id'        => $this->id(),
+			'name'      => $this->getName(),
+			'value'     => $this->value,
+			'tabindex'  => $this->getAttribute('tabindex'),
 			'maxlength' => ($this->maxLength) ? $this->maxLength : null,
-			'size' => ($this->maxLength) ? min( $this->maxLength, 30 ) : null,
-			'style' => $style
+			'size'      => ($this->maxLength) ? min( $this->maxLength, 30 ) : null,
+			'style'     => $style
 		);
 
 		if($this->disabled) $attributes['disabled'] = 'disabled';
@@ -59,6 +59,10 @@ class ColorField extends TextField {
 	}
 
     /**
+     * Set the colour to be white or black
+     * depending on the shade of the background
+     * colour of the Field.
+     *
      * @return string
      */
     protected function getTextColor(){

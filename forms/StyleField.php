@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class StyleField
+ */
 class StyleField extends FormField {
 
     protected $selector = '';

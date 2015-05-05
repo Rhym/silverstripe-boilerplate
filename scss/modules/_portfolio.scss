@@ -14,19 +14,21 @@
 .portfolio.section {
     @include margin-none();
     @include padding-none();
-    .item {
-        margin-bottom: $gap-md;
+    .caption-full,
+    .caption-right {
+        margin: $gap-md 0 0 0;
         @media (min-width: $screen-sm-min) {
-            margin-bottom: $gutter;
-            &.last {
-                margin-bottom: 0;
+            margin: 0;
+        }
+        p {
+            &:last-child {
+                margin: 0;
             }
         }
     }
-    .caption-right{
-        margin-top: $gap-md;
-        @media (min-width: $screen-sm-min) {
-            margin-top: 0;
+    .caption-full {
+        @media(min-width: $screen-sm-min) {
+            margin: $gap-md 0 0 0;
         }
     }
 }

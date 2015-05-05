@@ -23,25 +23,25 @@ class RegistrationForm extends Form {
          * Fields
         -------------------------------------------*/
 
-        $firstName = new TextField('FirstName');
+        $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
             ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
-        $email = new EmailField('Email');
+        $email = EmailField::create('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
             ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
-        $password = new PasswordField('Password');
+        $password = PasswordField::create('Password');
         $password->setAttribute('placeholder', 'Enter your password')
             ->addExtraClass('form-control')
             ->setCustomValidationMessage('Please enter your <strong>Password</strong>', 'validation')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Password</strong>');
 
-        $fields = new FieldList(
+        $fields = FieldList::create(
             $email,
             $password
         );
@@ -49,14 +49,14 @@ class RegistrationForm extends Form {
         /**
          * Actions
          */
-        $actions = new FieldList(
+        $actions = FieldList::create(
             FormAction::create('Register')->setTitle('Register')->addExtraClass('btn btn-primary')
         );
 
         /**
          * Validation
          */
-        $required = new RequiredFields(
+        $required = RequiredFields::create(
             'FirstName',
             'Email',
             'Password'
@@ -99,7 +99,7 @@ class RegistrationForm extends Form {
         /**
          * Otherwise create new member and log them in
          */
-        $Member = new Member();
+        $Member = Member::create();
         $form->saveInto($Member);
         $Member->write();
         $Member->login();
@@ -108,7 +108,7 @@ class RegistrationForm extends Form {
          * Find or create the 'user' group
          */
         if(!$userGroup = DataObject::get_one('Group', "Code = 'users'")) {
-            $userGroup = new Group();
+            $userGroup = Group::create();
             $userGroup->Code = 'users';
             $userGroup->Title = 'Users';
             $userGroup->Write();

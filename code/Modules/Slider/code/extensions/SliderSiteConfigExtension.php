@@ -23,14 +23,14 @@ class SliderSiteConfigExtension extends Extension {
     public function updateCMSFields(FieldList $fields) {
 
         if (!$fields->fieldByName('Root.Settings')){
-            $fields->addFieldToTab('Root', new TabSet('Settings'));
+            $fields->addFieldToTab('Root', TabSet::create('Settings'));
         }
 
         $fields->findOrMakeTab('Root.Settings.Slider', 'Slider');
         $fields->addFieldsToTab('Root.Settings.Slider',
             array(
-                $image = new UploadField('SliderImage'),
-                $defaultSliderHeight = new NumericField('DefaultSliderHeight', 'Default Height')
+                $image = UploadField::create('SliderImage'),
+                $defaultSliderHeight = NumericField::create('DefaultSliderHeight', 'Default Height')
             )
         );
         $image->setFolderName('Uploads/slider');

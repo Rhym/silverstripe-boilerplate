@@ -22,54 +22,54 @@ class ContactForm extends Form {
          * Scaffolding
         -------------------------------------------*/
 
-        $row = new LiteralField('', '<div class="row">');
-        $column = new LiteralField('', '<div class="col-xs-12 col-sm-6">');
-        $close = new LiteralField('', '</div>');
+        $row = LiteralField::create('', '<div class="row">');
+        $column = LiteralField::create('', '<div class="col-xs-12 col-sm-6">');
+        $close = LiteralField::create('', '</div>');
 
         /** -----------------------------------------
          * Fields
         -------------------------------------------*/
 
-        $firstName = new TextField('FirstName', 'First Name');
+        $firstName = TextField::create('FirstName', 'First Name');
         $firstName->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
-        $lastName = new TextField('LastName', 'Last Name');
+        $lastName = TextField::create('LastName', 'Last Name');
         $lastName->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Last Name</strong>');
 
-        $email = new EmailField('Email', 'Email Address');
+        $email = EmailField::create('Email', 'Email Address');
         $email->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
-        $phone = new TextField('Phone', 'Phone Number (optional)');
+        $phone = TextField::create('Phone', 'Phone Number (optional)');
         $phone->addExtraClass('form-control');
 
-        $suburb = new TextField('Suburb', 'Suburb');
+        $suburb = TextField::create('Suburb', 'Suburb');
         $suburb->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Suburb</strong>');
 
-        $city = new TextField('City', 'City');
+        $city = TextField::create('City', 'City');
         $city->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
             ->setCustomValidationMessage('Please enter your <strong>City</strong>');
 
-        $message = new TextareaField('Message', 'Message');
+        $message = TextareaField::create('Message', 'Message');
         $message->setAttribute('placeholder', 'Enter your message')
             ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Message</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Message</strong>');
 
-        $reCaptcha = new LiteralField('', '');
+        $reCaptcha = LiteralField::create('', '');
         if(isset($arguments['ReCaptchaSiteKey']) && isset($arguments['ReCaptchaSecretKey'])) {
-            $reCaptcha = new LiteralField('ReCaptcha', '<div class="recaptcha g-recaptcha" data-sitekey="'.$arguments['ReCaptchaSiteKey'].'"></div>');
+            $reCaptcha = LiteralField::create('ReCaptcha', '<div class="recaptcha g-recaptcha" data-sitekey="'.$arguments['ReCaptchaSiteKey'].'"></div>');
         }
 
-        $fields = new FieldList(
+        $fields = FieldList::create(
             $row,
             $column,
             $firstName,
@@ -101,21 +101,21 @@ class ContactForm extends Form {
         /**
          * Actions
          */
-        $actions = new FieldList(
+        $actions = FieldList::create(
             FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn btn-primary')
         );
 
         /**
          * Required
          */
-        $required = new RequiredFields(
+        $required = RequiredFields::create(
             'FirstName',
             'LastName',
             'Email',
             'Message'
         );
 
-        $form = new Form($this, $name, $fields, $actions, $required);
+        $form = Form::create($this, $name, $fields, $actions, $required);
         if($formData = Session::get('FormInfo.Form_'.$name.'.data')) {
             $form->loadDataFrom($formData);
         }
@@ -191,7 +191,7 @@ class ContactForm extends Form {
         $From = $data['Email'];
         $To = $this->controller->data()->MailTo;
         $Subject = SiteConfig::current_site_config()->Title.' - Contact message';
-        $email = new Email($From, $To, $Subject);
+        $email = Email::create($From, $To, $Subject);
         if($cc = $this->controller->data()->MailCC){
             $email->setCc($cc);
         }
@@ -211,7 +211,7 @@ class ContactForm extends Form {
         /**
          * Create Record
          */
-        $contactMessage = new ContactMessage();
+        $contactMessage = ContactMessage::create();
         $form->saveInto($contactMessage);
         $contactMessage->write();
 

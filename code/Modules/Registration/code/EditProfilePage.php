@@ -6,6 +6,7 @@
 class EditProfilePage extends Page {
 
     private static $icon = 'boilerplate/code/Modules/Registration/images/user--pencil.png';
+
     private static $description = 'Edit profile content page';
 
 }
@@ -24,7 +25,7 @@ class EditProfilePage_Controller extends Page_Controller {
         if(!Member::currentUser()) {
             return Security::PermissionFailure($this->controller, null);
         } else {
-            return new EditProfileForm($this, 'EditProfileForm');
+            return EditProfileForm::create($this, 'EditProfileForm');
         }
     }
 

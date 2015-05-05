@@ -35,21 +35,21 @@ class PortfolioPage extends Page {
         $fields->removeByName('Slider');
         $fields->removeByName('PageBuilder');
 
-        $fields->addFieldToTab('Root.Main', $subTitle = new TextField('SubTitle', 'Sub Title'), 'Content');
+        $fields->addFieldToTab('Root.Main', $subTitle = TextField::create('SubTitle', 'Sub Title'), 'Content');
         $subTitle->setRightTitle('Subtitles are displayed on PortfolioHolder pages under the title.');
 
         /** -----------------------------------------
          * Portfolio Images
         -------------------------------------------*/
 
-        $fields->addFieldToTab('Root.PortfolioImages', new HeaderField('', 'Portfolio Images'));
-        $fields->addFieldToTab('Root.PortfolioImages', new LiteralField('',
+        $fields->addFieldToTab('Root.PortfolioImages', HeaderField::create('', 'Portfolio Images'));
+        $fields->addFieldToTab('Root.PortfolioImages', LiteralField::create('',
             '<p>Portfolio Images are displayed under the page\'s content. Items can be full width, or have content displayed to the left or right hand side of the image.</p>'
         ));
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldSortableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
-        $gridField = new GridField(
+        $gridField = GridField::create(
             'PortfolioImages',
             'Images',
             $this->owner->PortfolioImages(),
@@ -107,7 +107,7 @@ class PortfolioPage extends Page {
             return false;
         }
         if($image = $page->FeaturedImage()) {
-            return new ArrayData(array(
+            return ArrayData::create(array(
                 'Link' => $page->Link(),
                 'MenuTitle' => $page->MenuTitle,
                 'Title' => $page->Title,

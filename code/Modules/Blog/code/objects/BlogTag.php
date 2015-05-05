@@ -31,7 +31,7 @@ class BlogTag extends DataObject{
      */
     public function getCMSFields() {
         $fields = FieldList::create(TabSet::create('Root'));
-        $fields->addFieldToTab('Root.Main', new TextField('Title'));
+        $fields->addFieldToTab('Root.Main', TextField::create('Title'));
         return $fields;
     }
 

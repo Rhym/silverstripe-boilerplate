@@ -6,22 +6,22 @@
 class BoilerplateConfig extends DataExtension {
 
     public static $db = array(
-		'Phone' => 'Varchar(255)',
-		'Email' => 'Varchar(255)',
-        'Address' => 'Text',
-        'TrackingCode' => 'Text',
-        'TagManager' => 'Boolean',
-        'GoogleSiteVerification' => 'Text',
-        'Facebook' => 'Varchar(255)',
-        'Twitter' => 'Varchar(255)',
-        'Youtube' => 'Varchar(255)',
-        'GooglePlus' => 'Varchar(255)'
+		'Phone'                     => 'Varchar(255)',
+		'Email'                     => 'Varchar(255)',
+        'Address'                   => 'Text',
+        'TrackingCode'              => 'Text',
+        'TagManager'                => 'Boolean',
+        'GoogleSiteVerification'    => 'Text',
+        'Facebook'                  => 'Varchar(255)',
+        'Twitter'                   => 'Varchar(255)',
+        'Youtube'                   => 'Varchar(255)',
+        'GooglePlus'                => 'Varchar(255)'
 	);
 
 	public static $has_one = array(
-		'LogoImage' => 'Image',
-		'MobileLogoImage' => 'Image',
-		'Favicon' => 'Image'
+		'LogoImage'         => 'Image',
+		'MobileLogoImage'   => 'Image',
+		'Favicon'           => 'Image'
 	);
 
     /**
@@ -34,7 +34,7 @@ class BoilerplateConfig extends DataExtension {
          ==========================================*/
 
         if (!$fields->fieldByName('Root.Settings')){
-            $fields->addFieldToTab('Root', new TabSet('Settings'));
+            $fields->addFieldToTab('Root', TabSet::create('Settings'));
         }
 
         /** -----------------------------------------
@@ -44,9 +44,9 @@ class BoilerplateConfig extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Images', 'Images');
         $fields->addFieldsToTab('Root.Settings.Images',
             array(
-                $logo = new UploadField('LogoImage', _t('BoilerplateConfig.LogoImageLabel', 'Logo')),
-                $mobileLogo = new UploadField('MobileLogoImage', _t('BoilerplateConfig.MobileLogoImageLabel', 'Mobile Menu Logo')),
-                $favicon = new UploadField('Favicon', _t('BoilerplateConfig.FaviconLabel', 'Favicon'))
+                $logo = UploadField::create('LogoImage', 'Logo'),
+                $mobileLogo = UploadField::create('MobileLogoImage', 'Mobile Menu Logo'),
+                $favicon = UploadField::create('Favicon', 'Favicon')
             )
         );
         $logo->setRightTitle('Choose an Image For Your Logo');
@@ -60,14 +60,14 @@ class BoilerplateConfig extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Details', 'Details');
         $fields->addFieldsToTab('Root.Settings.Details',
             array(
-                new Textfield('Phone', _t('BoilerplateConfig.PhoneLabel', 'Phone Number')),
-                new Textfield('Email', _t('BoilerplateConfig.EmailLabel', 'Public Email Address')),
-                $address = new TextareaField('Address', _t('BoilerplateConfig.AddressLabel', 'Address')),
-                new HeaderField('', 'Social Media'),
-                new TextField('Facebook'),
-                new TextField('Twitter'),
-                new TextField('Youtube'),
-                new TextField('GooglePlus', 'Google+'),
+                Textfield::create('Phone', 'Phone Number'),
+                Textfield::create('Email', 'Public Email Address'),
+                $address = TextareaField::create('Address', 'Address'),
+                HeaderField::create('', 'Social Media'),
+                TextField::create('Facebook'),
+                TextField::create('Twitter'),
+                TextField::create('Youtube'),
+                TextField::create('GooglePlus', 'Google+'),
             )
         );
         $address->setRows(8);
@@ -79,13 +79,16 @@ class BoilerplateConfig extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Analytics', 'Analytics');
         $fields->addFieldsToTab('Root.Settings.Analytics',
             array(
-                $googleSiteVerification = new TextareaField('GoogleSiteVerification', _t('BoilerplateConfig.GoogleSiteVerificationLabel', 'Google Site Verification Code')),
-                $trackingCode = new TextareaField('TrackingCode', _t('BoilerplateConfig.TrackingCodeLabel', 'Tracking Code')),
-                $tagManager = new CheckboxField('TagManager', 'Does the tracking code above contain Google Tag Manager?')
+                $googleSiteVerification = TextareaField::create('GoogleSiteVerification', 'Google Site Verification Code'),
+                $trackingCode = TextareaField::create('TrackingCode', 'Tracking Code'),
+                $tagManagerFieldGroup = FieldGroup::create(
+                    $tagManager = CheckboxField::create('TagManager', 'Does the tracking code above contain Google Tag Manager?')
+                )
             )
         );
         $googleSiteVerification->setRows(2);
         $trackingCode->setRows(20);
+        $tagManagerFieldGroup->setTitle('Tag Manager');
 
     }
 

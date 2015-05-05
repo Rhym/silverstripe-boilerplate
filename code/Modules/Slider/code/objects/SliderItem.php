@@ -6,15 +6,15 @@
 class SliderItem extends DataObject{
 
     private static $db = array (
-        'SortOrder' => 'Int',
-        'Caption' => 'HTMLText',
-        'ExternalLink' => 'Text'
+        'SortOrder'     => 'Int',
+        'Caption'       => 'HTMLText',
+        'ExternalLink'  => 'Text'
     );
 
     private static $has_one = array (
-        'Page' => 'Page',
-        'Image' => 'Image',
-        'InternalLink' => 'SiteTree'
+        'Page'          => 'Page',
+        'Image'         => 'Image',
+        'InternalLink'  => 'SiteTree'
     );
 
     private static $singular_name = 'Slide';
@@ -25,7 +25,7 @@ class SliderItem extends DataObject{
  	);
 
     public function getCMSValidator() {
-        return new RequiredFields(array(
+        return RequiredFields::create(array(
             'Image'
         ));
     }
@@ -49,17 +49,17 @@ class SliderItem extends DataObject{
     public function getCMSFields() {
         $fields = FieldList::create(TabSet::create('Root'));
 
-        $fields->addFieldToTab('Root.Main', new HeaderField('', 'Slide'));
-        $fields->addFieldToTab('Root.Main', $image = new UploadField('Image'));
+        $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Slide'));
+        $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/slider');
-        $fields->addFieldToTab('Root.Main', new LiteralField('',
+        $fields->addFieldToTab('Root.Main', LiteralField::create('',
             '<div class="message"><p><strong>Note:</strong> Captions and links are optional</p></div>'
         ));
-        $fields->addFieldToTab('Root.Main', $caption = new HtmlEditorField('Caption'));
+        $fields->addFieldToTab('Root.Main', $caption = HtmlEditorField::create('Caption'));
         $caption->setRows(15);
-        $fields->addFieldToTab('Root.Main', new HeaderField('', 'Link', 4));
-        $fields->addFieldToTab('Root.Main', new TreeDropdownField('InternalLinkID', 'Internal Link', 'SiteTree'));
-        $fields->addFieldToTab('Root.Main', $externalLink = new TextField('ExternalLink', 'External Link'));
+        $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Link', 4));
+        $fields->addFieldToTab('Root.Main', TreeDropdownField::create('InternalLinkID', 'Internal Link', 'SiteTree'));
+        $fields->addFieldToTab('Root.Main', $externalLink = TextField::create('ExternalLink', 'External Link'));
         $externalLink->setRightTitle('Must begin with "http://" this will override the Internal Link if set.');
 
         return $fields;

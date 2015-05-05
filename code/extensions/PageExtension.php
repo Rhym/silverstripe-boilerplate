@@ -6,8 +6,7 @@
 class PageExtension extends DataExtension {
 
     private static $db = array(
-        'HideSidebar' => 'Boolean(0)',
-        'HideDefaultSlider' => 'Boolean(0)'
+        'HideSidebar' => 'Boolean(0)'
     );
 
     /**
@@ -18,14 +17,10 @@ class PageExtension extends DataExtension {
         /**
          * Use FieldGroups to set left titles for the checkboxes.
          */
-        $fields->addFieldToTab('Root.Settings', $hideSidebar = new FieldGroup(
-            new CheckboxField('HideSidebar', 'Hide the sidebar from this page')
+        $fields->addFieldToTab('Root.Settings', $hideSidebar = FieldGroup::create(
+            CheckboxField::create('HideSidebar', 'Hide the sidebar from this page')
         ));
         $hideSidebar->setTitle('Sidebar');
-        $fields->addFieldToTab('Root.Settings', $hideDefaultSlider = new FieldGroup(
-            new CheckboxField('HideDefaultSlider', 'Hide the slider from this page')
-        ));
-        $hideDefaultSlider->setTitle('Slider');
         return $fields;
     }
 

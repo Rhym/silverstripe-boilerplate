@@ -23,7 +23,7 @@ class BlogConfig extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Comments', 'Comments');
         $fields->addFieldsToTab('Root.Settings.Comments',
             array(
-                $disqusForumShortName = new TextField('DisqusForumShortName', 'Disqus forum shortname')
+                $disqusForumShortName = TextField::create('DisqusForumShortName', 'Disqus forum shortname')
             )
         );
         if(!SiteConfig::current_site_config()->DisqusForumShortName){

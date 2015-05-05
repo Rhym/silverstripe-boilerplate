@@ -133,7 +133,7 @@ class MultiValueField extends DBField implements CompositeDBField {
     }
 
     public function scaffoldFormField($title = null) {
-        return new StyleField($this->name, $title);
+        return StyleField::create($this->name, $title);
     }
 
     /**
@@ -237,7 +237,7 @@ class MultiValueField extends DBField implements CompositeDBField {
                 $v = new Varchar('Value');
                 $v->setValue($item);
 
-                $obj = new ArrayData(array(
+                $obj = ArrayData::create(array(
                     'Value' => $v,
                     'Key'	=> $key,
                     'Title' => $item
@@ -246,6 +246,6 @@ class MultiValueField extends DBField implements CompositeDBField {
             }
         }
 
-        return new ArrayList($items);
+        return ArrayList::create($items);
     }
 }

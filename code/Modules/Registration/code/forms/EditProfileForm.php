@@ -23,45 +23,45 @@ class EditProfileForm extends Form {
          * Fields
         -------------------------------------------*/
 
-        $firstName = new TextField('FirstName');
+        $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
             ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
-        $surname = new TextField('Surname');
+        $surname = TextField::create('Surname');
         $surname->setAttribute('placeholder', 'Enter your surname')
             ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Surname</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Surname</strong>');
 
-        $email = new EmailField('Email');
+        $email = EmailField::create('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
             ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
-        $jobTitle = new TextField('JobTitle');
+        $jobTitle = TextField::create('JobTitle');
         $jobTitle->setAttribute('placeholder', 'Enter your job title')
             ->addExtraClass('form-control');
 
-        $website = new TextField('Website');
+        $website = TextField::create('Website');
         $website->setAttribute('placeholder', 'Enter your website')
             ->addExtraClass('form-control');
 
-        $blurb = new TextareaField('Blurb');
+        $blurb = TextareaField::create('Blurb');
         $blurb->setAttribute('placeholder', 'Enter your blurb')
             ->addExtraClass('form-control');
 
-        $confirmPassword = new ConfirmedPasswordField('Password', 'New Password');
+        $confirmPassword = ConfirmedPasswordField::create('Password', 'New Password');
         $confirmPassword->canBeEmpty = true;
         $confirmPassword->setAttribute('placeholder', 'Enter your password')
             ->addExtraClass('form-control');
 
-        $passwordToggle = new LiteralField('', '<p><button class="btn btn-default btn-link" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
-        $passwordToggleClose = new LiteralField('', '</div>');
+        $passwordToggle = LiteralField::create('', '<p><button class="btn btn-default btn-link" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
+        $passwordToggleClose = LiteralField::create('', '</div>');
 
-        $fields = new FieldList(
+        $fields = FieldList::create(
             $firstName,
             $surname,
             $email,
@@ -76,14 +76,14 @@ class EditProfileForm extends Form {
         /**
          * Actions
          */
-        $actions = new FieldList(
+        $actions = FieldList::create(
             FormAction::create('Save')->setTitle('Update Profile')->addExtraClass('btn btn-primary')
         );
 
         /**
          * Validation
          */
-        $required = new RequiredFields(
+        $required = RequiredFields::create(
             'FirstName',
             'Surname',
             'Email'
@@ -92,7 +92,7 @@ class EditProfileForm extends Form {
         /**
          * Create form
          */
-        $form = new Form($this, $name, $fields, $actions, $required);
+        $form = Form::create($this, $name, $fields, $actions, $required);
 
         /**
          * Populate the form with the current members data

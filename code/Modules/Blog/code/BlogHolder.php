@@ -25,11 +25,11 @@ class BlogHolder extends Page {
          * Blog Sidebar
         -------------------------------------------*/
 
-        $fields->addFieldToTab('Root.BlogSidebar', new HeaderField('', 'Sidebar'));
-        $fields->addFieldToTab('Root.BlogSidebar', new LiteralField('',
+        $fields->addFieldToTab('Root.BlogSidebar', HeaderField::create('', 'Sidebar'));
+        $fields->addFieldToTab('Root.BlogSidebar', LiteralField::create('',
             '<p>The content for the sidebar will be displayed in the left-hand side of this page.</p>'
         ));
-        $fields->addFieldToTab('Root.BlogSidebar', $blogSidebarContent = new HtmlEditorField('BlogSidebarContent', 'Content (optional)'));
+        $fields->addFieldToTab('Root.BlogSidebar', $blogSidebarContent = HtmlEditorField::create('BlogSidebarContent', 'Content (optional)'));
         $blogSidebarContent->setRows(10);
 
         return $fields;
@@ -45,7 +45,7 @@ class BlogHolder extends Page {
          * Protect against "Division by 0" error
          */
         if($this->Items == null || $this->Items == 0) $this->Items = 10;
-        $pagination = new PaginatedList($this->AllChildren(), Controller::curr()->request);
+        $pagination = PaginatedList::create($this->AllChildren(), Controller::curr()->request);
         $pagination->setPageLength($this->Items);
         return $pagination;
     }

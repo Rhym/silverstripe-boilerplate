@@ -6,13 +6,13 @@
 class PortfolioImage extends DataObject{
 
     private static $db = array (
-        'SortOrder' => 'Int',
-        'ContentPosition' => 'Enum(array("Left", "Right"))',
-        'Content' => 'HTMLText'
+        'SortOrder'         => 'Int',
+        'ContentPosition'   => 'Enum(array("Full Width", "Left", "Right"))',
+        'Content'           => 'HTMLText'
     );
 
     private static $has_one = array (
-        'Page' => 'Page',
+        'Page'  => 'Page',
         'Image' => 'Image'
     );
 
@@ -20,13 +20,13 @@ class PortfolioImage extends DataObject{
     private static $plural_name = 'Items';
 
     public static $summary_fields = array(
-        'Thumbnail' => 'Thumbnail',
-        'ContentPosition' => 'Content Position',
-        'ContentSummary' => 'Content'
+        'Thumbnail'         => 'Thumbnail',
+        'ContentPosition'   => 'Content Position',
+        'ContentSummary'    => 'Content'
     );
 
     private static $defaults = array(
-        'TextPosition' => 'Left'
+        'ContentPosition' => 'Full Width'
     );
 
     private static $default_sort = 'SortOrder';
@@ -36,7 +36,7 @@ class PortfolioImage extends DataObject{
      */
     public function getCMSValidator() {
         return new RequiredFields(array(
-            'TextPosition',
+            'ContentPosition',
             'Image'
         ));
     }
@@ -70,12 +70,12 @@ class PortfolioImage extends DataObject{
     public function getCMSFields() {
         $fields = FieldList::create(TabSet::create('Root'));
 
-        $fields->addFieldToTab('Root.Main', new HeaderField('', 'Image'));
-        $fields->addFieldToTab('Root.Main', $image = new UploadField('Image'));
+        $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Image'));
+        $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/portfolio');
-        $fields->addFieldToTab('Root.Main', $contentPosition = new OptionsetField('ContentPosition', 'Content Position', $this->dbObject('ContentPosition')->enumValues()));
+        $fields->addFieldToTab('Root.Main', $contentPosition = OptionsetField::create('ContentPosition', 'Content Position', $this->dbObject('ContentPosition')->enumValues()));
         $contentPosition->setRightTitle('Display the content on the left or right hand side.');
-        $fields->addFieldToTab('Root.Main', $content = new HtmlEditorField('Content'));
+        $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'));
         $content->setRows(5);
 
         return $fields;

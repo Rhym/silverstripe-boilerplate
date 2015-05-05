@@ -22,30 +22,30 @@ class SubscriptionForm extends Form {
          * Fields
         -------------------------------------------*/
 
-        $email = new EmailField('Email', 'Email Address');
+        $email = EmailField::create('Email', 'Email Address');
         $email->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
-        $fields = new FieldList(
+        $fields = FieldList::create(
             $email
         );
 
         /**
          * Actions
          */
-        $actions = new FieldList(
+        $actions = FieldList::create(
             FormAction::create('Subscribe')->setTitle('Subscribe')->addExtraClass('btn btn-primary')
         );
 
         /**
          * Required
          */
-        $required = new RequiredFields(
+        $required = RequiredFields::create(
             'Email'
         );
 
-        $form = new Form($this, $name, $fields, $actions, $required);
+        $form = Form::create($this, $name, $fields, $actions, $required);
         if($formData = Session::get('FormInfo.Form_'.$name.'.data')) {
             $form->loadDataFrom($formData);
         }

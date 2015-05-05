@@ -8,8 +8,8 @@ class BlogPage extends Page {
     private static $icon = 'boilerplate/code/Modules/Blog/images/blog.png';
 
     private static $db = array(
-        'Date' => 'Date',
-        'Author' => 'Text'
+        'Date'      => 'Date',
+        'Author'    => 'Text'
     );
 
     private static $has_one = array(
@@ -46,13 +46,13 @@ class BlogPage extends Page {
         $fields->removeByName('Slider');
         $fields->removeByName('PageBuilder');
 
-        $fields->addFieldToTab('Root.Main', $blogImage = new UploadField('Image', 'Image'), 'Content');
+        $fields->addFieldToTab('Root.Main', $blogImage = UploadField::create('Image', 'Image'), 'Content');
         $blogImage->setRightTitle('Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.');
         $blogImage->setFolderName('Uploads/blog');
-        $fields->addFieldToTab('Root.Main', $dateField = new DateField('Date', 'Article Date (optional)'), 'Content');
+        $fields->addFieldToTab('Root.Main', $dateField = DateField::create('Date', 'Article Date (optional)'), 'Content');
         $dateField->setConfig('showcalendar', true);
         $fields->addFieldToTab('Root.Main', $dateField, 'Content');
-        $fields->addFieldToTab('Root.Main', new TextField('Author', 'Author (optional)'), 'Content');
+        $fields->addFieldToTab('Root.Main', TextField::create('Author', 'Author (optional)'), 'Content');
 
         /** =========================================
          * Tags - Disabled by default
@@ -61,7 +61,7 @@ class BlogPage extends Page {
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldSortableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
-        $gridField = new GridField(
+        $gridField = GridField::create(
             'Tags',
             'Tags',
             $this->Tags(),
@@ -121,7 +121,7 @@ class BlogPage extends Page {
             return false;
         }
         if($image = $page->FeaturedImage()) {
-            return new ArrayData(array(
+            return ArrayData::create(array(
                 'Link' => $page->Link(),
                 'MenuTitle' => $page->MenuTitle,
                 'Title' => $page->Title,

@@ -6,9 +6,9 @@
 class SubscriptionConfig extends DataExtension {
 
     public static $db = array(
-        'MailChimpAPI' => 'Varchar(255)',
-        'MailChimpListID' => 'Varchar(255)',
-        'MailChimpSuccessMessage' => 'Text'
+        'MailChimpAPI'              => 'Varchar(255)',
+        'MailChimpListID'           => 'Varchar(255)',
+        'MailChimpSuccessMessage'   => 'Text'
     );
 
     public static $defaults = array(
@@ -27,13 +27,13 @@ class SubscriptionConfig extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Subscription', 'Subscription');
         $fields->addFieldsToTab('Root.Settings.Subscription',
             array(
-                new HeaderField('', 'Newsletter Subscription'),
-                new LiteralField('',
+                HeaderField::create('', 'Newsletter Subscription'),
+                LiteralField::create('',
                     '<p>The API key, and list ID are necessary for the Newsletter Subscription form to function.</p>'
                 ),
-                $mailChimpAPI = new TextField('MailChimpAPI', 'API Key'),
-                new TextField('MailChimpListID', 'List ID'),
-                $mailChimpSuccessMessage = new TextareaField('MailChimpSuccessMessage', 'Success Message (optional)')
+                $mailChimpAPI = TextField::create('MailChimpAPI', 'API Key'),
+                TextField::create('MailChimpListID', 'List ID'),
+                $mailChimpSuccessMessage = TextareaField::create('MailChimpSuccessMessage', 'Success Message (optional)')
             )
         );
         $mailChimpAPI->setRightTitle('<a href="https://us9.admin.mailchimp.com/account/api-key-popup/" target="_blank"><i>How do I get my MailChimp API Key?</i></a>');

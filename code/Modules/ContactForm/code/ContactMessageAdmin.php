@@ -17,8 +17,8 @@ class ContactMessageAdmin extends ModelAdmin {
     private static $menu_title = 'Messages';
 
     private static $url_handlers = array(
-        '$ModelClass/$Action' => 'handleAction',
-        '$ModelClass/$Action/$ID' => 'handleAction',
+        '$ModelClass/$Action'       => 'handleAction',
+        '$ModelClass/$Action/$ID'   => 'handleAction',
     );
 
     /**

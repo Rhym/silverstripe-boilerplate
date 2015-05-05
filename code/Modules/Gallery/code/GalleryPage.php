@@ -28,11 +28,11 @@ class GalleryPage extends Page {
          * Gallery Images
         -------------------------------------------*/
 
-        $fields->addFieldToTab('Root.Gallery', new HeaderField('', 'Gallery'));
-        $fields->addFieldToTab('Root.Gallery', new LiteralField('',
+        $fields->addFieldToTab('Root.Gallery', HeaderField::create('', 'Gallery'));
+        $fields->addFieldToTab('Root.Gallery', LiteralField::create('',
             '<p>Images below are displayed in a carousel above the content. All images are rescaled to 1140px by 640px.</p>'
         ));
-        $fields->addFieldToTab('Root.Gallery', $images = new UploadField('Images', 'Images', $this->owner->Images()));
+        $fields->addFieldToTab('Root.Gallery', $images = UploadField::create('Images', 'Images', $this->owner->Images()));
         $images->setFolderName('Uploads/gallery');
 
         return $fields;
@@ -48,7 +48,7 @@ class GalleryPage extends Page {
          */
         if($this->Items == null || $this->Items == 0) $this->Items = 10;
 
-        $pagination = new PaginatedList($this->Images(), Controller::curr()->request);
+        $pagination = PaginatedList::create($this->Images(), Controller::curr()->request);
         $pagination->setPageLength($this->Items);
         return $pagination;
     }

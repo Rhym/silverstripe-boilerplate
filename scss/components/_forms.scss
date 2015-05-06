@@ -196,9 +196,10 @@ label {
 
 .parsley-errors-list {
     padding: 0;
-    margin: 0;
+    margin: $gap-sm 0 0 0;
     li {
         @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
+        margin: 0;
         a {
             color: $alert-danger-text
         }

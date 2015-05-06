@@ -1,15 +1,13 @@
 <div class="container">
-    <form $FormAttributes role="form">
+    <h4 class="heading"><% sprintf(_t('SearchForm.SearchHeading',"Search %s"), $SiteConfig.Title) %></h4><!-- /.heading -->
+    <form $FormAttributes role="form" class="form">
         <fieldset>
-            <div class="well">
-                <h4 class="heading"><% sprintf(_t('SearchForm.SearchHeading',"Search %s"), $SiteConfig.Title) %></h4><!-- /.heading -->
-                <div class="form-group">
-                    <input type="text" name="Search" placeholder="<% _t('SearchForm.SearchPlaceholder', 'Enter your search keywords...') %>" class="form-control" value="{$Query.XML}" id="SearchForm_SearchForm_Search">
-                </div><!-- /.form-group -->
-                <div class="form-group">
-                    <input type="submit" name="action_results" value="Search" class="action btn btn-primary" id="SearchForm_SearchForm_action_results">
-                </div><!-- /.form-group -->
-            </div><!-- /.well -->
+            <div class="field text">
+                <div class="middleColumn">
+                    <input type="text" name="Search" placeholder="<% _t('SearchForm.SearchPlaceholder', 'Enter your search keywords...') %>" class="text" value="{$Query.XML}" id="SearchForm_SearchForm_Search">
+                </div>
+            </div><!-- /.field text -->
+            <input type="submit" name="action_results" value="Search" class="action btn btn-primary" id="SearchForm_SearchForm_action_results">
         </fieldset>
     </form><!-- /[role="form"] -->
     <section class="search-results">
@@ -34,7 +32,7 @@
                         <% if $Content %>
                         <p>{$Content.LimitWordCountXML}</p>
                         <% end_if %>
-                        <a class="readMoreLink" href="{$Link}"><%t PageResults.ReadMoreText 'Read more about "{Title}"' Title=$Title %></a>
+                        <p><a class="readMoreLink" href="{$Link}"><%t PageResults.ReadMoreText 'Read more about "{Title}"' Title=$Title %></a></p>
                     </div><!-- /.well -->
                 <% end_loop %>
             </div><!-- /.results-loop -->

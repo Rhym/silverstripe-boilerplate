@@ -27,6 +27,7 @@
         .toggle-menu {
             padding: 0;
             border-width: 0;
+            border-radius: $border-radius-small;
             position: absolute;
             top: 0;
             right: $gutter / 2;
@@ -35,14 +36,13 @@
             width: $popout-item-size;
             text-align: center;
             line-height: $popout-item-size;
-            @include border-radius();
             background: $popout-btn-background;
             color: $popout-btn-color;
         }
         .logo {
             width: 50%;
             margin-bottom: $popout-item-size + $gap-md;
-            @include clearfix();
+            @include clearfix;
             a {
                 display: block;
             }

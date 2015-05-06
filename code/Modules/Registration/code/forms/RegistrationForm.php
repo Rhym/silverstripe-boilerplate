@@ -25,19 +25,16 @@ class RegistrationForm extends Form {
 
         $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
-            ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $email = EmailField::create('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
-            ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
         $password = PasswordField::create('Password');
         $password->setAttribute('placeholder', 'Enter your password')
-            ->addExtraClass('form-control')
             ->setCustomValidationMessage('Please enter your <strong>Password</strong>', 'validation')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Password</strong>');
 

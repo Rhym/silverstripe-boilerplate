@@ -1,0 +1,38 @@
+/** -----------------------------------------
+ * Buttons
+ -------------------------------------------*/
+
+$btn-font-weight:           normal !default;
+$btn-link-disabled-color:   $gray-light !default;
+
+$btn-default-color:     $brand-default-color !default;
+$btn-default-bg:        $brand-default !default;
+$btn-default-border:    shade($btn-default-bg, 5) !default;
+
+$btn-primary-color:     $brand-primary-color !default;
+$btn-primary-bg:        $brand-primary !default;
+$btn-primary-border:    shade($btn-primary-bg, 5) !default;
+
+$btn-secondary-color:   $brand-secondary-color !default;
+$btn-secondary-bg:      $brand-secondary !default;
+$btn-secondary-border:  shade($btn-secondary-bg, 5) !default;
+
+$btn-inverse-color:     $brand-inverse-color !default;
+$btn-inverse-bg:        $brand-inverse !default;
+$btn-inverse-border:    shade($btn-inverse-bg, 5) !default;
+
+$btn-success-color:     $brand-success-color !default;
+$btn-success-bg:        $brand-success !default;
+$btn-success-border:    darken($btn-success-bg, 5%) !default;
+
+$btn-info-color:        $brand-info-color !default;
+$btn-info-bg:           $brand-info !default;
+$btn-info-border:       darken($btn-info-bg, 5%) !default;
+
+$btn-warning-color:     $brand-warning-color !default;
+$btn-warning-bg:        $brand-warning !default;
+$btn-warning-border:    darken($btn-warning-bg, 5%) !default;
+
+$btn-danger-color:      $brand-danger-color !default;
+$btn-danger-bg:         $brand-danger !default;
+$btn-danger-border:     darken($btn-danger-bg, 5%) !default;

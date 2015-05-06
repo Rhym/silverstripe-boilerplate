@@ -10,7 +10,6 @@
         color: shade($color, 10);
     }
 }
-
 @mixin button-bordered($color) {
     border-color: $color;
     color: $color;

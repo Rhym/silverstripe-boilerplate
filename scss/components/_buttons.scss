@@ -3,10 +3,11 @@
 \*---------------------------------------------*/
 
 @mixin btn-static() {
+    display: inline-block;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-radius: 2px;
-    padding: 0.75em 1em;
+    border-radius: $border-radius-small;
+    padding: $padding-base-vertical $padding-base-horizontal;
     white-space: normal;
     border-width: 0;
     &:focus,
@@ -29,6 +30,15 @@
 }
 .btn-inverse {
     @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
+}
+
+/*---------------------------------------------*\
+    Full Width
+\*---------------------------------------------*/
+
+.btn-block {
+    display: block;
+    width: 100%;
 }
 
 /*---------------------------------------------*\

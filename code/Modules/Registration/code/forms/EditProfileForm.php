@@ -25,38 +25,31 @@ class EditProfileForm extends Form {
 
         $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
-            ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $surname = TextField::create('Surname');
         $surname->setAttribute('placeholder', 'Enter your surname')
-            ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Surname</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Surname</strong>');
 
         $email = EmailField::create('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
-            ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
         $jobTitle = TextField::create('JobTitle');
-        $jobTitle->setAttribute('placeholder', 'Enter your job title')
-            ->addExtraClass('form-control');
+        $jobTitle->setAttribute('placeholder', 'Enter your job title');
 
         $website = TextField::create('Website');
-        $website->setAttribute('placeholder', 'Enter your website')
-            ->addExtraClass('form-control');
+        $website->setAttribute('placeholder', 'Enter your website');
 
         $blurb = TextareaField::create('Blurb');
-        $blurb->setAttribute('placeholder', 'Enter your blurb')
-            ->addExtraClass('form-control');
+        $blurb->setAttribute('placeholder', 'Enter your blurb');
 
         $confirmPassword = ConfirmedPasswordField::create('Password', 'New Password');
         $confirmPassword->canBeEmpty = true;
-        $confirmPassword->setAttribute('placeholder', 'Enter your password')
-            ->addExtraClass('form-control');
+        $confirmPassword->setAttribute('placeholder', 'Enter your password');
 
         $passwordToggle = LiteralField::create('', '<p><button class="btn btn-default btn-link" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
         $passwordToggleClose = LiteralField::create('', '</div>');

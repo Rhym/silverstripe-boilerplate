@@ -1,0 +1,21 @@
+/** -----------------------------------------
+ * Sizing
+ -------------------------------------------*/
+
+$gutter:                    30px !default;
+
+$gap-base:                  $gutter;
+$gap-xl:                    floor($gap-base * 2) !default;
+$gap-lg:                    $gap-base !default;
+$gap-md:                    floor($gap-base / 2) !default;
+$gap-sm:                    floor($gap-base / 4) !default;
+$gap-xs:                    floor($gap-base / 8) !default;
+
+$padding-base-vertical:     floor($gap-md * 0.75) !default;
+$padding-base-horizontal:   $gap-md !default;
+$padding-large-vertical:    $gap-sm !default;
+$padding-large-horizontal:  $gap-md !default;
+$padding-small-vertical:    $gap-xs !default;
+$padding-small-horizontal:  $gap-sm !default;
+$padding-xs-vertical:       1px !default;
+$padding-xs-horizontal:     $gap-xs !default;

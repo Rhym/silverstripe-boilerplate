@@ -1,0 +1,20 @@
+/** -----------------------------------------
+ * Modal
+ -------------------------------------------*/
+
+$zindex-modal-background:               1040 !default;
+$zindex-modal:                          1050 !default;
+
+$modal-inner-padding:                   $gap-md !default;
+$modal-title-padding:                   $gap-md !default;
+$modal-title-line-height:               $line-height-base !default;
+$modal-content-bg:                      $brand-default !default;
+$modal-content-border-color:            $brand-default-darker !default;
+$modal-content-fallback-border-color:   $brand-default-darker !default;
+$modal-backdrop-bg:                     $brand-primary !default;
+$modal-backdrop-opacity:                .5 !default;
+$modal-header-border-color:             $brand-default-darker !default;
+$modal-footer-border-color:             $modal-header-border-color !default;
+$modal-lg:                              $container-lg !default;
+$modal-md:                              $container-md !default;
+$modal-sm:                              $container-sm !default;

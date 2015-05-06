@@ -4,96 +4,131 @@
 ======================================================================
 */
 
-$radio-size: 20px;
-
 .form {
     @include margin-default();
 }
 
-/*---------------------------------------------*\
-    Inputs
-\*---------------------------------------------*/
+/** -----------------------------------------
+ * Fieldset
+ -------------------------------------------*/
 
-textarea {
-    resize: vertical;
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    min-width: 0;
 }
-form {
-    .field{
-        &.form-control {
-            @include form-control-static;
-            .form-control {
-                &.text,
-                &.textarea {
-                    @include input-static;
-                }
-                &.input-sm {
-                    padding: $gap-xs;
-                }
-                &.readonly {
-                    border-width: 0;
+
+/** -----------------------------------------
+ * Label
+ -------------------------------------------*/
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin: 0 0 $gap-xs 0;
+}
+
+/** =========================================
+ * Fields
+ ===========================================*/
+
+@mixin form-control() {
+    display: block;
+    width: 100%;
+    height: ($line-height-computed + ($padding-base-vertical * 2) + 2px);
+    padding: $padding-base-vertical $padding-base-horizontal;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $brand-default-color;
+    background-color: $brand-default;
+    background-image: none;
+    border: 1px solid $brand-default-darker;
+    border-radius: $border-radius-small;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+        background-color: $brand-default-dark;
+        opacity: 1;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+        cursor: $cursor-disabled;
+    }
+}
+
+.form {
+    .field {
+        margin: 0 0 $gap-md 0;
+        .text,
+        .textarea,
+        .dropdown {
+            @include form-control;
+        }
+        .textarea {
+            height: auto;
+        }
+    }
+}
+
+.form {
+    .field {
+        &.confirmedpassword {
+            > .middleColumn {
+                > .field {
                     height: auto;
                     padding: 0;
+                    border-width: 0;
                 }
             }
         }
-        &.confirmedpassword {
-            @include form-control-static;
-            margin-bottom: 0;
-            input.password{
-                @include input-static;
-                margin-bottom: $gap-md;
-            }
-        }
-        &.creditcard {
-            input{
-                @include input-static;
-                width: auto;
-                display: inline-block;
-            }
-        }
-        &.phonenumber {
-            input{
-                @include input-static;
-            }
-        }
-        &.file {
-            input {
-                border-width: 0;
+    }
+}
+
+/** -----------------------------------------
+ * Radio / Checkbox
+ -------------------------------------------*/
+
+.form {
+    .field {
+        &.radio,
+        &.checkbox {
+            position: relative;
+            display: block;
+            ul {
+                margin: 0;
                 padding: 0;
-                height: auto;
-                box-shadow: none;
-                &:focus {
-                    outline: 0;
+                li {
+                    margin: 0;
+                    display: block;
+                }
+            }
+            &.disabled,
+            fieldset[disabled] & {
+                label {
+                    cursor: $cursor-disabled;
+                }
+            }
+            label {
+                font-weight: normal;
+                cursor: pointer;
+            }
+            input[type="radio"],
+            input[type="checkbox"] {
+                &[disabled],
+                &.disabled,
+                fieldset[disabled] & {
+                    cursor: $cursor-disabled;
                 }
             }
         }
     }
-    input:focus, textarea:focus, .form-control:focus {
-        box-shadow: none;
-    }
-    .form-control {
-        margin-bottom: $gap-md;
-    }
-    .holder-required {
-        input, input:focus, textarea, textarea:focus {
-            border-color: $btn-danger-border;
-        }
-    }
 }
-fieldset {
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-}
-label {
-    font-weight: normal;
-}
-.checkbox input[type=checkbox],
-.checkbox-inline input[type=checkbox],
-.radio input[type=radio],
-.radio-inline input[type=radio] {
-    margin-left: 0;
-}
+
+/** -----------------------------------------
+ * ReCaptcha
+ -------------------------------------------*/
 
 .recaptcha {
     @include margin-default();
@@ -114,14 +149,18 @@ label {
     Search
 \*---------------------------------------------*/
 
-#SearchForm_SearchForm {
-    .form-group {
-        margin: 0;
-    }
-    .modal-footer {
-        margin: 0;
-    }
-}
+//#SearchForm_SearchForm {
+//    .form-group {
+//        margin: 0;
+//    }
+//    .modal-footer {
+//        margin: 0;
+//    }
+//}
+
+/** =========================================
+ * Silverstripe Forms
+ ===========================================*/
 
 /*---------------------------------------------*\
     Forgot Password
@@ -129,7 +168,7 @@ label {
 
 #MemberLoginForm_LoginForm {
     #ForgotPassword {
-        margin-top: $gap-sm
+        margin: $gap-sm 0 0 0;
     }
 }
 
@@ -139,11 +178,10 @@ label {
 
 #MemberLoginForm_LoginForm,
 #MemberLoginForm_LostPasswordForm {
-    .text {
-        @include form-control-static;
-        input {
-            @include input-static;
-            margin-bottom: $gap-md;
+    .field {
+        margin: 0 0 $gap-md 0;
+        .text{
+            @include form-control;
         }
     }
     .action {

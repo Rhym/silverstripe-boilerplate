@@ -31,36 +31,30 @@ class ContactForm extends Form {
         -------------------------------------------*/
 
         $firstName = TextField::create('FirstName', 'First Name');
-        $firstName->addExtraClass('form-control')
-            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
+        $firstName->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $lastName = TextField::create('LastName', 'Last Name');
-        $lastName->addExtraClass('form-control')
-            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
+        $lastName->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Last Name</strong>');
 
         $email = EmailField::create('Email', 'Email Address');
-        $email->addExtraClass('form-control')
-            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
+        $email->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
         $phone = TextField::create('Phone', 'Phone Number (optional)');
         $phone->addExtraClass('form-control');
 
         $suburb = TextField::create('Suburb', 'Suburb');
-        $suburb->addExtraClass('form-control')
-            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
+        $suburb->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Suburb</strong>');
 
         $city = TextField::create('City', 'City');
-        $city->addExtraClass('form-control')
-            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
+        $city->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
             ->setCustomValidationMessage('Please enter your <strong>City</strong>');
 
         $message = TextareaField::create('Message', 'Message');
         $message->setAttribute('placeholder', 'Enter your message')
-            ->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Message</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Message</strong>');
 

@@ -145,19 +145,6 @@ label {
     }
 }
 
-/*---------------------------------------------*\
-    Search
-\*---------------------------------------------*/
-
-//#SearchForm_SearchForm {
-//    .form-group {
-//        margin: 0;
-//    }
-//    .modal-footer {
-//        margin: 0;
-//    }
-//}
-
 /** =========================================
  * Silverstripe Forms
  ===========================================*/
@@ -173,11 +160,12 @@ label {
 }
 
 /*---------------------------------------------*\
-    Login / Lost Password
+    Login / Lost Password / Change Password
 \*---------------------------------------------*/
 
 #MemberLoginForm_LoginForm,
-#MemberLoginForm_LostPasswordForm {
+#MemberLoginForm_LostPasswordForm,
+#ChangePasswordForm_ChangePasswordForm {
     .field {
         margin: 0 0 $gap-md 0;
         .text{

@@ -18,4 +18,4 @@
         </div><!-- /.col-sm-8 col-lg-9 -->
     </div><!-- /.row -->
 </div><!-- /.container -->
-<% include ImageNavigation %>
+<% include PreviousNextPage %>

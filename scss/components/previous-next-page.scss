@@ -1,0 +1,13 @@
+/*---------------------------------------------*\
+    Image Navigation
+\*---------------------------------------------*/
+
+.previous-next-page.section {
+    @include margin-none;
+    @include padding-none;
+    .item {
+        &.next {
+            text-align: right;
+        }
+    }
+}

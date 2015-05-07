@@ -48,4 +48,4 @@
         </section><!-- /.portfolio section -->
     <% end_if %>
 </div><!-- /.container -->
-<% include ImageNavigation %>
+<% include PreviousNextPage %>

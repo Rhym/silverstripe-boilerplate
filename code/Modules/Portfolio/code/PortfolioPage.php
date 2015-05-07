@@ -61,62 +61,6 @@ class PortfolioPage extends Page {
 
     }
 
-    /**
-     * For use in the ImageNavigation method
-     * @return mixed
-     */
-    public function FeaturedImage() {
-        return $this->PortfolioImages()->first()->Image();
-    }
-
-    /**
-     * @param $direction
-     * @return bool|DataObject
-     */
-    public function NavigationLink($direction){
-
-        switch($direction){
-            case 'next':
-                $sort = 'Sort:GreaterThan';
-                break;
-            case 'prev':
-                $sort = 'Sort:LessThan';
-                break;
-            default:
-                return false;
-        }
-        $page = PortfolioPage::get()->filter(array(
-            'ParentID' => $this->ParentID,
-            $sort => $this->Sort
-        ))->sort('Sort ASC')->first();
-
-        return $page;
-    }
-
-    /**
-     * @return ArrayData|bool
-     * Check for prev/next post in thew blog and display an image and title.
-     */
-    public function ImageNavigation(){
-
-        if($next = $this->NavigationLink('next')){
-            $page = $next;
-        } else if ($prev = $this->NavigationLink('prev')) {
-            $page = $prev;
-        } else {
-            return false;
-        }
-        if($image = $page->FeaturedImage()) {
-            return ArrayData::create(array(
-                'Link' => $page->Link(),
-                'MenuTitle' => $page->MenuTitle,
-                'Title' => $page->Title,
-                'Image' => $image
-            ));
-        }
-        return false;
-    }
-
 }
 
 /**

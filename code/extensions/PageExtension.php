@@ -24,6 +24,56 @@ class PageExtension extends DataExtension {
         return $fields;
     }
 
+    /** =========================================
+     * Previous / Next Links
+    ===========================================*/
+
+    /**
+     * @param string $direction
+     * @return ArrayData|bool
+     */
+    public function DirectionLink($direction = 'next') {
+        switch ($direction) {
+            case 'previous':
+                $sortDirection = 'Sort:LessThan';
+                $sort = 'Sort DESC';
+                break;
+            default:
+                $sortDirection = 'Sort:GreaterThan';
+                $sort = 'Sort ASC';
+        }
+        $page = Page::get()->filter(array(
+            'ParentID' => $this->owner->ParentID,
+            $sortDirection => $this->owner->Sort
+        ))->sort($sort)->first();
+        if(isset($page)) {
+            return new ArrayData(array(
+                'Title' => $page->Title,
+                'MenuTitle' => $page->MenuTitle,
+                'Link' => $page->Link()
+            ));
+        }
+        return false;
+    }
+
+    /**
+     * @return ArrayData|bool
+     */
+    public function getPreviousLink() {
+        return $this->DirectionLink('previous');
+    }
+
+    /**
+     * @return ArrayData|bool
+     */
+    public function getNextLink() {
+        return $this->DirectionLink('next');
+    }
+
+    /** =========================================
+     * Tracking Code
+    ===========================================*/
+
     /**
      * If the Tracking Code contains Google Tag Manager then
      * return the tracking code directly after the <body> tag.

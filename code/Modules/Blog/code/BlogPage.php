@@ -73,64 +73,6 @@ class BlogPage extends Page {
 
     }
 
-    /**
-     * For use in the ImageNavigation method
-     * @return mixed
-     */
-    public function FeaturedImage() {
-        return $this->Image();
-    }
-
-    /**
-     * @param $direction
-     * @return bool|DataObject
-     */
-    public function NavigationLink($direction){
-
-        switch($direction){
-            case 'next':
-                $sort = 'Sort:GreaterThan';
-                $sortDirection = 'Sort ASC';
-                break;
-            case 'prev':
-                $sort = 'Sort:LessThan';
-                $sortDirection = 'Sort DESC';
-                break;
-            default:
-                return false;
-        }
-        $page = BlogPage::get()->filter(array(
-            'ParentID' => $this->ParentID,
-            $sort => $this->Sort
-        ))->sort($sortDirection)->first();
-
-        return $page;
-    }
-
-    /**
-     * @return ArrayData|bool
-     * Check for prev/next post in the blog and display an image and title.
-     */
-    public function ImageNavigation(){
-
-        if($next = $this->NavigationLink('next')){
-            $page = $next;
-        } else if ($prev = $this->NavigationLink('prev')) {
-            $page = $prev;
-        } else {
-            return false;
-        }
-        if($image = $page->FeaturedImage()) {
-            return ArrayData::create(array(
-                'Link' => $page->Link(),
-                'MenuTitle' => $page->MenuTitle,
-                'Title' => $page->Title,
-                'Image' => $image
-            ));
-        }
-        return false;
-    }
-
 }
 
 /**

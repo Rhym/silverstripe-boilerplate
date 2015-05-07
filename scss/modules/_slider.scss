@@ -12,7 +12,9 @@
      */
     &.has-multiple-items {
         .owl-controls {
-            display: block;
+            @media(min-width: $screen-sm-min) {
+                display: block;
+            }
         }
     }
     .owl-controls {

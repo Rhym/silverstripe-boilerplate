@@ -2,12 +2,15 @@
     Carousel
 \*---------------------------------------------*/
 
+$carousel-icon-size: 50px;
+
 /**
  * Prev / Next
  */
 .owl-controls {
+    height: $carousel-icon-size;
     display: none;
-    margin: 0;
+    margin: (-$carousel-icon-size / 2) 0 0 0;
     padding: 0;
     position: absolute;
     top: 50%;
@@ -25,9 +28,9 @@
         left: 0;
         padding: 0;
         background: transparent none;
-        font-size: 50px;
-        line-height: 1em;
-        margin: (-0.5em) 0 0 0.5em;
+        font-size: $carousel-icon-size;
+        line-height: $carousel-icon-size;
+        margin: 0 0 0 0.5em;
         &:hover,
         &:active {
             background: transparent none;
@@ -36,6 +39,6 @@
     .owl-next {
         right: 0;
         left: auto;
-        margin: (-0.5em) 0.5em 0 0;
+        margin: 0 0.5em 0 0;
     }
 }

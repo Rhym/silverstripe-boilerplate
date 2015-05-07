@@ -3,17 +3,6 @@
 \*---------------------------------------------*/
 
 .gallery.loop {
-    .item {
-        display: block;
-        &:hover {
-            cursor: -webkit-grab;
-            cursor: -moz-grab;
-        }
-        &:active {
-            cursor: -webkit-grabbing;
-            cursor: -moz-grabbing;
-        }
-    }
     /**
      * Prev / Next
      */

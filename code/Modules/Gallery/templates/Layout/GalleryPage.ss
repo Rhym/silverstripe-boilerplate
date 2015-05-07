@@ -3,7 +3,7 @@
 <div class="container">
     <% if $Images %>
         <section class="gallery loop<% if $NoMargin %> no-margin<% end_if %>">
-            <div class="owl-carousel gallery-carousel">
+            <div class="owl-carousel carousel">
             <% loop $Images %>
                 <div>
                 <figure class="item {$FirstLast}">
@@ -11,7 +11,7 @@
                 </figure><!-- /.item col-xs-6 col-sm-3 -->
                 </div>
             <% end_loop %>
-            </div><!-- /.owl-carousel gallery-carousel -->
+            </div><!-- /.owl-carousel carousel -->
         </section><!-- /.gallery loop -->
     <% end_if %>
     <% include Content %>

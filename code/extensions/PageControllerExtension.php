@@ -41,7 +41,6 @@ class PageControllerExtension extends Extension {
                  * Owl Carousel
                  */
                 BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.carousel.min.css',
-                BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.theme.default.min.css',
                 /**
                  * Application styles
                  */

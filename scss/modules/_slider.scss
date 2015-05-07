@@ -11,11 +11,12 @@
      * Single default image set in Siteconfig
      */
     &.has-multiple-items {
-        .item {
-            &:hover {
-                cursor: col-resize;
-            }
+        .owl-controls {
+            display: block;
         }
+    }
+    .owl-controls {
+        display: none;
     }
     .container{
         padding: 0;

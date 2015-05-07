@@ -42,7 +42,6 @@
         font-size: 20px;
         margin-top: -($gap-lg /2);
         margin-left: -($gap-lg /2);
-        @include border-radius();
         transition: .1s linear background;
     }
 }

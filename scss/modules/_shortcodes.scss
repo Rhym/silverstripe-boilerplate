@@ -4,7 +4,7 @@
 
 .pricing-table {
     .price {
-        @include padding-default();
+        @include padding-default;
         background: $brand-secondary;
         color: $btn-secondary-color;
         text-align: center;
@@ -19,7 +19,7 @@
         }
     }
     .list {
-        @include padding-default();
+        @include padding-default;
         background: $gray-lighter;
         ul {
             margin: 0;

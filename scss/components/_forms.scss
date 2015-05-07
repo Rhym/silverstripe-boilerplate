@@ -5,7 +5,7 @@
 */
 
 .form {
-    @include margin-default();
+    @include margin-default;
 }
 
 /** -----------------------------------------
@@ -131,7 +131,7 @@ label {
  -------------------------------------------*/
 
 .recaptcha {
-    @include margin-default();
+    @include margin-default;
 }
 
 /*---------------------------------------------*\

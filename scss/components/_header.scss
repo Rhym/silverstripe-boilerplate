@@ -3,8 +3,8 @@
 \*---------------------------------------------*/
 
 #header {
-    @include margin-default();
-    @include padding-default();
+    @include margin-default;
+    @include padding-default;
     margin-top: 0;
     position: relative;
     z-index: 2;
@@ -45,7 +45,7 @@
         padding: 0;
         float: right;
         list-style: none;
-        @include clearfix();
+        @include clearfix;
         li {
             margin: 0;
         }

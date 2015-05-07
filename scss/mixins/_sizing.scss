@@ -22,7 +22,7 @@
 }
 
 @mixin margin-default() {
-    @include margin();
+    @include margin;
 }
 
 @mixin margin-lg() {
@@ -49,7 +49,7 @@
 }
 
 @mixin padding-default() {
-    @include padding();
+    @include padding;
 }
 
 @mixin padding-lg() {

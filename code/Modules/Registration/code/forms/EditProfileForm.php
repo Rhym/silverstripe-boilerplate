@@ -66,16 +66,18 @@ class EditProfileForm extends Form {
             $passwordToggleClose
         );
 
-        /**
+        /** -----------------------------------------
          * Actions
-         */
+        -------------------------------------------*/
+
         $actions = FieldList::create(
             FormAction::create('Save')->setTitle('Update Profile')->addExtraClass('btn btn-primary')
         );
 
-        /**
+        /** -----------------------------------------
          * Validation
-         */
+        -------------------------------------------*/
+
         $required = RequiredFields::create(
             'FirstName',
             'Surname',

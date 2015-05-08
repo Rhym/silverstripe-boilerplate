@@ -31,16 +31,18 @@ class SubscriptionForm extends Form {
             $email
         );
 
-        /**
+        /** -----------------------------------------
          * Actions
-         */
+        -------------------------------------------*/
+
         $actions = FieldList::create(
             FormAction::create('Subscribe')->setTitle('Subscribe')->addExtraClass('btn btn-primary')
         );
 
-        /**
-         * Required
-         */
+        /** -----------------------------------------
+         * Validation
+        -------------------------------------------*/
+
         $required = RequiredFields::create(
             'Email'
         );

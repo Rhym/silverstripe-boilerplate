@@ -92,16 +92,18 @@ class ContactForm extends Form {
             $reCaptcha
         );
 
-        /**
+        /** -----------------------------------------
          * Actions
-         */
+        -------------------------------------------*/
+
         $actions = FieldList::create(
             FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn btn-primary')
         );
 
-        /**
-         * Required
-         */
+        /** -----------------------------------------
+         * Validation
+        -------------------------------------------*/
+
         $required = RequiredFields::create(
             'FirstName',
             'LastName',
@@ -181,6 +183,10 @@ class ContactForm extends Form {
             }
         }
 
+        /** -----------------------------------------
+         * Email
+        -------------------------------------------*/
+
         $data['Logo'] = SiteConfig::current_site_config()->LogoImage();
         $From = $data['Email'];
         $To = $this->controller->data()->MailTo;
@@ -202,9 +208,10 @@ class ContactForm extends Form {
         }
         $this->controller->setFlash($submitText, 'success');
 
-        /**
-         * Create Record
-         */
+        /** -----------------------------------------
+         * Records
+        -------------------------------------------*/
+
         $contactMessage = ContactMessage::create();
         $form->saveInto($contactMessage);
         $contactMessage->write();

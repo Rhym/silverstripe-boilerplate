@@ -43,16 +43,18 @@ class RegistrationForm extends Form {
             $password
         );
 
-        /**
+        /** -----------------------------------------
          * Actions
-         */
+        -------------------------------------------*/
+
         $actions = FieldList::create(
             FormAction::create('Register')->setTitle('Register')->addExtraClass('btn btn-primary')
         );
 
-        /**
+        /** -----------------------------------------
          * Validation
-         */
+        -------------------------------------------*/
+
         $required = RequiredFields::create(
             'FirstName',
             'Email',

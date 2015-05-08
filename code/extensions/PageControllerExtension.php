@@ -8,8 +8,12 @@ class PageControllerExtension extends Extension {
 	public function onBeforeInit() {
 
         /** =========================================
-         * Combine JS
-         ==========================================*/
+         * Resources
+        ===========================================*/
+
+        /** -----------------------------------------
+         * Javascript
+        -------------------------------------------*/
 
         /**
          * Set All JS to be right before the closing </body> tag.
@@ -29,9 +33,9 @@ class PageControllerExtension extends Extension {
             )
         );
 
-        /** =========================================
+        /** -----------------------------------------
          * CSS
-         ==========================================*/
+        -------------------------------------------*/
 
         Requirements::css(BOWER_COMPONENTS_DIR.'/components-font-awesome/css/font-awesome.min.css');
         Requirements::combine_files(
@@ -48,9 +52,9 @@ class PageControllerExtension extends Extension {
             )
         );
 
-        /** =========================================
-         * Ancient Browser Shivs
-         ==========================================*/
+        /** -----------------------------------------
+         * Shivs
+        -------------------------------------------*/
 
         $baseHref = Director::BaseURL();
         Requirements::insertHeadTags('<!--[if lt IE 9]>

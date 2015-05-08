@@ -1,5 +1,9 @@
+/** =========================================
+ * Colors
+ ===========================================*/
+
 /** -----------------------------------------
- * Colours
+ * Shades
  -------------------------------------------*/
 
 $gray-darker:               #212121 !default; // Text
@@ -7,6 +11,10 @@ $gray-dark:                 #757575 !default; // Secondary Text / Icons
 $gray:                      #BDBDBD !default; // Hint Text
 $gray-light:                #E0E0E0 !default; // Dividers
 $gray-lighter:              #f9f9f9 !default;
+
+/** -----------------------------------------
+ * Brands
+ -------------------------------------------*/
 
 $brand-default:             #fff !default;
 $brand-default-dark:        shade($brand-default, 10) !default;
@@ -44,6 +52,10 @@ $brand-warning:             #f0ad4e !default;
 $brand-warning-color:       #fff !default;
 $brand-danger:              #d9534f !default;
 $brand-danger-color:        #fff !default;
+
+/** -----------------------------------------
+ * Text
+ -------------------------------------------*/
 
 $body-bg:               $brand-default !default;
 $text-color:            $gray-dark !default;

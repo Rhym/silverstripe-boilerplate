@@ -11,55 +11,34 @@ class PageControllerExtension extends Extension {
          * Resources
         ===========================================*/
 
+        $baseHref = Director::BaseURL();
+
         /** -----------------------------------------
          * Javascript
         -------------------------------------------*/
+
+        Requirements::insertHeadTags('<script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/modernizr.js"></script>');
 
         /**
          * Set All JS to be right before the closing </body> tag.
          */
         Requirements::set_force_js_to_bottom(true);
-
-        Requirements::combine_files(
-            'combined.js',
-            array(
-                BOWER_COMPONENTS_DIR.'/jquery/dist/jquery.min.js',
-                BOWER_COMPONENTS_DIR.'/modernizr/modernizr.js',
-                BOWER_COMPONENTS_DIR.'/owl.carousel/dist/owl.carousel.min.js',
-                BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
-                BOWER_COMPONENTS_DIR.'/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
-                BOILERPLATE_MODULE.'/code/Modules/PopoutMenu/javascript/popout-menu.js',
-                project().'/javascript/build/script.min.js'
-            )
-        );
+        Requirements::javascript(project().'/javascript/main.min.js');
 
         /** -----------------------------------------
          * CSS
         -------------------------------------------*/
 
-        Requirements::css(BOWER_COMPONENTS_DIR.'/components-font-awesome/css/font-awesome.min.css');
-        Requirements::combine_files(
-            'combined.min.css',
-            array(
-                /**
-                 * Owl Carousel
-                 */
-                BOWER_COMPONENTS_DIR.'/owl.carousel/dist/assets/owl.carousel.min.css',
-                /**
-                 * Application styles
-                 */
-                project().'/css/main.min.css'
-            )
-        );
+        Requirements::css(project().'/css/font-awesome.min.css');
+        Requirements::css(project().'/css/main.min.css');
 
         /** -----------------------------------------
          * Shivs
         -------------------------------------------*/
 
-        $baseHref = Director::BaseURL();
         Requirements::insertHeadTags('<!--[if lt IE 9]>
-            <script type="text/javascript" src="'.$baseHref.BOWER_COMPONENTS_DIR.'/html5shiv/dist/html5shiv.min.js"></script>
-            <script type="text/javascript" src="'.$baseHref.BOWER_COMPONENTS_DIR.'/respond/dest/respond.min.js"></script>
+            <script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/html5shiv.min.js"></script>
+            <script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/respond.min.js"></script>
         <![endif]-->');
 
     }

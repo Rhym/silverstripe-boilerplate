@@ -13,11 +13,6 @@ class SubscriptionForm extends Form {
      */
     public function __construct($controller, $name, $arguments = array()) {
 
-        /**
-         * Add front-end validation
-         */
-        Requirements::javascript(BOWER_COMPONENTS_DIR . '/parsleyjs/dist/parsley.min.js');
-
         /** -----------------------------------------
          * Fields
         -------------------------------------------*/

@@ -14,7 +14,7 @@ define('CSS_DIR', BOILERPLATE_MODULE.'/css');
 
 define('JS_DIR', BOILERPLATE_MODULE.'/javascript');
 define('JS_LIB_DIR', JS_DIR.'/lib');
-define('BOWER_COMPONENTS_DIR', 'components/public');
+define('BOWER_COMPONENTS_DIR', 'components/lib');
 
 /** -----------------------------------------
  * Modules

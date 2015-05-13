@@ -89,7 +89,10 @@ function getMap(mapID, lat, long, mapColor, waterColor, showMarker, zoom, satura
  * Initiate the map
  */
 (function($) {
-    $(document).ready(function() {
-        getMap('map-canvas', $latitude, $longitude, $mapColor, $waterColor, $mapMarker, $mapZoom, $mapSaturation)
-    })
+    var element =  document.getElementById('map-canvas');
+    if (typeof(element) != 'undefined' && element != null) {
+        $(document).ready(function () {
+            getMap('map-canvas', $latitude, $longitude, $mapColor, $waterColor, $mapMarker, $mapZoom, $mapSaturation)
+        });
+    }
 })(jQuery);

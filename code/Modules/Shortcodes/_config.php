@@ -122,7 +122,7 @@
  *      template
  *
  */
-HtmlEditorConfig::get('cms')->setButtonsForLine(1, 'styleselect', 'formatselect', 'separator', 'bullist', 'numlist', 'separator', 'justifyleft', 'justifycenter', 'justifyright', 'separator', 'image', 'separator', 'sslink', 'unlink', 'separator', 'bold', 'blockquote', 'separator', 'pastetext', 'pasteword', 'separator', 'code');
+HtmlEditorConfig::get('cms')->setButtonsForLine(1, 'styleselect', 'formatselect', 'separator', 'bullist', 'numlist', 'separator', 'justifyleft', 'justifycenter', 'justifyright', 'separator', 'image', 'separator', 'sslink', 'unlink', 'separator', 'bold', 'italic', 'blockquote', 'separator', 'pastetext', 'pasteword', 'separator', 'code');
 HtmlEditorConfig::get('cms')->setButtonsForLine(2, '');
 HtmlEditorConfig::get('cms')->setButtonsForLine(3, '');
 HtmlEditorConfig::get('cms')->disablePlugins('table', 'contextmenu');

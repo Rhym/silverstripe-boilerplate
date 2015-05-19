@@ -26,15 +26,18 @@ class SliderSiteConfigExtension extends Extension {
             $fields->addFieldToTab('Root', TabSet::create('Settings'));
         }
 
-        $fields->findOrMakeTab('Root.Settings.Slider', 'Slider');
-        $fields->addFieldsToTab('Root.Settings.Slider',
+        $fields->findOrMakeTab('Root.Settings.Banner', 'Banner');
+        $fields->addFieldsToTab('Root.Settings.Banner',
             array(
-                $image = UploadField::create('SliderImage'),
+                HeaderField::create('', 'Banner'),
+                LiteralField::create('',
+                    '<p>Image to be displayed on all pages as a default banner. Can be overridden by a page\'s banner.</p>'
+                ),
+                $image = UploadField::create('SliderImage', 'Image'),
                 $defaultSliderHeight = NumericField::create('DefaultSliderHeight', 'Default Height')
             )
         );
         $image->setFolderName('Uploads/slider');
-        $image->setRightTitle('Image to be displayed on all pages as a default header. Can be overridden by a page\'s slider.');
         $defaultSliderHeight->setRightTitle('Height that will be set across the entire site, this can be overridden in individual pages');
 
     }

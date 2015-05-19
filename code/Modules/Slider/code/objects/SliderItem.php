@@ -35,7 +35,7 @@ class SliderItem extends DataObject{
     /**
      * @return string
      */
-    public function getThumbnail() {
+    protected function getThumbnail() {
 		if ($Image = $this->Image()->ID) {
 			return $this->Image()->SetWidth(80);
 		} else {
@@ -77,6 +77,19 @@ class SliderItem extends DataObject{
             return $this->InternalLink()->Link();
         }
         return false;
+    }
+
+    /**
+     * On Before Write
+     */
+    protected function onBeforeWrite() {
+        /**
+         * Set SortOrder
+         */
+        if (!$this->SortOrder) {
+            $this->SortOrder = SliderItem::get()->max('SortOrder') + 1;
+        }
+        parent::onBeforeWrite();
     }
 
 }

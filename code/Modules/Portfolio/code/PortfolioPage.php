@@ -47,12 +47,12 @@ class PortfolioPage extends Page {
             '<p>Portfolio Images are displayed under the page\'s content. Items can be full width, or have content displayed to the left or right hand side of the image.</p>'
         ));
         $config = GridFieldConfig_RelationEditor::create(10);
-        $config->addComponent(new GridFieldSortableRows('SortOrder'))
+        $config->addComponent(new GridFieldOrderableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
         $gridField = GridField::create(
             'PortfolioImages',
             'Images',
-            $this->owner->PortfolioImages(),
+            $this->PortfolioImages(),
             $config
         );
         $fields->addFieldToTab('Root.PortfolioImages', $gridField);

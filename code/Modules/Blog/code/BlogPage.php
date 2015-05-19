@@ -16,10 +16,6 @@ class BlogPage extends Page {
         'Image' => 'Image'
     );
 
-    private static $many_many = array(
-        'Tags' => 'BlogTag'
-    );
-
     private static $defaults = array(
         'ShowInMenus' => 0
     );
@@ -43,9 +39,6 @@ class BlogPage extends Page {
 
         $fields = parent::getCMSFields();
 
-        $fields->removeByName('Slider');
-        $fields->removeByName('PageBuilder');
-
         $fields->addFieldToTab('Root.Main', $blogImage = UploadField::create('Image', 'Image'), 'Content');
         $blogImage->setRightTitle('Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.');
         $blogImage->setFolderName('Uploads/blog');
@@ -53,21 +46,6 @@ class BlogPage extends Page {
         $dateField->setConfig('showcalendar', true);
         $fields->addFieldToTab('Root.Main', $dateField, 'Content');
         $fields->addFieldToTab('Root.Main', TextField::create('Author', 'Author (optional)'), 'Content');
-
-        /** -----------------------------------------
-         * Tags - Disabled by Default
-        -------------------------------------------*/
-
-        $config = GridFieldConfig_RelationEditor::create(10);
-        $config->addComponent(new GridFieldSortableRows('SortOrder'))
-            ->addComponent(new GridFieldDeleteAction());
-        $gridField = GridField::create(
-            'Tags',
-            'Tags',
-            $this->Tags(),
-            $config
-        );
-        //$fields->addFieldToTab('Root.Tags', $gridField);
 
         return $fields;
 

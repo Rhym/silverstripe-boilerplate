@@ -44,7 +44,7 @@ class PortfolioImage extends DataObject{
     /**
      * @return string
      */
-    public function getContentSummary() {
+    protected function getContentSummary() {
         if($this->Content) {
             $html = HTMLText::create();
             $html->setValue($this->dbObject('Content')->summary());
@@ -56,7 +56,7 @@ class PortfolioImage extends DataObject{
     /**
      * @return string
      */
-    public function getThumbnail() {
+    protected function getThumbnail() {
         if ($Image = $this->Image()->ID) {
             return $this->Image()->SetWidth(80);
         } else {
@@ -79,6 +79,19 @@ class PortfolioImage extends DataObject{
         $content->setRows(5);
 
         return $fields;
+    }
+
+    /**
+     * On Before Write
+     */
+    protected function onBeforeWrite() {
+        /**
+         * Set SortOrder
+         */
+        if (!$this->SortOrder) {
+            $this->SortOrder = PortfolioImage::get()->max('SortOrder') + 1;
+        }
+        parent::onBeforeWrite();
     }
 
 }

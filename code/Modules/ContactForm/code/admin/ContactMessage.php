@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class ContactMessageAdmin
+ * Class ContactMessageModelAdmin
  */
-class ContactMessageAdmin extends ModelAdmin {
+class ContactMessageModelAdmin extends ModelAdmin {
 
     private static $menu_icon = 'boilerplate/code/Modules/ContactForm/images/message_menu.png';
 

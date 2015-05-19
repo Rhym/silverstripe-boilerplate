@@ -20,15 +20,15 @@ class SliderConfig extends DataExtension {
      */
     public function updateCMSFields(FieldList $fields) {
 
-        $fields->addFieldToTab('Root.Slider', HeaderField::create('', 'Slider'));
-        $fields->addFieldToTab('Root.Slider', LiteralField::create('',
-            '<p>The slider is displayed below the header of the page. If there is more than one slide, the slider will become a carousel.</p>'
+        $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Banner'));
+        $fields->addFieldToTab('Root.Banner', LiteralField::create('',
+            '<p>The banner is displayed below the header of the page. If there is more than one slide, the banner will become a carousel.</p>'
         ));
-        $fields->addFieldToTab('Root.Slider', LiteralField::create('',
-            '<div class="message"><p><strong>Note:</strong> A default slider image can be set across all pages under "Settings > Slider" in the left-hand menu</p></div>'
+        $fields->addFieldToTab('Root.Banner', LiteralField::create('',
+            '<div class="message"><p><strong>Note:</strong> A default banner image can be set across all pages under "Settings > Banner" in the left-hand menu</p></div>'
         ));
         $config = GridFieldConfig_RelationEditor::create(10);
-        $config->addComponent(new GridFieldSortableRows('SortOrder'))
+        $config->addComponent(new GridFieldOrderableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
         $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
             'Thumbnail' => 'Thumbnail'
@@ -39,15 +39,15 @@ class SliderConfig extends DataExtension {
             $this->owner->SliderItems(),
             $config
         );
-        $fields->addFieldToTab('Root.Slider', $gridField);
+        $fields->addFieldToTab('Root.Banner', $gridField);
 
         /** -----------------------------------------
          * Settings
         -------------------------------------------*/
 
-        $fields->addFieldToTab('Root.Slider', HeaderField::create('', 'Settings', 4));
-        $fields->addFieldToTab('Root.Slider', CheckboxField::create('FullWidth', 'Set slider to be full width'));
-        $fields->addFieldToTab('Root.Slider', $height = NumericField::create('Height', 'Height of slider (optional)'));
+        $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Settings', 4));
+        $fields->addFieldToTab('Root.Banner', CheckboxField::create('FullWidth', 'Set banner to be full width'));
+        $fields->addFieldToTab('Root.Banner', $height = NumericField::create('Height', 'Height of banner (optional)'));
     }
 
     /**

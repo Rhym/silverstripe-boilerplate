@@ -61,6 +61,19 @@ class PortfolioPage extends Page {
 
     }
 
+    /**
+     * @param SS_HTTPRequest $request
+     * @return $this|HTMLText
+     */
+    public function index(SS_HTTPRequest $request) {
+        if($request->isAjax()) {
+            $data = $this->data();
+            return $this->customise($data)
+                ->renderWith('PortfolioPage_Item');
+        }
+        return array();
+    }
+
 }
 
 /**

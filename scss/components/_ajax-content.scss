@@ -1,0 +1,10 @@
+/** =========================================
+ * Section
+ ===========================================*/
+
+.ajax-content {
+    transition: .1s linear opacity;
+    &.ajax-loading {
+        opacity: $hover-opacity;
+    }
+}

@@ -23,7 +23,11 @@ class PageControllerExtension extends Extension {
          * Set All JS to be right before the closing </body> tag.
          */
         Requirements::set_force_js_to_bottom(true);
-        Requirements::javascript(project().'/javascript/main.min.js');
+        if(Director::isDev()) {
+            Requirements::javascript(project().'/javascript/main.js');
+        } else {
+            Requirements::javascript(project().'/javascript/main.min.js');
+        }
 
         /** -----------------------------------------
          * CSS

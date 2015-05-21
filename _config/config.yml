@@ -14,21 +14,3 @@ Page:
 ContentController:
   extensions:
     - PageControllerExtension
-
-# Blog
-BlogHolder:
-  extensions:
-    - ColumnsPageExtension
-
-BlogHolder_Controller:
-  extensions:
-    - ColumnsPageControllerExtension
-
-# Portfolio
-PortfolioHolder:
-  extensions:
-    - ColumnsPageExtension
-
-PortfolioHolder_Controller:
-  extensions:
-    - ColumnsPageControllerExtension

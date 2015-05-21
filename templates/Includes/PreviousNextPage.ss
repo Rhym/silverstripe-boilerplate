@@ -1,5 +1,5 @@
 <% if $PreviousLink || $NextLink %>
-<section class="previous-next-page section">
+<section class="previous-next-page ajax-control section">
     <div class="container">
         <div class="loop">
             <div class="row">

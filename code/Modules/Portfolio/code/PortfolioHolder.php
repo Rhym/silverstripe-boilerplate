@@ -7,29 +7,52 @@ class PortfolioHolder extends Page {
 
     private static $icon = 'boilerplate/code/Modules/Portfolio/images/blogs-stack.png';
 
+    private static $db = array(
+        'Items' => 'Int'
+    );
+
     private static $allowed_children = array('PortfolioPage');
 
     private static $description = 'Displays all portfolio child pages';
+
+    private static $defaults = array(
+        'Items' => 10
+    );
 
     /**
      * @return FieldList
      */
     public function getCMSFields() {
         $fields = parent::getCMSFields();
+
+        /** -----------------------------------------
+         * Fields
+        -------------------------------------------*/
+
+        $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
+        $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
+
         return $fields;
     }
 
-    /**
-     * @return PaginatedList
-     */
-    public function PaginatedPages() {
+    public function index(SS_HTTPRequest $request) {
         /**
-         * Protect against "Division by 0" error
+         * Return a ArrayList of all blog children of this page.
+         *
+         * @return PaginatedList
          */
-        if($this->Items == null || $this->Items == 0) $this->Items = 1;
         $pagination = PaginatedList::create($this->AllChildren(), Controller::curr()->request);
-        $pagination->setPageLength($this->Items);
-        return $pagination;
+        $items = ($this->Items > 0 ? $this->Items : 10);
+        $pagination->setPageLength($items);
+
+        $data = array (
+            'PaginatedPages' => $pagination
+        );
+        if($request->isAjax()) {
+            return $this->customise($data)
+                ->renderWith('PortfolioHolder_Item');
+        }
+        return $data;
     }
 
 }
@@ -37,32 +60,4 @@ class PortfolioHolder extends Page {
 /**
  * Class PortfolioHolder_Controller
  */
-class PortfolioHolder_Controller extends Page_Controller {
-
-    /**
-     * @return string
-     */
-    public function PortfolioThumbnailWidth(){
-        switch($this->Columns){
-            case 0:
-                return '1140';
-                break;
-            default:
-                return '722';
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function PortfolioThumbnailHeight(){
-        switch($this->Columns){
-            case 0:
-                return '555';
-                break;
-            default:
-                return '722';
-        }
-    }
-
-}
+class PortfolioHolder_Controller extends Page_Controller {}

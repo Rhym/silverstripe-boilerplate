@@ -1,7 +1,9 @@
 <% if $PaginatedPages.MoreThanOnePage %>
-<ul class="pagination">
+<ul class="pagination ajax-control">
     <% if $PaginatedPages.NotFirstPage %>
-        <li><a class="prev" href="{$PaginatedPages.PrevLink}"><%t Pagination.PrevText 'Prev' %></a></li>
+        <li><a class="prev" href="{$PaginatedPages.PrevLink}">Prev</a></li>
+    <% else %>
+        <li><span>Prev</span></li>
     <% end_if %>
     <% loop $PaginatedPages.Pages %>
         <% if $CurrentBool %>
@@ -15,8 +17,9 @@
         <% end_if %>
     <% end_loop %>
     <% if $PaginatedPages.NotLastPage %>
-        <li><a class="next" href="$PaginatedPages.NextLink"><%t Pagination.NextText 'Next' %></a></li>
+        <li><a class="next" href="$PaginatedPages.NextLink">Next</a></li>
+    <% else %>
+        <li><span>Next</span></li>
     <% end_if %>
-    <%--<li class="disabled"><span>$PaginatedPages.CurrentPosition</span></li>--%>
-</ul><!-- /.pagination -->
+</ul><!-- /.pagination ajax-control -->
 <% end_if %>

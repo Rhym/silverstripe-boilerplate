@@ -1,0 +1,18 @@
+/** =========================================
+ * Pagination
+ ===========================================*/
+
+.pagination {
+    > li {
+        > span {
+            color: $font-base-color;
+            background: $brand-default-dark;
+            &:hover,
+            &:focus,
+            &:active {
+                color: $font-base-color;
+                background: $brand-default-dark;
+            }
+        }
+    }
+}

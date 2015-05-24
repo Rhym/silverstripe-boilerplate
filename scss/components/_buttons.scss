@@ -48,7 +48,7 @@
 .btn-link {
     background: transparent none;
     text-decoration: none;
-    transition: .1s linear color;
+    transition: $transition-default color;
     &:hover {
         background: transparent none;
         text-decoration: none;
@@ -92,14 +92,14 @@
     background: transparent none;
     border-width: 2px;
     border-style: solid;
-    transition: .1s linear color, .1s linear border-color;
+    transition: $transition-default color, $transition-default border-color;
     &:hover,
     &:focus,
     &:active {
         background: transparent none;
     }
     &.btn-default {
-        @include button-bordered($brand-default-color);
+        @include button-bordered($brand-default);
     }
     &.btn-primary {
         @include button-bordered($brand-primary);
@@ -108,7 +108,7 @@
         @include button-bordered($brand-secondary);
     }
     &.btn-inverse {
-        @include button-bordered($brand-inverse-color);
+        @include button-bordered($brand-inverse);
     }
     &.btn-success {
         @include button-bordered($brand-success);

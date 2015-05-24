@@ -94,7 +94,7 @@ img {
         -webkit-overflow-scrolling: touch;
         height: 100%;
         width: 100%;
-        transition: .1s linear opacity;
+        transition: $transition-default opacity;
     }
 }
 

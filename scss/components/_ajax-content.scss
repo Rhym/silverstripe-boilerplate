@@ -3,7 +3,7 @@
  ===========================================*/
 
 .ajax-content {
-    transition: .1s linear opacity;
+    transition: $transition-default opacity;
     &.ajax-loading {
         opacity: $hover-opacity;
     }

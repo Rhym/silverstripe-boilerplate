@@ -11,14 +11,22 @@ $font-family-base:              sans-serif !default;
 $font-family-heading:           sans-serif !default;
 $font-family-heading-weight:    bold !default;
 
-$font-size-h1:                  floor(($font-size-base * 2.6)) !default;
-$font-size-h2:                  floor(($font-size-base * 2.15)) !default;
-$font-size-h3:                  ceil(($font-size-base * 1.7)) !default;
-$font-size-h4:                  ceil(($font-size-base * 1.25)) !default;
-$font-size-h5:                  $font-size-base !default;
-$font-size-h6:                  ceil(($font-size-base * 0.85)) !default;
+/** -----------------------------------------
+ * Headings
+ -------------------------------------------*/
 
-$line-height-base:              1.428571429 !default;
-$line-height-large:             1.3333333 !default;
-$line-height-small:             1.5 !default;
-$line-height-computed:          floor(($font-size-base * $line-height-base)) !default;
+$font-size-h1:  floor(($font-size-base * 2.6)) !default;
+$font-size-h2:  floor(($font-size-base * 2.15)) !default;
+$font-size-h3:  ceil(($font-size-base * 1.7)) !default;
+$font-size-h4:  ceil(($font-size-base * 1.25)) !default;
+$font-size-h5:  $font-size-base !default;
+$font-size-h6:  ceil(($font-size-base * 0.85)) !default;
+
+/** -----------------------------------------
+ * Line Height
+ -------------------------------------------*/
+
+$line-height-base:      1.428571429 !default;
+$line-height-large:     1.3333333 !default;
+$line-height-small:     1.5 !default;
+$line-height-computed:  floor(($font-size-base * $line-height-base)) !default;

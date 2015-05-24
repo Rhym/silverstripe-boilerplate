@@ -1,0 +1,44 @@
+/** =========================================
+ * Messages
+ ===========================================*/
+
+.message {
+    &.success,
+    &.good {
+        @include alert-variant($alert-success-bg, shade($alert-success-border, 15), $alert-success-text);
+    }
+    &.notice {
+        @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
+    }
+    &.warning {
+        @include alert-variant($alert-warning-bg, shade($alert-warning-border, 15), $alert-warning-text);
+    }
+    &.required,
+    &.validation,
+    &.bad,
+    &.error {
+        @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
+    }
+    /* Remove Margin from the include */
+    &.success,
+    &.good,
+    &.notice,
+    &.warning,
+    &.required,
+    &.validation,
+    &.bad,
+    &.error {
+        margin: 0;
+        @media(min-width: $screen-sm-min) {
+            margin: 0;
+        }
+    }
+    .error-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            margin: 0;
+        }
+    }
+}

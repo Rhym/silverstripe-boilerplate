@@ -2,48 +2,17 @@
  * Alerts
  ===========================================*/
 
-/**
- * Alerts have many &.classes due to supporting SS default messages.
- */
 .alert {
-    &.alert-success,
-    &.success,
-    &.good {
+    &.alert-success {
         @include alert-variant($alert-success-bg, shade($alert-success-border, 15), $alert-success-text);
-        a {
-            color: $alert-success-text
-        }
     }
-    &.alert-info,
-    &.notice {
+    &.alert-info {
         @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
-        a {
-            color: $alert-info-text
-        }
     }
-    &.alert-warning,
-    &.warning {
+    &.alert-warning {
         @include alert-variant($alert-warning-bg, shade($alert-warning-border, 15), $alert-warning-text);
-        a {
-            color: $alert-warning-text
-        }
     }
-    &.alert-danger,
-    &.required,
-    &.validation,
-    &.bad,
-    &.error {
+    &.alert-danger {
         @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
-        a {
-            color: $alert-danger-text
-        }
-    }
-    .error-list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        li {
-            margin: 0;
-        }
     }
 }

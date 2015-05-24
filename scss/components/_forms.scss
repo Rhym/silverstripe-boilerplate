@@ -132,17 +132,6 @@ label {
     @include margin-default;
 }
 
-/*---------------------------------------------*\
-    Messages
-\*---------------------------------------------*/
-
-.message {
-    @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
-    a {
-        color: $alert-info-text
-    }
-}
-
 /** =========================================
  * Silverstripe Forms
  ===========================================*/
@@ -186,8 +175,5 @@ label {
     li {
         @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
         margin: 0;
-        a {
-            color: $alert-danger-text
-        }
     }
 }

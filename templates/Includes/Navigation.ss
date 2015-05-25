@@ -17,6 +17,6 @@
     <% if $SearchForm %>
         <li><a href="{$Link}SearchForm?Search" class="btn btn-link"><i class="fa fa-search"></i></a></li>
     <% end_if %>
-    <li class="phone"><a href="tel:{$SiteConfig.Phone}" class="menu-icon"><i class="icon fa fa-phone"></i><span class="text">Phone</span></a><!-- /.phone --></li>
+    <% if $SiteConfig.Phone %><li class="phone"><a href="tel:{$SiteConfig.Phone}" class="menu-icon"><i class="icon fa fa-phone"></i><span class="text">Phone</span></a><!-- /.phone --></li><% end_if %>
     <li class="hamburger-menu"><button class="menu-icon toggle-menu"><i class="icon fa fa-bars"></i><span class="text">Menu</span></button><!-- /.menu-icon --></li>
 </ul>

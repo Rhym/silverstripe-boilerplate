@@ -16,35 +16,76 @@
         right: -100%;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        padding: $gap-md 0;
         transition: .2s ease right;
-        @media(min-width: $screen-sm-min) {
-            padding: $gap-lg 0;
-        }
         .container {
             position: relative;
         }
-        .toggle-menu {
-            padding: 0;
-            border-width: 0;
-            border-radius: $border-radius-small;
-            position: absolute;
-            top: 0;
-            right: $gutter / 2;
-            font-size: ($popout-item-size / 2);
-            height: $popout-item-size;
-            width: $popout-item-size;
-            text-align: center;
-            line-height: $popout-item-size;
-            background: $popout-btn-background;
-            color: $popout-btn-color;
-        }
-        .logo {
-            width: 50%;
-            margin-bottom: $popout-item-size + $gap-md;
-            @include clearfix;
-            a {
-                display: block;
+        .header {
+            @include margin-default;
+            @include padding-default;
+            margin-top: 0;
+            position: relative;
+            z-index: 2;
+            /**
+             * Remove space between elements.
+             */
+            font-size: 0;
+            @media (min-width: $screen-sm-min) {
+                margin-top: 0;
+            }
+            .left {
+                .logo {
+                    a {
+                        display: block;
+                    }
+                    img {
+                        backface-visibility: hidden;
+                    }
+                }
+                .heading {
+                    font-size: $font-size-h3;
+                    margin: 0;
+                }
+                a {
+                    display: block;
+                }
+            }
+            .left,
+            .right {
+                /**
+                 * Set font size after removing space between inline-block elements.
+                 */
+                font-size: $font-size-base;
+                display: inline-block;
+                vertical-align: middle;
+                float: none;
+            }
+            ul {
+                margin: 0;
+                padding: 0;
+                float: right;
+                list-style: none;
+                @include clearfix;
+                li {
+                    border-width: 0;
+                }
+                .menu-icon {
+                    background: transparent none;
+                    padding: 0;
+                    border-width: 0;
+                    text-align: center;
+                    .icon {
+                        color: $font-base-color;
+                        font-size: $font-size-h1;
+                        display: block;
+                    }
+                    .text {
+                        color: $font-base-color;
+                        text-transform: uppercase;
+                        font-size: $font-size-xs;
+                        display: inline-block;
+                    }
+                }
             }
         }
         ul {

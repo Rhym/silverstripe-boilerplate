@@ -8,36 +8,30 @@
     margin-top: 0;
     position: relative;
     z-index: 2;
+    /**
+     * Remove space between elements.
+     */
+    font-size: 0;
     @media (min-width: $screen-sm-min) {
         margin-top: 0;
-        /**
-         * Remove space between elements.
-         */
-        font-size: 0;
     }
-    #logo {
+    .left,
+    .right {
+        /**
+         * Set font size after removing space between inline-block elements.
+         */
+        font-size: $font-size-base;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+    }
+    .left {
         .heading {
             font-size: $font-size-h3;
             margin: 0;
         }
-        .tagline {
-            font-size: $font-size-h5;
-            margin: 0;
-        }
         a {
             display: block;
-        }
-    }
-    @media (min-width: $screen-sm-min) {
-        #logo,
-        #navigation {
-            /**
-             * Set font size after removing space between inline-block elements.
-             */
-            font-size: $font-size-base;
-            display: inline-block;
-            vertical-align: middle;
-            float: none;
         }
     }
     ul {
@@ -112,25 +106,41 @@
             }
         }
     }
+    .phone,
     .hamburger-menu {
         display: block;
         @media(min-width: $screen-lg-min) {
             display: none;
         }
         .menu-icon {
+            margin: 0 $gap-md;
             background: transparent none;
             padding: 0;
             border-width: 0;
             text-align: center;
+            &.toggle-menu {
+                margin: 0 0 0 $gap-sm;
+            }
+            .icon {
+                color: $font-base-color;
+                font-size: $font-size-h1;
+                display: block;
+            }
             .text {
+                color: $font-base-color;
                 text-transform: uppercase;
-                font-size: $font-size-base;
-                margin: 0 $gap-sm 0 0;
+                font-size: $font-size-xs;
                 display: inline-block;
             }
             &.search {
                 right: $popout-item-size + $gap-sm;
             }
+        }
+    }
+    .phone {
+        display: none;
+        @media(max-width: $screen-xs-max) {
+            display: block;
         }
     }
 }

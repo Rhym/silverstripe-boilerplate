@@ -1,17 +1,27 @@
-<div class="menu-wrap">
+<nav class="menu-wrap">
     <div class="container">
-        <button class="menu-icon toggle-menu"><i class="fa fa-times"></i></button><!-- /.menu-icon -->
-        <div class="logo">
-            <% if $SiteConfig.LogoImage || $SiteConfig.MobileLogoImage %>
-                <a href="{$BaseHref}">
-                    <% if $SiteConfig.MobileLogoImage %>
-                        {$SiteConfig.MobileLogoImage}
-                    <% else %>
-                        {$SiteConfig.LogoImage}
-                    <% end_if %>
-                </a>
-            <% end_if %>
-        </div><!-- /.logo -->
+        <header class="header">
+            <div class="row">
+                <div class="left col-xs-6 col-sm-3">
+                    <div class="logo">
+                        <% if $SiteConfig.LogoImage || $SiteConfig.MobileLogoImage %>
+                            <a href="{$BaseHref}">
+                                <% if $SiteConfig.MobileLogoImage %>
+                                    {$SiteConfig.MobileLogoImage}
+                                <% else %>
+                                    {$SiteConfig.LogoImage}
+                                <% end_if %>
+                            </a>
+                        <% end_if %>
+                    </div><!-- /.logo -->
+                </div><!-- /.left col-xs-6 col-sm-3 -->
+                <div class="right col-xs-6 col-sm-9">
+                    <ul>
+                        <li class="hamburger-menu"><button class="menu-icon toggle-menu"><i class="icon fa fa-times"></i><span class="text">Close</span></button><!-- /.menu-icon --></li>
+                    </ul>
+                </div><!-- /.right col-xs-6 col-sm-9 -->
+            </div><!-- /.row -->
+        </header><!-- /.header -->
         <nav class="menu">
             <ul>
                 <% loop $Menu(1) %>
@@ -35,4 +45,4 @@
             </div><!-- /.search -->
         <% end_if %>
     </div><!-- /.container -->
-</div><!-- /.menu-wrap -->
+</nav><!-- /.menu-wrap -->

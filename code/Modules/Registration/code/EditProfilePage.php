@@ -25,7 +25,9 @@ class EditProfilePage_Controller extends Page_Controller {
         if(!Member::currentUser()) {
             return Security::PermissionFailure($this->controller, null);
         } else {
-            return EditProfileForm::create($this, 'EditProfileForm');
+            $form = EditProfileForm::create($this, 'EditProfileForm');;
+            $this->extend('updateEditProfileForm', $form);
+            return $form;
         }
     }
 

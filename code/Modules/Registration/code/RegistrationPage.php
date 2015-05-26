@@ -28,7 +28,9 @@ class RegistrationPage_Controller extends Page_Controller {
         if($member = Member::currentUser()){
             return '<div class="alert alert-warning">You\'re currently logged in as <strong>'.$member->Name.'</strong>. To register as a different user <a href="'.Director::absoluteBaseURL().'Security/logout?BackURL='.$this->Link().'">log out.</a></div>';
         } else {
-            return RegistrationForm::create($this, 'RegistrationForm');
+            $form = RegistrationForm::create($this, 'RegistrationForm');
+            $this->extend('updateRegistrationForm', $form);
+            return $form;
         }
     }
 

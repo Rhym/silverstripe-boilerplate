@@ -147,7 +147,7 @@ class ContactPage_Controller extends Page_Controller {
      * @return ContactForm
      */
     public function ContactForm() {
-        return new ContactForm($this, 'ContactForm', array(
+        $form = new ContactForm($this, 'ContactForm', array(
             'MailTo'                => $this->MailTo,
             'MailCC'                => $this->MailCC,
             'MailBCC'               => $this->MailBCC,
@@ -155,6 +155,8 @@ class ContactPage_Controller extends Page_Controller {
             'ReCaptchaSiteKey'      => $this->ReCaptchaSiteKey,
             'ReCaptchaSecretKey'    => $this->ReCaptchaSecretKey
         ));
+        $this->extend('updateContactForm', $form);
+        return $form;
     }
 
     /**

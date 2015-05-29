@@ -9,7 +9,7 @@
                 <% end_if %>
             </div><!-- /.header__item -->
             <div class="header__item header__item--navigation">
-                <% include Navigation %>
+                <% include Menu %>
             </div><!-- /.header__item -->
         </div><!-- /.row -->
     </div><!-- /.container -->

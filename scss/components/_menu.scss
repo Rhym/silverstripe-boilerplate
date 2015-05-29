@@ -58,7 +58,9 @@
             @at-root #{&}__item {
                 display: block;
                 float: none;
-                > a {
+                margin: 0;
+                @at-root #{&}__link {
+                    display: block;
                     margin: 0;
                     padding: 0.75em 1.5em;
                     background: $brand-default;

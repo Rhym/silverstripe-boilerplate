@@ -1,29 +1,29 @@
-<section class="sidebar col-sm-4 col-lg-3">
-    <aside class="navigation">
-        <% if $BlogSidebarContent || $Parent.BlogSidebarContent %>
-        <aside class="content typography">
-            {$BlogSidebarContent}
-            {$Parent.BlogSidebarContent}
-        </aside><!-- /.content typography -->
-        <% end_if %>
-        <ul>
+<section class="page__sidebar">
+    <% if $BlogSidebarContent || $Parent.BlogSidebarContent %>
+    <aside class="page__sidebar__content">
+        {$BlogSidebarContent}
+        {$Parent.BlogSidebarContent}
+    </aside><!-- /.page__sidebar__content -->
+    <% end_if %>
+    <aside class="page__sidebar__content">
+        <ul class="navigation">
             <% if $AllChildren %>
-            <% loop $AllChildren.Limit(10) %>
-            <li class="{$LinkingMode}">
-                <a href="{$Link}" class="{$LinkingMode}" title="{$Title.XML}">
-                    {$MenuTitle.XML}
-                </a>
-            </li>
-            <% end_loop %>
+                <% loop $AllChildren.Limit(10) %>
+                    <li class="navigation__item navigation__item--{$LinkingMode}">
+                        <a href="{$Link}" title="{$Title.XML}">
+                            {$MenuTitle.XML}
+                        </a>
+                    </li><!-- /.navigation__item -->
+                <% end_loop %>
             <% else %>
-            <% loop $Parent.AllChildren.Limit(10) %>
-            <li class="{$LinkingMode}">
-                <a href="{$Link}" class="{$LinkingMode}" title="{$Title.XML}">
-                    {$MenuTitle.XML}
-                </a>
-            </li>
+                <% loop $Parent.AllChildren.Limit(10) %>
+                    <li class="navigation__item navigation__item--{$LinkingMode}">
+                        <a href="{$Link}" title="{$Title.XML}">
+                            {$MenuTitle.XML}
+                        </a>
+                    </li><!-- /.navigation__item -->
                 <% end_loop %>
             <% end_if %>
-        </ul>
-    </aside><!-- /.navigation -->
-</section><!-- /.sidebar col-sm-4 col-lg-3 -->
+        </ul><!-- /.navigation -->
+    </aside><!-- /.page__sidebar__content -->
+</section><!-- /.page__sidebar -->

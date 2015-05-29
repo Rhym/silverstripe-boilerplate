@@ -1,0 +1,22 @@
+/** =========================================
+ * Page
+ ===========================================*/
+
+.page {
+    @at-root #{&}__content {
+        @include make-xs-column(12);
+        &.has-sidebar {
+            @include make-sm-column(8);
+            @include make-lg-column(9);
+        }
+        @at-root #{&}__map {
+            @include margin;
+            width: 100%;
+            display: block;
+            height: 300px;
+            img {
+                max-width: none;
+            }
+        }
+    }
+}

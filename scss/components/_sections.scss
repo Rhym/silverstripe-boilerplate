@@ -3,7 +3,7 @@
  ===========================================*/
 
 section.section {
-    @include margin-default;
-    @include padding-default;
+    @include margin;
+    @include padding;
     position: relative;
 }

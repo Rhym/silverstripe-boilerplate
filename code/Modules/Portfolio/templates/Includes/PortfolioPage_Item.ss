@@ -1,48 +1,26 @@
 <div class="container">
-    <% include Content %>
-    <% if $PortfolioImages %>
-        <section class="portfolio section">
-            <div class="loop">
+    <article class="article article--portfolio">
+        <% if $Content %>
+            <div class="article__content typography">
+                {$Content}
+            </div><!-- /.article__content typography -->
+        <% end_if %>
+        <% if $PortfolioImages %>
+            <section class="loop loop--portfolio-images">
                 <% loop $PortfolioImages %>
-                    <div class="item {$EvenOdd} {$FirstLast}">
-                        <% if $Content %>
-                            <div class="row">
-                                <% if $ContentPosition = 'Left' %>
-                                    <div class="col-sm-9">
-                                        {$Image.setWidth(848)}
-                                    </div><!-- /.col-sm-9 -->
-                                    <div class="col-sm-3">
-                                        <aside class="typography caption-right">
-                                            {$Content}
-                                        </aside><!-- /.typography caption-right -->
-                                    </div><!-- /.col-sm-3 -->
-                                <% else_if $ContentPosition = 'Right' %>
-                                    <div class="col-sm-3">
-                                        <aside class="typography caption-left">
-                                            {$Content}
-                                        </aside><!-- /.typography caption-left -->
-                                    </div><!-- /.col-sm-3 -->
-                                    <div class="col-sm-9">
-                                        {$Image.setWidth(848)}
-                                    </div><!-- /.col-sm-9 -->
-                                <% else %>
-                                    <div class="col-sm-12">
-                                        {$Image.setWidth(1140)}
-                                    </div><!-- /.col-sm-12 -->
-                                    <div class="col-sm-12">
-                                        <aside class="typography caption-full">
-                                            {$Content}
-                                        </aside><!-- /.typography caption-full -->
-                                    </div><!-- /.col-sm-12 -->
-                                <% end_if %>
-                            </div><!-- /.row -->
-                        <% else %>
-                            {$Image.setWidth(1140)}
-                        <% end_if %>
-                    </div><!-- /.item -->
+                    <div class="loop__item loop__item--{$EvenOdd} loop__item--{$FirstLast}<% if $Content %> has-content<% end_if %><% if $ContentPosition = 'Left' %> is-left<% else_if $ContentPosition = 'Right' %> is-right<% else %> is-full<% end_if %>">
+                        <div class="row">
+                            <aside class="loop__item__content typography">
+                                {$Content}
+                            </aside><!-- /.loop__item__content typography -->
+                            <figure class="loop__item__image">
+                                {$Image.setWidth(1140)}
+                            </figure><!-- /.loop__item__image -->
+                        </div><!-- /.row -->
+                    </div><!-- /.loop__item loop__item--{$EvenOdd} loop__item--{$FirstLast} -->
                 <% end_loop %>
-            </div><!-- /.loop -->
-        </section><!-- /.portfolio section -->
-    <% end_if %>
+            </section><!-- /.portfolio section -->
+        <% end_if %>
+    </article><!-- /.article article--blog -->
 </div><!-- /.container -->
 <% include PreviousNextPage %>

@@ -1,25 +1,28 @@
 <% if $PaginatedPages %>
-<section class="portfolio loop">
+<section class="loop loop--portfolio">
     <div class="row">
         <% loop $PaginatedPages %>
-            <article class="item col-sm-6 {$FirstLast} {$EvenOdd}">
-                <a href="$Link">
-                    <figure class="image">
-                        <% loop $PortfolioImages.First %>
-                            {$Image.CroppedImage(1140, 641)}
-                        <% end_loop %>
-                        <figcaption class="meta">
-                            <h4 class="heading">{$MenuTitle.XML}</h4><!-- /.heading -->
-                            <span class="subtitle">
-                                {$SubTitle}
-                            </span><!-- /.subtitle -->
-                        </figcaption><!-- /.meta -->
-                    </figure><!-- /.image -->
-                </a>
-            </article><!-- /.item col-sm-6 {$FirstLast} {$EvenOdd} -->
+            <article class="loop__item loop__item--{$FirstLast} loop__item--{$EvenOdd} article">
+                <figure class="article__image">
+                    <a href="{$Link}" title="{$Title}">
+                        <% with $PortfolioImages.First %>{$Image.CroppedImage(1140, 641)}<% end_with %>
+                    </a>
+                </figure><!-- /.article__image -->
+                <h4 class="article__heading">
+                    <a href="{$Link}" title="{$Title}">{$MenuTitle}</a>
+                </h4><!-- /.article__heading -->
+                <% if $Content %>
+                    <div class="article__summary typography">
+                        {$Content.LimitWordCountXML(40)}
+                    </div><!-- /.article__summary typography -->
+                <% end_if %>
+                <div class="article__actions">
+                    <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
+                </div><!-- /.article__actions -->
+            </article><!-- /.loop__item loop__item--{$FirstLast} loop__item--{$EvenOdd} article -->
             <% if $MultipleOf(2) %><div class="clearfix"></div><!-- /.clearfix --><% end_if %>
         <% end_loop %>
     </div><!-- /.row -->
     <% include Pagination %>
-</section><!-- /.portfolio loop -->
+</section><!-- /.loop loop--portfolio -->
 <% end_if %>

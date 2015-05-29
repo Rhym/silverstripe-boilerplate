@@ -1,0 +1,98 @@
+/** =========================================
+ * Menu
+ ===========================================*/
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: right;
+    @include clearfix;
+    @at-root #{&}__item {
+        position: relative;
+        display: none;
+        float: left;
+        margin: 0;
+        @media(min-width: $screen-lg-min) {
+            display: inline-block;
+        }
+        @at-root #{&}--dropdown {
+            &:hover {
+                .menu__item__dropdown-menu {
+                    @media (min-width: $screen-lg-min) {
+                        display: block;
+                    }
+                }
+            }
+        }
+        @at-root #{&}--last {
+            .navigation__item__dropdown-menu {
+                left: auto;
+                right: 0;
+            }
+        }
+        @at-root #{&}--icon {
+            display: block;
+            @media(min-width: $screen-lg-min) {
+                display: none;
+            }
+        }
+        @at-root #{&}__link {
+            font-size: $navigation-font-size;
+            padding: 0.75em 1.5em;
+            display: block;
+        }
+        @at-root #{&}__dropdown-menu {
+            position: absolute;
+            font-size: $navigation-font-size;
+            box-shadow: none;
+            margin-top: 0;
+            padding: 0;
+            left: 0;
+            min-width: 160px;
+            right: auto;
+            border-width: 0;
+            background: transparent none;
+            display: none;
+            border-radius: 0;
+            @at-root #{&}__item {
+                display: block;
+                float: none;
+                > a {
+                    margin: 0;
+                    padding: 0.75em 1.5em;
+                    background: $brand-default;
+                    color: $brand-default-color;
+                }
+            }
+        }
+        @at-root #{&}__icon {
+            display: block;
+            margin: 0 $gap-md;
+            background: transparent none;
+            padding: 0;
+            border-width: 0;
+            text-align: center;
+            @at-root  #{&}--phone {
+                display: none;
+                @media(max-width: $screen-xs-max) {
+                    display: block;
+                }
+            }
+            @at-root #{&}--menu {
+                margin: 0 0 0 $gap-sm;
+            }
+            @at-root #{&}__icon {
+                color: $font-base-color;
+                font-size: $font-size-h1;
+                display: block;
+            }
+            @at-root #{&}__text {
+                color: $font-base-color;
+                text-transform: uppercase;
+                font-size: $font-size-xs;
+                display: inline-block;
+            }
+        }
+    }
+}

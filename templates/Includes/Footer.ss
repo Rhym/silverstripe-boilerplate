@@ -1,1 +1,1 @@
-<%--<footer id="footer" role="contentinfo"></footer><!-- /.footer -->--%>
+<%--<footer class="footer"" role="contentinfo"></footer><!-- /.footer -->--%>

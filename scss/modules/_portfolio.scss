@@ -2,33 +2,50 @@
  * Portfolio
  ===========================================*/
 
-.portfolio.loop{
-    .item {
-        a {
-            &:hover {
-                text-decoration: none;
-            }
-        }
+/** -----------------------------------------
+ * holder
+ -------------------------------------------*/
+
+.loop--portfolio {
+    .loop__item {
+        @include make-sm-column(6);
     }
 }
-.portfolio.section {
-    @include margin-none;
-    @include padding-none;
-    .caption-full,
-    .caption-right {
-        margin: $gap-md 0 0 0;
-        @media (min-width: $screen-sm-min) {
-            margin: 0;
-        }
-        p {
-            &:last-child {
-                margin: 0;
+
+/** -----------------------------------------
+ * Page
+ -------------------------------------------*/
+
+.loop--portfolio-images {
+    .loop__item {
+        @include clearfix;
+        &.has-content {
+            .loop__item__content {
+                display: block;
             }
         }
-    }
-    .caption-full {
-        @media(min-width: $screen-sm-min) {
-            margin: $gap-md 0 0 0;
+        &.is-left,
+        &.is-right {
+            .loop__item__content {
+                @include make-sm-column(3);
+            }
+            .loop__item__image {
+                @include make-sm-column(9);
+            }
+        }
+        &.is-right {
+            .loop__item__content {
+                @media(min-width: $screen-sm-min) {
+                    float: right;
+                }
+            }
+        }
+        .loop__item__content {
+            @include make-xs-column(12);
+            display: none;
+        }
+        .loop__item__image {
+            @include make-xs-column(12);
         }
     }
 }

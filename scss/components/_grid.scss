@@ -3,23 +3,35 @@
  ===========================================*/
 
 /** -----------------------------------------
+ * Mixins
+ -------------------------------------------*/
+
+@mixin row-size($size: $gutter) {
+    margin: 0 -$size;
+    > .item {
+        padding: 0 $size;
+        margin: 0 0 ($size * 2) 0;
+    }
+}
+
+/** -----------------------------------------
  * Rows
  -------------------------------------------*/
 
 .row {
-    &.row-xs {
+    &#{&}--xs {
         @include row-size($gap-xs);
     }
-    &.row-sm {
+    &#{&}--sm {
         @include row-size($gap-sm);
     }
-    &.row-md {
+    &#{&}--md {
         @include row-size($gap-md);
     }
-    &.row-lg {
+    &#{&}--lg {
         @include row-size($gap-lg);
     }
-    &.row-xl {
+    &#{&}--xl {
         @include row-size($gap-xl);
     }
 }

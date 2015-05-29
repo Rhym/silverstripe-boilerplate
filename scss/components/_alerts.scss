@@ -2,17 +2,54 @@
  * Alerts
  ===========================================*/
 
+/** -----------------------------------------
+ * Base Extension
+ -------------------------------------------*/
+
+@mixin alert() {
+    display: block;
+    padding: $gap-md;
+    border-radius: $border-radius-small;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    margin: 0 0 $gap-md 0;
+    border: 1px solid;
+    @media(min-width: $screen-sm-min) {
+        margin: 0 0 $gap-lg 0;
+    }
+}
+
+%alert {
+    @include alert;
+}
+
+/** -----------------------------------------
+ * Block
+ -------------------------------------------*/
+
 .alert {
-    &.alert-success {
-        @include alert-variant($alert-success-bg, shade($alert-success-border, 15), $alert-success-text);
+    @extend %alert;
+    @at-root #{&}--info {
+        @extend %alert;
+        background: $alert-info-bg;
+        border-color: $alert-info-border;
+        color: $alert-info-text;
     }
-    &.alert-info {
-        @include alert-variant($alert-info-bg, shade($alert-info-border, 15), $alert-info-text);
+    @at-root #{&}--warning {
+        @extend %alert;
+        background: $alert-warning-bg;
+        border-color: $alert-warning-border;
+        color: $alert-warning-text;
     }
-    &.alert-warning {
-        @include alert-variant($alert-warning-bg, shade($alert-warning-border, 15), $alert-warning-text);
+    @at-root #{&}--success {
+        @extend %alert;
+        background: $alert-success-bg;
+        border-color: $alert-success-border;
+        color: $alert-success-text;
     }
-    &.alert-danger {
-        @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
+    @at-root #{&}--danger {
+        @extend %alert;
+        background: $alert-danger-bg;
+        border-color: $alert-danger-border;
+        color: $alert-danger-text;
     }
 }

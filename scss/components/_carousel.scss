@@ -2,43 +2,92 @@
  * Carousel
  ===========================================*/
 
-$carousel-icon-size: 50px;
-
-/**
- * Prev / Next
- */
-.owl-controls {
-    height: $carousel-icon-size;
-    display: none;
-    margin: (-$carousel-icon-size / 2) 0 0 0;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    @media(min-width: $screen-sm-min) {
-        display: block;
-    }
-    .owl-prev,
-    .owl-next {
-        text-shadow: 1px 2px 3px rgba(0,0,0,0.2);
-        color: $brand-inverse-color;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 0;
-        background: transparent none;
-        font-size: $carousel-icon-size;
-        line-height: $carousel-icon-size;
-        margin: 0 0 0 0.5em;
-        &:hover,
-        &:active {
-            background: transparent none;
+.carousel {
+    @at-root #{&}__item {
+        position: relative;
+        @media (max-width: $screen-sm-max) {
+            max-height: none !important; // Remove the style attribute set in the cms.
+        }
+        img {
+            width: 100%;
+        }
+        @at-root #{&}__caption{
+            position: absolute;
+            top: 20%;
+            right: $gutter / 2;
+            left: $gutter / 2;
+            margin: 0 auto;
+            @media (min-width: $screen-sm-min) {
+                width: $container-sm - $gutter;
+            }
+            @media (min-width: $screen-md-min) {
+                top: 30%;
+                width: $container-md - $gutter;
+            }
+            @media (min-width: $screen-lg-min) {
+                width: $container-lg - $gutter;
+            }
+            &.typography {
+                color: $brand-inverse-color;
+                text-shadow: 0 0 7px rgba(0,0,0,0.7);
+                h2,
+                h3,
+                h4 {
+                    color: $brand-inverse-color;
+                }
+            }
         }
     }
-    .owl-next {
-        right: 0;
-        left: auto;
-        margin: 0 0.5em 0 0;
+    @at-root #{&}__navigation {
+        height: $carousel-icon-size;
+        padding: 0;
+        position: relative;
+        background: $brand-inverse;
+        @media(min-width: $screen-sm-min) {
+            background: transparent none;
+            height: $carousel-icon-size * 2;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+        }
+        @at-root #{&}__item {
+            color: $brand-inverse-color;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            background: transparent none;
+            font-size: $carousel-icon-size / 2;
+            line-height: $carousel-icon-size / 2;
+            padding: 0.5em;
+            @media(min-width: $screen-sm-min) {
+                font-size: $carousel-icon-size;
+                line-height: $carousel-icon-size;
+            }
+            &:hover,
+            &:active {
+                background: transparent none;
+            }
+            @at-root #{&}--next {
+                right: 0;
+                left: auto;
+            }
+        }
+    }
+}
+
+/**
+ * If the browser supports CSS transformations then use translate to center the caption.
+ */
+.csstransforms3d {
+    .carousel {
+        .carousel__item__caption,
+        .carousel__navigation {
+            @media (min-width: $screen-sm-min) {
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+        }
     }
 }

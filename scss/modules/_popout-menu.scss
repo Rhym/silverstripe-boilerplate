@@ -11,150 +11,83 @@
         background: $popout-menu-background;
         width: 100%;
         z-index: 1001;
-        bottom: 0;
         top: 0;
         right: -100%;
+        bottom: 0;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        transition: .2s ease right;
-        .container {
-            position: relative;
-        }
+        transition: .3s ease right;
         .header {
-            @include margin-default;
-            @include padding-default;
-            margin-top: 0;
-            position: relative;
-            z-index: 2;
-            /**
-             * Remove space between elements.
-             */
-            font-size: 0;
-            @media (min-width: $screen-sm-min) {
-                margin-top: 0;
-            }
-            .left {
-                .logo {
-                    a {
-                        display: block;
-                    }
-                    img {
-                        backface-visibility: hidden;
-                    }
-                }
-                .heading {
-                    font-size: $font-size-h3;
-                    margin: 0;
-                }
-                a {
-                    display: block;
-                }
-            }
-            .left,
-            .right {
-                /**
-                 * Set font size after removing space between inline-block elements.
-                 */
-                font-size: $font-size-base;
-                display: inline-block;
-                vertical-align: middle;
-                float: none;
-            }
-            ul {
-                margin: 0;
-                padding: 0;
-                float: right;
-                list-style: none;
-                @include clearfix;
-                li {
-                    border-width: 0;
-                }
-                .menu-icon {
-                    background: transparent none;
-                    padding: 0;
-                    border-width: 0;
-                    text-align: center;
-                    .icon {
-                        color: $font-base-color;
-                        font-size: $font-size-h1;
-                        display: block;
-                    }
-                    .text {
-                        color: $font-base-color;
-                        text-transform: uppercase;
-                        font-size: $font-size-xs;
-                        display: inline-block;
-                    }
-                }
-            }
+            @include margin-lg-bottom;
         }
-        ul {
+        @at-root #{&}__menu {
             margin: 0;
             padding: 0;
             list-style: none;
-            li {
+            @at-root #{&}__item {
                 margin: 0;
                 border-bottom: 1px solid shade($popout-menu-background, 5);
-                &.last {
+                padding-right: $popout-item-size;
+                position: relative;
+                @at-root #{&}--last {
                     border-width: 0;
                 }
-                a {
-                    text-decoration: none;
+                @at-root #{&}__link {
+                    min-height: $popout-item-size;
+                    line-height: $popout-item-size;
                     color: $popout-menu-color;
+                    display: block;
                 }
-            }
-        }
-        .parent {
-            padding-right: $popout-item-size;
-            position: relative;
-            > a {
-                min-height: $popout-item-size;
-                line-height: $popout-item-size;
-                display: block;
-            }
-            .open-children {
-                background: shade($popout-menu-background, 5);
-                cursor: pointer;
-                position: absolute;
-                right: 0;
-                top: 0;
-                display: block;
-                width: $popout-item-size;
-                height: $popout-item-size;
-                line-height: $popout-item-size;
-                text-align: center;
-                font-size: 1.3em;
-                color: $popout-menu-color;
-                i {
-                    transition: .2s linear transform;
-                }
-                &.active {
+                @at-root #{&}__icon {
+                    background: shade($popout-menu-background, 5);
+                    cursor: pointer;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    display: block;
+                    width: $popout-item-size;
+                    height: $popout-item-size;
+                    line-height: $popout-item-size;
+                    text-align: center;
+                    font-size: 1.3em;
+                    color: $popout-menu-color;
+                    @at-root #{&}--active {
+                        i {
+                            transform: rotate(180deg);
+                        }
+                    }
                     i {
-                        transform: rotate(180deg);
+                        transition: .2s linear transform;
+                    }
+                }
+                @at-root #{&}__list {
+                    background: shade($popout-menu-background, 5);
+                    list-style: none;
+                    margin: 0 (-$popout-item-size) 0 0;
+                    padding: 0 0 0 $gap-md;
+                    height: 0;
+                    overflow: hidden;
+                    @at-root #{&}--active {
+                        height: auto;
+                    }
+                    @at-root #{&}__item {
+                        margin: 0;
+                        border-width: 0;
+                        @at-root #{&}__link {
+                            color: $popout-menu-color;
+                            padding: 0.75em 0;
+                            display: block;
+                        }
                     }
                 }
             }
         }
-        .children {
-            height: 0;
-            overflow: hidden;
-            &.active {
-                height: auto;
-            }
-            li {
-                border-width: 0;
-                a {
-                    padding: 0.75em 0;
-                    display: block;
-                }
-            }
-        }
-        .search {
+        @at-root #{&}__search {
             margin-top: $gap-md;
             padding-top: $gap-lg;
             border-top: 1px solid shade($popout-menu-background, 5);
             input[type="text"] {
-                @include input-static;
+                @include field;
                 border-color: $popout-menu-color;
                 box-shadow: none;
                 &:focus {

@@ -1,6 +1,7 @@
 /** =========================================
- * Mixins
+ * Comments
  ===========================================*/
 
-@import 'mixins/border-radius';
-@import 'mixins/sizing';
+.comments {
+    @include margin;
+}

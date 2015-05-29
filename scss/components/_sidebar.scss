@@ -2,32 +2,14 @@
  * Sidebar
  ===========================================*/
 
-.sidebar {
+.page__sidebar {
+    display: none;
     margin: 0 0 $gap-md 0;
     font-size: $sidebar-font-size;
-    .navigation {
-        ul {
-            margin: 0;
-            padding:0;
-            li {
-                list-style: none;
-                .heading {
-                    margin-top: 0;
-                }
-                a {
-                    color: $link-color;
-                    display: block;
-                    padding: $gap-xs 0;
-                }
-                a:hover {
-                    color: $link-hover-color;
-                    text-decoration: none;
-                }
-                .current,
-                .current:hover {
-                    color: $gray-dark;
-                }
-            }
-        }
+    @include make-sm-column(4);
+    @include make-lg-column(3);
+    @media(min-width: $screen-sm-min) {
+        display: block;
     }
+    @at-root #{&}__content {}
 }

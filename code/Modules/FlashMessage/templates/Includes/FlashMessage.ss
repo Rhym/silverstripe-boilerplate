@@ -1,7 +1,7 @@
 <% if $FlashMessage %>
     <div class="container">
-        <div class="alert alert-{$FlashMessageType}">
+        <div class="alert--{$FlashMessageType}">
             {$FlashMessage}
-        </div><!-- /.alert -->
+        </div><!-- /.alert--{$FlashMessageType} -->
     </div><!-- /.container -->
 <% end_if %>

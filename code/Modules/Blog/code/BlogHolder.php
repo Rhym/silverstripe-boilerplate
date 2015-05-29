@@ -61,6 +61,7 @@ class BlogHolder extends Page {
         $items = ($this->Items > 0 ? $this->Items : 10);
         $pagination->setPageLength($items);
 
+
         $data = array (
             'PaginatedPages' => $pagination
         );

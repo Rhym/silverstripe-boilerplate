@@ -2,10 +2,13 @@
  * Buttons
  ===========================================*/
 
-@mixin btn-static() {
+/** -----------------------------------------
+ * Mixins
+ -------------------------------------------*/
+
+@mixin btn() {
     display: inline-block;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     border-radius: $border-radius-small;
     padding: $padding-base-vertical $padding-base-horizontal;
     white-space: normal;
@@ -15,111 +18,116 @@
         outline: 0;
         box-shadow: none;
     }
+    &:active {
+        background-image: none;
+    }
 }
-.btn {
-    @include btn-static;
+
+@mixin button-variant($color, $background, $border) {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active {
+        color: $color;
+        background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &.focus,
+        &:active,
+        &.active {
+            background-color: $background;
+            border-color: $border;
+        }
+    }
 }
-.btn-primary {
-    @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+
+@mixin button-bordered($color) {
+    border-color: $color;
+    color: $color;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color;
+        border-color: $color;
+    }
 }
-.btn-default {
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-}
-.btn-secondary {
-    @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-}
-.btn-inverse {
-    @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
+
+/** -----------------------------------------
+ * Base Extension
+ -------------------------------------------*/
+
+%btn {
+    @include btn;
 }
 
 /** -----------------------------------------
  * Block
  -------------------------------------------*/
 
-.btn-block {
-    display: block;
-    width: 100%;
-}
+.btn {
+    @extend %btn;
+    @at-root #{&}--default {
+        @extend %btn;
+        @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+    }
+    @at-root #{&}--primary {
+        @extend %btn;
+        @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
+    @at-root #{&}--secondary {
+        @extend %btn;
+        @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+    }
+    @at-root #{&}--inverse {
+        @extend %btn;
+        @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
+    }
 
-/** -----------------------------------------
- * Link
- -------------------------------------------*/
+    /** -----------------------------------------
+     * Full Width
+    -------------------------------------------*/
 
-.btn-link {
-    background: transparent none;
-    text-decoration: none;
-    transition: $transition-default color;
-    &:hover {
+    @at-root #{&}--block {
+        display: block;
+        width: 100%;
+    }
+
+    /** -----------------------------------------
+     * Bordered
+    -------------------------------------------*/
+
+    @at-root #{&}--bordered {
         background: transparent none;
-        text-decoration: none;
+        border-width: 2px;
+        border-style: solid;
+        transition: $transition-default color, $transition-default border-color;
+        &:hover,
+        &:focus,
+        &:active {
+            background: transparent none;
+        }
+        // TODO: Reference top level parent, instead of implicitly setting .btn
+        &.btn--default {
+            @include button-bordered($brand-default);
+        }
+        &.btn--primary {
+            @include button-bordered($brand-primary);
+        }
+        &.btn--secondary {
+            @include button-bordered($brand-primary);
+        }
+        &.btn--inverse {
+            @include button-bordered($brand-primary);
+        }
     }
-    &:active,
-    &:focus {
-        text-decoration: none;
-        background: $gray-lighter;
-    }
-    &.btn-default {
-        @include button-link($brand-default-color);
-    }
-    &.btn-primary {
-        @include button-link($brand-primary);
-    }
-    &.btn-secondary {
-        @include button-link($brand-secondary);
-    }
-    &.btn-inverse {
-        @include button-link($brand-inverse);
-    }
-    &.btn-success {
-        @include button-link($brand-success);
-    }
-    &.btn-info {
-        @include button-link($brand-info);
-    }
-    &.btn-warning {
-        @include button-link($brand-warning);
-    }
-    &.btn-danger {
-        @include button-link($brand-danger);
-    }
-}
 
-/** -----------------------------------------
- * Bordered
- -------------------------------------------*/
-
-.btn-bordered {
-    background: transparent none;
-    border-width: 2px;
-    border-style: solid;
-    transition: $transition-default color, $transition-default border-color;
-    &:hover,
-    &:focus,
-    &:active {
-        background: transparent none;
-    }
-    &.btn-default {
-        @include button-bordered($brand-default);
-    }
-    &.btn-primary {
-        @include button-bordered($brand-primary);
-    }
-    &.btn-secondary {
-        @include button-bordered($brand-secondary);
-    }
-    &.btn-inverse {
-        @include button-bordered($brand-inverse);
-    }
-    &.btn-success {
-        @include button-bordered($brand-success);
-    }
-    &.btn-info {
-        @include button-bordered($brand-info);
-    }
-    &.btn-warning {
-        @include button-bordered($brand-warning);
-    }
-    &.btn-danger {
-        @include button-bordered($brand-danger);
-    }
 }

@@ -4,7 +4,7 @@
 
 .ajax-content {
     transition: $transition-default opacity;
-    &.ajax-loading {
-        opacity: $hover-opacity;
+    @at-root #{&}--loading {
+        opacity: $base-opacity;
     }
 }

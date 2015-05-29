@@ -43,7 +43,7 @@ class RegistrationForm extends Form {
         -------------------------------------------*/
 
         $actions = FieldList::create(
-            FormAction::create('Register')->setTitle('Register')->addExtraClass('btn btn-primary')
+            FormAction::create('Register')->setTitle('Register')->addExtraClass('btn--primary')
         );
 
         /** -----------------------------------------

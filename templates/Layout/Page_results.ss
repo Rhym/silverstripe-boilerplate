@@ -1,65 +1,40 @@
 <div class="container">
-    <h4 class="heading"><% sprintf(_t('SearchForm.SearchHeading',"Search %s"), $SiteConfig.Title) %></h4><!-- /.heading -->
-    <form $FormAttributes role="form" class="form">
-        <fieldset>
-            <div class="field text">
-                <div class="middleColumn">
-                    <input type="text" name="Search" placeholder="<% _t('SearchForm.SearchPlaceholder', 'Enter your search keywords...') %>" class="text" value="{$Query.XML}" id="SearchForm_SearchForm_Search">
-                </div>
-            </div><!-- /.field text -->
-            <input type="submit" name="action_results" value="Search" class="action btn btn-primary" id="SearchForm_SearchForm_action_results">
-        </fieldset>
-    </form><!-- /[role="form"] -->
-    <section class="search-results">
-        <% if $Query %>
-            <article class="content typography">
-                <h1><i class="fa fa-search"></i> "{$Query.XML}"</h1>
-            </article><!-- /.content typography -->
-        <% end_if %>
-        <% if $Results %>
-            <div class="results-loop">
-                <% loop $Results %>
-                    <div class="well">
-                        <h4>
-                            <a href="$Link">
-                                <% if $MenuTitle %>
-                                    {$MenuTitle.XML}
-                                <% else %>
-                                    {$Title.XML}
-                                <% end_if %>
-                            </a>
-                        </h4>
-                        <% if $Content %>
-                        <p>{$Content.LimitWordCountXML}</p>
-                        <% end_if %>
-                        <p><a class="readMoreLink" href="{$Link}"><%t PageResults.ReadMoreText 'Read more about "{Title}"' Title=$Title %></a></p>
-                    </div><!-- /.well -->
-                <% end_loop %>
-            </div><!-- /.results-loop -->
-        <% else %>
-            <p class="alert alert-warning"><%t PageResults.NoResultsText 'Sorry, your search query did not return any results.' %></p>
-        <% end_if %>
-        <% if $Results.MoreThanOnePage %>
-            <ul class="pagination">
-                <% if $Results.NotFirstPage %>
-                    <li><a class="prev" href="{$Results.PrevLink}"><%t Pagination.PrevText 'Prev' %></a></li>
-                <% end_if %>
-                <% loop $Results.Pages %>
-                    <% if $CurrentBool %>
-                        <li class="active"><span>{$PageNum}</span></li><!-- /.active -->
+    <div class="row">
+        <div class="page__content">
+            <section class="search">
+                <aside class="search__form">
+                    <form $FormAttributes role="form" class="form">
+                        <fieldset>
+                            <div class="field text">
+                                <div class="middleColumn">
+                                    <input type="text" name="Search" placeholder="Enter your search keywords..." class="text" value="{$Query.XML}" id="SearchForm_SearchForm_Search">
+                                </div><!-- /.middleColumn -->
+                            </div><!-- /.field text -->
+                            <div class="Actions">
+                                <input type="submit" name="action_results" value="Search" class="btn--primary" id="SearchForm_SearchForm_action_results">
+                            </div><!-- /.Actions -->
+                        </fieldset>
+                    </form><!-- /[role="form"] -->
+                </aside><!-- /.search__form -->
+                <div class="search__results">
+                    <% if $Results %>
+                        <div class="loop loop--search-results">
+                            <% loop $Results %>
+                                <article class="loop__item article">
+                                    <h4 class="article_heading"><a href="$Link"><% if $MenuTitle %>{$MenuTitle.XML}<% else %>{$Title.XML}<% end_if %></a></h4><!-- /.article_heading -->
+                                    <% if $Content %>
+                                        <div class="article__summary">{$Content.LimitWordCountXML}</div><!-- /.article__summary -->
+                                    <% end_if %>
+                                    <div class="article__actions"><a href="{$Link}">Read more about "{$Title}"</a></div><!-- /.article__actions -->
+                                </article><!-- /.loop__item article -->
+                            <% end_loop %>
+                        </div><!-- /.loop loop--search-results -->
                     <% else %>
-                        <% if $Link %>
-                            <li><a href="{$Link}">{$PageNum}</a></li>
-                        <% else %>
-                            <li><%t Pagination.Ellipsis '...' %></li>
-                        <% end_if %>
+                        <div class="alert--warning">Sorry, your search query did not return any results.</div><!-- /.alert--warning -->
                     <% end_if %>
-                <% end_loop %>
-                <% if $Results.NotLastPage %>
-                    <li><a class="next" href="{$Results.NextLink}"><%t Pagination.NextText 'Next' %></a></li>
-                <% end_if %>
-                <%--<li class="disabled"><span>$PaginatedPages.CurrentPosition</span></li>--%>
-            </ul><!-- /.pagination -->
-        <% end_if %>
-    </section><!-- /.search-results -->
+                    <% include Pagination PaginatedPages=$Results %>
+                </div><!-- /.search__results -->
+            </section><!-- /.search -->
+        </div><!-- /.page_content has-sidebar -->
+    </div><!-- /.row -->
 </div><!-- /.container -->

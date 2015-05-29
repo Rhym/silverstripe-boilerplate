@@ -26,7 +26,7 @@ class BlogPage extends Page {
 
     private static $can_be_root = false;
 
-    public static $many_many_extraFields=array(
+    public static $many_many_extraFields = array(
         'Tags' => array(
             'SortOrder' => 'Int'
         )

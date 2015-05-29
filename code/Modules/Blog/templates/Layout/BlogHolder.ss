@@ -2,12 +2,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="hidden-xs"><% include BlogSidebar %></div><!-- /.hidden-xs -->
-        <div class="col-sm-8 col-lg-9">
+        <% include BlogSidebar %>
+        <div class="page__content has-sidebar">
             <% include Content %>
             <div class="ajax-content">
                 <% include BlogHolder_Item %>
             </div><!-- /.ajax-content -->
-        </div><!-- /.col-sm-8 col-lg-9 -->
+        </div><!-- /.page__content has-sidebar -->
     </div><!-- /.row -->
 </div><!-- /.container -->

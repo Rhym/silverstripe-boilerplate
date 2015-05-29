@@ -7,7 +7,6 @@ class SliderConfig extends DataExtension {
 
     private static $db = array(
         'Height'            => 'Varchar(255)',
-        'FullWidth'         => 'Boolean(1)',
         'HideDefaultSlider' => 'Boolean(0)'
     );
 
@@ -46,7 +45,6 @@ class SliderConfig extends DataExtension {
         -------------------------------------------*/
 
         $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Settings', 4));
-        $fields->addFieldToTab('Root.Banner', CheckboxField::create('FullWidth', 'Set banner to be full width'));
         $fields->addFieldToTab('Root.Banner', $height = NumericField::create('Height', 'Height of banner (optional)'));
     }
 
@@ -82,7 +80,7 @@ class SliderConfig extends DataExtension {
      * If the page, or SiteConfig has a slider item, then add the  "has-slider" class to the body, else add the  "no-slider".
      */
     public function getSliderClass() {
-        ($this->owner->SliderItems()->First() || SiteConfig::current_site_config()->SliderImage()->Exists() ? $out = 'has-slider' : $out = 'no-slider');
+        ($this->owner->SliderItems()->First() || SiteConfig::current_site_config()->SliderImage()->Exists() ? $out = 'has-slider' : $out = 'has-no-slider');
         return $out;
     }
 

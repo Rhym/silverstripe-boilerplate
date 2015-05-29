@@ -3,15 +3,38 @@
  ===========================================*/
 
 .pagination {
-    > li {
-        > span {
-            color: $font-base-color;
-            background: $brand-default-dark;
-            &:hover,
-            &:focus,
-            &:active {
+    display: inline-block;
+    padding-left: 0;
+    margin: $line-height-computed 0;
+    border-radius: $border-radius-base;
+    @at-root #{&}__item {
+        display: inline;
+        @at-root #{&}__link {
+            position: relative;
+            float: left;
+            padding: $padding-base-vertical $padding-base-horizontal;
+            line-height: $line-height-base;
+            text-decoration: none;
+            color: $pagination-color;
+            background-color: $pagination-bg;
+            border: 1px solid $pagination-border;
+            margin-left: -1px;
+            @at-root #{&}--active {
+                background: $brand-primary;
+                color: $brand-primary-color;
+                border-color: $brand-primary;
+            }
+            @at-root #{&}--disabled {
+                opacity: $base-opacity;
                 color: $font-base-color;
-                background: $brand-default-dark;
+            }
+            @at-root #{&}--prev {
+                border-top-left-radius: $border-radius-small;
+                border-bottom-left-radius: $border-radius-small;
+            }
+            @at-root #{&}--next {
+                border-top-right-radius: $border-radius-small;
+                border-bottom-right-radius: $border-radius-small;
             }
         }
     }

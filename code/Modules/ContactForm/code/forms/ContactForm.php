@@ -14,14 +14,6 @@ class ContactForm extends Form {
     public function __construct($controller, $name, $arguments = array()) {
 
         /** -----------------------------------------
-         * Scaffolding
-        -------------------------------------------*/
-
-        $row = LiteralField::create('', '<div class="row">');
-        $column = LiteralField::create('', '<div class="col-xs-12 col-sm-6">');
-        $close = LiteralField::create('', '</div>');
-
-        /** -----------------------------------------
          * Fields
         -------------------------------------------*/
 
@@ -59,30 +51,12 @@ class ContactForm extends Form {
         }
 
         $fields = FieldList::create(
-            $row,
-            $column,
             $firstName,
-            $close,
-            $column,
             $lastName,
-            $close,
-            $close,
-            $row,
-            $column,
             $email,
-            $close,
-            $column,
             $phone,
-            $close,
-            $close,
-//            $row,
-//                $column,
-//                    $suburb,
-//                $close,
-//                $column,
-//                    $city,
-//                $close,
-//            $close,
+//            $suburb,
+//            $city,
             $message,
             $reCaptcha
         );
@@ -92,7 +66,7 @@ class ContactForm extends Form {
         -------------------------------------------*/
 
         $actions = FieldList::create(
-            FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn btn-primary')
+            FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn--primary')
         );
 
         /** -----------------------------------------

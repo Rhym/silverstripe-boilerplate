@@ -2,11 +2,11 @@
  * Previous/Next Page
  ===========================================*/
 
-.previous-next-page.section {
-    @include margin-none;
-    @include padding-none;
-    .item {
-        &.next {
+.previous-next {
+    @include clearfix;
+    @at-root #{&}__item {
+        @include make-sm-column(6, 0);
+        @at-root #{&}--next {
             text-align: right;
         }
     }

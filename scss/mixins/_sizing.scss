@@ -2,56 +2,167 @@
  * Sizing
  ===========================================*/
 
+@mixin float-none() {
+    float: none;
+    @media(min-width: $screen-sm-min) {
+        float: none;
+    }
+}
+
 /** -----------------------------------------
  * Margin
  -------------------------------------------*/
 
-@mixin margin($xs: $gap-md, $sm: $gap-lg) {
-    margin: $xs 0;
+/**
+ * Default
+ */
+@mixin margin($top: $gap-md, $right: 0, $bottom: $gap-md, $left: 0) {
+    margin: (floor($top / 2)) (floor($right / 2)) (floor($bottom / 2)) (floor($left / 2));
     @media (min-width: $screen-sm-min) {
-        margin: $sm 0;
+        margin: $top $right $bottom $left;
     }
 }
+@mixin margin-top() {
+    @include margin($gap-md, 0, 0, 0);
+}
+@mixin margin-bottom() {
+    @include margin(0, 0, $gap-md, 0);
+}
 
+/**
+ * No Margin
+ */
 @mixin margin-none() {
-    @include margin(0, 0);
+    @include margin(0, 0, 0, 0);
 }
 
+/**
+ * Extra Small
+ */
+@mixin margin-xs() {
+    @include margin($gap-xs, 0, $gap-xs, 0);
+}
+@mixin margin-xs-top() {
+    @include margin($gap-xs, 0, 0, 0);
+}
+@mixin margin-xs-bottom() {
+    @include margin(0, 0, $gap-xs, 0);
+}
+
+/**
+ * Small
+ */
 @mixin margin-sm() {
-    @include margin($gap-sm, $gap-md);
+    @include margin($gap-sm, 0, $gap-sm, 0);
+}
+@mixin margin-sm-top() {
+    @include margin($gap-sm, 0, 0, 0);
+}
+@mixin margin-sm-bottom() {
+    @include margin(0, 0, $gap-sm, 0);
 }
 
-@mixin margin-default() {
-    @include margin;
-}
-
+/**
+ * Large
+ */
 @mixin margin-lg() {
-    @include margin($gap-lg, $gap-xl);
+    @include margin($gap-lg, 0, $gap-lg, 0);
+}
+@mixin margin-lg-top() {
+    @include margin($gap-lg, 0, 0, 0);
+}
+@mixin margin-lg-bottom() {
+    @include margin(0, 0, $gap-lg, 0);
+}
+
+/**
+ * Extra Large
+ */
+@mixin margin-xl() {
+    @include margin($gap-xl, 0, $gap-xl, 0);
+}
+@mixin margin-xl-top() {
+    @include margin($gap-xl, 0, 0, 0);
+}
+@mixin margin-xl-bottom() {
+    @include margin(0, 0, $gap-xl, 0);
 }
 
 /** -----------------------------------------
  * Padding
  -------------------------------------------*/
 
-@mixin padding($xs: $gap-md, $sm: $gap-lg) {
-    padding: $xs 0;
+/**
+ * Default
+ */
+@mixin padding($top: $gap-md, $right: 0, $bottom: $gap-md, $left: 0) {
+    padding: (floor($top / 2)) (floor($right / 2)) (floor($bottom / 2)) (floor($left / 2));
     @media (min-width: $screen-sm-min) {
-        padding: $sm 0;
+        padding: $top $right $bottom $left;
     }
 }
+@mixin padding-top() {
+    @include padding($gap-md, 0, 0, 0);
+}
+@mixin padding-bottom() {
+    @include padding(0, 0, $gap-md, 0);
+}
 
+/**
+ * No Margin
+ */
 @mixin padding-none() {
-    @include padding(0, 0);
+    @include padding(0, 0, 0, 0);
 }
 
+/**
+ * Extra Small
+ */
+@mixin padding-xs() {
+    @include padding($gap-xs, 0, $gap-xs, 0);
+}
+@mixin padding-xs-top() {
+    @include padding($gap-xs, 0, 0, 0);
+}
+@mixin padding-xs-bottom() {
+    @include padding(0, 0, $gap-xs, 0);
+}
+
+/**
+ * Small
+ */
 @mixin padding-sm() {
-    @include padding($gap-sm, $gap-md);
+    @include padding($gap-sm, 0, $gap-sm, 0);
+}
+@mixin padding-sm-top() {
+    @include padding($gap-sm, 0, 0, 0);
+}
+@mixin padding-sm-bottom() {
+    @include padding(0, 0, $gap-sm, 0);
 }
 
-@mixin padding-default() {
-    @include padding;
-}
-
+/**
+ * Large
+ */
 @mixin padding-lg() {
-    @include padding($gap-lg, $gap-xl);
+    @include padding($gap-lg, 0, $gap-lg, 0);
+}
+@mixin padding-lg-top() {
+    @include padding($gap-lg, 0, 0, 0);
+}
+@mixin padding-lg-bottom() {
+    @include padding(0, 0, $gap-lg, 0);
+}
+
+/**
+ * Extra Large
+ */
+@mixin padding-xl() {
+    @include padding($gap-xl, 0, $gap-xl, 0);
+}
+@mixin padding-xl-top() {
+    @include padding($gap-xl, 0, 0, 0);
+}
+@mixin padding-xl-bottom() {
+    @include padding(0, 0, $gap-xl, 0);
 }

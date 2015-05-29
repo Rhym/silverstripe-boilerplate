@@ -2,36 +2,11 @@
  * Forms
  ===========================================*/
 
-.form {
-    @include margin-default;
-}
-
 /** -----------------------------------------
- * Fieldset
+ * Mixin
  -------------------------------------------*/
 
-fieldset {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    min-width: 0;
-}
-
-/** -----------------------------------------
- * Label
- -------------------------------------------*/
-
-label {
-    display: inline-block;
-    max-width: 100%;
-    margin: 0 0 $gap-xs 0;
-}
-
-/** =========================================
- * Fields
- ===========================================*/
-
-@mixin form-control() {
+@mixin field() {
     display: block;
     width: 100%;
     height: ($line-height-computed + ($padding-base-vertical * 2) + 2px);
@@ -43,7 +18,7 @@ label {
     background-image: none;
     border: 1px solid $brand-default-darker;
     border-radius: $border-radius-small;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color $transition-default, box-shadow $transition-default;
     &[disabled],
     &[readonly],
     fieldset[disabled] & {
@@ -56,22 +31,49 @@ label {
     }
 }
 
+%field {
+    @include field;
+}
+
 .form {
+    @include margin;
+    /** -----------------------------------------
+     * Fieldset
+    -------------------------------------------*/
+
+    @at-root fieldset {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        min-width: 0;
+    }
+    /** -----------------------------------------
+     * Labels
+    -------------------------------------------*/
+
+    @at-root label {
+        display: inline-block;
+        max-width: 100%;
+        margin: 0 0 $gap-xs 0;
+    }
+    /** -----------------------------------------
+     * Fields
+    -------------------------------------------*/
+
     .field {
-        margin: 0 0 $gap-md 0;
+        @include margin-sm;
         .text,
         .textarea,
         .dropdown {
-            @include form-control;
+            @include field;
         }
         .textarea {
             height: auto;
         }
-    }
-}
+        /** -----------------------------------------
+         * Confirm Password
+        -------------------------------------------*/
 
-.form {
-    .field {
         &.confirmedpassword {
             > .middleColumn {
                 > .field {
@@ -81,15 +83,10 @@ label {
                 }
             }
         }
-    }
-}
+        /** -----------------------------------------
+         * Radio/Checkbox
+        -------------------------------------------*/
 
-/** -----------------------------------------
- * Radio/Checkbox
- -------------------------------------------*/
-
-.form {
-    .field {
         &.radio,
         &.checkbox {
             position: relative;
@@ -121,15 +118,15 @@ label {
                 }
             }
         }
+        /** -----------------------------------------
+         * ReCaptcha
+        -------------------------------------------*/
+
+        @at-root .recaptcha {
+            @include margin-sm;
+        }
     }
-}
 
-/** -----------------------------------------
- * ReCaptcha
- -------------------------------------------*/
-
-.recaptcha {
-    @include margin-default;
 }
 
 /** =========================================
@@ -156,24 +153,32 @@ label {
     .field {
         margin: 0 0 $gap-md 0;
         .text{
-            @include form-control;
+            @include field;
         }
     }
     .action {
-        @include btn-static;
+        @include btn;
         @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
     }
 }
 
-/*---------------------------------------------*\
-    ParsleyJS - Validation
-\*---------------------------------------------*/
+/** =========================================
+ * Validation
+ ===========================================*/
+
+/** -----------------------------------------
+ * Parsley JS
+ -------------------------------------------*/
 
 .parsley-errors-list {
     padding: 0;
-    margin: $gap-sm 0 0 0;
+    margin: 0;
+    @include margin-xs;
     li {
-        @include alert-variant($alert-danger-bg, shade($alert-danger-border, 15), $alert-danger-text);
-        margin: 0;
+        @include alert;
+        @include margin-none;
+        background: $alert-danger-bg;
+        border-color: $alert-danger-border;
+        color: $alert-danger-text;
     }
 }

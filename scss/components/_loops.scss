@@ -3,39 +3,11 @@
  ===========================================*/
 
 .loop {
-    .item {
+    @at-root #{&}__item {
         position: relative;
-        margin: 0 0 $gap-md 0;
-        @media (min-width: $screen-sm-min) {
-            margin: 0 0 $gap-lg 0;
+        @include margin-lg-bottom;
+        @at-root #{&}--last {
+            @include margin-none;
         }
-        &.last {}
-        a {
-            cursor: pointer;
-        }
-        .image {
-            position: relative;
-            display: block;
-        }
-        .heading {
-            margin: $gap-md 0 0;
-        }
-        .meta {
-            color: $gray;
-        }
-    }
-    &.no-margin {
-        .row {
-            margin: 0;
-        }
-        .item {
-            padding: 0;
-            margin: 0;
-            &.last {
-                // overrides the media query
-                margin-bottom: 0;
-            }
-        }
-        margin-bottom: $gap-lg;
     }
 }

@@ -1,12 +1,12 @@
 <% if $Menu(2) && $HideSidebar != 1 %>
-    <section class="sidebar col-sm-3">
-        <aside class="navigation">
-            <ul>
+<section class="page__sidebar">
+    <aside class="page__sidebar__content">
+        <ul class="navigation">
             <% with $Level(1) %>
-            <% if $Children %><li><h4 class="heading">{$MenuTitle.XML}</h4><!-- /.heading --></li><% end_if %>
-            <% include SidebarMenu %>
+                <% if $Children %><li class="navigation__item"><h4 class="navigation__item__heading">{$MenuTitle.XML}</h4><!-- /.navigation__item__heading --></li><!-- /.navigation__item --><% end_if %>
+                <% include SidebarMenu %>
             <% end_with %>
-            </ul>
-        </aside><!-- /.navigation -->
-    </section><!-- /.sidebar col-sm-3 -->
+        </ul><!-- /.navigation -->
+    </aside><!-- /.page__sidebar__content -->
+</section><!-- /.sidebar -->
 <% end_if %>

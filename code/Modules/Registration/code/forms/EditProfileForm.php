@@ -46,7 +46,7 @@ class EditProfileForm extends Form {
         $confirmPassword->canBeEmpty = true;
         $confirmPassword->setAttribute('placeholder', 'Enter your password');
 
-        $passwordToggle = LiteralField::create('', '<p><button class="btn btn-default btn-link" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
+        $passwordToggle = LiteralField::create('', '<p><button class="btn--default" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
         $passwordToggleClose = LiteralField::create('', '</div>');
 
         $fields = FieldList::create(
@@ -66,7 +66,7 @@ class EditProfileForm extends Form {
         -------------------------------------------*/
 
         $actions = FieldList::create(
-            FormAction::create('Save')->setTitle('Update Profile')->addExtraClass('btn btn-primary')
+            FormAction::create('Save')->setTitle('Update Profile')->addExtraClass('btn--primary')
         );
 
         /** -----------------------------------------

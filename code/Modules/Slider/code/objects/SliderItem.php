@@ -7,14 +7,12 @@ class SliderItem extends DataObject{
 
     private static $db = array (
         'SortOrder'     => 'Int',
-        'Caption'       => 'HTMLText',
-        'ExternalLink'  => 'Text'
+        'Caption'       => 'HTMLText'
     );
 
     private static $has_one = array (
         'Page'          => 'Page',
-        'Image'         => 'Image',
-        'InternalLink'  => 'SiteTree'
+        'Image'         => 'Image'
     );
 
     private static $singular_name = 'Slide';
@@ -53,30 +51,12 @@ class SliderItem extends DataObject{
         $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/slider');
         $fields->addFieldToTab('Root.Main', LiteralField::create('',
-            '<div class="message"><p><strong>Note:</strong> Captions and links are optional</p></div>'
+            '<div class="message"><p><strong>Note:</strong> Captions are optional</p></div>'
         ));
         $fields->addFieldToTab('Root.Main', $caption = HtmlEditorField::create('Caption'));
         $caption->setRows(15);
-        $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Link', 4));
-        $fields->addFieldToTab('Root.Main', TreeDropdownField::create('InternalLinkID', 'Internal Link', 'SiteTree'));
-        $fields->addFieldToTab('Root.Main', $externalLink = TextField::create('ExternalLink', 'External Link'));
-        $externalLink->setRightTitle('Must begin with "http://" this will override the Internal Link if set.');
 
         return $fields;
-    }
-
-    /**
-     * @return bool|mixed]
-     *
-     * Return the link whether it be internal, or external.
-     */
-    public function getFormattedLink() {
-        if($internalLink = $this->ExternalLink) {
-            return $internalLink;
-        } else if($externalLink = $this->InternalLink()->Exists()){
-            return $this->InternalLink()->Link();
-        }
-        return false;
     }
 
     /**

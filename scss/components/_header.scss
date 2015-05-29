@@ -2,150 +2,38 @@
  * Header
  ===========================================*/
 
-#header {
-    @include margin-default;
-    @include padding-default;
+.header {
+    @include margin-lg-bottom;
+    @include padding-lg;
     margin-top: 0;
     position: relative;
     z-index: 2;
-    /**
-     * Remove space between elements.
-     */
     font-size: 0;
-    @media (min-width: $screen-sm-min) {
-        margin-top: 0;
-    }
-    .left,
-    .right {
-        /**
-         * Set font size after removing space between inline-block elements.
-         */
+    @at-root #{&}__item {
+        @include make-xs-column(6);
+        @include make-sm-column(3);
+        @include float-none;
         font-size: $font-size-base;
         display: inline-block;
         vertical-align: middle;
-        float: none;
-    }
-    .left {
-        .heading {
+        @at-root #{&}--navigation {
+            @include make-sm-column(9);
+            @include float-none;
+        }
+        @at-root #{&}__heading {
             font-size: $font-size-h3;
             margin: 0;
-        }
-        a {
-            display: block;
+            a {
+                display: block;
+            }
         }
     }
-    ul {
-        margin: 0;
-        padding: 0;
+    .navigation {
         float: right;
-        list-style: none;
-        @include clearfix;
-        li {
-            margin: 0;
-        }
-        > li {
-            position: relative;
-            display: none;
-            float: left;
-            @media(min-width: $screen-lg-min) {
-                display: inline-block;
-            }
-            /**
-             * Active, and Ancestor menu styling.
-             */
-            &.section, &.current {
-                > a {
-
-                }
-            }
-            &:hover {
-                > .dropdown-menu {
-                    @media (min-width: $screen-lg-min) {
-                        display: block;
-                    }
-                }
-            }
-            /**
-             * Align the sub-menu to the right if it's the last menu item in the loop.
-             */
-            &.last {
-                .dropdown-menu {
-                    left: auto;
-                    right: 0;
-                }
-            }
-            > a {
-                font-size: $navigation-font-size;
-                padding: 0.75em 1.5em;
-                display: block;
-                margin-bottom: $gap-xs;
-            }
-            .dropdown-menu {
-                position: absolute;
-                font-size: $navigation-font-size;
-                box-shadow: none;
-                margin-top: 0;
-                padding: 0;
-                left: 0;
-                min-width: 160px;
-                right: auto;
-                border-width: 0;
-                background: transparent none;
-                display: none;
-                border-radius: 0;
-                > li {
-                    display: block;
-                    float: none;
-                    > a {
-                        margin: 0;
-                        padding: 0.75em 1.5em;
-                        background: $brand-default;
-                        color: $brand-default-color;
-                    }
-                }
-            }
-        }
-    }
-    .phone,
-    .hamburger-menu {
-        display: block;
-        @media(min-width: $screen-lg-min) {
-            display: none;
-        }
-        .menu-icon {
-            margin: 0 $gap-md;
-            background: transparent none;
-            padding: 0;
-            border-width: 0;
-            text-align: center;
-            &.toggle-menu {
-                margin: 0 0 0 $gap-sm;
-            }
-            .icon {
-                color: $font-base-color;
-                font-size: $font-size-h1;
-                display: block;
-            }
-            .text {
-                color: $font-base-color;
-                text-transform: uppercase;
-                font-size: $font-size-xs;
-                display: inline-block;
-            }
-            &.search {
-                right: $popout-item-size + $gap-sm;
-            }
-        }
-    }
-    .phone {
-        display: none;
-        @media(max-width: $screen-xs-max) {
-            display: block;
-        }
     }
 }
 .has-slider {
-    #header {
+    .header {
         margin-bottom: 0;
     }
 }

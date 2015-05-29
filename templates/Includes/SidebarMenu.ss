@@ -1,14 +1,14 @@
 <% if $Children %>
     <% loop $Children %>
-        <li class="{$LinkingMode}">
-            <a href="$Link" class="{$LinkingMode}" title="{$Title.XML}">
+        <li class="navigation__item navigation__item--{$LinkingMode}">
+            <a href="$Link" class="navigation__item__link navigation__item__link--{$LinkingMode}" title="{$Title.XML}">
                 {$MenuTitle.XML}
-            </a>
+            </a><!-- /.navigation__item__link -->
             <% if $Children %>
-            <ul>
+            <ul class="navigation">
                 <% include SidebarMenu %>
-            </ul>
+            </ul><!-- /.navigation -->
             <% end_if %>
-        </li>
+        </li><!-- /.navigation__item -->
     <% end_loop %>
 <% end_if %>

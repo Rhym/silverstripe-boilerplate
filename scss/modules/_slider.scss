@@ -2,85 +2,14 @@
  * Slider
  ===========================================*/
 
-#slider {
-    margin-bottom: $gap-md;
-    @media (min-width: $screen-sm-min) {
-        margin-bottom: $gap-xl;
-    }
-    /**
-     * Single default image set in Siteconfig
-     */
-    &.has-multiple-items {
-        .owl-controls {
-            @media(min-width: $screen-sm-min) {
-                display: block;
-            }
-        }
-    }
-    .owl-controls {
+.slider {
+    @include margin-xl-bottom;
+    .carousel__navigation {
         display: none;
     }
-    .container{
-        padding: 0;
-        @media (min-width: $screen-sm-min) {
-            padding: 0 ($gutter / 2);
-        }
-        .caption{
-            width: 100%;
-        }
-    }
-    .item{
-        position: relative;
-        @media (max-width: $screen-sm-max) {
-            max-height: none !important;
-        }
-        img {
-            width: 100%;
-        }
-    }
-    .caption{
-        position: static;
-        text-align: left;
-        padding: $gap-md ($gutter / 2);
-        p {
-            margin: 0;
-        }
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin-top: 0;
-        }
-        @media (min-width: $screen-sm-min) {
-            background: transparent none;
-            position: absolute;
-            top: 20%;
-            width: $container-sm;
-            z-index: 0;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-        }
-        @media (min-width: $screen-md-min) {
-            top: 30%;
-            width: $container-md;
-        }
-        @media (min-width: $screen-lg-min) {
-            width: $container-lg;
-        }
-    }
-}
-/**
- * If the browser supports CSS transformations then use translate to center the caption.
- */
-.csstransforms {
-    #slider {
-        .caption {
-            @media (min-width: $screen-sm-min) {
-                top: 50%;
-                transform: translate(0, -50%);
-            }
+    @at-root #{&}--multiple {
+        .carousel__navigation {
+            display: block;
         }
     }
 }

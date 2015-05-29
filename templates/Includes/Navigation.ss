@@ -1,22 +1,18 @@
-<ul>
+<ul class="menu">
     <% loop $Menu(1) %>
         <% if $Children %>
-            <li class="{$LinkingMode} dropdown {$EvenOdd} {$FirstLast}">
-                <a href="{$Link}" title="{$Title.XML}" class="visible-lg">{$MenuTitle.XML}</a>
-                <ul class="dropdown-menu">
+            <li class="menu__item menu__item--dropdown menu__item--{$LinkingMode} menu__item--{$EvenOdd}<% if $FirstLast %> menu__item--{$FirstLast}<% end_if %>">
+                <a href="{$Link}" class="menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a>
+                <ul class="menu__item__dropdown-menu">
                     <% loop $Children %>
-                        <li class="{$LinkingMode} {$EvenOdd} {$FirstLast}"><a href="{$Link}" title="{$Title.XML}">{$MenuTitle.XML}</a></li>
+                        <li class="menu__item__dropdown-menu__item menu__item__dropdown-menu__item--{$LinkingMode} menu__item__dropdown-menu__item--{$EvenOdd}<% if $FirstLast %> menu__item__dropdown-menu__item--{$FirstLast}<% end_if %>"><a href="{$Link}" title="{$Title.XML}">{$MenuTitle.XML}</a></li>
                     <% end_loop %>
-                </ul><!-- /.dropdown-menu -->
-            </li><!-- /.dropdown -->
+                </ul><!-- /.navigation__item__dropdown-menu -->
+            </li><!-- /.navigation__item -->
         <% else %>
-            <li class="{$LinkingMode} {$EvenOdd} {$FirstLast}"><a href="{$Link}" title="{$Title.XML}">{$MenuTitle.XML}</a></li>
+            <li class="menu__item menu__item--{$LinkingMode} menu__item--{$EvenOdd}<% if $FirstLast %> menu__item--{$FirstLast}<% end_if %>"><a href="{$Link}" class="menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a></li>
         <% end_if %>
     <% end_loop %>
-    <%--<% if $SiteConfig.Phone %><li class="phone"><a href="tel:{$SiteConfig.Phone}">{$SiteConfig.Phone}</a></li><% end_if %>--%>
-    <% if $SearchForm %>
-        <li><a href="{$Link}SearchForm?Search" class="btn btn-link"><i class="fa fa-search"></i></a></li>
-    <% end_if %>
-    <% if $SiteConfig.Phone %><li class="phone"><a href="tel:{$SiteConfig.Phone}" class="menu-icon"><i class="icon fa fa-phone"></i><span class="text">Phone</span></a><!-- /.phone --></li><% end_if %>
-    <li class="hamburger-menu"><button class="menu-icon toggle-menu"><i class="icon fa fa-bars"></i><span class="text">Menu</span></button><!-- /.menu-icon --></li>
+    <% if $SiteConfig.Phone %><li class="menu__item menu__item--icon"><a href="tel:{$SiteConfig.Phone}" class="menu__item__icon menu__item__icon--phone"><i class="menu__item__icon__icon fa fa-phone"></i><span class="menu__item__icon__text">Phone</span></a></li><% end_if %>
+    <li class="menu__item menu__item--icon"><button class="menu__item__icon menu__item__icon--menu toggle-menu"><i class="menu__item__icon__icon fa fa-bars"></i><span class="menu__item__icon__text">Menu</span></button></li>
 </ul>

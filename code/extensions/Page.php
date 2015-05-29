@@ -6,7 +6,7 @@
 class PageExtension extends DataExtension {
 
     private static $db = array(
-        'HideSidebar' => 'Boolean(0)'
+        'HideSidebar' => 'Boolean'
     );
 
     /**
@@ -21,7 +21,6 @@ class PageExtension extends DataExtension {
             CheckboxField::create('HideSidebar', 'Hide the sidebar from this page')
         ));
         $hideSidebar->setTitle('Sidebar');
-        return $fields;
     }
 
     /** =========================================

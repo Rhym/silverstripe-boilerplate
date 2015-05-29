@@ -9,6 +9,9 @@
     position: relative;
     z-index: 2;
     font-size: 0;
+    .has-slider & {
+        @include margin-none;
+    }
     @at-root #{&}__item {
         @include make-xs-column(6);
         @include make-sm-column(3);
@@ -30,10 +33,5 @@
     }
     .navigation {
         float: right;
-    }
-}
-.has-slider {
-    .header {
-        margin-bottom: 0;
     }
 }

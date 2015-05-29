@@ -151,8 +151,8 @@
 #MemberLoginForm_LostPasswordForm,
 #ChangePasswordForm_ChangePasswordForm {
     .field {
-        margin: 0 0 $gap-md 0;
-        .text{
+        @include margin-bottom;
+        .text {
             @include field;
         }
     }
@@ -172,7 +172,6 @@
 
 .parsley-errors-list {
     padding: 0;
-    margin: 0;
     @include margin-xs;
     li {
         @include alert;

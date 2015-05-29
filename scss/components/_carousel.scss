@@ -3,6 +3,18 @@
  ===========================================*/
 
 .carousel {
+    /**
+     * If the browser supports CSS transformations then use translate to center the caption.
+     */
+    .csstransforms3d & {
+        .carousel__item__caption,
+        .carousel__navigation {
+            @media (min-width: $screen-sm-min) {
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+        }
+    }
     @at-root #{&}__item {
         position: relative;
         @media (max-width: $screen-sm-max) {
@@ -72,21 +84,6 @@
             @at-root #{&}--next {
                 right: 0;
                 left: auto;
-            }
-        }
-    }
-}
-
-/**
- * If the browser supports CSS transformations then use translate to center the caption.
- */
-.csstransforms3d {
-    .carousel {
-        .carousel__item__caption,
-        .carousel__navigation {
-            @media (min-width: $screen-sm-min) {
-                top: 50%;
-                transform: translate(0, -50%);
             }
         }
     }

@@ -17,7 +17,7 @@ class PageControllerExtension extends Extension {
          * Javascript
         -------------------------------------------*/
 
-        Requirements::insertHeadTags('<script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/modernizr.js"></script>');
+        Requirements::insertHeadTags('<script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/modernizr.min.js"></script>');
 
         /**
          * Set All JS to be right before the closing </body> tag.

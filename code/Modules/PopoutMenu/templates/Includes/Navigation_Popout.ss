@@ -1,4 +1,4 @@
-<nav class="menu-wrap">
+<nav class="menu-wrap" tabindex="-1">
     <div class="container">
         <header class="header">
             <div class="row">

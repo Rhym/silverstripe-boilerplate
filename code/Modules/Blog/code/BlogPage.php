@@ -75,4 +75,21 @@ class BlogPage extends Page {
 /**
  * Class BlogPage_Controller
  */
-class BlogPage_Controller extends Page_Controller {}
+class BlogPage_Controller extends Page_Controller {
+
+    public function init() {
+        parent::init();
+        /**
+         * If there's a Disqus forum name set,
+         * include the javascript template that will
+         * initiate the comments section.
+         */
+        if ($forumName = SiteConfig::current_site_config()->DisqusForumShortName) {
+            $vars = array(
+                'ForumName' => $forumName,
+            );
+            Requirements::javascriptTemplate(JS_DIR.'/comments.js', $vars);
+        }
+    }
+
+}

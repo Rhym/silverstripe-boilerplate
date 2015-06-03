@@ -50,6 +50,12 @@ class SliderItem extends DataObject{
         $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Slide'));
         $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/slider');
+        $image->setAllowedExtensions(array(
+            'jpg',
+            'jpeg',
+            'gif',
+            'png'
+        ));
         $fields->addFieldToTab('Root.Main', LiteralField::create('',
             '<div class="message"><p><strong>Note:</strong> Captions are optional</p></div>'
         ));

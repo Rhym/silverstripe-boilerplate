@@ -73,6 +73,12 @@ class PortfolioImage extends DataObject{
         $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Image'));
         $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/portfolio');
+        $image->setAllowedExtensions(array(
+            'jpg',
+            'jpeg',
+            'gif',
+            'png'
+        ));
         $fields->addFieldToTab('Root.Main', $contentPosition = OptionsetField::create('ContentPosition', 'Content Position', $this->dbObject('ContentPosition')->enumValues()));
         $contentPosition->setRightTitle('Display the content on the left or right hand side.');
         $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'));

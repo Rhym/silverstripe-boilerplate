@@ -34,6 +34,12 @@ class GalleryPage extends Page {
         ));
         $fields->addFieldToTab('Root.Gallery', $images = UploadField::create('Images', 'Images', $this->owner->Images()));
         $images->setFolderName('Uploads/gallery');
+        $images->setAllowedExtensions(array(
+            'jpg',
+            'jpeg',
+            'gif',
+            'png'
+        ));
 
         return $fields;
 

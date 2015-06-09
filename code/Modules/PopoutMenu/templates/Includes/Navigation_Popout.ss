@@ -1,6 +1,6 @@
-<nav class="menu-wrap" tabindex="-1">
-    <div class="container">
-        <header class="header">
+<nav class="menu-wrap">
+    <header class="header">
+        <div class="container">
             <div class="row">
                 <div class="header__item header__item--logo">
                     <div class="header__item__logo">
@@ -21,7 +21,9 @@
                     </ul><!-- /.menu -->
                 </div><!-- /.header__item header__item--navigation -->
             </div><!-- /.row -->
-        </header><!-- /.menu-wrap__header -->
+        </div><!-- /.container -->
+    </header><!-- /.menu-wrap__header -->
+    <div class="container">
         <ul class="menu-wrap__menu">
             <% loop $Menu(1) %>
                 <li class="menu-wrap__menu__item menu-wrap__menu__item--{$LinkingMode} menu-wrap__menu__item--{$EvenOdd}<% if $FirstLast %> menu-wrap__menu__item--{$FirstLast}<% end_if %>">

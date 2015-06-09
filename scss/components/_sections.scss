@@ -2,7 +2,7 @@
  * Sections
  ===========================================*/
 
-section.section {
+.section {
     @include margin;
     @include padding;
     position: relative;

@@ -11,5 +11,4 @@
     @media(min-width: $screen-sm-min) {
         display: block;
     }
-    @at-root #{&}__content {}
 }

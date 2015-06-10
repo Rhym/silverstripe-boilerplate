@@ -75,19 +75,19 @@
 
 .btn {
     @extend %btn;
-    @at-root #{&}--default {
+    &--default {
         @extend %btn;
         @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
     }
-    @at-root #{&}--primary {
+    &--primary {
         @extend %btn;
         @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
     }
-    @at-root #{&}--secondary {
+    &--secondary {
         @extend %btn;
         @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
     }
-    @at-root #{&}--inverse {
+    &--inverse {
         @extend %btn;
         @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
     }
@@ -96,7 +96,7 @@
      * Full Width
     -------------------------------------------*/
 
-    @at-root #{&}--block {
+    &--block {
         display: block;
         width: 100%;
     }
@@ -105,7 +105,7 @@
      * Bordered
     -------------------------------------------*/
 
-    @at-root #{&}--bordered {
+    &--bordered {
         background: transparent none;
         border-width: 2px;
         border-style: solid;

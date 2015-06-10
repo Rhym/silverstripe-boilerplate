@@ -3,7 +3,7 @@
  ===========================================*/
 
 .sharer {
-    @at-root #{&}__form {
+    &__form {
         background: transparent none;
         height: auto;
         border-width: 0;
@@ -11,17 +11,17 @@
         font-size: $font-size-large;
         @include margin;
     }
-    @at-root #{&}__list {
+    &__list {
         text-align: center;
         @include margin;
-        @at-root #{&}__item {
+        &__item {
             display: inline-block;
             list-style: none;
             padding-right: $gap-lg;
             &.last {
                 padding-right: 0;
             }
-            @at-root #{&}__link {
+            &__link {
                 font-size: $font-size-h2;
                 @media(min-width: $screen-sm-min) {
                     font-size: $font-size-h1;

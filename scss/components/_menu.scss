@@ -8,7 +8,7 @@
     list-style: none;
     float: right;
     @include clearfix;
-    @at-root #{&}__item {
+    &__item {
         position: relative;
         display: none;
         float: left;
@@ -16,7 +16,7 @@
         @media(min-width: $screen-lg-min) {
             display: inline-block;
         }
-        @at-root #{&}--dropdown {
+        &--dropdown {
             &:hover {
                 .menu__item__dropdown-menu {
                     @media (min-width: $screen-lg-min) {
@@ -25,24 +25,24 @@
                 }
             }
         }
-        @at-root #{&}--last {
+        &--last {
             .navigation__item__dropdown-menu {
                 left: auto;
                 right: 0;
             }
         }
-        @at-root #{&}--icon {
+        &--icon {
             display: block;
             @media(min-width: $screen-lg-min) {
                 display: none;
             }
         }
-        @at-root #{&}__link {
+        &__link {
             font-size: $navigation-font-size;
             padding: 0.75em 1.5em;
             display: block;
         }
-        @at-root #{&}__dropdown-menu {
+        &__dropdown-menu {
             position: absolute;
             font-size: $navigation-font-size;
             box-shadow: none;
@@ -55,11 +55,11 @@
             background: transparent none;
             display: none;
             border-radius: 0;
-            @at-root #{&}__item {
+            &__item {
                 display: block;
                 float: none;
                 margin: 0;
-                @at-root #{&}__link {
+                &__link {
                     display: block;
                     margin: 0;
                     padding: 0.75em 1.5em;
@@ -68,28 +68,28 @@
                 }
             }
         }
-        @at-root #{&}__icon {
+        &__icon {
             display: block;
             margin: 0 $gap-md;
             background: transparent none;
             padding: 0;
             border-width: 0;
             text-align: center;
-            @at-root  #{&}--phone {
+            &--phone {
                 display: none;
                 @media(max-width: $screen-xs-max) {
                     display: block;
                 }
             }
-            @at-root #{&}--menu {
+            &--menu {
                 margin: 0 0 0 $gap-sm;
             }
-            @at-root #{&}__icon {
+            &__icon {
                 color: $font-base-color;
                 font-size: $font-size-h1;
                 display: block;
             }
-            @at-root #{&}__text {
+            &__text {
                 color: $font-base-color;
                 text-transform: uppercase;
                 font-size: $font-size-xs;

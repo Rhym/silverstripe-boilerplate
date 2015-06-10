@@ -4,9 +4,9 @@
 
 .previous-next {
     @include clearfix;
-    @at-root #{&}__item {
+    &__item {
         @include make-sm-column(6, 0);
-        @at-root #{&}--next {
+        &--next {
             text-align: right;
         }
     }

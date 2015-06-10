@@ -7,13 +7,13 @@
     .has-slider & {
         @include margin-lg-bottom;
     }
-    @at-root #{&}__content {
+    &__content {
         @include make-xs-column(12);
         &.has-sidebar {
             @include make-sm-column(8);
             @include make-lg-column(9);
         }
-        @at-root #{&}__map {
+        &__map {
             @include margin;
             width: 100%;
             display: block;

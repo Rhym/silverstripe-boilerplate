@@ -12,18 +12,18 @@
     .has-slider & {
         @include margin-none;
     }
-    @at-root #{&}__item {
+    &__item {
         @include make-xs-column(6);
         @include make-sm-column(3);
         @include float-none;
         font-size: $font-size-base;
         display: inline-block;
         vertical-align: middle;
-        @at-root #{&}--navigation {
+        &--navigation {
             @include make-sm-column(9);
             @include float-none;
         }
-        @at-root #{&}__heading {
+        &__heading {
             font-size: $font-size-h3;
             margin: 0;
             a {

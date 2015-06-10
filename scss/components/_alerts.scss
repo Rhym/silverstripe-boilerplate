@@ -28,25 +28,25 @@
 
 .alert {
     @extend %alert;
-    @at-root #{&}--info {
+    &--info {
         @extend %alert;
         background: $alert-info-bg;
         border-color: $alert-info-border;
         color: $alert-info-text;
     }
-    @at-root #{&}--warning {
+    &--warning {
         @extend %alert;
         background: $alert-warning-bg;
         border-color: $alert-warning-border;
         color: $alert-warning-text;
     }
-    @at-root #{&}--success {
+    &--success {
         @extend %alert;
         background: $alert-success-bg;
         border-color: $alert-success-border;
         color: $alert-success-text;
     }
-    @at-root #{&}--danger {
+    &--danger {
         @extend %alert;
         background: $alert-danger-bg;
         border-color: $alert-danger-border;

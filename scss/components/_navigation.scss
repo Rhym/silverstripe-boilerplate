@@ -6,8 +6,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    @at-root #{&}__item {
-        @at-root #{&}--current {
+    &__item {
+        &--current {
             a {
                 color: $gray-dark;
                 &:hover {

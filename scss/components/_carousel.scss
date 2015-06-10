@@ -15,7 +15,7 @@
             }
         }
     }
-    @at-root #{&}__item {
+    &__item {
         position: relative;
         @media (max-width: $screen-sm-max) {
             max-height: none !important; // Remove the style attribute set in the cms.
@@ -23,7 +23,7 @@
         img {
             width: 100%;
         }
-        @at-root #{&}__caption{
+        &__caption{
             position: absolute;
             top: 20%;
             right: $gutter / 2;
@@ -50,7 +50,7 @@
             }
         }
     }
-    @at-root #{&}__navigation {
+    &__navigation {
         height: $carousel-icon-size;
         padding: 0;
         position: relative;
@@ -63,7 +63,7 @@
             left: 0;
             right: 0;
         }
-        @at-root #{&}__item {
+        &__item {
             color: $brand-inverse-color;
             position: absolute;
             cursor: pointer;
@@ -81,7 +81,7 @@
             &:active {
                 background: transparent none;
             }
-            @at-root #{&}--next {
+            &--next {
                 right: 0;
                 left: auto;
             }

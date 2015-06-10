@@ -3,19 +3,18 @@
  ===========================================*/
 
 .article {
-    @at-root #{&}__image {
-        @include margin-bottom;
-        @at-root #{&}__caption {
+    &__image {
+        &__caption {
             @include margin;
         }
     }
-    @at-root #{&}__heading {
+    &__heading {
         @include margin;
     }
-    @at-root #{&}__summary {
+    &__summary {
         @include margin;
     }
-    @at-root #{&}__actions {
+    &__actions {
         @include margin-top;
     }
 }

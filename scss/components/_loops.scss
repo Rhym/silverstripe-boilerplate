@@ -3,10 +3,10 @@
  ===========================================*/
 
 .loop {
-    @at-root #{&}__item {
+    &__item {
         position: relative;
         @include margin-lg-bottom;
-        @at-root #{&}--last {
+        &--last {
             @include margin-none;
         }
     }

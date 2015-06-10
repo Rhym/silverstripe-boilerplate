@@ -20,25 +20,25 @@
         .header {
             @include margin-lg-bottom;
         }
-        @at-root #{&}__menu {
+        &__menu {
             margin: 0;
             padding: 0;
             list-style: none;
-            @at-root #{&}__item {
+            &__item {
                 margin: 0;
                 border-bottom: 1px solid shade($popout-menu-background, 5);
                 padding-right: $popout-item-size;
                 position: relative;
-                @at-root #{&}--last {
+                &--last {
                     border-width: 0;
                 }
-                @at-root #{&}__link {
+                &__link {
                     min-height: $popout-item-size;
                     line-height: $popout-item-size;
                     color: $popout-menu-color;
                     display: block;
                 }
-                @at-root #{&}__icon {
+                &__icon {
                     background: shade($popout-menu-background, 5);
                     cursor: pointer;
                     position: absolute;
@@ -51,7 +51,7 @@
                     text-align: center;
                     font-size: 1.3em;
                     color: $popout-menu-color;
-                    @at-root #{&}--active {
+                    &--active {
                         i {
                             transform: rotate(180deg);
                         }
@@ -60,20 +60,20 @@
                         transition: .2s linear transform;
                     }
                 }
-                @at-root #{&}__list {
+                &__list {
                     background: shade($popout-menu-background, 5);
                     list-style: none;
                     margin: 0 (-$popout-item-size) 0 0;
                     padding: 0 0 0 $gap-md;
                     height: 0;
                     overflow: hidden;
-                    @at-root #{&}--active {
+                    &--active {
                         height: auto;
                     }
-                    @at-root #{&}__item {
+                    &__item {
                         margin: 0;
                         border-width: 0;
-                        @at-root #{&}__link {
+                        &__link {
                             color: $popout-menu-color;
                             padding: 0.75em 0;
                             display: block;
@@ -82,7 +82,7 @@
                 }
             }
         }
-        @at-root #{&}__search {
+        &__search {
             margin-top: $gap-md;
             padding-top: $gap-lg;
             border-top: 1px solid shade($popout-menu-background, 5);

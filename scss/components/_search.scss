@@ -4,15 +4,15 @@
 
 .search {
     @include make-row;
-    @at-root #{&}__form {
+    &__form {
         @include make-sm-column(4);
         @include make-lg-column(3);
-        .form {
-            @include margin-lg-bottom;
-        }
-    }
-    @at-root #{&}__results {
-        @include make-sm-column(8);
-        @include make-lg-column(9);
-    }
+.form {
+    @include margin-lg-bottom;
+}
+}
+&__results {
+    @include make-sm-column(8);
+    @include make-lg-column(9);
+}
 }

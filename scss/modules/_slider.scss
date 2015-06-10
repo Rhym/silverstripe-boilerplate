@@ -7,7 +7,7 @@
     .carousel__navigation {
         display: none;
     }
-    @at-root #{&}--multiple {
+    &--multiple {
         .carousel__navigation {
             display: block;
         }

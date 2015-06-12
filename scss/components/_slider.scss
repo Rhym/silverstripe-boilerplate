@@ -3,7 +3,6 @@
  ===========================================*/
 
 .slider {
-    @include margin-xl-bottom;
     .carousel__navigation {
         display: none;
     }

@@ -37,6 +37,11 @@
 
 .form {
     @include margin;
+    &--profile,
+    &--contact,
+    &--registration {
+        @include margin-bottom;
+    }
     /** -----------------------------------------
      * Fieldset
     -------------------------------------------*/
@@ -61,7 +66,10 @@
     -------------------------------------------*/
 
     .field {
-        @include margin-sm;
+        @include margin;
+        &:first-child {
+            @include margin-bottom;
+        }
         .text,
         .textarea,
         .dropdown {
@@ -123,7 +131,7 @@
         -------------------------------------------*/
 
         @at-root .recaptcha {
-            @include margin-sm;
+            @include margin;
         }
     }
 

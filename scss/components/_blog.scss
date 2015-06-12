@@ -1,7 +1,7 @@
 /** =========================================
- * Mixins
+ * Blog
  ===========================================*/
 
-@import 'mixins/border-radius';
-@import 'mixins/loop';
-@import 'mixins/sizing';
+.blog {
+    @include loop;
+}

@@ -2,20 +2,17 @@
  * Animation
  ===========================================*/
 
-// If browser supports animations
-.cssanimations {
-    .animated {
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    &.infinite {
+        animation-iteration-count: infinite;
+    }
+    .cssanimations & {
         @media(min-width: $screen-sm-min) {
             opacity: 0;
         }
     }
-}
-.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-}
-.animated.infinite {
-    animation-iteration-count: infinite;
 }
 
 /** -----------------------------------------

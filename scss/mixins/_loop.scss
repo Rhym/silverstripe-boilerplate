@@ -1,0 +1,29 @@
+/** =========================================
+ * Loops
+ * TODO: Use @extends when sass supports extending #{&}
+ ===========================================*/
+
+@mixin loop() {
+    &__item {
+        @include margin-lg-bottom;
+        @include make-sm-column(12);
+        &--last {
+            @include margin-none;
+        }
+        &__image {
+            &__caption {
+                @include margin;
+            }
+        }
+        &__heading {
+            @include margin;
+        }
+        &__summary,
+        &__content {
+            @include margin;
+        }
+        &__actions {
+            @include margin-top;
+        }
+    }
+}

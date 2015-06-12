@@ -18,7 +18,7 @@
             display: inline-block;
             list-style: none;
             padding-right: $gap-lg;
-            &.last {
+            &--last {
                 padding-right: 0;
             }
             &__link {

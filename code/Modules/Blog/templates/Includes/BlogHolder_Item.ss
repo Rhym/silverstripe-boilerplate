@@ -1,32 +1,34 @@
 <% if $PaginatedPages %>
-<section class="loop loop--blog">
-    <% loop $PaginatedPages %>
-        <article class="loop__item loop__item--{$FirstLast} loop__item--{$EvenOdd} article">
-            <% cached $LastEdited %>
-                <% if $Image %>
-                    <figure class="article__image">
-                        <a href="{$Link}" title="{$Title}">
-                            {$Image.CroppedImage(848, 340)}
-                        </a>
-                        <% if $Date && $Author %>
-                            <figcaption class="article__image__caption">Posted on {$Date} by {$Author}</figcaption><!-- /.article__image__caption -->
+    <section class="blog">
+        <div class="row">
+            <% loop $PaginatedPages %>
+                <article class="blog__item blog__item--{$FirstLast} blog__item--{$EvenOdd}">
+                    <% cached $LastEdited %>
+                        <% if $Image %>
+                            <figure class="blog__item__image">
+                                <a href="{$Link}" title="{$Title}">
+                                    {$Image.CroppedImage(848, 340)}
+                                </a>
+                                <% if $Date && $Author %>
+                                    <figcaption class="blog__item__image__caption">Posted on {$Date} by {$Author}</figcaption><!-- /.blog__item__image__caption -->
+                                <% end_if %>
+                            </figure><!-- /.blog__item__image -->
                         <% end_if %>
-                    </figure><!-- /.article__image -->
-                <% end_if %>
-                <h4 class="article__heading">
-                    <a href="{$Link}" title="{$Title}">{$MenuTitle}</a>
-                </h4><!-- /.article__heading -->
-                <% if $Content %>
-                    <div class="article__summary typography">
-                        {$Content.LimitWordCountXML(40)}
-                    </div><!-- /.article__summary typography -->
-                <% end_if %>
-                <div class="article__actions">
-                    <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
-                </div><!-- /.article__actions -->
-            <% end_cached %>
-        </article><!-- /.loop__item article article--{$FirstLast} article--{$EvenOdd} -->
-    <% end_loop %>
-    <% include Pagination %>
-</section><!-- /.loop loop--blog -->
+                        <h4 class="blog__item__heading">
+                            <a href="{$Link}" title="{$Title}">{$MenuTitle}</a>
+                        </h4><!-- /.blog__item__heading -->
+                        <% if $Content %>
+                            <div class="blog__item__summary typography">
+                                {$Content.LimitWordCountXML(40)}
+                            </div><!-- /.blog__item__summary typography -->
+                        <% end_if %>
+                        <div class="blog__item__actions">
+                            <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
+                        </div><!-- /.blog__item__actions -->
+                    <% end_cached %>
+                </article><!-- /.blog__item blog__item--{$FirstLast} blog__item--{$EvenOdd} -->
+            <% end_loop %>
+        </div><!-- /.row -->
+        <% include Pagination %>
+    </section><!-- /.blog -->
 <% end_if %>

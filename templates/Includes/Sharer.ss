@@ -1,5 +1,5 @@
 <aside class="sharer">
-    <a data-toggle="collapse" href="#sharer" class="btn--secondary">Share this post <i class="fa fa-share-square-o"></i></a>
+    <a data-toggle="collapse" href="#sharer" class="sharer__trigger btn--secondary">Share this post <i class="fa fa-share-square-o"></i></a>
     <div id="sharer" class="collapse">
         <input type="text" onclick="this.setSelectionRange(0, this.value.length)" class="sharer__form" value="{$AbsoluteLink}" />
         <ul class="sharer__list">

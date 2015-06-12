@@ -2,7 +2,10 @@
  * Carousel
  ===========================================*/
 
+@import "../../components/lib/owl.carousel/dist/assets/owl.carousel.min.css";
+
 .carousel {
+    @include margin-lg-bottom;
     /**
      * If the browser supports CSS transformations then use translate to center the caption.
      */

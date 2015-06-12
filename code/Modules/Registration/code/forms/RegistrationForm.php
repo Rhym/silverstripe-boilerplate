@@ -64,7 +64,7 @@ class RegistrationForm extends Form {
         parent::__construct($controller, $name, $fields, $actions, $required);
 
         $this->setAttribute('data-parsley-validate', true);
-        $this->addExtraClass('form');
+        $this->addExtraClass('form form--registration');
     }
 
     /**

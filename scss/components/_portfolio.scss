@@ -1,0 +1,46 @@
+/** =========================================
+ * Portfolio
+ ===========================================*/
+
+.portfolio {
+    @include loop;
+    &__item {
+        @include make-sm-column(6);
+    }
+}
+
+/** -----------------------------------------
+ * Images
+ -------------------------------------------*/
+
+.portfolio-images {
+    @include loop;
+    &__item {
+        @include clearfix;
+        padding: 0;
+        &__content {
+            @include make-sm-column(12);
+            @include margin-bottom;
+            display: none;
+            .has-content & {
+                display: block;
+            }
+            .is-left &,
+            .is-right & {
+                @include make-sm-column(3);
+            }
+            .is-right & {
+                @media(min-width: $screen-sm-min) {
+                    float: right;
+                }
+            }
+        }
+        &__image {
+            @include make-sm-column(12);
+            .is-left &,
+            .is-right & {
+                @include make-sm-column(9);
+            }
+        }
+    }
+}

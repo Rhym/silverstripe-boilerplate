@@ -37,7 +37,7 @@ body {
     font-family: $font-family-base;
     font-size: $font-size-base;
     line-height: $line-height-base;
-    color: $text-color;
+    color: $font-base-color;
     background-color: $body-bg;
 }
 
@@ -104,10 +104,10 @@ h6,
  ===========================================*/
 
 .typography{
-    .text-primary {
+    .text--primary {
         color: $brand-primary;
     }
-    .text-secondary {
+    .text--secondary {
         color: $brand-secondary;
     }
 }
@@ -303,7 +303,7 @@ ul {
     &.checklist {
         @include customList;
     }
-    &.deletelist {
+    &.delete-list {
         @include customList;
         li {
             &:before {

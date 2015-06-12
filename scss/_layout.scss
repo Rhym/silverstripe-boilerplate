@@ -28,9 +28,3 @@
         transition: $transition-default opacity;
     }
 }
-
-.content {
-    &.typography {
-        @include margin-lg-bottom;
-    }
-}

@@ -16,16 +16,16 @@ class EditProfilePage extends Page {
  */
 class EditProfilePage_Controller extends Page_Controller {
 
-    private static $allowed_actions = array('EditProfileForm');
+    private static $allowed_actions = array('Form');
 
     /**
      * @return EditProfilePage|SS_HTTPResponse
      */
-    public function EditProfileForm() {
+    public function Form() {
         if(!Member::currentUser()) {
             return Security::PermissionFailure($this->controller, null);
         } else {
-            $form = EditProfileForm::create($this, 'EditProfileForm');;
+            $form = EditProfileForm::create($this, 'Form');;
             $this->extend('updateEditProfileForm', $form);
             return $form;
         }

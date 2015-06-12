@@ -1,9 +1,9 @@
 <% include PageHeader %>
 <% cached $LastEdited %>
-<div class="container">
-    <article class="article article--gallery">
+    <section class="gallery">
+        <div class="container">
         <% if $Images %>
-            <div class="article__image">
+            <div class="gallery__item">
                 <div class="owl-carousel carousel">
                     <% loop $Images %>
                         <div>
@@ -11,13 +11,10 @@
                         </div>
                     <% end_loop %>
                 </div><!-- /.owl-carousel carousel -->
-            </div><!-- /.article__image -->
+            </div><!-- /.gallery__item -->
         <% end_if %>
-        <% if $Content %>
-            <div class="article__content typography">
-                {$Content}
-            </div><!-- /.article__content typography -->
-        <% end_if %>
-    </article><!-- /.article article--gallery -->
-</div><!-- /.container -->
+        </div><!-- /.container -->
+    </section><!-- /.gallery -->
 <% end_cached %>
+
+<% include Page_Content %>

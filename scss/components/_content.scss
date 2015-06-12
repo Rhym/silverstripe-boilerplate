@@ -1,13 +1,9 @@
 /** =========================================
- * Loops
+ * Content
  ===========================================*/
 
-.loop {
-    &__item {
-        position: relative;
+.content {
+    &.typography {
         @include margin-lg-bottom;
-        &--last {
-            @include margin-none;
-        }
     }
 }

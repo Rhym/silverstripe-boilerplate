@@ -1,0 +1,99 @@
+/** =========================================
+ * Modal
+ ===========================================*/
+
+.modal-open {
+    overflow: hidden;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-modal-background;
+    background-color: $brand-default;
+    &.fade {
+        opacity: 0;
+    }
+    &.in {
+        opacity: $modal-backdrop-opacity;
+    }
+}
+
+.modal {
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-modal;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    .no-touch & {
+        @media(min-width: $screen-sm-min) {
+            right: 15px;
+        }
+    }
+    .modal-open & {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    &__dialog {
+        position: relative;
+        width: auto;
+        margin: $gutter / 2;
+        transform: translate(0, -25%);
+        transition: transform 0.3s ease-out;
+        @media(min-width: $screen-sm-min) {
+            width: $modal-sm;
+            margin: $gutter auto;
+        }
+        @media(min-width: $screen-md-min) {
+            width: $modal-md;
+        }
+        @media(min-width: $screen-lg-min) {
+            width: $modal-lg;
+        }
+        .in & {
+            transform: translate(0, 0);
+        }
+        &__content {
+            position: relative;
+            background-clip: padding-box;
+            outline: 0;
+            &__header {
+                padding: $gap-md 0;
+                min-height: ($gap-md + $modal-title-line-height);
+                &__title {
+                    margin: 0;
+                    line-height: $modal-title-line-height;
+                }
+                .close {
+                    opacity: 1;
+                }
+            }
+            &__body {
+                position: relative;
+                padding: $gap-md 0;
+                border-radius: $border-radius-large;
+            }
+            &__footer {
+                padding: $gap-md 0;
+                text-align: right;
+            }
+        }
+    }
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}

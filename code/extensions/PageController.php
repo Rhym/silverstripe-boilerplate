@@ -34,7 +34,11 @@ class PageControllerExtension extends Extension {
         -------------------------------------------*/
 
         Requirements::css(project().'/css/font-awesome.min.css');
-        Requirements::css(project().'/css/main.min.css');
+        if(Director::isDev()) {
+            Requirements::css(project().'/css/main.css');
+        } else {
+            Requirements::css(project().'/css/main.min.css');
+        }
 
         /** -----------------------------------------
          * Shivs

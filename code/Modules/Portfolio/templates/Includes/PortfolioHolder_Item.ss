@@ -6,7 +6,7 @@
                     <article class="portfolio__item portfolio__item--{$FirstLast} portfolio__item--{$EvenOdd}">
                         <figure class="portfolio__image">
                             <a href="{$Link}" title="{$Title}">
-                                <% with $PortfolioImages.First %>{$Image.CroppedImage(1140, 641)}<% end_with %>
+                                <% with $PortfolioImages.First %>{$Image.CroppedImage(555, 312)}<% end_with %>
                             </a>
                         </figure><!-- /.portfolio__image -->
                         <h4 class="portfolio__item__heading">

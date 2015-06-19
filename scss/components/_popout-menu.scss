@@ -52,11 +52,13 @@
                     font-size: 1.3em;
                     color: $popout-menu-color;
                     &--active {
-                        i {
+                        .menu-wrap__menu__item__icon__icon {
                             transform: rotate(180deg);
                         }
                     }
-                    i {
+                    &__icon {
+                        height: 10px;
+                        width: 10px;
                         transition: .2s linear transform;
                     }
                 }

@@ -17,7 +17,7 @@
                 </div><!-- /.header__item -->
                 <div class="header__item header__item--navigation">
                     <ul class="menu">
-                        <li class="menu__item menu__item--icon"><button class="menu__item__icon menu__item__icon--menu toggle-menu"><i class="menu__item__icon__icon fa fa-times"></i><span class="menu__item__icon__text">Close</span></button><!-- /.menu-icon --></li>
+                        <li class="menu__item menu__item--icon"><button class="menu__item__icon menu__item__icon--menu toggle-menu">{$SVG('cross').extraClass('menu__item__icon__icon')}<span class="menu__item__icon__text">Close</span></button><!-- /.menu-icon --></li>
                     </ul><!-- /.menu -->
                 </div><!-- /.header__item -->
             </div><!-- /.row -->
@@ -29,7 +29,7 @@
                 <li class="menu-wrap__menu__item menu-wrap__menu__item--{$LinkingMode} menu-wrap__menu__item--{$EvenOdd}<% if $FirstLast %> menu-wrap__menu__item--{$FirstLast}<% end_if %>">
                     <a href="{$Link}" class="menu-wrap__menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a>
                     <% if $Children %>
-                        <div class="menu-wrap__menu__item__icon open-children" data-target="#child_{$Pos}"><i class="fa fa-caret-down"></i></div><!-- /.menu-wrap__menu__item__icon -->
+                        <div class="menu-wrap__menu__item__icon open-children" data-target="#child_{$Pos}">{$SVG('chevron-down').extraClass('menu-wrap__menu__item__icon__icon')}</div><!-- /.menu-wrap__menu__item__icon -->
                         <ul id="child_{$Pos}" class="menu-wrap__menu__item__list">
                             <% loop $Children %>
                                 <li class="menu-wrap__menu__item__list__item"><a href="{$Link}" class="menu-wrap__menu__item__list__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a></li><!-- /.menu-wrap__menu__item__list__item -->

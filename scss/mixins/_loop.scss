@@ -25,6 +25,10 @@
         &__summary,
         &__content {
             @include margin;
+            line-height: $line-height-large;
+            @media(min-width: $screen-sm-min) {
+                line-height: $line-height-base;
+            }
         }
         &__actions {
             @include margin-top;

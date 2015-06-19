@@ -177,9 +177,11 @@ a {
     }
 }
 p {
-    line-height: 1.7em;
-    letter-spacing: .1px;
     margin: 0 0 $gap-md 0;
+    line-height: $line-height-large;
+    @media(min-width: $screen-sm-min) {
+        line-height: $line-height-base;
+    }
 }
 em {
     font-style: italic;

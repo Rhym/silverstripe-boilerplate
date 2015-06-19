@@ -29,7 +29,7 @@ $font-size-h6:  ceil(($font-size-base * 0.85)) !default;
  * Line Height
  -------------------------------------------*/
 
-$line-height-base:      1.428571429 !default;
-$line-height-large:     1.3333333 !default;
+$line-height-base:      1.7 !default;
+$line-height-large:     2 !default;
 $line-height-small:     1.5 !default;
 $line-height-computed:  floor(($font-size-base * $line-height-base)) !default;

@@ -1,7 +1,7 @@
 <% if $Level(2) %>
-    <section class="breadcrumbs">
+    <aside class="breadcrumbs">
         <div class="container">
             {$Breadcrumbs}
         </div><!-- /.container -->
-    </section><!-- /.breadcrumbs -->
+    </aside><!-- /.breadcrumbs -->
 <% end_if %>

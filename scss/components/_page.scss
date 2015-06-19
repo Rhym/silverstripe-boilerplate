@@ -12,6 +12,15 @@
         &.has-sidebar {
             @include make-sm-column(8);
             @include make-lg-column(9);
+            @media(min-width: $screen-sm-min) {
+                float: right;
+            }
+            @media(min-width: $screen-lg-min) {
+                float: right;
+            }
+        }
+        &__heading {
+            display: none;
         }
         &__map {
             @include margin;

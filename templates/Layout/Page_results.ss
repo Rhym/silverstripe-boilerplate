@@ -30,7 +30,7 @@
                             <% end_loop %>
                         </div><!-- /.loop loop--search-results -->
                     <% else %>
-                        <div class="alert--warning">Sorry, your search query did not return any results.</div><!-- /.alert--warning -->
+                        <div class="alert--warning">Sorry, your search query did not return any results.</div>
                     <% end_if %>
                     <% include Pagination PaginatedPages=$Results %>
                 </div><!-- /.search__results -->

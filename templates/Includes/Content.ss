@@ -1,6 +1,6 @@
 <% if $Content %>
-    <article class="content typography">
+    <aside class="content typography">
         {$Content}
-    </article><!-- /.content typography -->
+    </aside><!-- /.content typography -->
 <% end_if %>
 {$Form}

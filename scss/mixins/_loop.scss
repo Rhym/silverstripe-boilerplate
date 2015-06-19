@@ -7,6 +7,10 @@
     &__item {
         @include margin-lg-bottom;
         @include make-sm-column(12);
+        &--page {
+            padding: 0;
+            @include float-none;
+        }
         &--last {
             @include margin-none;
         }

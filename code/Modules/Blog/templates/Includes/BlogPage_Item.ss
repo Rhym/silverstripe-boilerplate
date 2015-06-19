@@ -1,26 +1,27 @@
 <div class="container">
     <div class="row">
-        <% include BlogSidebar %>
         <div class="page__content has-sidebar">
-            <article class="blog__item">
+            <article class="blog__item blog__item--page">
                 <% cached $LastEdited %>
                     <% if $Image %>
                         <figure class="blog__item__image">
                             {$Image.setWidth(850)}
                             <% if $Date && $Author %>
-                                <figcaption class="blog__item__image__caption">Posted on {$Date} by {$Author}</figcaption><!-- /.article__image__caption -->
+                                <figcaption class="blog__item__image__caption">Posted on {$Date} by {$Author}</figcaption><!-- /.blog__item__image__caption -->
                             <% end_if %>
-                        </figure><!-- /.page__image -->
+                        </figure><!-- /.blog__item__image -->
                     <% end_if %>
+                    <h1 class="page__content__heading">{$Title}</h1><!-- /.page__content__heading -->
                     <% if $Content %>
                         <div class="blog__item__content typography">
                             {$Content}
-                        </div><!-- /.article__content typography -->
+                        </div><!-- /.blog__item__content typography -->
                     <% end_if %>
                 <% end_cached %>
                 <% include Comments %>
-            </article><!-- /.article--blog -->
+            </article><!-- /.blog__item -->
         </div><!-- /.page__content has-sidebar -->
+        <% include BlogSidebar %>
     </div><!-- /.row -->
 </div><!-- /.container -->
 <% include PreviousNextPage %>

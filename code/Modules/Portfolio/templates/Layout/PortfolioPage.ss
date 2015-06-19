@@ -1,4 +1,4 @@
-<% include PageHeader %>
+<% include Page_Header %>
 
 <div class="ajax-content">
     <% include PortfolioPage_Item %>

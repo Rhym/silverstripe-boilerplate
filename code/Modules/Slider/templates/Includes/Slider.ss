@@ -11,9 +11,9 @@
                     <% if $Caption %>
                         <div class="carousel__item__caption typography">
                             {$Caption}
-                        </div><!-- /.caption -->
+                        </div><!-- /.carousel__item__caption -->
                     <% end_if %>
-                </div><!-- /.item -->
+                </div><!-- /.carousel__item -->
             <% end_loop %>
         </div><!-- /.carousel owl-carousel -->
     </section><!-- /.slider -->
@@ -22,7 +22,7 @@
         <div class="carousel owl-carousel">
             <div class="carousel__item"<% if $SiteConfig.DefaultSliderHeight > 0 %> style="max-height: {$SiteConfig.DefaultSliderHeight}px"<% end_if %>>
                 {$SiteConfig.SliderImage}
-            </div><!-- /.item -->
-        </div><!-- /.carousel -->
-    </section><!-- /.slider slider--default -->
+            </div><!-- /.carousel__item -->
+        </div><!-- /.carousel owl-carousel -->
+    </section><!-- /.slider -->
 <% end_if %>

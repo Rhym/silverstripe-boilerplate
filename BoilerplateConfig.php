@@ -92,4 +92,14 @@ class BoilerplateConfig extends DataExtension {
 
     }
 
+    /**
+     * @return string
+     */
+    public function getFormattedPhone() {
+        if ($phone = (string)SiteConfig::current_site_config()->Phone) {
+            return preg_replace('/\s+/', '', $phone);
+        }
+        return false;
+    }
+
 }

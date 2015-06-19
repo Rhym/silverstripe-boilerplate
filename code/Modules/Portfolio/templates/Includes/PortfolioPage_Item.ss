@@ -8,12 +8,12 @@
                     <div class="row">
                         <aside class="portfolio-images__item__content typography">
                             {$Content}
-                        </aside><!-- /.loop__item__content typography -->
+                        </aside><!-- /.portfolio-images__item__content typography -->
                         <figure class="portfolio-images__item__image">
                             {$Image.setWidth(1140)}
-                        </figure><!-- /.loop__item__image -->
+                        </figure><!-- /.portfolio-images__item__image -->
                     </div><!-- /.row -->
-                </div><!-- /.loop__item loop__item--{$EvenOdd} loop__item--{$FirstLast} -->
+                </div><!-- /.portfolio-images__item -->
             <% end_loop %>
         </div><!-- /.container -->
     </section><!-- /.portfolio-images -->

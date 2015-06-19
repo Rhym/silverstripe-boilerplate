@@ -26,7 +26,7 @@
                             <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
                         </div><!-- /.blog__item__actions -->
                     <% end_cached %>
-                </article><!-- /.blog__item blog__item--{$FirstLast} blog__item--{$EvenOdd} -->
+                </article><!-- /.blog__item -->
             <% end_loop %>
         </div><!-- /.row -->
         <% include Pagination %>

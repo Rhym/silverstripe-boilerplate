@@ -7,6 +7,7 @@
     padding: 0;
     list-style: none;
     &__item {
+        margin: $gap-sm 0;
         &--current {
             a {
                 color: $gray-dark;

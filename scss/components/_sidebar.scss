@@ -3,12 +3,8 @@
  ===========================================*/
 
 .page__sidebar {
-    display: none;
     margin: 0 0 $gap-md 0;
     font-size: $sidebar-font-size;
     @include make-sm-column(4);
     @include make-lg-column(3);
-    @media(min-width: $screen-sm-min) {
-        display: block;
-    }
 }

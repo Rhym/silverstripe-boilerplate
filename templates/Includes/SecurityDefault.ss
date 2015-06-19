@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{$ContentLocale}">
 <head>
-    <% include HeaderMeta %>
+    <% include Header_Meta %>
     <link rel="stylesheet" type="text/css" href="{$BaseHref}/{$Project}/css/main.min.css" />
 </head>
 <body class="{$ClassName} {$SliderClass}" id="{$URLSegment}">
     {$TrackingCodeTop.RAW}
     <div id="wrapper">
         <div class="content-wrap">
-            <section id="mainContent" class="page">
+            <div class="page">
                 <div class="container">
                     <div class="row">
                         <div class="security">
@@ -25,7 +25,7 @@
                         </div><!-- /.security -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->
-            </section><!-- /#mainContent .page -->
+            </div><!-- /.page -->
         </div><!-- /.content-wrap -->
     </div><!-- /#wrapper -->
     {$TrackingCodeBottom.RAW}

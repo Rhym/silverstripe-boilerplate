@@ -20,7 +20,7 @@
                         <div class="portfolio__item__actions">
                             <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
                         </div><!-- /.portfolio__item__actions -->
-                    </article><!-- /.portfolio__item portfolio__item--{$FirstLast} portfolio__item--{$EvenOdd} -->
+                    </article><!-- /.portfolio__item -->
                     <% if $MultipleOf(2) %><div class="clearfix"></div><!-- /.clearfix --><% end_if %>
                 <% end_loop %>
             </div><!-- /.row -->

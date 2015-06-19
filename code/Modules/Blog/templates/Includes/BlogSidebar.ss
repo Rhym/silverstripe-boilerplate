@@ -1,11 +1,11 @@
-<section class="page__sidebar">
+<aside class="page__sidebar">
     <% if $BlogSidebarContent || $Parent.BlogSidebarContent %>
-    <aside class="page__sidebar__content">
+    <div class="page__sidebar__content">
         {$BlogSidebarContent}
         {$Parent.BlogSidebarContent}
-    </aside><!-- /.page__sidebar__content -->
+    </div><!-- /.page__sidebar__content -->
     <% end_if %>
-    <aside class="page__sidebar__content">
+    <div class="page__sidebar__content">
         <ul class="navigation">
             <% if $AllChildren %>
                 <% loop $AllChildren.Limit(10) %>
@@ -25,5 +25,5 @@
                 <% end_loop %>
             <% end_if %>
         </ul><!-- /.navigation -->
-    </aside><!-- /.page__sidebar__content -->
-</section><!-- /.page__sidebar -->
+    </div><!-- /.page__sidebar__content -->
+</aside><!-- /.page__sidebar -->

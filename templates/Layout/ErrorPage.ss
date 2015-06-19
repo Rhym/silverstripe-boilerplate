@@ -1,4 +1,5 @@
-<% include PageHeader %>
+<% include Page_Header %>
+
 <div class="container">
     <div class="row">
         <div class="page__content">

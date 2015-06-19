@@ -14,12 +14,12 @@
                             </a>
                         <% end_if %>
                     </div><!-- /.header__item__logo -->
-                </div><!-- /.header__item header__item--logo -->
+                </div><!-- /.header__item -->
                 <div class="header__item header__item--navigation">
                     <ul class="menu">
                         <li class="menu__item menu__item--icon"><button class="menu__item__icon menu__item__icon--menu toggle-menu"><i class="menu__item__icon__icon fa fa-times"></i><span class="menu__item__icon__text">Close</span></button><!-- /.menu-icon --></li>
                     </ul><!-- /.menu -->
-                </div><!-- /.header__item header__item--navigation -->
+                </div><!-- /.header__item -->
             </div><!-- /.row -->
         </div><!-- /.container -->
     </header><!-- /.menu-wrap__header -->

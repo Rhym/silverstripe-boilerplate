@@ -1,4 +1,4 @@
-<% include PageHeader %>
+<% include Page_Header %>
 
 <div class="container">
     <div class="row">
@@ -14,6 +14,7 @@
             </aside><!-- /.page__sidebar__content -->
         </section><!-- /.sidebar -->
         <div class="page__content has-sidebar">
+            <h1 class="page__content__heading">{$Title}</h1><!-- /.page__content__heading -->
             <% include Content %>
             <% if $MailTo %>
                 {$ContactForm}

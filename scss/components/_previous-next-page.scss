@@ -4,6 +4,7 @@
 
 .previous-next {
     @include clearfix;
+    @include margin;
     &__item {
         @include make-sm-column(6, 0);
         &--next {

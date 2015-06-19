@@ -6,7 +6,7 @@
             </a><!-- /.navigation__item__link -->
             <% if $Children %>
             <ul class="navigation">
-                <% include SidebarMenu %>
+                <% include Sidebar_Menu %>
             </ul><!-- /.navigation -->
             <% end_if %>
         </li><!-- /.navigation__item -->

@@ -7,7 +7,7 @@
         <% end_if %>
         <% loop $PaginatedPages.Pages %>
             <% if $CurrentBool %>
-                <li  class="pagination__item pagination__item"><span class="pagination__item__link pagination__item__link--active">{$PageNum}</span></li><!-- /.pagination__item pagination__item--active -->
+                <li  class="pagination__item pagination__item"><span class="pagination__item__link pagination__item__link--active">{$PageNum}</span></li><!-- /.pagination__item -->
             <% else %>
                 <% if $Link %>
                     <li class="pagination__item"><a href="{$Link}" class="pagination__item__link">{$PageNum}</a></li><!-- /.pagination__item -->

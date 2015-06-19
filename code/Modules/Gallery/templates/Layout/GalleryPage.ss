@@ -1,4 +1,5 @@
-<% include PageHeader %>
+<% include Page_Header %>
+
 <% cached $LastEdited %>
     <section class="gallery">
         <div class="container">

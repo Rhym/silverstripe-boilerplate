@@ -5,6 +5,9 @@
  */
 class ColorField extends TextField {
 
+    private static $primary_color = '#3f51b5';
+    private static $secondary_color = '#ff4081';
+
     /**
      * @param string $name
      * @param null $title
@@ -22,9 +25,14 @@ class ColorField extends TextField {
      */
     function Field($properties = array()) {
 
+        $vars = array(
+            'PrimaryColor' =>$this->stat('primary_color'),
+            'SecondaryColor' =>$this->stat('secondary_color')
+        );
+
         Requirements::css(BOILERPLATE_MODULE.'/css/colorpicker.css');
         Requirements::javascript(BOILERPLATE_MODULE.'/javascript/lib/colorpicker.min.js');
-        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/colorpicker.init.js');
+        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/colorpicker.init.js', $vars);
 
 		$this->addExtraClass('color-picker');
 		$style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff'). '; color: ' . ($this->getTextColor()) . ';';

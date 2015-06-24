@@ -18,9 +18,14 @@
                     <i class="fa fa-twitter"></i>
                 </a><!-- /.sharer__list__item__link -->
             </li><!-- /.sharer__list__item -->
-            <li class="sharer__list__item sharer__list__item--last">
+            <li class="sharer__list__item sharer__list__item">
                 <a target="_blank" href="https://plus.google.com/share?url={$AbsoluteLink}" onclick="window.open(this.href, 'google', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="sharer__list__item__link sharer__list__item__link--google" title="<%t Sharer.Google "Share to Google Plus" %>">
                     <i class="fa fa-google-plus"></i>
+                </a><!-- /.sharer__list__item__link -->
+            </li><!-- /.sharer__list__item -->
+            <li class="sharer__list__item sharer__list__item--last">
+                <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={$AbsoluteLink}" onclick="window.open(this.href, 'linkedin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="sharer__list__item__link sharer__list__item__link--linkedin" title="<%t Sharer.LinkedIn "Share to LinkedIn" %>">
+                    <i class="fa fa-linkedin"></i>
                 </a><!-- /.sharer__list__item__link -->
             </li><!-- /.sharer__list__item -->
         </ul><!-- /.sharer__list -->

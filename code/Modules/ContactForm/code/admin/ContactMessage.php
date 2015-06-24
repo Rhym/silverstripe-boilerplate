@@ -27,15 +27,34 @@ class ContactMessageModelAdmin extends ModelAdmin {
      * @return mixed
      */
     public function getEditForm($id = null, $fields = null) {
+        /** =========================================
+         * @var Form        $form
+         * @var GridField   $gridField
+        ===========================================*/
+
         $form = parent::getEditForm($id, $fields);
 
         $gridFieldName = $this->sanitiseClassName($this->modelClass);
         $gridField = $form->Fields()->fieldByName($gridFieldName);
         $gridField->getConfig()->removeComponentsByType($gridField->getConfig()->getComponentByType('GridFieldAddNewButton'));
         $gridField->getConfig()->removeComponentsByType($gridField->getConfig()->getComponentByType('GridFieldPrintButton'));
-        $gridField->getConfig()->removeComponentsByType($gridField->getConfig()->getComponentByType('GridFieldExportButton'));
 
         return $form;
+    }
+
+    /**
+     * Fields displayed in a CSV export
+     *
+     * @return array
+     */
+    public function getExportFields() {
+        return array(
+            'FirstName' => 'First Name',
+            'LastName'  => 'Last Name',
+            'Email'     => 'Email',
+            'Phone'     => 'Phone',
+            'Message'   => 'Message'
+        );
     }
 
 }

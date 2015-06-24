@@ -13,6 +13,17 @@ class EditProfileForm extends Form {
      * @param array $arguments
      */
     public function __construct($controller, $name, $arguments = array()) {
+        /** =========================================
+         * @var TextField               $firstName
+         * @var TextField               $surname
+         * @var EmailField              $email
+         * @var TextField               $jobTitle
+         * @var TextField               $website
+         * @var ConfirmedPasswordField  $confirmPassword
+         * @var TextField               $firstName
+         * @var TextField               $firstName
+         * @var Form                    $form
+        ===========================================*/
 
         /** -----------------------------------------
          * Fields
@@ -103,16 +114,18 @@ class EditProfileForm extends Form {
      * @throws ValidationException
      * @throws null
      */
-    public function Save($data, $form){
+    public function Save($data, $form) {
+        /** =========================================
+         * @var Form                $form
+         * @var RegistrationPage    $registerPage
+        ===========================================*/
 
         if($CurrentMember = Member::currentUser()){
             if($member = DataObject::get_one('Member', "Email = '". Convert::raw2sql($data['Email']) . "' AND ID != " . $CurrentMember->ID)){
                 $form->addErrorMessage('Email', 'Sorry, that Email already exists.', 'validation');
                 return $this->controller->redirectBack();
             }else{
-                /**
-                 * If no password don't save the field
-                 */
+                /** If no password don't save the field */
                 if(!isset($data['password'])){
                     unset($data['password']);
                 }
@@ -122,9 +135,7 @@ class EditProfileForm extends Form {
                 return $this->controller->redirect($this->controller->Link());
             }
         }else{
-            /**
-             * Get registration page otherwise display warning.
-             */
+            /** Get registration page otherwise display warning. */
             if($registerPage = DataObject::get_one('RegistrationPage')){
                 return Security::PermissionFailure($this->controller, 'You must <a href="'.$registerPage->Link().'">registered</a> and logged in to edit your profile.');
             }else{
@@ -138,14 +149,14 @@ class EditProfileForm extends Form {
     /**
      * @return mixed
      */
-    public function Saved(){
+    public function Saved() {
         return $this->request->getVar('saved');
     }
 
     /**
      * @return mixed
      */
-    public function Success(){
+    public function Success() {
         return $this->request->getVar('success');
     }
 

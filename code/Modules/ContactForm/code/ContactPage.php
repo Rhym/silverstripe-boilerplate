@@ -2,6 +2,21 @@
 
 /**
  * Class ContactPage
+ *
+ * @property string MailTo
+ * @property string MailCC
+ * @property string MailBCC
+ * @property string SubmitText
+ * @property string GoogleAPI
+ * @property string Latitude
+ * @property string Longitude
+ * @property string MapColor
+ * @property string WaterColor
+ * @property string MapZoom
+ * @property string MapSaturation
+ * @property string MapMarker
+ * @property string ReCaptchaSiteKey
+ * @property string ReCaptchaSecretKey
  */
 class ContactPage extends Page {
 
@@ -36,6 +51,14 @@ class ContactPage extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var TextField       $mailTo
+         * @var TextField       $mailCC
+         * @var TextField       $mailBCC
+         * @var TextareaField   $submissionText
+         * @var NumericField    $mapZoom
+         * @var TextField       $mapSaturation
+        ===========================================*/
 
         $fields = parent::getCMSFields();
 
@@ -99,6 +122,9 @@ class ContactPage extends Page {
 
 }
 
+/**
+ * Class ContactPage_Controller
+ */
 class ContactPage_Controller extends Page_Controller {
 
     private static $allowed_actions = array('ContactForm');
@@ -107,16 +133,12 @@ class ContactPage_Controller extends Page_Controller {
 
 		parent::init();
 
-        /**
-         * reCaptcha
-         */
+        /** reCaptcha */
         if($this->ReCaptchaSiteKey && $this->ReCaptchaSecretKey) {
             Requirements::javascript('https://www.google.com/recaptcha/api.js');
         }
 
-        /**
-         * Set defaults for map.
-         */
+        /** Set defaults for map. */
         $latitude = ($this->Latitude ? $this->Latitude : "false");
         $longitude = ($this->Longitude ? $this->Longitude : "false");
         $mapColor = ($this->MapColor != '' ? "'".$this->MapColor."'" : "false");
@@ -125,9 +147,7 @@ class ContactPage_Controller extends Page_Controller {
         $mapZoom = ($this->MapZoom ? $this->MapZoom : 14);
         $mapSaturation = ($this->MapSaturation ? $this->MapSaturation : 0);
 
-        /**
-         * Map scripts
-         */
+        /** Map scripts */
         if($latitude && $longitude){
             Requirements::javascript('https://maps.googleapis.com/maps/api/js?key='.$this->GoogleAPI.'&sensor=false');
             Requirements::javascriptTemplate(CONTACT_FORM_MODULE_DIR.'/javascript/mapScript.js', array(

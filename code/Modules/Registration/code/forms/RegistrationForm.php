@@ -13,6 +13,12 @@ class RegistrationForm extends Form {
      * @param array $arguments
      */
     public function __construct($controller, $name, $arguments = array()) {
+        /** =========================================
+         * @var TextField       $firstName
+         * @var EmailField      $email
+         * @var PasswordField   $password
+         * @var Form            $form
+        ===========================================*/
 
         /** -----------------------------------------
          * Fields
@@ -73,49 +79,43 @@ class RegistrationForm extends Form {
      * @return bool|SS_HTTPResponse
      */
     public function Register($data, $form){
+        /** =========================================
+         * @var Form            $form
+         * @var Member          $member
+         * @var Group           $userGroup
+         * @var EditProfilePage $ProfilePage
+        ===========================================*/
 
-        /**
-         * Set session array individually as setting the password breaks the form.
-         */
+        /** Set session array individually as setting the password breaks the form. */
         $sessionArray = array(
             'Email' => $data['Email']
         );
 
-        /**
-         * Check for existing member email address
-         */
+        /** Check for existing member email address */
         if($existingUser = DataObject::get_one('Member', "Email = '".Convert::raw2sql($data['Email'])."'")) {
             $form->AddErrorMessage('Email', 'Sorry, that email address already exists. Please choose another.', 'validation');
             Session::set('FormInfo.Form_'.$this->name.'.data', $sessionArray);
             return $this->controller->redirectBack();
         }
 
-        /**
-         * Otherwise create new member and log them in
-         */
-        $Member = Member::create();
-        $form->saveInto($Member);
-        $Member->write();
-        $Member->login();
+        /** Otherwise create new member and log them in */
+        $member = Member::create();
+        $form->saveInto($member);
+        $member->write();
+        $member->login();
 
-        /**
-         * Find or create the 'user' group
-         */
+        /** Find or create the 'user' group */
         if(!$userGroup = DataObject::get_one('Group', "Code = 'users'")) {
             $userGroup = Group::create();
             $userGroup->Code = 'users';
             $userGroup->Title = 'Users';
             $userGroup->Write();
-            $userGroup->Members()->add($Member);
+            $userGroup->Members()->add($member);
         }
-        /**
-         * Add member to user group
-         */
-        $userGroup->Members()->add($Member);
+        /** Add member to user group */
+        $userGroup->Members()->add($member);
 
-        /**
-         * Get profile page otherwise display warning.
-         */
+        /** Get profile page otherwise display warning. */
         if($ProfilePage = DataObject::get_one('EditProfilePage')) {
             $this->controller->setFlash('Welcome ' .$data['Email'].', your account has been created!', 'success');
             return $this->controller->redirect($ProfilePage->Link());

@@ -2,6 +2,10 @@
 
 /**
  * Class SubscriptionConfig
+ *
+ * @property string MailChimpAPI
+ * @property string MailChimpListID
+ * @property string MailChimpSuccessMessage
  */
 class SubscriptionConfig extends DataExtension {
 
@@ -19,6 +23,10 @@ class SubscriptionConfig extends DataExtension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
+        /** =========================================
+         * @var TextField       $mailChimpAPI
+         * @var TextareaField   $mailChimpSuccessMessage
+        ===========================================*/
 
         /** -----------------------------------------
          * Subscription

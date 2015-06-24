@@ -1,0 +1,7 @@
+---
+Name: siteconfig-extension
+After: mysite
+---
+SiteConfig:
+  extensions:
+    - SiteConfigExtension

@@ -32,9 +32,7 @@ define('REGISTRATION_MODULE_DIR', MODULE_DIR.'/Registration');
 define('SHORTCODES_MODULE_DIR', MODULE_DIR.'/Shortcodes');
 define('SLIDER_MODULE_DIR', MODULE_DIR.'/Slider');
 
-/**
- * Check if the module folder exists.
- */
+/** Check if the module folder exists. */
 if (basename(dirname(__FILE__)) != BOILERPLATE_MODULE) {
     throw new Exception(BOILERPLATE_MODULE . ' module not installed in correct directory');
 }

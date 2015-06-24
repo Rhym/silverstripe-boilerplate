@@ -1,0 +1,7 @@
+---
+Name: paths-extension
+After: mysite
+---
+# Images - SVG
+SVGTemplate:
+  base_path: 'mysite/images/svg'

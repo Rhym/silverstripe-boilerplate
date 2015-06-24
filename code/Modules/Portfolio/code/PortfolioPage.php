@@ -2,6 +2,9 @@
 
 /**
  * Class PortfolioPage
+ *
+ * @property string Subtitle
+ * @method HasManyList PortfolioImages
  */
 class PortfolioPage extends Page {
 
@@ -29,6 +32,10 @@ class PortfolioPage extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var TextField                       $subTitle
+         * @var GridFieldConfig_RelationEditor  $config
+        ===========================================*/
 
         $fields = parent::getCMSFields();
 

@@ -20,6 +20,10 @@ class FlashMessageConfig extends DataExtension {
      * @return HTMLText
      */
     public function getFlashMessage(){
+        /** =========================================
+         * @var ArrayData $array
+        ===========================================*/
+
         if($message = Session::get('FlashMessage')){
             Session::clear('FlashMessage');
             $array = ArrayData::create($message);

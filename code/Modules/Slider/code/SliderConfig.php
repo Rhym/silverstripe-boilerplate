@@ -2,6 +2,10 @@
 
 /**
  * Class SliderConfig
+ *
+ * @property string Height
+ * @property boolean HideDefaultSlider
+ * @method SliderItem SliderItems
  */
 class SliderConfig extends DataExtension {
 
@@ -18,6 +22,10 @@ class SliderConfig extends DataExtension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
+        /** =========================================
+         * @var FieldList                       $fields
+         * @var GridFieldConfig_RelationEditor  $config
+        ===========================================*/
 
         $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Banner'));
         $fields->addFieldToTab('Root.Banner', LiteralField::create('',

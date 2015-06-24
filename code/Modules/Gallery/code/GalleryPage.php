@@ -2,6 +2,9 @@
 
 /**
  * Class GalleryPage
+ *
+ * @property boolean NoMargin
+ * @method ManyManyList Images
  */
 class GalleryPage extends Page {
 
@@ -21,6 +24,9 @@ class GalleryPage extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var UploadField $images
+        ===========================================*/
 
         $fields = parent::getCMSFields();
 
@@ -49,9 +55,11 @@ class GalleryPage extends Page {
      * @return PaginatedList
      */
     public function PaginatedPages() {
-        /**
-         * Protect against "Division by 0" error
-         */
+        /** =========================================
+         * @var PaginatedList $pagination
+        ===========================================*/
+
+        /** Protect against "Division by 0" error */
         if($this->Items == null || $this->Items == 0) $this->Items = 10;
 
         $pagination = PaginatedList::create($this->Images(), Controller::curr()->request);

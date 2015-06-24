@@ -7,10 +7,6 @@ class PageControllerExtension extends Extension {
 
 	public function onBeforeInit() {
 
-        /** =========================================
-         * Resources
-        ===========================================*/
-
         $baseHref = Director::BaseURL();
 
         /** -----------------------------------------
@@ -23,7 +19,7 @@ class PageControllerExtension extends Extension {
          * Set All JS to be right before the closing </body> tag.
          */
         Requirements::set_force_js_to_bottom(true);
-        if(Director::isDev()) {
+        if (Director::isDev()) {
             Requirements::javascript(project().'/javascript/main.js');
         } else {
             Requirements::javascript(project().'/javascript/main.min.js');
@@ -34,7 +30,7 @@ class PageControllerExtension extends Extension {
         -------------------------------------------*/
 
         Requirements::css(project().'/css/font-awesome.min.css');
-        if(Director::isDev()) {
+        if (Director::isDev()) {
             Requirements::css(project().'/css/main.css');
         } else {
             Requirements::css(project().'/css/main.min.css');
@@ -51,8 +47,8 @@ class PageControllerExtension extends Extension {
 
     }
 
-    // TODO Implement somewhere.
     /**
+     * @todo Implement somewhere.
      * @return array
      * Change the page template depending on the "DisplayType" row.
      */

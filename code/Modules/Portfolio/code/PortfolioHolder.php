@@ -2,6 +2,9 @@
 
 /**
  * Class PortfolioHolder
+ *
+ * @property int Items
+ * @mixin Hierarchy
  */
 class PortfolioHolder extends Page {
 
@@ -23,6 +26,11 @@ class PortfolioHolder extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var FieldList       $fields
+         * @var NumericField    $items
+        ===========================================*/
+
         $fields = parent::getCMSFields();
 
         /** -----------------------------------------
@@ -36,6 +44,10 @@ class PortfolioHolder extends Page {
     }
 
     public function index(SS_HTTPRequest $request) {
+        /** =========================================
+         * @var PaginatedList $pagination
+        ===========================================*/
+
         /**
          * Return a ArrayList of all blog children of this page.
          *

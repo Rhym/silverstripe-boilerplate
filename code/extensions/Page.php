@@ -2,6 +2,8 @@
 
 /**
  * Class PageExtension
+ *
+ * @property boolean HideSidebar
  */
 class PageExtension extends DataExtension {
 
@@ -14,24 +16,26 @@ class PageExtension extends DataExtension {
      * @return FieldList
      */
     public function updateSettingsFields(FieldList $fields) {
-        /**
-         * Use FieldGroups to set left titles for the checkboxes.
-         */
+        /** =========================================
+         * @var FieldGroup $hideSidebar
+        ===========================================*/
+
+        /** Use FieldGroups to set left titles for the checkboxes. */
         $fields->addFieldToTab('Root.Settings', $hideSidebar = FieldGroup::create(
             CheckboxField::create('HideSidebar', 'Hide the sidebar from this page')
         ));
         $hideSidebar->setTitle('Sidebar');
     }
 
-    /** =========================================
-     * Previous / Next Links
-    ===========================================*/
-
     /**
      * @param string $direction
      * @return ArrayData|bool
      */
     public function DirectionLink($direction = 'next') {
+        /** =========================================
+         * @var Page $page
+        ===========================================*/
+
         switch ($direction) {
             case 'previous':
                 $sortDirection = 'Sort:LessThan';
@@ -68,10 +72,6 @@ class PageExtension extends DataExtension {
     public function getNextLink() {
         return $this->DirectionLink('next');
     }
-
-    /** =========================================
-     * Tracking Code
-    ===========================================*/
 
     /**
      * If the Tracking Code contains Google Tag Manager then

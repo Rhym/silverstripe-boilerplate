@@ -2,6 +2,9 @@
 
 /**
  * Class SliderSiteConfigExtension
+ *
+ * @property string DefaultSliderHeight
+ * @method Image SliderImage
  */
 class SliderSiteConfigExtension extends Extension {
 
@@ -21,6 +24,10 @@ class SliderSiteConfigExtension extends Extension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
+        /** =========================================
+         * @var UploadField     $image
+         * @var NumericField    $defaultSliderHeight
+        ===========================================*/
 
         if (!$fields->fieldByName('Root.Settings')){
             $fields->addFieldToTab('Root', TabSet::create('Settings'));

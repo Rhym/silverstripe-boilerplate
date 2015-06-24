@@ -2,6 +2,11 @@
 
 /**
  * Class BlogHolder
+ *
+ * @property string BlogSidebarContent
+ * @property string Items
+ *
+ * @mixin Hierarchy
  */
 class BlogHolder extends Page {
 
@@ -24,6 +29,12 @@ class BlogHolder extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var FieldList       $fields
+         * @var NumericField    $items
+         * @var HtmlEditorField $blogSidebarContent
+        ===========================================*/
+
         $fields = parent::getCMSFields();
 
         /** -----------------------------------------
@@ -52,6 +63,10 @@ class BlogHolder extends Page {
      * @return array|HTMLText
      */
     public function index(SS_HTTPRequest $request) {
+        /** =========================================
+         * @var PaginatedList $pagination
+        ===========================================*/
+
         /**
          * Return a ArrayList of all blog children of this page.
          *

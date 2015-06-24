@@ -2,10 +2,14 @@
 
 /**
  * Class ContactMessage
+ *
+ * @property string FirstName
+ * @property string LastName
+ * @property string Email
+ * @property string Phone
+ * @property string Message
  */
-class ContactMessage extends DataObject{
-
-    private static $menu_icon = '';
+class ContactMessage extends DataObject {
 
     private static $db = array (
         'FirstName' => 'Varchar(255)',
@@ -28,7 +32,11 @@ class ContactMessage extends DataObject{
     /**
      * @return FieldList
      */
-    function getCMSFields() {
+    public function getCMSFields() {
+        /** =========================================
+         * @var FieldList $fields
+        ===========================================*/
+
         $fields = FieldList::create(TabSet::create('Root'));
 
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('FirstName'));

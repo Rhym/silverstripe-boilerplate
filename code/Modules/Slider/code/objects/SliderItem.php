@@ -2,6 +2,11 @@
 
 /**
  * Class SliderItem
+ *
+ * @property int SortOrder
+ * @property string Caption
+ * @method Page Page
+ * @method Image Image
  */
 class SliderItem extends DataObject{
 
@@ -45,6 +50,12 @@ class SliderItem extends DataObject{
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var FieldList       $fields
+         * @var Uploadfield     $image
+         * @var HtmlEditorField $caption
+        ===========================================*/
+
         $fields = FieldList::create(TabSet::create('Root'));
 
         $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Slide'));
@@ -66,12 +77,10 @@ class SliderItem extends DataObject{
     }
 
     /**
-     * On Before Write
+     * Before Write
      */
     protected function onBeforeWrite() {
-        /**
-         * Set SortOrder
-         */
+        /** Set SortOrder */
         if (!$this->SortOrder) {
             $this->SortOrder = SliderItem::get()->max('SortOrder') + 1;
         }

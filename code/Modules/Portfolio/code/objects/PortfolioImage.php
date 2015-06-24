@@ -2,8 +2,14 @@
 
 /**
  * Class PortfolioImage
+ *
+ * @property int SortOrder
+ * @property enum ContentPosition
+ * @property string Content
+ * @method Page Page
+ * @method Image Image
  */
-class PortfolioImage extends DataObject{
+class PortfolioImage extends DataObject {
 
     private static $db = array (
         'SortOrder'         => 'Int',
@@ -45,6 +51,10 @@ class PortfolioImage extends DataObject{
      * @return string
      */
     protected function getContentSummary() {
+        /** =========================================
+         * @var HTMLText $html
+        ===========================================*/
+
         if($this->Content) {
             $html = HTMLText::create();
             $html->setValue($this->dbObject('Content')->summary());
@@ -68,6 +78,13 @@ class PortfolioImage extends DataObject{
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var FieldList       $fields
+         * @var UploadField     $image
+         * @var OptionsetField  $contentPosition
+         * @var HtmlEditorField $content
+        ===========================================*/
+
         $fields = FieldList::create(TabSet::create('Root'));
 
         $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Image'));
@@ -88,12 +105,10 @@ class PortfolioImage extends DataObject{
     }
 
     /**
-     * On Before Write
+     * Before Write
      */
     protected function onBeforeWrite() {
-        /**
-         * Set SortOrder
-         */
+        /** Set SortOrder */
         if (!$this->SortOrder) {
             $this->SortOrder = PortfolioImage::get()->max('SortOrder') + 1;
         }

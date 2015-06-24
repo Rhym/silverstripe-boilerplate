@@ -2,6 +2,8 @@
 
 /**
  * Class BlogConfig
+ *
+ * @property string DisqusForumShortName
  */
 class BlogConfig extends DataExtension {
 
@@ -15,6 +17,9 @@ class BlogConfig extends DataExtension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
+        /** =========================================
+         * @var TextField $disqusForumShortName
+        ===========================================*/
 
         /** -----------------------------------------
          * Comments

@@ -6,12 +6,16 @@
 class SubscriptionForm extends Form {
 
     /**
-     * form constructor
+     * Form constructor
      *
      * @param Controller $controller
      * @param String $name
      */
     public function __construct($controller, $name, $arguments = array()) {
+        /** =========================================
+         * @var Form        $form
+         * @var EmailField  $email
+        ===========================================*/
 
         /** -----------------------------------------
          * Fields
@@ -62,15 +66,11 @@ class SubscriptionForm extends Form {
      */
     public function Subscribe($data, $form) {
 
-        /**
-         * Set the form state
-         */
+        /** Set the form state */
         Session::set('FormInfo.Form_'.$this->name.'.data', $data);
 
         $siteConfig = SiteConfig::current_site_config();
-        /**
-         * Check if the API key, and List ID have been set.
-         */
+        /** Check if the API key, and List ID have been set. */
         if($siteConfig->MailChimpAPI && $siteConfig->MailChimpListID) {
             $mailChimp = new \Drewm\MailChimp($siteConfig->MailChimpAPI);
             $result = $mailChimp->call('lists/subscribe', array(
@@ -80,9 +80,7 @@ class SubscriptionForm extends Form {
                 )
             ));
         } else {
-            /**
-             * If not, redirect back and display a flash error.
-             */
+            /** If not, redirect back and display a flash error. */
             $this->controller->setFlash('Missing API key, or List ID', 'danger');
             return $this->controller->redirectBack();
         }
@@ -98,9 +96,7 @@ class SubscriptionForm extends Form {
             }
         }
 
-        /**
-         * Clear the form state
-         */
+        /** Clear the form state */
         Session::clear('FormInfo.Form_'.$this->name.'.data');
         if($siteConfig->MailChimpSuccessMessage) {
             $this->controller->setFlash($siteConfig->MailChimpSuccessMessage, 'success');

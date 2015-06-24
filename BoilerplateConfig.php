@@ -2,6 +2,20 @@
 
 /**
  * Class BoilerplateConfig
+ *
+ * @property string Phone
+ * @property string Email
+ * @property string Address
+ * @property string TrackingCode
+ * @property boolean TagManager
+ * @property string GoogleSiteVerification
+ * @property string Facebook
+ * @property string Twitter
+ * @property string Youtube
+ * @property string GooglePlus
+ * @method Image LogoImage
+ * @method Image MobileLogoImage
+ * @method Image Favicon
  */
 class BoilerplateConfig extends DataExtension {
 
@@ -28,10 +42,19 @@ class BoilerplateConfig extends DataExtension {
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields) {
-
         /** =========================================
+         * @var UploadField     $logo
+         * @var UploadField     $mobileLogo
+         * @var UploadField     $favicon
+         * @var TextareaField   $address
+         * @var TextareaField   $googleSiteVerification
+         * @var TextareaField   $trackingCode
+         * @var FieldGroup      $tagManagerFieldGroup
+        ===========================================*/
+
+        /** -----------------------------------------
          * Settings
-         ==========================================*/
+        -------------------------------------------*/
 
         if (!$fields->fieldByName('Root.Settings')){
             $fields->addFieldToTab('Root', TabSet::create('Settings'));

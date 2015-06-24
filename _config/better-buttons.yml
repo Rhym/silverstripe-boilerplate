@@ -1,0 +1,25 @@
+---
+Name: betterbuttons-extension
+After: betterbuttons
+---
+BetterButtonsUtils:
+  edit:
+    BetterButtonPrevNextAction: true
+    BetterButton_New: true
+  versioned_edit:
+    BetterButtonPrevNextAction: true
+    BetterButton_New: true
+
+BetterButtonsActions:
+  create:
+    BetterButton_Save: true
+    BetterButton_SaveAndClose: true
+    BetterButton_SaveAndAdd: true
+
+  edit:
+    BetterButton_Save: true
+    BetterButton_SaveAndClose: true
+    BetterButton_Delete: true
+    BetterButtonFrontendLinksAction: true
+    BetterButton_SaveAndPrev: true
+    BetterButton_SaveAndNext: true

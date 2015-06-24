@@ -21,10 +21,12 @@ class RegistrationPage_Controller extends Page_Controller {
     /**
      * @return RegistrationForm
      */
-    public function Form(){
-        /**
-         * If the user is logged in, redirect to the Homepage with an alert message prompting logout.
-         */
+    public function Form() {
+        /** =========================================
+         * @var Member $member
+        ===========================================*/
+
+        /** If the user is logged in, redirect to the Homepage with an alert message prompting logout. */
         if($member = Member::currentUser()){
             return '<div class="alert--warning">You\'re currently logged in as <strong>'.$member->Name.'</strong>. To register as a different user <a href="'.Director::absoluteBaseURL().'Security/logout?BackURL='.$this->Link().'">log out.</a></div>';
         } else {

@@ -12,6 +12,16 @@ class ContactForm extends Form {
      * @param String $name
      */
     public function __construct($controller, $name, $arguments = array()) {
+        /** =========================================
+         * @var TextField       $firstName
+         * @var TextField       $lastName
+         * @var EmailField      $email
+         * @var TextField       $phone
+         * @var TextField       $suburb
+         * @var TextField       $city
+         * @var TextareaField   $message
+         * @var Form            $form
+        ===========================================*/
 
         /** -----------------------------------------
          * Fields
@@ -66,7 +76,7 @@ class ContactForm extends Form {
         -------------------------------------------*/
 
         $actions = FieldList::create(
-            FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn--primary')
+            $action = FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn--primary')
         );
 
         /** -----------------------------------------
@@ -99,6 +109,11 @@ class ContactForm extends Form {
      * @return bool|SS_HTTPResponse
      */
     public function Submit($data, $form) {
+        /** =========================================
+         * @var Form            $form
+         * @var HTMLText        $errors
+         * @var ContactMessage  $contactMessage
+        ===========================================*/
 
         /**
          * Set the form state

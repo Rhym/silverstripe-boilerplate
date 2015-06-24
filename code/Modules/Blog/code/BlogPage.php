@@ -2,6 +2,9 @@
 
 /**
  * Class BlogPage
+ *
+ * @property string Date
+ * @property string Author
  */
 class BlogPage extends Page {
 
@@ -36,6 +39,11 @@ class BlogPage extends Page {
      * @return FieldList
      */
     public function getCMSFields() {
+        /** =========================================
+         * @var FieldList   $fields
+         * @var UploadField $blogImage
+         * @var DateField   $dateField
+        ===========================================*/
 
         $fields = parent::getCMSFields();
 
@@ -50,7 +58,6 @@ class BlogPage extends Page {
         ));
         $fields->addFieldToTab('Root.Main', $dateField = DateField::create('Date', 'Article Date (optional)'), 'Content');
         $dateField->setConfig('showcalendar', true);
-        $fields->addFieldToTab('Root.Main', $dateField, 'Content');
         $fields->addFieldToTab('Root.Main', TextField::create('Author', 'Author (optional)'), 'Content');
 
         return $fields;

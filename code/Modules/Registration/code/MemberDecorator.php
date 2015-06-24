@@ -2,6 +2,10 @@
 
 /**
  * Class MemberDecorator
+ *
+ * @property string JobTitle
+ * @property string Blurb
+ * @property string Website
  */
 class MemberDecorator extends DataExtension {
 
@@ -23,10 +27,14 @@ class MemberDecorator extends DataExtension {
     /**
      * @return SS_HTTPResponse
      */
-    function Link(){
-        if($ProfilePage = DataObject::get_one('EditProfilePage')){
-            return $ProfilePage->Link();
-        }else{
+    public function Link(){
+        /** =========================================
+         * @var EditProfilePage $profilePage
+        ===========================================*/
+
+        if ($profilePage = DataObject::get_one('EditProfilePage')) {
+            return $profilePage->Link();
+        } else {
             return Controller::curr()->redirect(Director::absoluteBaseURL());
         }
     }

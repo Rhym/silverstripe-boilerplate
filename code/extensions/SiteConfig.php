@@ -6,6 +6,7 @@
  * @property string Phone
  * @property string Email
  * @property string Address
+ * @property string Directions
  * @property string TrackingCode
  * @property boolean TagManager
  * @property string GoogleSiteVerification
@@ -23,6 +24,7 @@ class BoilerplateSiteConfigExtension extends DataExtension {
         'Phone'                     => 'Varchar(255)',
         'Email'                     => 'Varchar(255)',
         'Address'                   => 'Text',
+        'Directions'                => 'Text',
         'TrackingCode'              => 'Text',
         'TagManager'                => 'Boolean',
         'GoogleSiteVerification'    => 'Text',
@@ -47,6 +49,7 @@ class BoilerplateSiteConfigExtension extends DataExtension {
          * @var UploadField     $mobileLogo
          * @var UploadField     $favicon
          * @var TextareaField   $address
+         * @var TextareaField   $directions
          * @var TextareaField   $googleSiteVerification
          * @var TextareaField   $trackingCode
          * @var FieldGroup      $tagManagerFieldGroup
@@ -83,9 +86,11 @@ class BoilerplateSiteConfigExtension extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Details', 'Details');
         $fields->addFieldsToTab('Root.Settings.Details',
             array(
+                HeaderField::create('', 'General'),
                 Textfield::create('Phone', 'Phone Number'),
                 Textfield::create('Email', 'Public Email Address'),
-                $address = TextareaField::create('Address', 'Address'),
+                $address = TextareaField::create('Address'),
+                $directions = TextareaField::create('Directions', 'Google Map Directions'),
                 HeaderField::create('', 'Social Media'),
                 TextField::create('Facebook'),
                 TextField::create('Twitter'),
@@ -94,6 +99,8 @@ class BoilerplateSiteConfigExtension extends DataExtension {
             )
         );
         $address->setRows(8);
+        $directions->setRows(3);
+        $directions->setRightTitle('The URL of the Address on <a href="https://www.google.com/maps" title="Google Maps" rel="nofollow" target="_blank">Google Maps</a>. This is useful for users on mobile granting the ability to open directions in their native applications.');
 
         /** -----------------------------------------
          * Analytics

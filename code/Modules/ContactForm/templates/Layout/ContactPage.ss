@@ -7,8 +7,9 @@
                 <ul class="navigation">
                     <% with $SiteConfig %>
                         <% if $Phone %><li class="navigation__item navigation__item--phone">{$Phone}</li><% end_if %>
-                        <% if $Email %><li class="navigation__item navigation__item--email"><a href="mailto:{$Email}">{$Email}</a></li><% end_if %>
+                        <% if $Email %><li class="navigation__item navigation__item--email"><a href="mailto:{$Email}" class="navigation__item__link">{$Email}</a></li><% end_if %>
                         <% if $Address %><li class="navigation__item navigation__item--address">{$Address}</li><% end_if %>
+                        <% if $Directions %><li class="navigation__item navigation__item--directions"><a href="{$Directions}" class="navigation__item__link" target="_blank" rel="nofollow">Get Directions</a></li><% end_if %>
                     <% end_with %>
                 </ul><!-- /.navigation -->
             </aside><!-- /.page__sidebar__content -->

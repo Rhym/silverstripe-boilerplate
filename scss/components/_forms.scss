@@ -139,7 +139,7 @@
             min-height: $recaptcha-height;
             @include loading-spinner;
             &::after {
-                left: $recaptcha-width / 2;
+                left: $gutter / 2;
                 z-index: -1;
             }
         }

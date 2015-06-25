@@ -1,7 +1,0 @@
----
-Name: left-and-main-extension
-After: mysite
----
-LeftAndMain:
-  extensions:
-    - CMSBrandingLeftAndMainExtension

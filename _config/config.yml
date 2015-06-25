@@ -1,12 +1,6 @@
 GDBackend:
   default_quality: 100
 
-# SiteConfig
-SiteConfig:
-  extensions:
-    - BoilerplateConfig
-
-# Page
 Page:
   extensions:
     - PageExtension
@@ -14,3 +8,7 @@ Page:
 ContentController:
   extensions:
     - PageControllerExtension
+
+SiteConfig:
+  extensions:
+    - BoilerplateSiteConfigExtension

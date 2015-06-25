@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class BoilerplateConfig
+ * Class BoilerplateSiteConfigExtension
  *
  * @property string Phone
  * @property string Email
@@ -17,11 +17,11 @@
  * @method Image MobileLogoImage
  * @method Image Favicon
  */
-class BoilerplateConfig extends DataExtension {
+class BoilerplateSiteConfigExtension extends DataExtension {
 
     public static $db = array(
-		'Phone'                     => 'Varchar(255)',
-		'Email'                     => 'Varchar(255)',
+        'Phone'                     => 'Varchar(255)',
+        'Email'                     => 'Varchar(255)',
         'Address'                   => 'Text',
         'TrackingCode'              => 'Text',
         'TagManager'                => 'Boolean',
@@ -30,13 +30,13 @@ class BoilerplateConfig extends DataExtension {
         'Twitter'                   => 'Varchar(255)',
         'Youtube'                   => 'Varchar(255)',
         'GooglePlus'                => 'Varchar(255)'
-	);
+    );
 
-	public static $has_one = array(
-		'LogoImage'         => 'Image',
-		'MobileLogoImage'   => 'Image',
-		'Favicon'           => 'Image'
-	);
+    public static $has_one = array(
+        'LogoImage'         => 'Image',
+        'MobileLogoImage'   => 'Image',
+        'Favicon'           => 'Image'
+    );
 
     /**
      * @param FieldList $fields

@@ -29,7 +29,6 @@ class PageControllerExtension extends Extension {
          * CSS
         -------------------------------------------*/
 
-        Requirements::css(project().'/css/font-awesome.min.css');
         if (Director::isDev()) {
             Requirements::css(project().'/css/main.css');
         } else {

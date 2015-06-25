@@ -18,6 +18,7 @@
                         </div><!-- /.blog__item__content typography -->
                     <% end_if %>
                 <% end_cached %>
+                <% include Sharer %>
                 <% include Comments %>
             </article><!-- /.blog__item -->
         </div><!-- /.page__content has-sidebar -->

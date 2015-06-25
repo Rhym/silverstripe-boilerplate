@@ -4,14 +4,17 @@
 
 @import "../../components/lib/owl.carousel/dist/assets/owl.carousel.min.css";
 
-.carousel {
+.carousel-container {
+    position: relative;
     @include margin-lg-bottom;
+}
+
+.carousel {
     /**
      * If the browser supports CSS transformations then use translate to center the caption.
      */
     .csstransforms3d & {
-        .carousel__item__caption,
-        .carousel__navigation {
+        .carousel__item__caption {
             @media (min-width: $screen-sm-min) {
                 top: 50%;
                 transform: translate(0, -50%);
@@ -53,40 +56,63 @@
             }
         }
     }
-    &__navigation {
-        height: $carousel-icon-size;
-        padding: 0;
-        position: relative;
-        background: $brand-inverse;
-        @media(min-width: $screen-sm-min) {
-            background: transparent none;
-            height: $carousel-icon-size * 2;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
+}
+
+.carousel-navigation {
+    display: none;
+    height: $carousel-icon-size + ($gap-sm * 2);
+    padding: 0;
+    position: relative;
+    background: $brand-inverse;
+    z-index: 1;
+    @media(min-width: $screen-sm-min) {
+        background: transparent none;
+        height: $carousel-icon-size * 2;
+        margin-top: -($carousel-icon-size);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+    }
+    /** Display navigation after load. */
+    .owl-loaded + & {
+        display: block;
+    }
+    .csstransforms3d & {
+        @media (min-width: $screen-sm-min) {
+            margin-top: 0;
+            transform: translate(0, -50%);
         }
-        &__item {
-            color: $brand-inverse-color;
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
+    }
+    &__item {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        background: transparent none;
+        padding: $gap-sm;
+        @media(min-width: $screen-sm-min) {
+            padding: 0;
+        }
+        &:hover,
+        &:active {
             background: transparent none;
-            font-size: $carousel-icon-size / 2;
-            line-height: $carousel-icon-size / 2;
-            padding: 0.5em;
+        }
+        &--next {
+            right: 0;
+            left: auto;
+        }
+        &__icon {
+            height: $carousel-icon-size;
+            width: $carousel-icon-size;
+            filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.2));
+            user-select: none;
             @media(min-width: $screen-sm-min) {
-                font-size: $carousel-icon-size;
-                line-height: $carousel-icon-size;
+                height: $carousel-icon-size * 2;
+                width: $carousel-icon-size * 2;
             }
-            &:hover,
-            &:active {
-                background: transparent none;
-            }
-            &--next {
-                right: 0;
-                left: auto;
+            path {
+                fill: $brand-inverse-color;
             }
         }
     }

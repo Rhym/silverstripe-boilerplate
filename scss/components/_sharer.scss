@@ -12,19 +12,40 @@
         @include margin;
     }
     &__list {
-        text-align: center;
+        padding: 0;
         @include margin;
         &__item {
             display: inline-block;
             list-style: none;
-            padding-right: $gap-lg;
+            margin: 0;
+            padding-right: $gap-md;
             &--last {
                 padding-right: 0;
             }
             &__link {
-                font-size: $font-size-h2;
-                @media(min-width: $screen-sm-min) {
-                    font-size: $font-size-h1;
+                display: block;
+                line-height: 1em;
+                &__icon {
+                    $icon-size: 36px;
+                    height: $icon-size;
+                    width: $icon-size;
+                    @media(min-width: $screen-sm-min) {
+                        height: $icon-size * 1.5;
+                        width: $icon-size * 1.5;
+                    }
+                    &:hover {
+                        path,
+                        ellipse {
+                            @media(min-width: $screen-sm-min) {
+                                fill: $brand-primary;
+                            }
+                        }
+                    }
+                    path,
+                    ellipse {
+                        fill: $font-base-color;
+                        transition: $transition-default fill;
+                    }
                 }
             }
         }

@@ -6,7 +6,7 @@
     @include clearfix;
     @include margin;
     &__item {
-        @include make-sm-column(6, 0);
+        @include make-xs-column(6, 0);
         &--next {
             text-align: right;
         }

@@ -53,7 +53,7 @@ class PortfolioHolder extends Page {
          *
          * @return PaginatedList
          */
-        $pagination = PaginatedList::create($this->AllChildren(), Controller::curr()->request);
+        $pagination = PaginatedList::create($this->liveChildren(true), Controller::curr()->request);
         $items = ($this->Items > 0 ? $this->Items : 10);
         $pagination->setPageLength($items);
 

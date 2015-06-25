@@ -68,22 +68,23 @@ class BlogHolder extends Page {
         ===========================================*/
 
         /**
-         * Return a ArrayList of all blog children of this page.
+         * Return a ArrayList of all BlogPage children of this page.
          *
          * @return PaginatedList
          */
-        $pagination = PaginatedList::create($this->AllChildren(), Controller::curr()->request);
+        $pagination = PaginatedList::create($this->liveChildren(true), Controller::curr()->request);
         $items = ($this->Items > 0 ? $this->Items : 10);
         $pagination->setPageLength($items);
-
-
         $data = array (
             'PaginatedPages' => $pagination
         );
+
+        /** If the request is AJAX */
         if($request->isAjax()) {
             return $this->customise($data)
                 ->renderWith('BlogHolder_Item');
         }
+
         return $data;
     }
 

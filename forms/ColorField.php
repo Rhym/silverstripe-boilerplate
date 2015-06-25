@@ -16,6 +16,11 @@ class ColorField extends TextField {
      */
     public function __construct($name, $title = null, $value = '', $form = null){
 		parent::__construct($name, $title, $value, 7, $form);
+
+        Requirements::css(BOILERPLATE_MODULE.'/css/colorpicker.css');
+        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/lib/colorpicker.min.js');
+        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/colorpicker.init.js');
+
         $this->addExtraClass('text');
 	}
 
@@ -25,37 +30,24 @@ class ColorField extends TextField {
      */
     function Field($properties = array()) {
 
-        $vars = array(
-            'PrimaryColor' =>$this->stat('primary_color'),
-            'SecondaryColor' =>$this->stat('secondary_color')
-        );
-
-        Requirements::css(BOILERPLATE_MODULE.'/css/colorpicker.css');
-        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/lib/colorpicker.min.js');
-        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/colorpicker.init.js');
+//        $vars = array(
+//            'PrimaryColor' =>$this->stat('primary_color'),
+//            'SecondaryColor' =>$this->stat('secondary_color')
+//        );
 
 		$this->addExtraClass('color-picker');
-		$style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff'). '; color: ' . ($this->getTextColor()) . ';';
-		$attributes = array(
-			'type'      => 'text',
-			'class'     => 'text' . ($this->extraClass() ? $this->extraClass() : ''),
-			'id'        => $this->id(),
-			'name'      => $this->getName(),
-			'value'     => $this->value,
-			'tabindex'  => $this->getAttribute('tabindex'),
-			'maxlength' => ($this->maxLength) ? $this->maxLength : null,
-			'size'      => ($this->maxLength) ? min( $this->maxLength, 30 ) : null,
-			'style'     => $style
-		);
+        $style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff'). '; color: ' . ($this->getTextColor()) . ';';
+        $this->setAttribute('style', $style);
 
-		if($this->disabled) $attributes['disabled'] = 'disabled';
+        $properties['type'] = 'text';
+        $properties['class'] = 'text' . ($this->extraClass() ? $this->extraClass() : '');
+        $properties['tabindex'] = $this->getAttribute('tabindex');
+        $properties['maxlength'] = ($this->maxLength) ? $this->maxLength : null;
+        $properties['size'] = ($this->maxLength) ? min( $this->maxLength, 30 ) : null;
+		if($this->disabled) $properties['disabled'] = 'disabled';
 
-		$out = '<div class="iris-container">';
-			$out .= '<label class="iris-color-label" for="'.$this->id().'"><span class="ss-ui-button">Select a color</span></label>';
-			$out .= FormField::create_tag('input', $attributes);
-		$out .= '</div>';
-
-		return $out;
+        $obj = ($properties) ? $this->customise($properties) : $this;
+        return $obj->renderWith($this->getTemplates());
 	}
 
     /**

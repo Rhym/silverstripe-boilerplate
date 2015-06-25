@@ -28,7 +28,7 @@ class ColorField extends TextField {
      * @param array $properties
      * @return string
      */
-    function Field($properties = array()) {
+    public function Field($properties = array()) {
 
 //        $vars = array(
 //            'PrimaryColor' =>$this->stat('primary_color'),

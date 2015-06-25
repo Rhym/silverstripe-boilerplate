@@ -131,7 +131,17 @@
         -------------------------------------------*/
 
         @at-root .recaptcha {
+            $recaptcha-width: 304px;
+            $recaptcha-height: 78px;
+
+            position: relative;
             @include margin;
+            min-height: $recaptcha-height;
+            @include loading-spinner;
+            &::after {
+                left: $recaptcha-width / 2;
+                z-index: -1;
+            }
         }
     }
 

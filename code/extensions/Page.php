@@ -15,6 +15,20 @@ class PageExtension extends DataExtension {
      * @param FieldList $fields
      * @return FieldList
      */
+    public function updateCMSFields(FieldList $fields) {
+        /** =========================================
+         * @var HtmlEditorField $content
+        ===========================================*/
+
+        $fields->removeByName('Content');
+        $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'), 'Metadata');
+        $content->setRows(20);
+    }
+
+    /**
+     * @param FieldList $fields
+     * @return FieldList
+     */
     public function updateSettingsFields(FieldList $fields) {
         /** =========================================
          * @var FieldGroup $hideSidebar

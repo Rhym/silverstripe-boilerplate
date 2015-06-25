@@ -32,7 +32,7 @@ class ColorField extends TextField {
 
         Requirements::css(BOILERPLATE_MODULE.'/css/colorpicker.css');
         Requirements::javascript(BOILERPLATE_MODULE.'/javascript/lib/colorpicker.min.js');
-        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/colorpicker.init.js', $vars);
+        Requirements::javascript(BOILERPLATE_MODULE.'/javascript/colorpicker.init.js');
 
 		$this->addExtraClass('color-picker');
 		$style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff'). '; color: ' . ($this->getTextColor()) . ';';

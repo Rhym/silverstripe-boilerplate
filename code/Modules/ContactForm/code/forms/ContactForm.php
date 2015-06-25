@@ -115,9 +115,7 @@ class ContactForm extends Form {
          * @var ContactMessage  $contactMessage
         ===========================================*/
 
-        /**
-         * Set the form state
-         */
+        /** Set the form state */
         Session::set('FormInfo.Form_'.$this->name.'.data', $data);
 
         /**
@@ -200,9 +198,7 @@ class ContactForm extends Form {
         $form->saveInto($contactMessage);
         $contactMessage->write();
 
-        /**
-         * Clear the form state
-         */
+        /** Clear the form state */
         Session::clear('FormInfo.Form_'.$this->name.'.data');
 
         return $this->controller->redirect($this->controller->data()->Link('?success=1'));

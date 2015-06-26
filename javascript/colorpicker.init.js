@@ -1,24 +1,22 @@
 ;(function($) {
-    var $colorPicker = $('.color-picker');
     $.entwine('boilerplate', function($){
         $(document).on('click', function(e){
             if (!$(e.target).is(".color-picker, .iris-picker, .iris-picker-inner")) {
-                $colorPicker.iris('hide');
+                $('.color-picker').iris('hide');
             }
         });
-        $colorPicker.entwine({
+        $('.color-picker').entwine({
             onmatch: function(){
-                var palettes = $colorPicker.data('palette');
-                $colorPicker.iris({
+                var palettes = $('.color-picker').data('palette');
+                $('.color-picker').iris({
                     palettes: palettes,
                     change: function(event, ui) {
                         var $c, $r, $g, $b, $mid;
                         $(this).css('backgroundColor', ui.color.toString());
                     }
                 });
-                var self = this;
                 this.on('click', function(e) {
-                    $colorPicker.iris('hide');
+                    $('.colour-picker').iris('hide');
                     $(this).iris('show');
                 });
                 this._super();

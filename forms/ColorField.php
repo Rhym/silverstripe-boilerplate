@@ -6,6 +6,7 @@
 class ColorField extends TextField {
 
     private static $primary_color = '#3f51b5';
+
     private static $secondary_color = '#ff4081';
 
     /**
@@ -14,7 +15,7 @@ class ColorField extends TextField {
      * @param string $value
      * @param null $form
      */
-    public function __construct($name, $title = null, $value = '', $form = null){
+    public function __construct($name, $title = null, $value = '', $form = null) {
 		parent::__construct($name, $title, $value, 7, $form);
 
         Requirements::css(BOILERPLATE_MODULE.'/css/colorpicker.css');
@@ -26,25 +27,20 @@ class ColorField extends TextField {
 
     /**
      * @param array $properties
-     * @return string
+     * @return HTMLText
      */
     public function Field($properties = array()) {
-
-//        $vars = array(
-//            'PrimaryColor' =>$this->stat('primary_color'),
-//            'SecondaryColor' =>$this->stat('secondary_color')
-//        );
-
 		$this->addExtraClass('color-picker');
         $style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff'). '; color: ' . ($this->getTextColor()) . ';';
         $this->setAttribute('style', $style);
+        $this->setAttribute('data-palette', '["'.$this->stat('primary_color').'", "'.$this->stat('secondary_color').'", "#212121", "#fff"]');
 
         $properties['type'] = 'text';
         $properties['class'] = 'text' . ($this->extraClass() ? $this->extraClass() : '');
         $properties['tabindex'] = $this->getAttribute('tabindex');
         $properties['maxlength'] = ($this->maxLength) ? $this->maxLength : null;
         $properties['size'] = ($this->maxLength) ? min( $this->maxLength, 30 ) : null;
-		if($this->disabled) $properties['disabled'] = 'disabled';
+		if ($this->disabled) $properties['disabled'] = 'disabled';
 
         $obj = ($properties) ? $this->customise($properties) : $this;
         return $obj->renderWith($this->getTemplates());
@@ -54,7 +50,7 @@ class ColorField extends TextField {
      * @param $validator
      * @return bool
      */
-    function validate($validator){
+    function validate($validator) {
 		return true;
 	}
 
@@ -65,8 +61,8 @@ class ColorField extends TextField {
      *
      * @return string
      */
-    protected function getTextColor(){
-		if($this->value) {
+    protected function getTextColor() {
+		if ($this->value) {
 			$c = intval(str_replace("#", "", $this->value), 16);
 			$r = $c >> 16;
 			$g = ($c >> 8) & 0xff;

@@ -66,9 +66,9 @@ class PortfolioImage extends DataObject {
     /**
      * @return string
      */
-    protected function getThumbnail() {
-        if ($Image = $this->Image()->ID) {
-            return $this->Image()->SetWidth(80);
+    public function getThumbnail() {
+        if ($this->Image()->ID) {
+            return $this->Image()->CroppedImage(70, 39);
         } else {
             return '(No Image)';
         }

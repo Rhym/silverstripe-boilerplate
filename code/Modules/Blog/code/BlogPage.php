@@ -5,6 +5,8 @@
  *
  * @property string Date
  * @property string Author
+ *
+ * @method Image Image
  */
 class BlogPage extends Page {
 
@@ -25,6 +27,18 @@ class BlogPage extends Page {
 
     private static $description = 'Blog content page';
 
+    private static $singular_name = 'Blog Post';
+
+    private static $plural_name = 'Blog Posts';
+
+    private static $summary_fields = array(
+        'Thumbnail'         => 'Thumbnail',
+        'Title'             => 'Title',
+        'Date.Nice'         => 'Date',
+        'Author'            => 'Author',
+        'Content.Summary'   => 'Summary'
+    );
+
     private static $allowed_children = 'none';
 
     private static $can_be_root = false;
@@ -34,6 +48,19 @@ class BlogPage extends Page {
             'SortOrder' => 'Int'
         )
     );
+
+    /**
+     * Get the thumbnail of Image()
+     *
+     * @return Image|string
+     */
+    public function getThumbnail() {
+        if ($this->Image()->ID) {
+            return $this->Image()->croppedImage(70, 39);
+        } else {
+            return '(none)';
+        }
+    }
 
     /**
      * @return FieldList

@@ -4,6 +4,7 @@
  * Class PortfolioPage
  *
  * @property string Subtitle
+ *
  * @method HasManyList PortfolioImages
  */
 class PortfolioPage extends Page {
@@ -22,11 +23,35 @@ class PortfolioPage extends Page {
         'ShowInMenus' => 0
     );
 
+    private static $singular_name = 'Portfolio Post';
+
+    private static $plural_name = 'Portfolio Posts';
+
+    private static $summary_fields = array(
+        'Thumbnail'         => 'Thumbnail',
+        'Title'             => 'Title',
+        'SubTitle'          => 'Sub Title',
+        'Content.Summary'   => 'Summary'
+    );
+
     private static $allowed_children = 'none';
 
     private static $can_be_root = false;
 
     private static $description = 'Portfolio content page';
+
+    /**
+     * Get the thumbnail of Image()
+     *
+     * @return Image|string
+     */
+    public function getThumbnail() {
+        if ($this->PortfolioImages()->count() > 0) {
+            return $this->PortfolioImages()->first()->getThumbnail();
+        } else {
+            return '(No Portfolio Images)';
+        }
+    }
 
     /**
      * @return FieldList

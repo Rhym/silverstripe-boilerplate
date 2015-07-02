@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{$ContentLocale}">
 <head>
-    <% include Header_Meta %>
+    <% cache_include 'Header_Meta' %>
     <link rel="stylesheet" type="text/css" href="{$BaseHref}/{$Project}/css/main.min.css" />
 </head>
 <body class="{$ClassName} {$SliderClass}" id="{$URLSegment}">

@@ -9,4 +9,4 @@
 <meta property="og:url" content="{$AbsoluteLink}" />
 <% if $SiteConfig.LogoImage %><meta property="og:image" content="{$SiteConfig.LogoImage.Link}" /><% end_if %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<% if $SiteConfig.Favicon %><link rel="shortcut icon" href="{$SiteConfig.Favicon.Link}" /><% else %><link rel="shortcut icon" href="{$ThemeDir}/favicon.ico" /><% end_if %>
+<% if $SiteConfig.Favicon %><link rel="shortcut icon" href="{$SiteConfig.Favicon.Link}" /><% end_if %>

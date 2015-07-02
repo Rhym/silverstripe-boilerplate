@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <% loop $PaginatedPages %>
-                    <article class="portfolio__item portfolio__item--{$FirstLast} portfolio__item--{$EvenOdd}">
+                    <article class="portfolio__item portfolio__item--{$EvenOdd}<% if $FirstLast %> portfolio__item--{$FirstLast}<% end_if %>">
                         <figure class="portfolio__image">
                             <a href="{$Link}" title="{$Title}">
                                 <% with $PortfolioImages.First %>{$Image.CroppedImage(555, 312)}<% end_with %>

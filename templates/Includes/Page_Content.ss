@@ -4,6 +4,6 @@
             <h1 class="page__content__heading">{$Title}</h1><!-- /.page__content__heading -->
             <% include Content %>
         </div><!-- /.page__content has-sidebar -->
-        <% include SideBar %>
+        <% include Sidebar %>
     </div><!-- /.row -->
 </div><!-- /.container -->

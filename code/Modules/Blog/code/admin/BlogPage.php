@@ -29,8 +29,6 @@ class BlogPageModelAdmin extends CatalogPageAdmin {
         ===========================================*/
 
         $form = parent::getEditForm($id, $fields);
-
-        $form = parent::getEditForm($id, $fields);
         if($this->modelClass == 'BlogPage' && $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
             /**
              * This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have

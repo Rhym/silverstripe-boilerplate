@@ -15,6 +15,9 @@
             @include margin-none;
         }
         &__image {
+            > a {
+                display: block;
+            }
             &__caption {
                 @include margin;
             }

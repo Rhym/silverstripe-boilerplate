@@ -4,7 +4,7 @@
             <article class="blog__item blog__item--page">
                 <% if $Image %>
                     <figure class="blog__item__image">
-                        {$Image.setWidth(850)}
+                        {$Image.setWidth(848).SrcSet(75, 100)}
                         <% if $Date && $Author %>
                             <figcaption class="blog__item__image__caption">Posted on {$Date} by {$Author}</figcaption><!-- /.blog__item__image__caption -->
                         <% end_if %>

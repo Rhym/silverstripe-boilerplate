@@ -10,7 +10,7 @@
                             {$Content}
                         </aside><!-- /.portfolio-images__item__content typography -->
                         <figure class="portfolio-images__item__image">
-                            {$Image.setWidth(1140)}
+                            {$Image.setWidth(1140).SrcSet}
                         </figure><!-- /.portfolio-images__item__image -->
                     </div><!-- /.row -->
                 </div><!-- /.portfolio-images__item -->

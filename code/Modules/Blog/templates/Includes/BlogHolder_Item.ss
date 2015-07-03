@@ -6,7 +6,7 @@
                     <% if $Image %>
                         <figure class="blog__item__image">
                             <a href="{$Link}" title="{$Title}">
-                                {$Image.CroppedImage(848, 340)}
+                                {$Image.CroppedImage(848, 340).SrcSet(75, 100)}
                             </a>
                             <% if $Date && $Author %>
                                 <figcaption class="blog__item__image__caption">Posted on {$Date} by {$Author}</figcaption><!-- /.blog__item__image__caption -->

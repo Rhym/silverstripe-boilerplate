@@ -12,3 +12,7 @@ ContentController:
 SiteConfig:
   extensions:
     - BoilerplateSiteConfigExtension
+
+Image:
+  extensions:
+    - ImageExtension

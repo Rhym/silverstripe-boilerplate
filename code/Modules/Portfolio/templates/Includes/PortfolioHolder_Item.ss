@@ -4,11 +4,11 @@
             <div class="row">
                 <% loop $PaginatedPages %>
                     <article class="portfolio__item portfolio__item--{$EvenOdd}<% if $FirstLast %> portfolio__item--{$FirstLast}<% end_if %>">
-                        <figure class="portfolio__image">
+                        <figure class="portfolio__item__image">
                             <a href="{$Link}" title="{$Title}">
-                                <% with $PortfolioImages.First %>{$Image.CroppedImage(555, 312)}<% end_with %>
+                                <% with $PortfolioImages.First %>{$Image.CroppedImage(555, 312).SrcSet(50, 100)}<% end_with %>
                             </a>
-                        </figure><!-- /.portfolio__image -->
+                        </figure><!-- /.portfolio__item__image -->
                         <h4 class="portfolio__item__heading">
                             <a href="{$Link}" title="{$Title}">{$MenuTitle}</a>
                         </h4><!-- /.portfolio__item__heading -->

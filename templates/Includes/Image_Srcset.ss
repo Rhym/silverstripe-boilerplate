@@ -1,0 +1,1 @@
+<img src="{$URL}" alt="{$Title}" sizes="{$Sizes}" srcset="{$SrcSet}" />

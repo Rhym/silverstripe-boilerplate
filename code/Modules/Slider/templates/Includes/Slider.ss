@@ -1,8 +1,8 @@
 <% cache 'SliderCache' %>
     <% if $SliderItems && $HideDefaultSlider !=1 %>
-        <section class="slider<% if $SliderItems.Count > 1 %> slider--multiple<% end_if %>">
+        <section class="slider<% if $SliderItems.Count > 1 %> slider--multiple<% else %> slider--default<% end_if %>">
             <div class="carousel-container">
-                <div class="carousel owl-carousel">
+                <div class="carousel<% if $SliderItems.Count > 1 %> carousel--multiple<% else %> carousel--single<% end_if %> owl-carousel">
                     <% loop $SliderItems %>
                         <div class="carousel__item carousel__item--{$FirstLast}"<% if $Top.SliderHeight > 0 %> style="max-height: {$Top.SliderHeight}px"<% end_if %>>
                             <% if $Top.SliderHeight %>
@@ -26,7 +26,7 @@
         </section><!-- /.slider -->
     <% else_if $SiteConfig.SliderImage && $HideDefaultSlider !=1 %>
         <section class="slider slider--default">
-            <div class="carousel owl-carousel">
+            <div class="carousel carousel--single owl-carousel">
                 <div class="carousel__item"<% if $SiteConfig.DefaultSliderHeight > 0 %> style="max-height: {$SiteConfig.DefaultSliderHeight}px"<% end_if %>>
                     {$SiteConfig.SliderImage.SrcSet}
                 </div><!-- /.carousel__item -->

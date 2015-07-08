@@ -1,3 +1,8 @@
+---
+Name: boilerplate
+After: 'framework/*','cms/*'
+---
+
 GDBackend:
   default_quality: 100
 

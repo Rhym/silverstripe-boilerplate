@@ -4,7 +4,7 @@
     <section class="portfolio-images">
         <div class="container">
             <% loop $PortfolioImages %>
-                <div class="portfolio-images__item portfolio-images__item--{$EvenOdd} portfolio-images__item--{$FirstLast}<% if $Content %> has-content<% end_if %><% if $ContentPosition = 'Left' %> is-left<% else_if $ContentPosition = 'Right' %> is-right<% else %> is-full<% end_if %>">
+                <div class="portfolio-images__item portfolio-images__item--{$EvenOdd}<% if $FirstLast %> portfolio-images__item--{$FirstLast}<% end_if %><% if $Content %> has-content<% end_if %><% if $ContentPosition = 'Left' %> is-left<% else_if $ContentPosition = 'Right' %> is-right<% else %> is-full<% end_if %>">
                     <div class="row">
                         <aside class="portfolio-images__item__content typography">
                             {$Content}

@@ -28,7 +28,11 @@ class BlogConfig extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Comments', 'Comments');
         $fields->addFieldsToTab('Root.Settings.Comments',
             array(
-                $disqusForumShortName = TextField::create('DisqusForumShortName', 'Disqus forum shortname')
+                HeaderField::create('', 'Comments'),
+                LiteralField::create('',
+                    '<p>If the Disqus Forum Shortname is set Blog Pages will have a comment section appended to the bottom of the article.</p>'
+                ),
+                $disqusForumShortName = TextField::create('DisqusForumShortName', 'Disqus Forum Shortname')
             )
         );
         if(!SiteConfig::current_site_config()->DisqusForumShortName){

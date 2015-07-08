@@ -3,11 +3,11 @@ GDBackend:
 
 Page:
   extensions:
-    - PageExtension
+    - BoilerplatePageExtension
 
 ContentController:
   extensions:
-    - PageControllerExtension
+    - BoilerplatePageControllerExtension
 
 SiteConfig:
   extensions:
@@ -15,4 +15,8 @@ SiteConfig:
 
 Image:
   extensions:
-    - ImageExtension
+    - BoilerplateImageExtension
+
+Group:
+  extensions:
+    - BoilerplateGroupExtension

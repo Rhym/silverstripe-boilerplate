@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class ImageExtension
+ * Class BoilerplateImageExtension
  *
  * @mixin Image
  */
-class ImageExtension extends DataExtension {
+class BoilerplateImageExtension extends DataExtension {
 
     private static $min_mobile_width = 320;
 

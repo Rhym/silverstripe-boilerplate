@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class PageControllerExtension
+ * Class BoilerplatePageControllerExtension
  */
-class PageControllerExtension extends Extension {
+class BoilerplatePageControllerExtension extends Extension {
 
 	public function onBeforeInit() {
 

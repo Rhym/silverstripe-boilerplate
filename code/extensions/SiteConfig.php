@@ -70,14 +70,13 @@ class BoilerplateSiteConfigExtension extends DataExtension {
         $fields->findOrMakeTab('Root.Settings.Images', 'Images');
         $fields->addFieldsToTab('Root.Settings.Images',
             array(
+                HeaderField::create('', 'Images'),
                 $logo = UploadField::create('LogoImage', 'Logo'),
-                $mobileLogo = UploadField::create('MobileLogoImage', 'Mobile Menu Logo'),
+                $mobileLogo = UploadField::create('MobileLogoImage', 'Mobile Menu Logo (optional)'),
                 $favicon = UploadField::create('Favicon', 'Favicon')
             )
         );
-        $logo->setRightTitle('Choose an Image For Your Logo');
-        $mobileLogo->setRightTitle('(optional) Choose a Logo to Display in the Pop-out Menu');
-        $favicon->setRightTitle('Choose an Image For Your Favicon (16x16)');
+        $favicon->setRightTitle('Choose an Image For Your Favicon (16px by 16px)');
 
         /** -----------------------------------------
          * Company Details
@@ -106,24 +105,27 @@ class BoilerplateSiteConfigExtension extends DataExtension {
          * Analytics
         -------------------------------------------*/
 
-        $fields->findOrMakeTab('Root.Settings.Analytics', 'Analytics');
-        $fields->addFieldsToTab('Root.Settings.Analytics',
-            array(
-                $googleSiteVerification = TextareaField::create('GoogleSiteVerification', 'Google Site Verification Code'),
-                $trackingCode = TextareaField::create('TrackingCode', 'Tracking Code'),
-                $tagManagerFieldGroup = FieldGroup::create(
-                    $tagManager = CheckboxField::create('TagManager', 'Does the tracking code above contain Google Tag Manager?')
+        if (Permission::check('ADMIN')) {
+            $fields->findOrMakeTab('Root.Settings.Analytics', 'Analytics');
+            $fields->addFieldsToTab('Root.Settings.Analytics',
+                array(
+                    HeaderField::create('', 'Analytics'),
+                    $googleSiteVerification = TextareaField::create('GoogleSiteVerification', 'Google Site Verification Code'),
+                    $trackingCode = TextareaField::create('TrackingCode', 'Tracking Code'),
+                    $tagManagerFieldGroup = FieldGroup::create(
+                        $tagManager = CheckboxField::create('TagManager', 'Does the tracking code above contain Google Tag Manager?')
+                    )
                 )
-            )
-        );
-        $googleSiteVerification->setRows(2);
-        $trackingCode->setRows(20);
-        $tagManagerFieldGroup->setTitle('Tag Manager');
+            );
+            $googleSiteVerification->setRows(2);
+            $trackingCode->setRows(20);
+            $tagManagerFieldGroup->setTitle('Tag Manager');
+        }
 
     }
 
     /**
-     * @return string
+     * @return bool|mixed
      */
     public function getFormattedPhone() {
         if ($phone = (string)SiteConfig::current_site_config()->Phone) {

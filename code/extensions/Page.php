@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class PageExtension
+ * Class BoilerplatePageExtension
  *
  * @property boolean HideSidebar
  */
-class PageExtension extends DataExtension {
+class BoilerplatePageExtension extends DataExtension {
 
     private static $db = array(
         'HideSidebar' => 'Boolean'

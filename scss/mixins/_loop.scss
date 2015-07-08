@@ -25,7 +25,7 @@
             }
         }
         &__heading {
-            @include margin;
+            margin: $gap-md 0;
         }
         &__summary,
         &__content {

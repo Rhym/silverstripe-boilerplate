@@ -29,25 +29,31 @@ class ContactForm extends Form {
 
         $firstName = TextField::create('FirstName', 'First Name');
         $firstName->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
+            ->setAttribute('autocomplete', 'fname given-name')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
         $lastName = TextField::create('LastName', 'Last Name');
         $lastName->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
+            ->setAttribute('autocomplete', 'lname family-name')
             ->setCustomValidationMessage('Please enter your <strong>Last Name</strong>');
 
         $email = EmailField::create('Email', 'Email Address');
         $email->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
+            ->setAttribute('autocomplete', 'email')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
-        $phone = TextField::create('Phone', 'Phone Number (optional)');
+        $phone = TextField::create('Phone', 'Phone Number (optional)')
+            ->setAttribute('autocomplete', 'tel');
         $phone->addExtraClass('form-control');
 
         $suburb = TextField::create('Suburb', 'Suburb');
         $suburb->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
+            ->setAttribute('autocomplete', 'region')
             ->setCustomValidationMessage('Please enter your <strong>Suburb</strong>');
 
         $city = TextField::create('City', 'City');
         $city->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
+            ->setAttribute('autocomplete', 'city')
             ->setCustomValidationMessage('Please enter your <strong>City</strong>');
 
         $message = TextareaField::create('Message', 'Message');
@@ -98,6 +104,8 @@ class ContactForm extends Form {
         parent::__construct($controller, $name, $fields, $actions, $required);
 
         $this->setAttribute('data-parsley-validate', true);
+        $this->setAttribute('autocomplete', 'on');
+
         $this->addExtraClass('form form--contact');
     }
 

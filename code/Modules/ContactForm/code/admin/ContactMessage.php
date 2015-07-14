@@ -5,7 +5,7 @@
  */
 class ContactMessageModelAdmin extends ModelAdmin {
 
-    private static $menu_icon = 'boilerplate/code/Modules/ContactForm/images/message_menu.png';
+    private static $menu_icon = 'boilerplate/code/Modules/ContactForm/images/message-menu.png';
 
     private static $managed_models = array(
         'ContactMessage'

@@ -40,7 +40,7 @@
  * XL
  -------------------------------------------*/
 
-@if($site-xl == true){
+@if ($site-xl == true) {
     @media (min-width: $screen-xl-min) {
         @include make-grid(xl);
     }

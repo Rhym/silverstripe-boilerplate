@@ -3,7 +3,8 @@
 /**
  * Class RegistrationForm
  */
-class RegistrationForm extends Form {
+class RegistrationForm extends Form
+{
 
     /**
      * RegistrationForm constructor
@@ -12,17 +13,18 @@ class RegistrationForm extends Form {
      * @param String $name
      * @param array $arguments
      */
-    public function __construct($controller, $name, $arguments = array()) {
+    public function __construct($controller, $name, $arguments = array())
+    {
         /** =========================================
-         * @var TextField       $firstName
-         * @var EmailField      $email
-         * @var PasswordField   $password
-         * @var Form            $form
+         * @var TextField $firstName
+         * @var EmailField $email
+         * @var PasswordField $password
+         * @var Form $form
         ===========================================*/
 
         /** -----------------------------------------
          * Fields
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
@@ -46,7 +48,7 @@ class RegistrationForm extends Form {
 
         /** -----------------------------------------
          * Actions
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $actions = FieldList::create(
             FormAction::create('Register')->setTitle('Register')->addExtraClass('btn--primary')
@@ -54,7 +56,7 @@ class RegistrationForm extends Form {
 
         /** -----------------------------------------
          * Validation
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $required = RequiredFields::create(
             'FirstName',
@@ -63,7 +65,7 @@ class RegistrationForm extends Form {
         );
 
         $form = Form::create($this, $name, $fields, $actions, $required);
-        if($formData = Session::get('FormInfo.Form_'.$name.'.data')) {
+        if ($formData = Session::get('FormInfo.Form_' . $name . '.data')) {
             $form->loadDataFrom($formData);
         }
 
@@ -78,11 +80,12 @@ class RegistrationForm extends Form {
      * @param $form
      * @return bool|SS_HTTPResponse
      */
-    public function Register($data, $form){
+    public function Register($data, $form)
+    {
         /** =========================================
-         * @var Form            $form
-         * @var Member          $member
-         * @var Group           $userGroup
+         * @var Form $form
+         * @var Member $member
+         * @var Group $userGroup
          * @var EditProfilePage $ProfilePage
         ===========================================*/
 
@@ -92,9 +95,10 @@ class RegistrationForm extends Form {
         );
 
         /** Check for existing member email address */
-        if($existingUser = DataObject::get_one('Member', "Email = '".Convert::raw2sql($data['Email'])."'")) {
-            $form->AddErrorMessage('Email', 'Sorry, that email address already exists. Please choose another.', 'validation');
-            Session::set('FormInfo.Form_'.$this->name.'.data', $sessionArray);
+        if ($existingUser = DataObject::get_one('Member', "Email = '" . Convert::raw2sql($data['Email']) . "'")) {
+            $form->AddErrorMessage('Email', 'Sorry, that email address already exists. Please choose another.',
+                'validation');
+            Session::set('FormInfo.Form_' . $this->name . '.data', $sessionArray);
             return $this->controller->redirectBack();
         }
 
@@ -105,7 +109,7 @@ class RegistrationForm extends Form {
         $member->login();
 
         /** Find or create the 'user' group */
-        if(!$userGroup = DataObject::get_one('Group', "Code = 'users'")) {
+        if (!$userGroup = DataObject::get_one('Group', "Code = 'users'")) {
             $userGroup = Group::create();
             $userGroup->Code = 'users';
             $userGroup->Title = 'Users';
@@ -116,11 +120,12 @@ class RegistrationForm extends Form {
         $userGroup->Members()->add($member);
 
         /** Get profile page otherwise display warning. */
-        if($ProfilePage = DataObject::get_one('EditProfilePage')) {
-            $this->controller->setFlash('Welcome ' .$data['Email'].', your account has been created!', 'success');
+        if ($ProfilePage = DataObject::get_one('EditProfilePage')) {
+            $this->controller->setFlash('Welcome ' . $data['Email'] . ', your account has been created!', 'success');
             return $this->controller->redirect($ProfilePage->Link());
         } else {
-            $this->controller->setFlash('Please add a "Edit Profile Page" in your SiteTree to enable profile editing', 'warning');
+            $this->controller->setFlash('Please add a "Edit Profile Page" in your SiteTree to enable profile editing',
+                'warning');
             return $this->controller->redirect(Director::absoluteBaseURL());
         }
 

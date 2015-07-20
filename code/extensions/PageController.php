@@ -3,45 +3,47 @@
 /**
  * Class BoilerplatePageControllerExtension
  */
-class BoilerplatePageControllerExtension extends Extension {
+class BoilerplatePageControllerExtension extends Extension
+{
 
-	public function onBeforeInit() {
+    public function onBeforeInit()
+    {
 
         $baseHref = Director::BaseURL();
 
         /** -----------------------------------------
          * Javascript
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
-        Requirements::insertHeadTags('<script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/modernizr.min.js"></script>');
+        Requirements::insertHeadTags('<script type="text/javascript" src="' . $baseHref . project() . '/javascript/lib/modernizr.min.js"></script>');
 
         /**
          * Set All JS to be right before the closing </body> tag.
          */
         Requirements::set_force_js_to_bottom(true);
         if (Director::isDev()) {
-            Requirements::javascript(project().'/javascript/main.js');
+            Requirements::javascript(project() . '/javascript/main.js');
         } else {
-            Requirements::javascript(project().'/javascript/main.min.js');
+            Requirements::javascript(project() . '/javascript/main.min.js');
         }
 
         /** -----------------------------------------
          * CSS
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         if (Director::isDev()) {
-            Requirements::css(project().'/css/main.css');
+            Requirements::css(project() . '/css/main.css');
         } else {
-            Requirements::css(project().'/css/main.min.css');
+            Requirements::css(project() . '/css/main.min.css');
         }
 
         /** -----------------------------------------
          * Shivs
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         Requirements::insertHeadTags('<!--[if lt IE 9]>
-            <script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/html5shiv.min.js"></script>
-            <script type="text/javascript" src="'.$baseHref.project().'/javascript/lib/respond.min.js"></script>
+            <script type="text/javascript" src="' . $baseHref . project() . '/javascript/lib/html5shiv.min.js"></script>
+            <script type="text/javascript" src="' . $baseHref . project() . '/javascript/lib/respond.min.js"></script>
         <![endif]-->');
 
     }
@@ -51,8 +53,9 @@ class BoilerplatePageControllerExtension extends Extension {
      * @return array
      * Change the page template depending on the "DisplayType" row.
      */
-//    public function index(){
-//        if($this->DisplayType == 'Grid'){
+//    public function index()
+//    {
+//        if ($this->DisplayType == 'Grid') {
 //            $class = $this->ClassName . "_Controller";
 //            $controller = new $class($this);
 //            return $controller->renderWith(array('MenuHolder_Grid', 'Page'));

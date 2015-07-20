@@ -2,7 +2,7 @@
  * Grid
  ===========================================*/
 
-$grid-columns:              12 !default;
-$grid-gutter-width:         $gutter !default;
-$grid-float-breakpoint:     $screen-sm-min !default;
+$grid-columns: 12 !default;
+$grid-gutter-width: $gutter !default;
+$grid-float-breakpoint: $screen-sm-min !default;
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;

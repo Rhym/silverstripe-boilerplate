@@ -28,9 +28,11 @@
         margin: $top $right $bottom $left;
     }
 }
+
 @mixin margin-top() {
     @include margin($gap-md, 0, 0, 0);
 }
+
 @mixin margin-bottom() {
     @include margin(0, 0, $gap-md, 0);
 }
@@ -48,9 +50,11 @@
 @mixin margin-xs() {
     @include margin($gap-xs, 0, $gap-xs, 0);
 }
+
 @mixin margin-xs-top() {
     @include margin($gap-xs, 0, 0, 0);
 }
+
 @mixin margin-xs-bottom() {
     @include margin(0, 0, $gap-xs, 0);
 }
@@ -61,9 +65,11 @@
 @mixin margin-sm() {
     @include margin($gap-sm, 0, $gap-sm, 0);
 }
+
 @mixin margin-sm-top() {
     @include margin($gap-sm, 0, 0, 0);
 }
+
 @mixin margin-sm-bottom() {
     @include margin(0, 0, $gap-sm, 0);
 }
@@ -74,9 +80,11 @@
 @mixin margin-lg() {
     @include margin($gap-lg, 0, $gap-lg, 0);
 }
+
 @mixin margin-lg-top() {
     @include margin($gap-lg, 0, 0, 0);
 }
+
 @mixin margin-lg-bottom() {
     @include margin(0, 0, $gap-lg, 0);
 }
@@ -87,9 +95,11 @@
 @mixin margin-xl() {
     @include margin($gap-xl, 0, $gap-xl, 0);
 }
+
 @mixin margin-xl-top() {
     @include margin($gap-xl, 0, 0, 0);
 }
+
 @mixin margin-xl-bottom() {
     @include margin(0, 0, $gap-xl, 0);
 }
@@ -107,9 +117,11 @@
         padding: $top $right $bottom $left;
     }
 }
+
 @mixin padding-top() {
     @include padding($gap-md, 0, 0, 0);
 }
+
 @mixin padding-bottom() {
     @include padding(0, 0, $gap-md, 0);
 }
@@ -127,9 +139,11 @@
 @mixin padding-xs() {
     @include padding($gap-xs, 0, $gap-xs, 0);
 }
+
 @mixin padding-xs-top() {
     @include padding($gap-xs, 0, 0, 0);
 }
+
 @mixin padding-xs-bottom() {
     @include padding(0, 0, $gap-xs, 0);
 }
@@ -140,9 +154,11 @@
 @mixin padding-sm() {
     @include padding($gap-sm, 0, $gap-sm, 0);
 }
+
 @mixin padding-sm-top() {
     @include padding($gap-sm, 0, 0, 0);
 }
+
 @mixin padding-sm-bottom() {
     @include padding(0, 0, $gap-sm, 0);
 }
@@ -153,9 +169,11 @@
 @mixin padding-lg() {
     @include padding($gap-lg, 0, $gap-lg, 0);
 }
+
 @mixin padding-lg-top() {
     @include padding($gap-lg, 0, 0, 0);
 }
+
 @mixin padding-lg-bottom() {
     @include padding(0, 0, $gap-lg, 0);
 }
@@ -166,9 +184,11 @@
 @mixin padding-xl() {
     @include padding($gap-xl, 0, $gap-xl, 0);
 }
+
 @mixin padding-xl-top() {
     @include padding($gap-xl, 0, 0, 0);
 }
+
 @mixin padding-xl-bottom() {
     @include padding(0, 0, $gap-xl, 0);
 }

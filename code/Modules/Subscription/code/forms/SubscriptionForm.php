@@ -3,7 +3,8 @@
 /**
  * Class SubscriptionForm
  */
-class SubscriptionForm extends Form {
+class SubscriptionForm extends Form
+{
 
     /**
      * Form constructor
@@ -11,15 +12,16 @@ class SubscriptionForm extends Form {
      * @param Controller $controller
      * @param String $name
      */
-    public function __construct($controller, $name, $arguments = array()) {
+    public function __construct($controller, $name, $arguments = array())
+    {
         /** =========================================
-         * @var Form        $form
-         * @var EmailField  $email
+         * @var Form $form
+         * @var EmailField $email
         ===========================================*/
 
         /** -----------------------------------------
          * Fields
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $email = EmailField::create('Email', 'Email Address');
         $email->addExtraClass('form-control')
@@ -32,7 +34,7 @@ class SubscriptionForm extends Form {
 
         /** -----------------------------------------
          * Actions
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $actions = FieldList::create(
             FormAction::create('Subscribe')->setTitle('Subscribe')->addExtraClass('btn btn-primary')
@@ -40,14 +42,14 @@ class SubscriptionForm extends Form {
 
         /** -----------------------------------------
          * Validation
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $required = RequiredFields::create(
             'Email'
         );
 
         $form = Form::create($this, $name, $fields, $actions, $required);
-        if($formData = Session::get('FormInfo.Form_'.$name.'.data')) {
+        if ($formData = Session::get('FormInfo.Form_' . $name . '.data')) {
             $form->loadDataFrom($formData);
         }
 
@@ -64,17 +66,18 @@ class SubscriptionForm extends Form {
      * @param $form
      * @return bool|SS_HTTPResponse
      */
-    public function Subscribe($data, $form) {
+    public function Subscribe($data, $form)
+    {
 
         /** Set the form state */
-        Session::set('FormInfo.Form_'.$this->name.'.data', $data);
+        Session::set('FormInfo.Form_' . $this->name . '.data', $data);
 
         $siteConfig = SiteConfig::current_site_config();
         /** Check if the API key, and List ID have been set. */
-        if($siteConfig->MailChimpAPI && $siteConfig->MailChimpListID) {
+        if ($siteConfig->MailChimpAPI && $siteConfig->MailChimpListID) {
             $mailChimp = new \Drewm\MailChimp($siteConfig->MailChimpAPI);
             $result = $mailChimp->call('lists/subscribe', array(
-                'id'    => $siteConfig->MailChimpListID,
+                'id' => $siteConfig->MailChimpListID,
                 'email' => array(
                     'email' => $data['Email']
                 )
@@ -89,7 +92,7 @@ class SubscriptionForm extends Form {
          * If the status of the request returns an error,
          * display the error
          */
-        if(isset($result['status'])) {
+        if (isset($result['status'])) {
             if ($result['status'] == 'error') {
                 $this->controller->setFlash($result['error'], 'danger');
                 return $this->controller->redirectBack();
@@ -97,11 +100,12 @@ class SubscriptionForm extends Form {
         }
 
         /** Clear the form state */
-        Session::clear('FormInfo.Form_'.$this->name.'.data');
-        if($siteConfig->MailChimpSuccessMessage) {
+        Session::clear('FormInfo.Form_' . $this->name . '.data');
+        if ($siteConfig->MailChimpSuccessMessage) {
             $this->controller->setFlash($siteConfig->MailChimpSuccessMessage, 'success');
         } else {
-            $this->controller->setFlash('Your subscription has been received, you will be sent a confirmation email shortly.', 'success');
+            $this->controller->setFlash('Your subscription has been received, you will be sent a confirmation email shortly.',
+                'success');
         }
         return $this->controller->redirect($this->controller->data()->Link());
     }

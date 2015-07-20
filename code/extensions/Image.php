@@ -5,7 +5,8 @@
  *
  * @mixin Image
  */
-class BoilerplateImageExtension extends DataExtension {
+class BoilerplateImageExtension extends DataExtension
+{
 
     private static $min_mobile_width = 320;
 
@@ -19,7 +20,8 @@ class BoilerplateImageExtension extends DataExtension {
      * @param int $mobile_vw
      * @return HTMLText
      */
-    public function SrcSet($desktop_vw = 100, $mobile_vw = 100) {
+    public function SrcSet($desktop_vw = 100, $mobile_vw = 100)
+    {
         /** =========================================
          * @var Image $owner
          * @var float $vhScale
@@ -40,10 +42,11 @@ class BoilerplateImageExtension extends DataExtension {
         /** If the Image exists */
         if (!$owner->ID) {
             return false;
-        }
-        /** If the args aren't set, return the default Image  */
-        else if (!(int)$desktop_vw || !(int)$mobile_vw && $desktop_vw <= 0 || $mobile_vw <= 0) {
-            return $owner;
+        } /** If the args aren't set, return the default Image  */
+        else {
+            if (!(int)$desktop_vw || !(int)$mobile_vw && $desktop_vw <= 0 || $mobile_vw <= 0) {
+                return $owner;
+            }
         }
 
         $width = (int)$owner->getWidth();
@@ -75,8 +78,8 @@ class BoilerplateImageExtension extends DataExtension {
             $mobile_vw
         );
         $data = array(
-            'SrcSet'    => $srcSet,
-            'Sizes'     => $sizes
+            'SrcSet' => $srcSet,
+            'Sizes' => $sizes
         );
 
         return $owner->renderWith('Image_Srcset', (array)$data);

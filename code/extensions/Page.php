@@ -5,7 +5,8 @@
  *
  * @property boolean HideSidebar
  */
-class BoilerplatePageExtension extends DataExtension {
+class BoilerplatePageExtension extends DataExtension
+{
 
     private static $db = array(
         'HideSidebar' => 'Boolean'
@@ -15,7 +16,8 @@ class BoilerplatePageExtension extends DataExtension {
      * @param FieldList $fields
      * @return FieldList
      */
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields)
+    {
         /** =========================================
          * @var HtmlEditorField $content
         ===========================================*/
@@ -29,7 +31,8 @@ class BoilerplatePageExtension extends DataExtension {
      * @param FieldList $fields
      * @return FieldList
      */
-    public function updateSettingsFields(FieldList $fields) {
+    public function updateSettingsFields(FieldList $fields)
+    {
         /** =========================================
          * @var FieldGroup $hideSidebar
         ===========================================*/
@@ -45,7 +48,8 @@ class BoilerplatePageExtension extends DataExtension {
      * @param string $direction
      * @return ArrayData|bool
      */
-    public function DirectionLink($direction = 'next') {
+    public function DirectionLink($direction = 'next')
+    {
         /** =========================================
          * @var Page $page
         ===========================================*/
@@ -63,7 +67,7 @@ class BoilerplatePageExtension extends DataExtension {
             'ParentID' => $this->owner->ParentID,
             $sortDirection => $this->owner->Sort
         ))->sort($sort)->first();
-        if(isset($page)) {
+        if (isset($page)) {
             return new ArrayData(array(
                 'Title' => $page->Title,
                 'MenuTitle' => $page->MenuTitle,
@@ -76,14 +80,16 @@ class BoilerplatePageExtension extends DataExtension {
     /**
      * @return ArrayData|bool
      */
-    public function getPreviousLink() {
+    public function getPreviousLink()
+    {
         return $this->DirectionLink('previous');
     }
 
     /**
      * @return ArrayData|bool
      */
-    public function getNextLink() {
+    public function getNextLink()
+    {
         return $this->DirectionLink('next');
     }
 
@@ -93,9 +99,10 @@ class BoilerplatePageExtension extends DataExtension {
      *
      * @return bool|mixed
      */
-    public function getTrackingCodeTop() {
+    public function getTrackingCodeTop()
+    {
         $siteConfig = SiteConfig::current_site_config();
-        if($siteConfig->TagManager) {
+        if ($siteConfig->TagManager) {
             return $siteConfig->TrackingCode;
         }
         return false;
@@ -107,9 +114,10 @@ class BoilerplatePageExtension extends DataExtension {
      *
      * @return bool|mixed
      */
-    public function getTrackingCodeBottom() {
+    public function getTrackingCodeBottom()
+    {
         $siteConfig = SiteConfig::current_site_config();
-        if(!$siteConfig->TagManager) {
+        if (!$siteConfig->TagManager) {
             return $siteConfig->TrackingCode;
         }
         return false;

@@ -3,16 +3,13 @@
     Bootstrap
 ======================================================================
 */
-
 // Core variables and mixins
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 @import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-
 // Reset and dependencies
 @import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/print";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
-
 // Core CSS
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/type";
@@ -21,7 +18,6 @@
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/tables";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/forms";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
-
 // Components
 @import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
@@ -44,13 +40,11 @@
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/wells";
 @import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/close";
-
 // Components w/ JavaScript
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/modals";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/popovers";
 //@import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/carousel";
-
 // Utility classes
 @import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 @import "../../components/lib/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";

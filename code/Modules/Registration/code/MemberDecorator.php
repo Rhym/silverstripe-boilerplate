@@ -7,18 +7,20 @@
  * @property string Blurb
  * @property string Website
  */
-class MemberDecorator extends DataExtension {
+class MemberDecorator extends DataExtension
+{
 
     private static $db = array(
-        'JobTitle'  => 'Varchar',
-        'Blurb'     => 'Text',
-        'Website'   => 'Varchar(100)'
+        'JobTitle' => 'Varchar',
+        'Blurb' => 'Text',
+        'Website' => 'Varchar(100)'
     );
 
     /**
      * @param FieldList $fields
      */
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields)
+    {
         $fields->addFieldToTab('Root.Profile', TextField::create('JobTitle', 'Job Title'));
         $fields->addFieldToTab('Root.Profile', TextField::create('Website', 'Website', 'http://'));
         $fields->addFieldToTab('Root.Profile', TextareaField::create('Blurb', 'Blurb'));
@@ -27,7 +29,8 @@ class MemberDecorator extends DataExtension {
     /**
      * @return SS_HTTPResponse
      */
-    public function Link(){
+    public function Link()
+    {
         /** =========================================
          * @var EditProfilePage $profilePage
         ===========================================*/

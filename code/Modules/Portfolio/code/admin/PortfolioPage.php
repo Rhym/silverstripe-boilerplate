@@ -3,7 +3,8 @@
 /**
  * Class PortfolioPageModelAdmin
  */
-class PortfolioPageModelAdmin extends CatalogPageAdmin {
+class PortfolioPageModelAdmin extends CatalogPageAdmin
+{
 
     private static $menu_icon = 'boilerplate/code/Modules/Portfolio/images/briefcase.png';
 
@@ -22,18 +23,19 @@ class PortfolioPageModelAdmin extends CatalogPageAdmin {
         '$ModelClass/$Action/$ID' => 'handleAction',
     );
 
-    public function getEditForm($id = null, $fields = null) {
+    public function getEditForm($id = null, $fields = null)
+    {
         /** =========================================
-         * @var Form        $form
-         * @var GridField   $gridField
+         * @var Form $form
+         * @var GridField $gridField
         ===========================================*/
 
         $form = parent::getEditForm($id, $fields);
-        if($this->modelClass == 'PortfolioPage' && $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
+        if ($this->modelClass == 'PortfolioPage' && $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
             /**
              * This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
              */
-            if($gridField instanceof GridField) {
+            if ($gridField instanceof GridField) {
                 $gridField->getConfig()->addComponent(new GridFieldOrderableRows('Sort'));
             }
         }

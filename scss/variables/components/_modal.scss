@@ -2,11 +2,11 @@
  * Modal
  ===========================================*/
 
-$zindex-modal-background:   1040 !default;
-$zindex-modal:              1050 !default;
+$zindex-modal-background: 1040 !default;
+$zindex-modal: 1050 !default;
 
-$modal-title-line-height:   $line-height-base !default;
-$modal-backdrop-opacity:    1 !default;
-$modal-lg:                  $container-lg - $gutter !default;
-$modal-md:                  $container-md - $gutter !default;
-$modal-sm:                  $container-sm - $gutter !default;
+$modal-title-line-height: $line-height-base !default;
+$modal-backdrop-opacity: 1 !default;
+$modal-lg: $container-lg - $gutter !default;
+$modal-md: $container-md - $gutter !default;
+$modal-sm: $container-sm - $gutter !default;

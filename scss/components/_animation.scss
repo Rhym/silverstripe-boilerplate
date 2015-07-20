@@ -27,11 +27,13 @@
         opacity: 1;
     }
 }
+
 .fadeIn {
     @media(min-width: $screen-sm-min) {
         animation-name: fadeIn;
     }
 }
+
 @keyframes fadeInLeft {
     0% {
         opacity: 0;
@@ -42,11 +44,13 @@
         transform: none;
     }
 }
+
 .fadeInLeft {
     @media(min-width: $screen-sm-min) {
         animation-name: fadeInLeft;
     }
 }
+
 @keyframes fadeInRight {
     0% {
         opacity: 0;
@@ -57,11 +61,13 @@
         transform: none;
     }
 }
+
 .fadeInRight {
     @media(min-width: $screen-sm-min) {
         animation-name: fadeInRight;
     }
 }
+
 @keyframes fadeInDown {
     0% {
         opacity: 0;
@@ -73,11 +79,13 @@
         transform: none;
     }
 }
+
 .fadeInDown {
     @media(min-width: $screen-sm-min) {
         animation-name: fadeInDown;
     }
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -89,6 +97,7 @@
         transform: none;
     }
 }
+
 .fadeInUp {
     @media(min-width: $screen-sm-min) {
         animation-name: fadeInUp;

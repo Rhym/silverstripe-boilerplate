@@ -1,7 +1,6 @@
 /** =========================================
  * Carousel
  ===========================================*/
-
 @import "../../components/lib/owl.carousel/dist/assets/owl.carousel.min.css";
 
 .carousel-container {
@@ -33,7 +32,7 @@
         img {
             width: 100%;
         }
-        &__caption{
+        &__caption {
             position: absolute;
             top: 20%;
             right: $gutter / 2;
@@ -51,7 +50,7 @@
             }
             &.typography {
                 color: $brand-inverse-color;
-                text-shadow: 0 0 7px rgba(0,0,0,0.7);
+                text-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
                 h2,
                 h3,
                 h4 {

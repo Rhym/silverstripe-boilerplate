@@ -12,7 +12,7 @@
             @include float-none;
         }
         &--last,
-        /** check against &.last in case the item is both first, and last. */
+            /** check against &.last in case the item is both first, and last. */
         &.last {
             @include margin-none;
         }

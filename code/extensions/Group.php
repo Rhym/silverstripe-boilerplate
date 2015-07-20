@@ -5,13 +5,15 @@
  *
  * @mixin Group
  */
-class BoilerplateGroupExtension extends DataExtension {
+class BoilerplateGroupExtension extends DataExtension
+{
 
     /**
      * @throws ValidationException
      * @throws null
      */
-    public function requireDefaultRecords() {
+    public function requireDefaultRecords()
+    {
         /** =========================================
          * @var Group $siteAdminGroup
         ===========================================*/
@@ -23,7 +25,7 @@ class BoilerplateGroupExtension extends DataExtension {
          * permission code SITE_ADMIN exists
          */
         $siteAdminGroups = DataObject::get('Group')->filter(array('Code' => 'site-administrators'));
-        if(!$siteAdminGroups->count()) {
+        if (!$siteAdminGroups->count()) {
             $siteAdminGroup = Group::create();
             $siteAdminGroup->Code = 'site-administrators';
             $siteAdminGroup->Title = 'Site Administrators';
@@ -38,7 +40,7 @@ class BoilerplateGroupExtension extends DataExtension {
             Permission::grant($siteAdminGroup->ID, 'VIEW_DRAFT_CONTENT');
             Permission::grant($siteAdminGroup->ID, 'SITETREE_GRANT_ACCESS');
             Permission::grant($siteAdminGroup->ID, 'EDIT_SITECONFIG');
-         }
+        }
     }
 
 }

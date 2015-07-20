@@ -8,13 +8,14 @@
  *
  * @method Image Image
  */
-class BlogPage extends Page {
+class BlogPage extends Page
+{
 
     private static $icon = 'boilerplate/code/Modules/Blog/images/blog.png';
 
     private static $db = array(
-        'Date'      => 'Date',
-        'Author'    => 'Text'
+        'Date' => 'Date',
+        'Author' => 'Text'
     );
 
     private static $has_one = array(
@@ -32,11 +33,11 @@ class BlogPage extends Page {
     private static $plural_name = 'Blog Posts';
 
     private static $summary_fields = array(
-        'Thumbnail'         => 'Thumbnail',
-        'Title'             => 'Title',
-        'Date.Nice'         => 'Date',
-        'Author'            => 'Author',
-        'Content.Summary'   => 'Summary'
+        'Thumbnail' => 'Thumbnail',
+        'Title' => 'Title',
+        'Date.Nice' => 'Date',
+        'Author' => 'Author',
+        'Content.Summary' => 'Summary'
     );
 
     private static $allowed_children = 'none';
@@ -54,7 +55,8 @@ class BlogPage extends Page {
      *
      * @return Image|string
      */
-    public function getThumbnail() {
+    public function getThumbnail()
+    {
         if ($this->Image()->ID) {
             return $this->Image()->croppedImage(70, 39);
         } else {
@@ -65,11 +67,12 @@ class BlogPage extends Page {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         /** =========================================
-         * @var FieldList   $fields
+         * @var FieldList $fields
          * @var UploadField $blogImage
-         * @var DateField   $dateField
+         * @var DateField $dateField
         ===========================================*/
 
         $fields = parent::getCMSFields();
@@ -83,7 +86,8 @@ class BlogPage extends Page {
             'gif',
             'png'
         ));
-        $fields->addFieldToTab('Root.Main', $dateField = DateField::create('Date', 'Article Date (optional)'), 'Content');
+        $fields->addFieldToTab('Root.Main', $dateField = DateField::create('Date', 'Article Date (optional)'),
+            'Content');
         $dateField->setConfig('showcalendar', true);
         $fields->addFieldToTab('Root.Main', TextField::create('Author', 'Author (optional)'), 'Content');
 
@@ -95,8 +99,9 @@ class BlogPage extends Page {
      * @param SS_HTTPRequest $request
      * @return $this|HTMLText
      */
-    public function index(SS_HTTPRequest $request) {
-        if($request->isAjax()) {
+    public function index(SS_HTTPRequest $request)
+    {
+        if ($request->isAjax()) {
             $data = $this->data();
             return $this->customise($data)
                 ->renderWith('BlogPage_Item');
@@ -109,9 +114,11 @@ class BlogPage extends Page {
 /**
  * Class BlogPage_Controller
  */
-class BlogPage_Controller extends Page_Controller {
+class BlogPage_Controller extends Page_Controller
+{
 
-    public function init() {
+    public function init()
+    {
         parent::init();
         /**
          * If there's a Disqus forum name set,
@@ -122,7 +129,7 @@ class BlogPage_Controller extends Page_Controller {
             $vars = array(
                 'ForumName' => $forumName,
             );
-            Requirements::javascriptTemplate(JS_DIR.'/comments.js', $vars);
+            Requirements::javascriptTemplate(JS_DIR . '/comments.js', $vars);
         }
     }
 

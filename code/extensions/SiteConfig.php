@@ -18,54 +18,56 @@
  * @method Image MobileLogoImage
  * @method Image Favicon
  */
-class BoilerplateSiteConfigExtension extends DataExtension {
+class BoilerplateSiteConfigExtension extends DataExtension
+{
 
     public static $db = array(
-        'Phone'                     => 'Varchar(255)',
-        'Email'                     => 'Varchar(255)',
-        'Address'                   => 'Text',
-        'Directions'                => 'Text',
-        'TrackingCode'              => 'Text',
-        'TagManager'                => 'Boolean',
-        'GoogleSiteVerification'    => 'Text',
-        'Facebook'                  => 'Varchar(255)',
-        'Twitter'                   => 'Varchar(255)',
-        'Youtube'                   => 'Varchar(255)',
-        'GooglePlus'                => 'Varchar(255)'
+        'Phone' => 'Varchar(255)',
+        'Email' => 'Varchar(255)',
+        'Address' => 'Text',
+        'Directions' => 'Text',
+        'TrackingCode' => 'Text',
+        'TagManager' => 'Boolean',
+        'GoogleSiteVerification' => 'Text',
+        'Facebook' => 'Varchar(255)',
+        'Twitter' => 'Varchar(255)',
+        'Youtube' => 'Varchar(255)',
+        'GooglePlus' => 'Varchar(255)'
     );
 
     public static $has_one = array(
-        'LogoImage'         => 'Image',
-        'MobileLogoImage'   => 'Image',
-        'Favicon'           => 'Image'
+        'LogoImage' => 'Image',
+        'MobileLogoImage' => 'Image',
+        'Favicon' => 'Image'
     );
 
     /**
      * @param FieldList $fields
      */
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields)
+    {
         /** =========================================
-         * @var UploadField     $logo
-         * @var UploadField     $mobileLogo
-         * @var UploadField     $favicon
-         * @var TextareaField   $address
-         * @var TextareaField   $directions
-         * @var TextareaField   $googleSiteVerification
-         * @var TextareaField   $trackingCode
-         * @var FieldGroup      $tagManagerFieldGroup
+         * @var UploadField $logo
+         * @var UploadField $mobileLogo
+         * @var UploadField $favicon
+         * @var TextareaField $address
+         * @var TextareaField $directions
+         * @var TextareaField $googleSiteVerification
+         * @var TextareaField $trackingCode
+         * @var FieldGroup $tagManagerFieldGroup
         ===========================================*/
 
         /** -----------------------------------------
          * Settings
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
-        if (!$fields->fieldByName('Root.Settings')){
+        if (!$fields->fieldByName('Root.Settings')) {
             $fields->addFieldToTab('Root', TabSet::create('Settings'));
         }
 
         /** -----------------------------------------
          * Images
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Images', 'Images');
         $fields->addFieldsToTab('Root.Settings.Images',
@@ -80,7 +82,7 @@ class BoilerplateSiteConfigExtension extends DataExtension {
 
         /** -----------------------------------------
          * Company Details
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Details', 'Details');
         $fields->addFieldsToTab('Root.Settings.Details',
@@ -103,17 +105,19 @@ class BoilerplateSiteConfigExtension extends DataExtension {
 
         /** -----------------------------------------
          * Analytics
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         if (Permission::check('ADMIN')) {
             $fields->findOrMakeTab('Root.Settings.Analytics', 'Analytics');
             $fields->addFieldsToTab('Root.Settings.Analytics',
                 array(
                     HeaderField::create('', 'Analytics'),
-                    $googleSiteVerification = TextareaField::create('GoogleSiteVerification', 'Google Site Verification Code'),
+                    $googleSiteVerification = TextareaField::create('GoogleSiteVerification',
+                        'Google Site Verification Code'),
                     $trackingCode = TextareaField::create('TrackingCode', 'Tracking Code'),
                     $tagManagerFieldGroup = FieldGroup::create(
-                        $tagManager = CheckboxField::create('TagManager', 'Does the tracking code above contain Google Tag Manager?')
+                        $tagManager = CheckboxField::create('TagManager',
+                            'Does the tracking code above contain Google Tag Manager?')
                     )
                 )
             );
@@ -127,7 +131,8 @@ class BoilerplateSiteConfigExtension extends DataExtension {
     /**
      * @return bool|mixed
      */
-    public function getFormattedPhone() {
+    public function getFormattedPhone()
+    {
         if ($phone = (string)SiteConfig::current_site_config()->Phone) {
             return preg_replace('/\s+/', '', $phone);
         }

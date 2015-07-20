@@ -8,13 +8,14 @@
  *
  * @mixin Hierarchy
  */
-class BlogHolder extends Page {
+class BlogHolder extends Page
+{
 
     private static $icon = 'boilerplate/code/Modules/Blog/images/blogs-stack.png';
 
     private static $db = array(
-        'BlogSidebarContent'    => 'HTMLText',
-        'Items'                 => 'Int'
+        'BlogSidebarContent' => 'HTMLText',
+        'Items' => 'Int'
     );
 
     private static $allowed_children = array('BlogPage');
@@ -28,10 +29,11 @@ class BlogHolder extends Page {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         /** =========================================
-         * @var FieldList       $fields
-         * @var NumericField    $items
+         * @var FieldList $fields
+         * @var NumericField $items
          * @var HtmlEditorField $blogSidebarContent
         ===========================================*/
 
@@ -39,20 +41,21 @@ class BlogHolder extends Page {
 
         /** -----------------------------------------
          * Fields
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
         $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
 
         /** -----------------------------------------
          * Blog Sidebar
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->addFieldToTab('Root.BlogSidebar', HeaderField::create('', 'Sidebar'));
         $fields->addFieldToTab('Root.BlogSidebar', LiteralField::create('',
             '<p>The content for the sidebar will be displayed in the left-hand side of this page.</p>'
         ));
-        $fields->addFieldToTab('Root.BlogSidebar', $blogSidebarContent = HtmlEditorField::create('BlogSidebarContent', 'Content (optional)'));
+        $fields->addFieldToTab('Root.BlogSidebar',
+            $blogSidebarContent = HtmlEditorField::create('BlogSidebarContent', 'Content (optional)'));
         $blogSidebarContent->setRows(10);
 
         return $fields;
@@ -62,7 +65,8 @@ class BlogHolder extends Page {
      * @param SS_HTTPRequest $request
      * @return array|HTMLText
      */
-    public function index(SS_HTTPRequest $request) {
+    public function index(SS_HTTPRequest $request)
+    {
         /** =========================================
          * @var PaginatedList $pagination
         ===========================================*/
@@ -75,12 +79,12 @@ class BlogHolder extends Page {
         $pagination = PaginatedList::create($this->liveChildren(true), Controller::curr()->request);
         $items = ($this->Items > 0 ? $this->Items : 10);
         $pagination->setPageLength($items);
-        $data = array (
+        $data = array(
             'PaginatedPages' => $pagination
         );
 
         /** If the request is AJAX */
-        if($request->isAjax()) {
+        if ($request->isAjax()) {
             return $this->customise($data)
                 ->renderWith('BlogHolder_Item');
         }
@@ -93,4 +97,6 @@ class BlogHolder extends Page {
 /**
  * Class BlogHolder_Controller
  */
-class BlogHolder_Controller extends Page_Controller {}
+class BlogHolder_Controller extends Page_Controller
+{
+}

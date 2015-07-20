@@ -6,7 +6,8 @@
  * @property int Items
  * @mixin Hierarchy
  */
-class PortfolioHolder extends Page {
+class PortfolioHolder extends Page
+{
 
     private static $icon = 'boilerplate/code/Modules/Portfolio/images/blogs-stack.png';
 
@@ -25,17 +26,18 @@ class PortfolioHolder extends Page {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         /** =========================================
-         * @var FieldList       $fields
-         * @var NumericField    $items
+         * @var FieldList $fields
+         * @var NumericField $items
         ===========================================*/
 
         $fields = parent::getCMSFields();
 
         /** -----------------------------------------
          * Fields
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
         $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
@@ -43,7 +45,8 @@ class PortfolioHolder extends Page {
         return $fields;
     }
 
-    public function index(SS_HTTPRequest $request) {
+    public function index(SS_HTTPRequest $request)
+    {
         /** =========================================
          * @var PaginatedList $pagination
         ===========================================*/
@@ -57,10 +60,10 @@ class PortfolioHolder extends Page {
         $items = ($this->Items > 0 ? $this->Items : 10);
         $pagination->setPageLength($items);
 
-        $data = array (
+        $data = array(
             'PaginatedPages' => $pagination
         );
-        if($request->isAjax()) {
+        if ($request->isAjax()) {
             return $this->customise($data)
                 ->renderWith('PortfolioHolder_Item');
         }
@@ -72,4 +75,6 @@ class PortfolioHolder extends Page {
 /**
  * Class PortfolioHolder_Controller
  */
-class PortfolioHolder_Controller extends Page_Controller {}
+class PortfolioHolder_Controller extends Page_Controller
+{
+}

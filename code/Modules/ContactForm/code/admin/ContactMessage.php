@@ -3,7 +3,8 @@
 /**
  * Class ContactMessageModelAdmin
  */
-class ContactMessageModelAdmin extends ModelAdmin {
+class ContactMessageModelAdmin extends ModelAdmin
+{
 
     private static $menu_icon = 'boilerplate/code/Modules/ContactForm/images/message-menu.png';
 
@@ -17,8 +18,8 @@ class ContactMessageModelAdmin extends ModelAdmin {
     private static $menu_title = 'Messages';
 
     private static $url_handlers = array(
-        '$ModelClass/$Action'       => 'handleAction',
-        '$ModelClass/$Action/$ID'   => 'handleAction',
+        '$ModelClass/$Action' => 'handleAction',
+        '$ModelClass/$Action/$ID' => 'handleAction',
     );
 
     /**
@@ -26,10 +27,11 @@ class ContactMessageModelAdmin extends ModelAdmin {
      * @param null $fields
      * @return mixed
      */
-    public function getEditForm($id = null, $fields = null) {
+    public function getEditForm($id = null, $fields = null)
+    {
         /** =========================================
-         * @var Form        $form
-         * @var GridField   $gridField
+         * @var Form $form
+         * @var GridField $gridField
         ===========================================*/
 
         $form = parent::getEditForm($id, $fields);
@@ -47,13 +49,14 @@ class ContactMessageModelAdmin extends ModelAdmin {
      *
      * @return array
      */
-    public function getExportFields() {
+    public function getExportFields()
+    {
         return array(
             'FirstName' => 'First Name',
-            'LastName'  => 'Last Name',
-            'Email'     => 'Email',
-            'Phone'     => 'Phone',
-            'Message'   => 'Message'
+            'LastName' => 'Last Name',
+            'Email' => 'Email',
+            'Phone' => 'Phone',
+            'Message' => 'Message'
         );
     }
 

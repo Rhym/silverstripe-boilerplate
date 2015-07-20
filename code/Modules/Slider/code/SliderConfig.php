@@ -7,10 +7,11 @@
  * @property boolean HideDefaultSlider
  * @method SliderItem SliderItems
  */
-class SliderConfig extends DataExtension {
+class SliderConfig extends DataExtension
+{
 
     private static $db = array(
-        'Height'            => 'Varchar(255)',
+        'Height' => 'Varchar(255)',
         'HideDefaultSlider' => 'Boolean(0)'
     );
 
@@ -21,10 +22,11 @@ class SliderConfig extends DataExtension {
     /**
      * @param FieldList $fields
      */
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields)
+    {
         /** =========================================
-         * @var FieldList                       $fields
-         * @var GridFieldConfig_RelationEditor  $config
+         * @var FieldList $fields
+         * @var GridFieldConfig_RelationEditor $config
         ===========================================*/
 
         $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Banner'));
@@ -50,7 +52,7 @@ class SliderConfig extends DataExtension {
 
         /** -----------------------------------------
          * Settings
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Settings', 4));
         $fields->addFieldToTab('Root.Banner', $height = NumericField::create('Height', 'Height of banner (optional)'));
@@ -60,7 +62,8 @@ class SliderConfig extends DataExtension {
      * @param FieldList $fields
      * @return FieldList
      */
-    public function updateSettingsFields(FieldList $fields) {
+    public function updateSettingsFields(FieldList $fields)
+    {
         $fields->addFieldToTab('Root.Settings', $hideDefaultSlider = FieldGroup::create(
             CheckboxField::create('HideDefaultSlider', 'Hide the slider from this page')
         ));
@@ -73,11 +76,14 @@ class SliderConfig extends DataExtension {
      *
      * If the page of SiteConfig has a max height set apply it to the Slider.
      */
-    public function getSliderHeight() {
-        if($height = $this->owner->Height) {
+    public function getSliderHeight()
+    {
+        if ($height = $this->owner->Height) {
             return $height;
-        } else if($siteConfigHeight = SiteConfig::current_site_config()->DefaultSliderHeight) {
-            return $siteConfigHeight;
+        } else {
+            if ($siteConfigHeight = SiteConfig::current_site_config()->DefaultSliderHeight) {
+                return $siteConfigHeight;
+            }
         }
         return false;
     }
@@ -87,7 +93,8 @@ class SliderConfig extends DataExtension {
      *
      * If the page, or SiteConfig has a slider item, then add the  "has-slider" class to the body, else add the  "no-slider".
      */
-    public function getSliderClass() {
+    public function getSliderClass()
+    {
         ($this->owner->SliderItems()->First() || SiteConfig::current_site_config()->SliderImage()->Exists() ? $out = 'has-slider' : $out = 'has-no-slider');
         return $out;
     }

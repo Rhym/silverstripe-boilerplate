@@ -7,7 +7,8 @@
  *
  * @method HasManyList PortfolioImages
  */
-class PortfolioPage extends Page {
+class PortfolioPage extends Page
+{
 
     private static $icon = 'boilerplate/code/Modules/Portfolio/images/blog.png';
 
@@ -28,10 +29,10 @@ class PortfolioPage extends Page {
     private static $plural_name = 'Portfolio Posts';
 
     private static $summary_fields = array(
-        'Thumbnail'         => 'Thumbnail',
-        'Title'             => 'Title',
-        'SubTitle'          => 'Sub Title',
-        'Content.Summary'   => 'Summary'
+        'Thumbnail' => 'Thumbnail',
+        'Title' => 'Title',
+        'SubTitle' => 'Sub Title',
+        'Content.Summary' => 'Summary'
     );
 
     private static $allowed_children = 'none';
@@ -45,7 +46,8 @@ class PortfolioPage extends Page {
      *
      * @return Image|string
      */
-    public function getThumbnail() {
+    public function getThumbnail()
+    {
         if ($this->PortfolioImages()->count() > 0) {
             return $this->PortfolioImages()->first()->getThumbnail();
         } else {
@@ -56,10 +58,11 @@ class PortfolioPage extends Page {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         /** =========================================
-         * @var TextField                       $subTitle
-         * @var GridFieldConfig_RelationEditor  $config
+         * @var TextField $subTitle
+         * @var GridFieldConfig_RelationEditor $config
         ===========================================*/
 
         $fields = parent::getCMSFields();
@@ -72,7 +75,7 @@ class PortfolioPage extends Page {
 
         /** -----------------------------------------
          * Portfolio Images
-        -------------------------------------------*/
+         * ----------------------------------------*/
 
         $fields->addFieldToTab('Root.PortfolioImages', HeaderField::create('', 'Portfolio Images'));
         $fields->addFieldToTab('Root.PortfolioImages', LiteralField::create('',
@@ -97,8 +100,9 @@ class PortfolioPage extends Page {
      * @param SS_HTTPRequest $request
      * @return $this|HTMLText
      */
-    public function index(SS_HTTPRequest $request) {
-        if($request->isAjax()) {
+    public function index(SS_HTTPRequest $request)
+    {
+        if ($request->isAjax()) {
             $data = $this->data();
             return $this->customise($data)
                 ->renderWith('PortfolioPage_Item');
@@ -111,4 +115,6 @@ class PortfolioPage extends Page {
 /**
  * Class PortfolioPage_Controller
  */
-class PortfolioPage_Controller extends Page_Controller {}
+class PortfolioPage_Controller extends Page_Controller
+{
+}

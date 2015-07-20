@@ -8,26 +8,28 @@
  * @method Page Page
  * @method Image Image
  */
-class SliderItem extends DataObject{
+class SliderItem extends DataObject
+{
 
-    private static $db = array (
-        'SortOrder'     => 'Int',
-        'Caption'       => 'HTMLText'
+    private static $db = array(
+        'SortOrder' => 'Int',
+        'Caption' => 'HTMLText'
     );
 
-    private static $has_one = array (
-        'Page'          => 'Page',
-        'Image'         => 'Image'
+    private static $has_one = array(
+        'Page' => 'Page',
+        'Image' => 'Image'
     );
 
     private static $singular_name = 'Slide';
     private static $plural_name = 'Slides';
 
     public static $summary_fields = array(
-  		'Thumbnail' => 'Thumbnail'
- 	);
+        'Thumbnail' => 'Thumbnail'
+    );
 
-    public function getCMSValidator() {
+    public function getCMSValidator()
+    {
         return RequiredFields::create(array(
             'Image'
         ));
@@ -38,21 +40,23 @@ class SliderItem extends DataObject{
     /**
      * @return string
      */
-    protected function getThumbnail() {
-		if ($Image = $this->Image()->ID) {
-			return $this->Image()->SetWidth(80);
-		} else {
-			return '(No Image)';
-		}
-	}
+    protected function getThumbnail()
+    {
+        if ($Image = $this->Image()->ID) {
+            return $this->Image()->SetWidth(80);
+        } else {
+            return '(No Image)';
+        }
+    }
 
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         /** =========================================
-         * @var FieldList       $fields
-         * @var Uploadfield     $image
+         * @var FieldList $fields
+         * @var Uploadfield $image
          * @var HtmlEditorField $caption
         ===========================================*/
 
@@ -79,7 +83,8 @@ class SliderItem extends DataObject{
     /**
      * Before Write
      */
-    protected function onBeforeWrite() {
+    protected function onBeforeWrite()
+    {
         /** Set SortOrder */
         if (!$this->SortOrder) {
             $this->SortOrder = SliderItem::get()->max('SortOrder') + 1;

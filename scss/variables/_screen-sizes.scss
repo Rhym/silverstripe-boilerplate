@@ -2,15 +2,15 @@
  * Screen Sizes
  ===========================================*/
 
-$screen-xs:     480px !default;
+$screen-xs: 480px !default;
 $screen-xs-min: $screen-xs !default;
-$screen-sm:     768px !default;
+$screen-sm: 768px !default;
 $screen-sm-min: $screen-sm !default;
-$screen-md:     992px !default;
+$screen-md: 992px !default;
 $screen-md-min: $screen-md !default;
-$screen-lg:     1200px !default;
+$screen-lg: 1200px !default;
 $screen-lg-min: $screen-lg !default;
-$screen-xl:     1600px !default;
+$screen-xl: 1600px !default;
 $screen-xl-min: $screen-xl !default;
 
 $screen-xs-max: ($screen-sm-min - 1) !default;

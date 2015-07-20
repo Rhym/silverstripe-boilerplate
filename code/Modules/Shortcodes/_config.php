@@ -5,7 +5,7 @@
  *
  * Adding styles, and buttons
  * to the HTMLEditorField
--------------------------------------------*/
+ * -------------------------------------------*/
 
 /**
  * Remove buttons from TinyMCE
@@ -122,29 +122,31 @@
  *      template
  *
  */
-HtmlEditorConfig::get('cms')->setButtonsForLine(1, 'styleselect', 'formatselect', 'separator', 'bullist', 'numlist', 'separator', 'justifyleft', 'justifycenter', 'justifyright', 'separator', 'image', 'separator', 'sslink', 'unlink', 'separator', 'bold', 'italic', 'blockquote', 'separator', 'pastetext', 'pasteword', 'separator', 'code');
+HtmlEditorConfig::get('cms')->setButtonsForLine(1, 'styleselect', 'formatselect', 'separator', 'bullist', 'numlist',
+    'separator', 'justifyleft', 'justifycenter', 'justifyright', 'separator', 'image', 'separator', 'sslink', 'unlink',
+    'separator', 'bold', 'italic', 'blockquote', 'separator', 'pastetext', 'pasteword', 'separator', 'code');
 HtmlEditorConfig::get('cms')->setButtonsForLine(2, '');
 HtmlEditorConfig::get('cms')->setButtonsForLine(3, '');
 HtmlEditorConfig::get('cms')->disablePlugins('table', 'contextmenu');
 
 ///** -----------------------------------------
 // * Pricing Table
-//-------------------------------------------*/
+// * -------------------------------------------*/
 //
-//ShortcodeParser::get('default')->register('pricing_table', function($args, $list, $parser, $shortcode) {
+//ShortcodeParser::get('default')->register('pricing_table', function ($args, $list, $parser, $shortcode) {
 //    $title = (isset($args['title']) && $args['title']) ? $args['title'] : 'Title';
 //    $amount = (isset($args['amount']) && $args['amount']) ? $args['amount'] : '100';
 //    $buttonText = (isset($args['button_text']) && $args['button_text']) ? $args['button_text'] : 'Button Text';
 //    $buttonURL = (isset($args['button_URL']) && $args['button_URL']) ? $args['button_URL'] : '#';
 //
 //    return sprintf(
-//        '<div class="pricing-table">'.
-//            '<div class="price">'.
-//                '<h3 class="heading">%s</h3>'.
-//                '<div class="amount">%s</div>'.
-//                '<a href="%s" class="btn btn-primary btn-lg btn-block">%s</a>'.
-//            '</div>'.
-//            '<div class="list">'.$list.'</div>'.
+//        '<div class="pricing-table">' .
+//        '<div class="price">' .
+//        '<h3 class="heading">%s</h3>' .
+//        '<div class="amount">%s</div>' .
+//        '<a href="%s" class="btn btn-primary btn-lg btn-block">%s</a>' .
+//        '</div>' .
+//        '<div class="list">' . $list . '</div>' .
 //        '</div>',
 //        $title,
 //        $amount,

@@ -11,10 +11,12 @@
 * {
     @include box-sizing(border-box);
 }
+
 *:before,
 *:after {
     @include box-sizing(border-box);
 }
+
 html,
 body {
     /**
@@ -33,9 +35,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 html {
     font-size: $font-size-base;
 }
+
 body {
     font-family: $font-family-base;
     font-size: $font-size-base;
@@ -69,7 +73,7 @@ body {
     Semi-Bold
 \*---------------------------------------------*/
 
-strong{
+strong {
     font-family: $font-family-base;
 }
 
@@ -107,7 +111,7 @@ h6,
  * Fonts/Images/Typography
  ===========================================*/
 
-.typography{
+.typography {
     .text--primary {
         color: $brand-primary;
     }
@@ -124,18 +128,22 @@ h1,
 .h1 {
     font-size: $font-size-h1;
 }
+
 h2,
 .h2 {
     font-size: $font-size-h2;
 }
+
 h3,
 .h3 {
     font-size: $font-size-h3;
 }
+
 h4,
 .h4 {
     font-size: $font-size-h4;
 }
+
 h5,
 .h5 {
     font-size: $font-size-h5;
@@ -153,6 +161,7 @@ textarea {
     font-size: inherit;
     line-height: inherit;
 }
+
 a {
     color: $link-color;
     text-decoration: none;
@@ -165,6 +174,7 @@ a {
         @include tab-focus;
     }
 }
+
 p {
     margin: 0 0 $gap-md 0;
     line-height: $line-height-large;
@@ -172,13 +182,16 @@ p {
         line-height: $line-height-base;
     }
 }
+
 em {
     font-style: italic;
 }
+
 blockquote {
     padding-top: 0;
     padding-bottom: 0;
 }
+
 @media (min-width: $screen-sm-min) {
     p, ul, ol, pre, code {
         margin-bottom: $gap-md;
@@ -192,11 +205,12 @@ blockquote {
 figure {
     margin: 0;
 }
+
 img {
     vertical-align: middle;
     width: auto;
     height: auto;
-    max-width:100%;
+    max-width: 100%;
     &.left {
         float: left;
         max-width: 50%;
@@ -220,6 +234,7 @@ img {
         clear: both;
     }
 }
+
 .captionImage {
     width: 100%;
     @include margin-xs-top;

@@ -3,7 +3,8 @@
 /**
  * Class EditProfilePage
  */
-class EditProfilePage extends Page {
+class EditProfilePage extends Page
+{
 
     private static $icon = 'boilerplate/code/Modules/Registration/images/user--pencil.png';
 
@@ -14,15 +15,17 @@ class EditProfilePage extends Page {
 /**
  * Class EditProfilePage_Controller
  */
-class EditProfilePage_Controller extends Page_Controller {
+class EditProfilePage_Controller extends Page_Controller
+{
 
     private static $allowed_actions = array('Form');
 
     /**
      * @return EditProfilePage|SS_HTTPResponse
      */
-    public function Form() {
-        if(!Member::currentUser()) {
+    public function Form()
+    {
+        if (!Member::currentUser()) {
             return Security::PermissionFailure($this->controller, null);
         } else {
             $form = EditProfileForm::create($this, 'Form');;

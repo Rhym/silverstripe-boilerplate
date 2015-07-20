@@ -9,22 +9,23 @@
  * @property string Phone
  * @property string Message
  */
-class ContactMessage extends DataObject {
+class ContactMessage extends DataObject
+{
 
-    private static $db = array (
+    private static $db = array(
         'FirstName' => 'Varchar(255)',
-        'LastName'  => 'Varchar(255)',
-        'Email'     => 'Varchar(255)',
-        'Phone'     => 'Varchar(255)',
-        'Message'   => 'Text'
+        'LastName' => 'Varchar(255)',
+        'Email' => 'Varchar(255)',
+        'Phone' => 'Varchar(255)',
+        'Message' => 'Text'
     );
 
     private static $summary_fields = array(
-        'Created.Nice'  => 'Received',
-        'FirstName'     => 'First Name',
-        'LastName'      => 'Last Name',
-        'Phone'         => 'Phone Number',
-        'Email'         => 'Email'
+        'Created.Nice' => 'Received',
+        'FirstName' => 'First Name',
+        'LastName' => 'Last Name',
+        'Phone' => 'Phone Number',
+        'Email' => 'Email'
     );
 
     private static $default_sort = 'Created DESC';
@@ -32,7 +33,8 @@ class ContactMessage extends DataObject {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         /** =========================================
          * @var FieldList $fields
         ===========================================*/
@@ -41,7 +43,8 @@ class ContactMessage extends DataObject {
 
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('FirstName'));
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('LastName'));
-        $fields->addFieldToTab('Root.Main', LiteralField::create('', '<div class="field"><label class="left">Email</label><div class="middlecolumn"><span class="readonly"><a href="mailto:'.$this->Email.'">'.$this->Email.'</a></span></div></div>'));
+        $fields->addFieldToTab('Root.Main', LiteralField::create('',
+            '<div class="field"><label class="left">Email</label><div class="middlecolumn"><span class="readonly"><a href="mailto:' . $this->Email . '">' . $this->Email . '</a></span></div></div>'));
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('Phone'));
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('Message'));
 

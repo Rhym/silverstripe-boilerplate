@@ -7,9 +7,9 @@ $font-heading-base-color: $font-base-color !default;
 $font-size-base: 14px !default;
 $font-size-xs: ceil(($font-size-base * 0.7)) !default;
 $font-size-sm: ceil(($font-size-base * 0.85)) !default;
-$font-size-small: $font-size-sm;
+$font-size-small: $font-size-sm !default;;
 $font-size-lg: ceil(($font-size-base * 1.25)) !default;
-$font-size-large: $font-size-lg;
+$font-size-large: $font-size-lg !default;
 $font-family-base: sans-serif !default;
 $font-family-heading: sans-serif !default;
 

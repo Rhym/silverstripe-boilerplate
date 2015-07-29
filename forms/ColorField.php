@@ -6,8 +6,14 @@
 class ColorField extends TextField
 {
 
+    /**
+     * @var string
+     */
     private static $primary_color = '#3f51b5';
 
+    /**
+     * @var string
+     */
     private static $secondary_color = '#ff4081';
 
     /**
@@ -37,7 +43,7 @@ class ColorField extends TextField
         $style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff') . '; color: ' . ($this->getTextColor()) . ';';
         $this->setAttribute('style', $style);
         $this->setAttribute('data-palette',
-            '["' . $this->stat('primary_color') . '", "' . $this->stat('secondary_color') . '", "#212121", "#fff"]');
+            '["' . $this->config()->primary_color . '", "' . $this->config()->secondary_color . '", "#212121", "#fff"]');
 
         $properties['type'] = 'text';
         $properties['class'] = 'text' . ($this->extraClass() ? $this->extraClass() : '');

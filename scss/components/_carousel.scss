@@ -1,7 +1,13 @@
 /** =========================================
  * Carousel
  ===========================================*/
-@import "../../components/lib/owl.carousel/dist/assets/owl.carousel.min.css";
+@import "../../../components/lib/owl.carousel/src/scss/owl.animate.scss";
+@import "../../../components/lib/owl.carousel/src/scss/owl.autoheight.scss";
+@import "../../../components/lib/owl.carousel/src/scss/owl.carousel.scss";
+//@import "../../../components/lib/owl.carousel/src/scss/owl.lazyload.scss";
+//@import "../../../components/lib/owl.carousel/src/scss/owl.theme.default.scss";
+//@import "../../../components/lib/owl.carousel/src/scss/owl.theme.green.scss";
+//@import "../../../components/lib/owl.carousel/src/scss/owl.video.scss";
 
 .carousel-container {
     position: relative;

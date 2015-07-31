@@ -31,11 +31,7 @@ class BoilerplatePageControllerExtension extends Extension
          * CSS
          * ----------------------------------------*/
 
-        if (Director::isDev()) {
-            Requirements::css(project() . '/css/main.css');
-        } else {
-            Requirements::css(project() . '/css/main.min.css');
-        }
+        Requirements::css(project() . '/css/main.css');
 
         /** -----------------------------------------
          * Shivs

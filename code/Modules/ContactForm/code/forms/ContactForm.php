@@ -29,6 +29,8 @@ class ContactForm extends Form
          * Fields
          * ----------------------------------------*/
 
+        $clearfix = LiteralField::create('', '<div class="clearfix"></div><!-- /.clearfix -->');
+
         $firstName = TextField::create('FirstName', 'First Name');
         $firstName->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setAttribute('autocomplete', 'fname given-name')
@@ -72,11 +74,12 @@ class ContactForm extends Form
         $fields = FieldList::create(
             $firstName,
             $lastName,
+            $clearfix,
             $email,
             $phone,
-//            $suburb,
-//            $city,
+            $clearfix,
             $message,
+            $clearfix,
             $reCaptcha
         );
 

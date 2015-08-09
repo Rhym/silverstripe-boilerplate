@@ -66,10 +66,7 @@
     -------------------------------------------*/
 
     .field {
-        @include margin;
-        &:first-child {
-            @include margin-bottom;
-        }
+        @include margin-bottom;
         .text,
         .textarea,
         .dropdown {
@@ -134,10 +131,10 @@
             $recaptcha-width: 304px;
             $recaptcha-height: 78px;
 
-            position: relative;
-            @include margin;
-            min-height: $recaptcha-height;
+            @include margin-bottom;
             @include loading-spinner;
+            position: relative;
+            min-height: $recaptcha-height !important; // override size mixins.
             &::after {
                 left: $gutter / 2;
                 z-index: -1;

@@ -1,0 +1,66 @@
+/** =========================================
+ * Contact
+ ===========================================*/
+
+.contact {
+    &__details {
+        @include margin-lg-bottom;
+        @include clearfix;
+        .flexbox & {
+            @media(min-width: $screen-sm-min) {
+                display: flex;
+            }
+        }
+        &__item {
+            @include make-sm-column(6, 0);
+            &--content {
+                background: $gray-lighter;
+                padding: $gap-lg;
+                @media(min-width: $screen-sm-min) {
+                    padding: $gap-xl;
+                }
+            }
+            &__map {
+                background: #e5e3df;
+                min-height: 200px;
+                @media(min-width: $screen-sm-min) {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+    &__form {
+        @include make-row;
+        &__item {
+            &--content {
+                @include make-sm-column(4);
+            }
+            &--form {
+                @include make-sm-column(8);
+                .form {
+                    @include make-row;
+                    #FirstName,
+                    #LastName,
+                    #Email,
+                    #Phone {
+                        @include make-sm-column(6);
+                    }
+                    #Message,
+                    .recaptcha,
+                    .Actions {
+                        @include make-sm-column(12);
+                    }
+                    .recaptcha {
+                        &::after {
+                            left: $gap-lg;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

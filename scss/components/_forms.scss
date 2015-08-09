@@ -186,8 +186,11 @@
  -------------------------------------------*/
 
 .parsley-errors-list {
+    @include margin-none;
     padding: 0;
-    @include margin-xs;
+    &.filled {
+        @include margin-xs;
+    }
     li {
         @include alert;
         @include margin-none;

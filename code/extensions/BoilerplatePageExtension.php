@@ -7,7 +7,14 @@
  */
 class BoilerplatePageExtension extends DataExtension
 {
+    /**
+     * @var string
+     */
+    private static $theme_color = '';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'HideSidebar' => 'Boolean'
     );
@@ -73,6 +80,20 @@ class BoilerplatePageExtension extends DataExtension
                 'MenuTitle' => $page->MenuTitle,
                 'Link' => $page->Link()
             ));
+        }
+        return false;
+    }
+
+    /**
+     * Set a colour to to display in the header of mobile browsers.
+     *
+     * @return string|bool
+     */
+    public function getThemeColor()
+    {
+        $color = $this->owner->config()->theme_color;
+        if ($color) {
+            return '<meta name="mobile-web-app-capable" content="yes"/><meta name="theme-color" content="' . $color . '">';
         }
         return false;
     }

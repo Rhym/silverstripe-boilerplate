@@ -3,17 +3,19 @@
  ===========================================*/
 
 .menu-wrap {
-    @include margin-none;
-    transform: none;
-    width: 100%;
-    @include media-sm {
+    &.modal__dialog {
+        @include margin-none;
+        transform: none;
         width: 100%;
-    }
-    @include media-md {
-        width: 100%;
-    }
-    @include media-lg {
-        width: 100%;
+        @include media-sm {
+            width: 100%;
+        }
+        @include media-md {
+            width: 100%;
+        }
+        @include media-lg {
+            width: 100%;
+        }
     }
     .header {
         @include margin-lg-bottom;

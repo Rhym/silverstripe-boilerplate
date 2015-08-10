@@ -7,11 +7,11 @@
                         <fieldset>
                             <div class="field text">
                                 <div class="middleColumn">
-                                    <input type="text" name="Search" placeholder="Enter your search keywords..." class="text" value="{$Query.XML}" id="SearchForm_SearchForm_Search">
+                                    <input type="text" name="Search" placeholder="<%t PageResults.SearchPlaceholder "Enter your search keywords..." %>" class="text" value="{$Query.XML}" id="SearchForm_SearchForm_Search">
                                 </div><!-- /.middleColumn -->
                             </div><!-- /.field text -->
                             <div class="Actions">
-                                <input type="submit" name="action_results" value="Search" class="btn--primary" id="SearchForm_SearchForm_action_results">
+                                <input type="submit" name="action_results" value="<%t PageResults.SubmitText "Search" %>" class="btn--primary" id="SearchForm_SearchForm_action_results">
                             </div><!-- /.Actions -->
                         </fieldset>
                     </form><!-- /[role="form"] -->
@@ -20,17 +20,17 @@
                     <% if $Results %>
                         <div class="loop loop--search-results">
                             <% loop $Results %>
-                                <article class="loop__item article">
+                                <article class="loop__item article is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                                     <h4 class="article_heading"><a href="$Link"><% if $MenuTitle %>{$MenuTitle.XML}<% else %>{$Title.XML}<% end_if %></a></h4><!-- /.article_heading -->
                                     <% if $Content %>
                                         <div class="article__summary">{$Content.LimitWordCountXML}</div><!-- /.article__summary -->
                                     <% end_if %>
-                                    <div class="article__actions"><a href="{$Link}">Read more about "{$Title}"</a></div><!-- /.article__actions -->
+                                    <div class="article__actions"><a href="{$Link}"><%t PageResults.ArticleActionsText "Read more about" %> "{$Title}"</a></div><!-- /.article__actions -->
                                 </article><!-- /.loop__item article -->
                             <% end_loop %>
                         </div><!-- /.loop loop--search-results -->
                     <% else %>
-                        <div class="alert--warning">Sorry, your search query did not return any results.</div>
+                        <div class="alert--warning"><%t PageResults.NoResultsText "Sorry, your search query did not return any results." %></div>
                     <% end_if %>
                     <% include Pagination PaginatedPages=$Results %>
                 </div><!-- /.search__results -->

@@ -15,16 +15,16 @@
                                 <dd class="details__detail"><a href="mailto:{$Email}">{$Email}</a></dd><!-- /.details__detail -->
                             <% end_if %>
                             <% if $Address %>
-                                <dt class="details__title"><% _t('ContactPage.PHYSICALADDRESS','Physical Address') %></dt><!-- /.details__title -->
+                                <dt class="details__title"><%t ContactPage.PhysicalAddress "Physical Address" %></dt><!-- /.details__title -->
                                 <dd class="details__detail">{$Address}</dd><!-- /.details__detail -->
                             <% end_if %>
                             <% if $PostalAddress %>
-                                <dt class="details__title"><% _t('ContactPage.POSTALADDRESS','Postal Address') %></dt><!-- /.details__title -->
+                                <dt class="details__title"><%t ContactPage.PostalAddress "Postal Address" %></dt><!-- /.details__title -->
                                 <dd class="details__detail">{$PostalAddress}</dd><!-- /.details__detail -->
                             <% end_if %>
                         </dl><!-- /.details -->
                         <% if $Directions %>
-                            <a href="{$Directions}" target="_blank" rel="nofollow"><% _t('ContactPage.DIRECTIONS','Get Directions') %></a>
+                            <a href="{$Directions}" target="_blank" rel="nofollow"><%t ContactPage.Directions "Get Directions" %></a>
                         <% end_if %>
                     <% end_with %>
                 </div><!-- /.contact__details__item -->
@@ -44,7 +44,7 @@
                     {$ContactForm}
                 <% else %>
                     <div class="alert--warning">
-                        <% _t('ContactPage.NOEMAIL','Please choose an email address for the contact page to send to.') %>
+                        <%t ContactPage.NoEmail "Please choose an email address for the contact page to send to" %>
                     </div><!-- /.alert--warning -->
                 <% end_if %>
             </div><!-- /.contact__form__item -->

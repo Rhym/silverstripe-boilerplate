@@ -29,7 +29,7 @@
             border-bottom: 1px solid shade($popout-menu-background, 5);
             padding-right: $popout-item-size;
             position: relative;
-            &--last {
+            &.is-last {
                 border-width: 0;
             }
             &__link {

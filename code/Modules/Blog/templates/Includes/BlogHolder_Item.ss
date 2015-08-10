@@ -3,7 +3,7 @@
         <section class="blog">
             <div class="row">
                 <% loop $PaginatedPages %>
-                    <article class="blog__item blog__item--{$EvenOdd}<% if $FirstLast %> blog__item--{$FirstLast}<% end_if %>">
+                    <article class="blog__item is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                         <% if $Image %>
                             <figure class="blog__item__image">
                                 <a href="{$Link}" title="{$Title}">
@@ -20,7 +20,7 @@
                             </div><!-- /.blog__item__summary typography -->
                         <% end_if %>
                         <div class="blog__item__actions">
-                            <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
+                            <a href="$Link" class="btn--primary" title="{$Title}"><%t BlogHolderItem.ActionText "Read more"%></a>
                         </div><!-- /.blog__item__actions -->
                     </article><!-- /.blog__item -->
                 <% end_loop %>

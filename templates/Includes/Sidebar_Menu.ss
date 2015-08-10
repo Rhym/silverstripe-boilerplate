@@ -1,6 +1,6 @@
 <% if $Children %>
     <% loop $Children %>
-        <li class="navigation__item navigation__item--{$LinkingMode}">
+        <li class="navigation__item is-{$LinkingMode}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
             <a href="$Link" class="navigation__item__link navigation__item__link--{$LinkingMode}" title="{$Title.XML}">
                 {$MenuTitle.XML}
             </a><!-- /.navigation__item__link -->

@@ -9,6 +9,13 @@
     border-radius: $border-radius-base;
     &__item {
         display: inline;
+        &.is-active {
+            + .pagination__item {
+                .pagination__item__link {
+                    border-left-color: $brand-primary;
+                }
+            }
+        }
         &__link {
             position: relative;
             float: left;
@@ -19,15 +26,6 @@
             background-color: $pagination-bg;
             border: 1px solid $pagination-border;
             margin-left: -1px;
-            &--active {
-                background: $brand-primary;
-                color: $brand-primary-color;
-                border-color: $brand-primary;
-            }
-            &--disabled {
-                opacity: $opacity-base;
-                color: $font-base-color;
-            }
             &--prev {
                 border-top-left-radius: $border-radius-small;
                 border-bottom-left-radius: $border-radius-small;
@@ -35,6 +33,15 @@
             &--next {
                 border-top-right-radius: $border-radius-small;
                 border-bottom-right-radius: $border-radius-small;
+            }
+            &.is-active {
+                background: $brand-primary;
+                color: $brand-primary-color;
+                border-color: $brand-primary;
+            }
+            &.is-disabled {
+                opacity: $opacity-base;
+                color: $font-base-color;
             }
         }
     }

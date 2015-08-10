@@ -7,7 +7,7 @@
             <div class="carousel-container">
                 <div class="carousel<% if $Images.Count > 1 %> carousel--multiple<% else %> carousel--single<% end_if %> owl-carousel ">
                     <% loop $Images %>
-                        <div class="carousel__item carousel__item--{$FirstLast}">
+                        <div class="carousel__item is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                             <img src="{$CroppedImage(1140, 641).Link}" alt="{$Name}" title="{$Name}" />
                         </div><!-- /.carousel__item -->
                     <% end_loop %>

@@ -2,6 +2,6 @@
     <div class="container">
         <div class="alert--{$FlashMessageType}">
             {$FlashMessage}
-        </div><!-- /.alert--{$FlashMessageType} -->
+        </div>
     </div><!-- /.container -->
 <% end_if %>

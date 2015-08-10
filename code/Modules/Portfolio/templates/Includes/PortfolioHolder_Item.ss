@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <% loop $PaginatedPages %>
-                        <article class="portfolio__item portfolio__item--{$EvenOdd}<% if $FirstLast %> portfolio__item--{$FirstLast}<% end_if %>">
+                        <article class="portfolio__item is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                             <figure class="portfolio__item__image">
                                 <a href="{$Link}" title="{$Title}">
                                     <% with $PortfolioImages.First %>{$Image.CroppedImage(555, 312).SrcSet(50, 100)}<% end_with %>
@@ -19,7 +19,7 @@
                                 </div><!-- /.portfolio__item__summary typography -->
                             <% end_if %>
                             <div class="portfolio__item__actions">
-                                <a href="$Link" class="btn--primary" title="{$Title}">Read more</a>
+                                <a href="$Link" class="btn--primary" title="{$Title}"><%t PortfolioHolderItem.ActionText "Read more"%></a>
                             </div><!-- /.portfolio__item__actions -->
                         </article><!-- /.portfolio__item -->
                         <% if $MultipleOf(2) %><div class="clearfix"></div><!-- /.clearfix --><% end_if %>

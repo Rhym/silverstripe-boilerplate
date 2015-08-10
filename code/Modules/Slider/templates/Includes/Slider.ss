@@ -4,7 +4,7 @@
             <div class="carousel-container">
                 <div class="carousel<% if $SliderItems.Count > 1 %> carousel--multiple<% else %> carousel--single<% end_if %> owl-carousel">
                     <% loop $SliderItems %>
-                        <div class="carousel__item carousel__item--{$FirstLast}"<% if $Top.SliderHeight > 0 %> style="max-height: {$Top.SliderHeight}px"<% end_if %>>
+                        <div class="carousel__item is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>"<% if $Top.SliderHeight > 0 %> style="max-height: {$Top.SliderHeight}px"<% end_if %>>
                             <% if $Top.SliderHeight %>
                                 {$Image.croppedImage(1600, $Top.SliderHeight).SrcSet}
                             <% else %>

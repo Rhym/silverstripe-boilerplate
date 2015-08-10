@@ -8,7 +8,7 @@
     list-style: none;
     &__item {
         margin: $gap-sm 0;
-        &--current {
+        &.is-current {
             a {
                 color: $gray-dark;
                 &:hover {

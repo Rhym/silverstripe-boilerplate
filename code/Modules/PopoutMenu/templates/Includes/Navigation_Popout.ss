@@ -29,13 +29,13 @@
                 <div class="container">
                     <ul class="menu-wrap__menu">
                         <% loop $Menu(1) %>
-                            <li class="menu-wrap__menu__item menu-wrap__menu__item--{$LinkingMode} menu-wrap__menu__item--{$EvenOdd}<% if $FirstLast %> menu-wrap__menu__item--{$FirstLast}<% end_if %>">
+                            <li class="menu-wrap__menu__item is-{$LinkingMode} is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                                 <a href="{$Link}" class="menu-wrap__menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a>
                                 <% if $Children %>
                                     <div class="menu-wrap__menu__item__icon open-children" data-target="#child_{$Pos}">{$SVG('chevron-down').extraClass('menu-wrap__menu__item__icon__icon')}</div><!-- /.menu-wrap__menu__item__icon -->
                                     <ul id="child_{$Pos}" class="menu-wrap__menu__item__list">
                                         <% loop $Children %>
-                                            <li class="menu-wrap__menu__item__list__item"><a href="{$Link}" class="menu-wrap__menu__item__list__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a></li><!-- /.menu-wrap__menu__item__list__item -->
+                                            <li class="menu-wrap__menu__item__list__item is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>"><a href="{$Link}" class="menu-wrap__menu__item__list__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a></li><!-- /.menu-wrap__menu__item__list__item -->
                                         <% end_loop %>
                                     </ul><!-- /.menu-wrap__menu__item__list -->
                                 <% end_if %>

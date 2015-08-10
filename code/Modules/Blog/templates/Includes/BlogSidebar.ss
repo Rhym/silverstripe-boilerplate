@@ -9,7 +9,7 @@
         <ul class="navigation">
             <% if $AllChildren %>
                 <% loop $AllChildren.Limit(10) %>
-                    <li class="navigation__item navigation__item--{$LinkingMode}">
+                    <li class="navigation__item is-{$LinkingMode}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                         <a href="{$Link}" title="{$Title.XML}">
                             {$MenuTitle.XML}
                         </a>
@@ -17,7 +17,7 @@
                 <% end_loop %>
             <% else %>
                 <% loop $Parent.AllChildren.Limit(10) %>
-                    <li class="navigation__item navigation__item--{$LinkingMode}">
+                    <li class="navigation__item is-{$LinkingMode}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                         <a href="{$Link}" title="{$Title.XML}">
                             {$MenuTitle.XML}
                         </a>

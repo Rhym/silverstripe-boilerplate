@@ -10,5 +10,11 @@
         &--next {
             text-align: right;
         }
+        &__link {
+            &__icon {
+                height: 1em;
+                fill: $link-color;
+            }
+        }
     }
 }

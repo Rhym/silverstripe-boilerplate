@@ -11,7 +11,7 @@
             padding: 0;
             @include float-none;
         }
-        &--last,
+        &.is-last,
             /** check against &.last in case the item is both first, and last. */
         &.last {
             @include margin-none;

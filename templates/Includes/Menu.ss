@@ -2,11 +2,11 @@
     <ul class="menu">
         <% loop $Menu(1) %>
             <% if $Children %>
-                <li class="menu__item menu__item--dropdown menu__item--{$LinkingMode} menu__item--{$EvenOdd}<% if $FirstLast %> menu__item--{$FirstLast}<% end_if %>">
+                <li class="menu__item menu__item--dropdown is-{$LinkingMode} is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>">
                     <a href="{$Link}" class="menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a>
                     <ul class="menu__item__dropdown-menu">
                         <% loop $Children %>
-                            <li class="menu__item__dropdown-menu__item menu__item__dropdown-menu__item--{$LinkingMode} menu__item__dropdown-menu__item--{$EvenOdd}<% if $FirstLast %> menu__item__dropdown-menu__item--{$FirstLast}<% end_if %>"><a href="{$Link}" class="menu__item__dropdown-menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a></li>
+                            <li class="menu__item__dropdown-menu__item is-{$LinkingMode} is-{$EvenOdd}<% if $FirstLast %> is-{$FirstLast}<% end_if %>"><a href="{$Link}" class="menu__item__dropdown-menu__item__link" title="{$Title.XML}">{$MenuTitle.XML}</a></li>
                         <% end_loop %>
                     </ul><!-- /.navigation__item__dropdown-menu -->
                 </li><!-- /.navigation__item -->

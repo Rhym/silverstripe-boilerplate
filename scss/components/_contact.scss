@@ -14,9 +14,10 @@
         &__item {
             @include make-sm-column(6, 0);
             &--content {
-                background: $gray-lighter;
-                padding: $gap-lg;
+                @include margin-lg-bottom;
                 @media(min-width: $screen-sm-min) {
+                    margin: 0;
+                    background: $gray-lighter;
                     padding: $gap-xl;
                 }
             }

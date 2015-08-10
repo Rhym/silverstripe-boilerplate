@@ -77,7 +77,6 @@ class ContactForm extends Form
             $clearfix,
             $email,
             $phone,
-            $clearfix,
             $message,
             $clearfix,
             $reCaptcha

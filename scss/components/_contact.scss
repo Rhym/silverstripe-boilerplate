@@ -45,11 +45,11 @@
                 .form {
                     @include make-row;
                     #FirstName,
-                    #LastName,
-                    #Email,
-                    #Phone {
+                    #LastName {
                         @include make-sm-column(6);
                     }
+                    #Email,
+                    #Phone,
                     #Message,
                     .recaptcha,
                     .Actions {

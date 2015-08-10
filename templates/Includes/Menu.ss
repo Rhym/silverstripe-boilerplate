@@ -25,7 +25,7 @@
             </li><!-- /.menu__item -->
         <% end_if %>
         <li class="menu__item menu__item--icon">
-            <button class="menu__item__icon menu__item__icon--menu toggle-menu">
+            <button class="menu__item__icon menu__item__icon--menu" data-toggle="modal" data-target="#popout_menu">
                 {$SVG('menu').extraClass('menu__item__icon__icon')}
                 <span class="menu__item__icon__text">Menu</span>
             </button>

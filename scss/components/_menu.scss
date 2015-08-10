@@ -13,13 +13,13 @@
         display: none;
         float: left;
         margin: 0;
-        @media(min-width: $screen-lg-min) {
+        @include media-lg {
             display: inline-block;
         }
         &--dropdown {
             &:hover {
                 .menu__item__dropdown-menu {
-                    @media (min-width: $screen-lg-min) {
+                    @include media-lg {
                         display: block;
                     }
                 }
@@ -33,8 +33,13 @@
         }
         &--icon {
             display: block;
-            @media(min-width: $screen-lg-min) {
+            @include media-lg {
                 display: none;
+            }
+        }
+        &--close {
+            @include media-lg {
+                display: block;
             }
         }
         &__link {
@@ -85,8 +90,9 @@
                 margin: 0 0 0 $gap-sm;
             }
             &__icon {
-                height: 40px;
-                width: 40px;
+                $icon-size: 40px;
+                height: $icon-size;
+                width: $icon-size;
                 color: $font-base-color;
                 font-size: $font-size-h1;
                 display: inline-block;

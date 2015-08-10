@@ -24,7 +24,7 @@
      */
     .csstransforms3d & {
         .carousel__item__caption {
-            @media (min-width: $screen-sm-min) {
+            @include media-sm {
                 top: 50%;
                 transform: translate(0, -50%);
             }
@@ -44,14 +44,14 @@
             right: $gutter / 2;
             left: $gutter / 2;
             margin: 0 auto;
-            @media (min-width: $screen-sm-min) {
+            @include media-sm {
                 width: $container-sm - $gutter;
             }
-            @media (min-width: $screen-md-min) {
+            @include media-md {
                 top: 30%;
                 width: $container-md - $gutter;
             }
-            @media (min-width: $screen-lg-min) {
+            @include media-lg {
                 width: $container-lg - $gutter;
             }
             &.typography {
@@ -88,7 +88,7 @@
         display: block;
     }
     .csstransforms3d & {
-        @media (min-width: $screen-sm-min) {
+        @include media-sm {
             margin-top: 0;
             transform: translate(0, -50%);
         }
@@ -100,7 +100,7 @@
         left: 0;
         background: transparent none;
         padding: $gap-sm;
-        @media(min-width: $screen-sm-min) {
+        @include media-sm {
             padding: 0;
         }
         &:hover,
@@ -115,7 +115,7 @@
             height: $carousel-icon-size;
             width: $carousel-icon-size;
             user-select: none;
-            @media(min-width: $screen-sm-min) {
+            @include media-sm {
                 height: $carousel-icon-size * 2;
                 width: $carousel-icon-size * 2;
             }

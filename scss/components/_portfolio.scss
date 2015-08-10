@@ -30,7 +30,7 @@
                 @include make-sm-column(3);
             }
             .is-right & {
-                @media(min-width: $screen-sm-min) {
+                @include media-sm {
                     float: right;
                 }
             }

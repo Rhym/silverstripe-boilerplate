@@ -29,14 +29,14 @@
                     $icon-size: 36px;
                     height: $icon-size;
                     width: $icon-size;
-                    @media(min-width: $screen-sm-min) {
+                    @include media-sm {
                         height: $icon-size * 1.5;
                         width: $icon-size * 1.5;
                     }
                     &:hover {
                         path,
                         ellipse {
-                            @media(min-width: $screen-sm-min) {
+                            @include media-sm {
                                 fill: $brand-primary;
                             }
                         }

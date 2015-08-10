@@ -13,7 +13,7 @@
         &__content {
             background: $brand-default;
             padding: $gap-md;
-            @media(min-width: $screen-sm-min) {
+            @include media-sm {
                 padding: $gap-xl;
             }
             &__logo {

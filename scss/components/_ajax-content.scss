@@ -5,6 +5,6 @@
 .ajax-content {
     transition: $transition-default opacity;
     &--loading {
-        opacity: $base-opacity;
+        opacity: $opacity-base;
     }
 }

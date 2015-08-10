@@ -4,13 +4,13 @@
 
 @mixin float-none() {
     float: none;
-    @media(min-width: $screen-sm-min) {
+    @include media-sm {
         float: none;
     }
-    @media(min-width: $screen-md-min) {
+    @include media-md {
         float: none;
     }
-    @media(min-width: $screen-lg-min) {
+    @include media-lg {
         float: none;
     }
 }
@@ -24,7 +24,7 @@
  */
 @mixin margin($top: $gap-md, $right: 0, $bottom: $gap-md, $left: 0) {
     margin: (floor($top / 2)) (floor($right / 2)) (floor($bottom / 2)) (floor($left / 2));
-    @media (min-width: $screen-sm-min) {
+    @include media-sm {
         margin: $top $right $bottom $left;
     }
 }
@@ -113,7 +113,7 @@
  */
 @mixin padding($top: $gap-md, $right: 0, $bottom: $gap-md, $left: 0) {
     padding: (floor($top / 2)) (floor($right / 2)) (floor($bottom / 2)) (floor($left / 2));
-    @media (min-width: $screen-sm-min) {
+    @include media-sm {
         padding: $top $right $bottom $left;
     }
 }

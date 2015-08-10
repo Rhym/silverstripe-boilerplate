@@ -31,7 +31,7 @@
         &__content {
             @include margin;
             line-height: $line-height-large;
-            @media(min-width: $screen-sm-min) {
+            @include media-sm {
                 line-height: $line-height-base;
             }
         }

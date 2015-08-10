@@ -15,7 +15,7 @@
             @include make-sm-column(6, 0);
             &--content {
                 @include margin-lg-bottom;
-                @media(min-width: $screen-sm-min) {
+                @include media-sm {
                     margin: 0;
                     background: $gray-lighter;
                     padding: $gap-xl;
@@ -24,7 +24,7 @@
             &__map {
                 background: #e5e3df;
                 min-height: 200px;
-                @media(min-width: $screen-sm-min) {
+                @include media-sm {
                     position: absolute;
                     top: 0;
                     right: 0;

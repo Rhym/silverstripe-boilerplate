@@ -2,111 +2,100 @@
  * Popout Menu
  ===========================================*/
 
-/**
- * If there's a Popout Menu
- */
-@if $has-popout-menu == true {
-    .menu-wrap {
-        position: absolute;
-        background: $popout-menu-background;
+.menu-wrap {
+    @include margin-none;
+    transform: none;
+    width: 100%;
+    @include media-sm {
         width: 100%;
-        z-index: 1001;
-        top: 0;
-        right: -100%;
-        bottom: 0;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        transition: .3s ease right;
-        .header {
-            @include margin-lg-bottom;
-        }
-        &__menu {
+    }
+    @include media-md {
+        width: 100%;
+    }
+    @include media-lg {
+        width: 100%;
+    }
+    .header {
+        @include margin-lg-bottom;
+    }
+    &__menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        &__item {
             margin: 0;
-            padding: 0;
-            list-style: none;
-            &__item {
-                margin: 0;
-                border-bottom: 1px solid shade($popout-menu-background, 5);
-                padding-right: $popout-item-size;
-                position: relative;
-                &--last {
-                    border-width: 0;
-                }
-                &__link {
-                    min-height: $popout-item-size;
-                    line-height: $popout-item-size;
-                    color: $popout-menu-color;
-                    display: block;
+            border-bottom: 1px solid shade($popout-menu-background, 5);
+            padding-right: $popout-item-size;
+            position: relative;
+            &--last {
+                border-width: 0;
+            }
+            &__link {
+                min-height: $popout-item-size;
+                line-height: $popout-item-size;
+                color: $popout-menu-color;
+                display: block;
+            }
+            &__icon {
+                background: shade($popout-menu-background, 5);
+                cursor: pointer;
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: block;
+                width: $popout-item-size;
+                height: $popout-item-size;
+                line-height: $popout-item-size;
+                text-align: center;
+                font-size: 1.3em;
+                color: $popout-menu-color;
+                &--active {
+                    .menu-wrap__menu__item__icon__icon {
+                        transform: rotate(180deg);
+                    }
                 }
                 &__icon {
-                    background: shade($popout-menu-background, 5);
-                    cursor: pointer;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    display: block;
-                    width: $popout-item-size;
-                    height: $popout-item-size;
-                    line-height: $popout-item-size;
-                    text-align: center;
-                    font-size: 1.3em;
-                    color: $popout-menu-color;
-                    &--active {
-                        .menu-wrap__menu__item__icon__icon {
-                            transform: rotate(180deg);
-                        }
-                    }
-                    &__icon {
-                        height: 10px;
-                        width: 10px;
-                        transition: .2s linear transform;
-                    }
-                }
-                &__list {
-                    background: shade($popout-menu-background, 5);
-                    list-style: none;
-                    margin: 0 (-$popout-item-size) 0 0;
-                    padding: 0 0 0 $gap-md;
-                    height: 0;
-                    overflow: hidden;
-                    &--active {
-                        height: auto;
-                    }
-                    &__item {
-                        margin: 0;
-                        border-width: 0;
-                        &__link {
-                            color: $popout-menu-color;
-                            padding: 0.75em 0;
-                            display: block;
-                        }
-                    }
+                    height: 10px;
+                    width: 10px;
+                    transition: $transition-default transform;
                 }
             }
-        }
-        &__search {
-            margin-top: $gap-md;
-            padding-top: $gap-lg;
-            border-top: 1px solid shade($popout-menu-background, 5);
-            input[type="text"] {
-                @include field;
-                border-color: $popout-menu-color;
-                box-shadow: none;
-                &:focus {
-                    border-color: $popout-menu-color;
+            &__list {
+                background: shade($popout-menu-background, 5);
+                list-style: none;
+                margin: 0 (-$popout-item-size) 0 0;
+                padding: 0 0 0 $gap-md;
+                height: 0;
+                overflow: hidden;
+                &--active {
+                    height: auto;
                 }
-            }
-            input[type="submit"] {
-                display: none;
+                &__item {
+                    margin: 0;
+                    border-width: 0;
+                    &__link {
+                        color: $popout-menu-color;
+                        padding: 0.75em 0;
+                        display: block;
+                    }
+                }
             }
         }
     }
-    .show-menu {
-        .menu-wrap {
-            right: 0;
+    &__search {
+        margin-top: $gap-md;
+        padding-top: $gap-lg;
+        border-top: 1px solid shade($popout-menu-background, 5);
+        input[type="text"] {
+            @include field;
+            border-color: $popout-menu-color;
+            box-shadow: none;
+            &:focus {
+                border-color: $popout-menu-color;
+            }
         }
-        .content-wrap {
-            opacity: 0.3;
+        input[type="submit"] {
+            display: none;
         }
     }
 }

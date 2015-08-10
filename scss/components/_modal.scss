@@ -19,6 +19,7 @@
     }
     &.in {
         opacity: $modal-backdrop-opacity;
+        bottom: -100px; // Fix issue on Android where the user will see the page content behind the backdrop when they hide the native URL bar.
     }
 }
 
@@ -33,11 +34,6 @@
     z-index: $zindex-modal;
     -webkit-overflow-scrolling: touch;
     outline: 0;
-    .no-touch & {
-        @media(min-width: $screen-sm-min) {
-            right: 15px;
-        }
-    }
     .modal-open & {
         overflow-x: hidden;
         overflow-y: auto;
@@ -48,14 +44,14 @@
         margin: $gutter / 2;
         transform: translate(0, -25%);
         transition: transform 0.3s ease-out;
-        @media(min-width: $screen-sm-min) {
+        @include media-sm {
             width: $modal-sm;
             margin: $gutter auto;
         }
-        @media(min-width: $screen-md-min) {
+        @include media-md {
             width: $modal-md;
         }
-        @media(min-width: $screen-lg-min) {
+        @include media-lg {
             width: $modal-lg;
         }
         .in & {

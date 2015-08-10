@@ -9,7 +9,7 @@
         animation-iteration-count: infinite;
     }
     .cssanimations & {
-        @media(min-width: $screen-sm-min) {
+        @include media-sm {
             opacity: 0;
         }
     }
@@ -46,7 +46,7 @@
 }
 
 .fadeInLeft {
-    @media(min-width: $screen-sm-min) {
+    @include media-sm {
         animation-name: fadeInLeft;
     }
 }
@@ -63,7 +63,7 @@
 }
 
 .fadeInRight {
-    @media(min-width: $screen-sm-min) {
+    @include media-sm {
         animation-name: fadeInRight;
     }
 }
@@ -81,7 +81,7 @@
 }
 
 .fadeInDown {
-    @media(min-width: $screen-sm-min) {
+    @include media-sm {
         animation-name: fadeInDown;
     }
 }
@@ -99,7 +99,7 @@
 }
 
 .fadeInUp {
-    @media(min-width: $screen-sm-min) {
+    @include media-sm {
         animation-name: fadeInUp;
     }
 }

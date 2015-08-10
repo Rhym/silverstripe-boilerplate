@@ -21,13 +21,13 @@
 .container {
     @include container-fixed;
 
-    @media (min-width: $screen-sm-min) {
+    @include media-sm {
         width: $container-sm;
     }
-    @media (min-width: $screen-md-min) {
+    @include media-md {
         width: $container-md;
     }
-    @media (min-width: $screen-lg-min) {
+    @include media-lg {
         width: $container-lg;
     }
 }
@@ -72,7 +72,7 @@
         @include make-grid(xl);
     }
     .container {
-        @media (min-width: $screen-xl-min) {
+        @include media-xl {
             width: $container-xl;
         }
     }

@@ -9,11 +9,9 @@
                     <% with $SiteConfig %>
                         <dl class="details">
                             <% if $Phone %>
-                                <%--<dt class="details__title"><% _t('ContactPage.PHONE','Phone') %></dt><!-- /.details__title -->--%>
                                 <dd class="details__detail">{$Phone}</dd><!-- /.details__detail -->
                             <% end_if %>
                             <% if $Email %>
-                                <%--<dt class="details__title"><% _t('ContactPage.EMAIL','Email') %></dt><!-- /.details__title -->--%>
                                 <dd class="details__detail"><a href="mailto:{$Email}">{$Email}</a></dd><!-- /.details__detail -->
                             <% end_if %>
                             <% if $Address %>

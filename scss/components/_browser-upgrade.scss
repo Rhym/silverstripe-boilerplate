@@ -1,0 +1,21 @@
+/** =========================================
+ * Browser Upgrade
+ ===========================================*/
+
+.browser-upgrade {
+    @extend %alert;
+    @include margin-none;
+    position: relative;
+    z-index: 3; // drop shadow over the header.
+    background: $alert-danger-bg;
+    border-color: $alert-danger-border;
+    color: $alert-danger-text;
+    border-radius: 0;
+    border-width: 0;
+    border-bottom-width: 1px;
+    text-align: center;
+    a {
+        color: $alert-danger-text;
+        text-decoration: underline;
+    }
+}

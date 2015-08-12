@@ -233,6 +233,7 @@ img {
 
 .captionImage {
     width: 100%;
+    max-width: 100%;
     @include margin-xs-top;
     &.left,
     &.right {

@@ -9,16 +9,31 @@
 class PortfolioHolder extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/Portfolio/images/blogs-stack.png';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'Items' => 'Int'
     );
 
+    /**
+     * @var array
+     */
     private static $allowed_children = array('PortfolioPage');
 
+    /**
+     * @var string
+     */
     private static $description = 'Displays all portfolio child pages';
 
+    /**
+     * @var array
+     */
     private static $defaults = array(
         'Items' => 10
     );

@@ -9,16 +9,28 @@
 class GalleryPage extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/Gallery/images/folder-open-image.png';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'NoMargin' => 'Boolean'
     );
 
+    /**
+     * @var array
+     */
     public static $many_many = array(
         'Images' => 'Image'
     );
 
+    /**
+     * @var string
+     */
     private static $description = 'Displays a lightbox gallery of images';
 
     /**

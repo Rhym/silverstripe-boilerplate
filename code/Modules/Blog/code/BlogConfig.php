@@ -8,10 +8,16 @@
 class BlogConfig extends DataExtension
 {
 
+    /**
+     * @var array
+     */
     public static $db = array(
         'DisqusForumShortName' => 'Varchar(255)'
     );
 
+    /**
+     * @var array
+     */
     public static $defaults = array();
 
     /**

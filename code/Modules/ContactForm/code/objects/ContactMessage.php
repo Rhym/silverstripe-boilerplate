@@ -12,6 +12,9 @@
 class ContactMessage extends DataObject
 {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'FirstName' => 'Varchar(255)',
         'LastName' => 'Varchar(255)',
@@ -20,6 +23,9 @@ class ContactMessage extends DataObject
         'Message' => 'Text'
     );
 
+    /**
+     * @var array
+     */
     private static $summary_fields = array(
         'Created.Nice' => 'Received',
         'FirstName' => 'First Name',

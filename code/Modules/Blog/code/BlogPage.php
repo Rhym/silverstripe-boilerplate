@@ -11,27 +11,51 @@
 class BlogPage extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/Blog/images/blog.png';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'Date' => 'Date',
         'Author' => 'Text'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
         'Image' => 'Image'
     );
 
+    /**
+     * @var array
+     */
     private static $defaults = array(
         'ShowInMenus' => 0
     );
 
+    /**
+     * @var string
+     */
     private static $description = 'Blog content page';
 
+    /**
+     * @var string
+     */
     private static $singular_name = 'Blog Post';
 
+    /**
+     * @var string
+     */
     private static $plural_name = 'Blog Posts';
 
+    /**
+     * @var array
+     */
     private static $summary_fields = array(
         'Thumbnail' => 'Thumbnail',
         'Title' => 'Title',
@@ -40,10 +64,19 @@ class BlogPage extends Page
         'Content.Summary' => 'Summary'
     );
 
+    /**
+     * @var string
+     */
     private static $allowed_children = 'none';
 
+    /**
+     * @var bool
+     */
     private static $can_be_root = false;
 
+    /**
+     * @var array
+     */
     public static $many_many_extraFields = array(
         'Tags' => array(
             'SortOrder' => 'Int'

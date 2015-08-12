@@ -10,12 +10,18 @@
 class SubscriptionConfig extends DataExtension
 {
 
+    /**
+     * @var array
+     */
     public static $db = array(
         'MailChimpAPI' => 'Varchar(255)',
         'MailChimpListID' => 'Varchar(255)',
         'MailChimpSuccessMessage' => 'Text'
     );
 
+    /**
+     * @var array
+     */
     public static $defaults = array(
         'MailChimpSuccessMessage' => 'Your subscription has been received, you will be sent a confirmation email shortly.'
     );

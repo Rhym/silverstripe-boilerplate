@@ -11,17 +11,32 @@
 class BlogHolder extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/Blog/images/blogs-stack.png';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'BlogSidebarContent' => 'HTMLText',
         'Items' => 'Int'
     );
 
+    /**
+     * @var array
+     */
     private static $allowed_children = array('BlogPage');
 
+    /**
+     * @var string
+     */
     private static $description = 'Displays all blog child pages';
 
+    /**
+     * @var array
+     */
     private static $defaults = array(
         'Items' => 10
     );

@@ -21,8 +21,14 @@
 class ContactPage extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/ContactForm/images/envelope-at-sign.png';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'MailTo' => 'Varchar(100)',
         'MailCC' => 'Text',
@@ -40,12 +46,18 @@ class ContactPage extends Page
         'ReCaptchaSecretKey' => 'Varchar(255)'
     );
 
+    /**
+     * @var array
+     */
     private static $defaults = array(
         'MapZoom' => 14,
         'MapSaturation' => 0,
         'SubmitText' => 'Thank you for contacting us, we will get back to you as soon as possible.'
     );
 
+    /**
+     * @var string
+     */
     private static $description = 'Contact form page';
 
     /**

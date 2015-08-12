@@ -6,17 +6,41 @@
 class ContactMessageModelAdmin extends ModelAdmin
 {
 
+    /**
+     * @var string
+     */
     private static $menu_icon = 'boilerplate/code/Modules/ContactForm/images/message-menu.png';
 
+    /**
+     * @var string
+     */
+    private static $menu_icon_class = 'fa fa-comments-o';
+
+    /**
+     * @var array
+     */
     private static $managed_models = array(
         'ContactMessage'
     );
+
+    /**
+     * @var int
+     */
     private static $url_priority = 100;
 
+    /**
+     * @var string
+     */
     private static $url_segment = 'messages';
 
+    /**
+     * @var string
+     */
     private static $menu_title = 'Messages';
 
+    /**
+     * @var array
+     */
     private static $url_handlers = array(
         '$ModelClass/$Action' => 'handleAction',
         '$ModelClass/$Action/$ID' => 'handleAction',

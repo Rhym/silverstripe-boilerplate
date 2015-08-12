@@ -10,24 +10,45 @@
 class PortfolioPage extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/Portfolio/images/blog.png';
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'SubTitle' => 'Varchar(255)'
     );
 
+    /**
+     * @var array
+     */
     private static $has_many = array(
         'PortfolioImages' => 'PortfolioImage'
     );
 
+    /**
+     * @var array
+     */
     private static $defaults = array(
         'ShowInMenus' => 0
     );
 
+    /**
+     * @var string
+     */
     private static $singular_name = 'Portfolio Post';
 
+    /**
+     * @var string
+     */
     private static $plural_name = 'Portfolio Posts';
 
+    /**
+     * @var array
+     */
     private static $summary_fields = array(
         'Thumbnail' => 'Thumbnail',
         'Title' => 'Title',
@@ -35,10 +56,19 @@ class PortfolioPage extends Page
         'Content.Summary' => 'Summary'
     );
 
+    /**
+     * @var string
+     */
     private static $allowed_children = 'none';
 
+    /**
+     * @var bool
+     */
     private static $can_be_root = false;
 
+    /**
+     * @var string
+     */
     private static $description = 'Portfolio content page';
 
     /**

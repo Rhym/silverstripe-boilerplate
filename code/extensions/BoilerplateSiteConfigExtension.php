@@ -22,6 +22,9 @@
 class BoilerplateSiteConfigExtension extends DataExtension
 {
 
+    /**
+     * @var array
+     */
     public static $db = array(
         'Phone' => 'Varchar(255)',
         'Email' => 'Varchar(255)',
@@ -37,6 +40,9 @@ class BoilerplateSiteConfigExtension extends DataExtension
         'GooglePlus' => 'Varchar(255)'
     );
 
+    /**
+     * @var array
+     */
     public static $has_one = array(
         'LogoImage' => 'Image',
         'MobileLogoImage' => 'Image',

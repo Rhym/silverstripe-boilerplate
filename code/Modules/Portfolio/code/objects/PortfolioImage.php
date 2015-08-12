@@ -12,30 +12,52 @@
 class PortfolioImage extends DataObject
 {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'SortOrder' => 'Int',
         'ContentPosition' => 'Enum(array("Full Width", "Left", "Right"))',
         'Content' => 'HTMLText'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
         'Page' => 'Page',
         'Image' => 'Image'
     );
 
+    /**
+     * @var string
+     */
     private static $singular_name = 'Item';
+
+    /**
+     * @var string
+     */
     private static $plural_name = 'Items';
 
+    /**
+     * @var array
+     */
     public static $summary_fields = array(
         'Thumbnail' => 'Thumbnail',
         'ContentPosition' => 'Content Position',
         'ContentSummary' => 'Content'
     );
 
+    /**
+     * @var array
+     */
     private static $defaults = array(
         'ContentPosition' => 'Full Width'
     );
 
+    /**
+     * @var string
+     */
     private static $default_sort = 'SortOrder';
 
     /**

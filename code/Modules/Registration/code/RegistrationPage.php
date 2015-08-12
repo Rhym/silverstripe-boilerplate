@@ -6,8 +6,14 @@
 class RegistrationPage extends Page
 {
 
+    /**
+     * @var string
+     */
     private static $icon = 'boilerplate/code/Modules/Registration/images/user--plus.png';
 
+    /**
+     * @var string
+     */
     private static $description = 'Registration content page';
 
 }

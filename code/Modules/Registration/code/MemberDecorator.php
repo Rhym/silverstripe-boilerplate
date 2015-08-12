@@ -10,6 +10,9 @@
 class MemberDecorator extends DataExtension
 {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'JobTitle' => 'Varchar',
         'Blurb' => 'Text',

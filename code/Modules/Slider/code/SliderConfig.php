@@ -10,11 +10,17 @@
 class SliderConfig extends DataExtension
 {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'Height' => 'Varchar(255)',
         'HideDefaultSlider' => 'Boolean(0)'
     );
 
+    /**
+     * @var array
+     */
     private static $has_many = array(
         'SliderItems' => 'SliderItem'
     );

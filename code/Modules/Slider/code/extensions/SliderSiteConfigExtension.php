@@ -9,14 +9,23 @@
 class SliderSiteConfigExtension extends Extension
 {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'DefaultSliderHeight' => 'Varchar(255)'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
         'SliderImage' => 'Image'
     );
 
+    /**
+     * @var array
+     */
     public static $defaults = array(
         'DefaultSliderHeight' => 0
     );

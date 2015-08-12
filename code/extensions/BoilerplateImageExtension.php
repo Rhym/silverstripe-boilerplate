@@ -8,8 +8,14 @@
 class BoilerplateImageExtension extends DataExtension
 {
 
+    /**
+     * @var int
+     */
     private static $min_mobile_width = 320;
 
+    /**
+     * @var int
+     */
     private static $mobile_break_point = 768;
 
     /**

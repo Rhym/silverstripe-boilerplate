@@ -6,18 +6,36 @@
 class BlogPageModelAdmin extends CatalogPageAdmin
 {
 
+    /**
+     * @var string
+     */
     private static $menu_icon = 'boilerplate/code/Modules/Blog/images/pencil.png';
 
+    /**
+     * @var string
+     */
+    private static $menu_icon_class = 'fa fa-pencil';
+
+    /**
+     * @var array
+     */
     private static $managed_models = array(
         'BlogPage'
     );
 
-    //private static $menu_priority = 1;
-
+    /**
+     * @var string
+     */
     private static $url_segment = 'blog';
 
+    /**
+     * @var string
+     */
     private static $menu_title = 'Blog';
 
+    /**
+     * @var array
+     */
     private static $url_handlers = array(
         '$ModelClass/$Action' => 'handleAction',
         '$ModelClass/$Action/$ID' => 'handleAction',

@@ -11,31 +11,53 @@
 class SliderItem extends DataObject
 {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'SortOrder' => 'Int',
         'Caption' => 'HTMLText'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
         'Page' => 'Page',
         'Image' => 'Image'
     );
 
+    /**
+     * @var string
+     */
     private static $singular_name = 'Slide';
+
+    /**
+     * @var string
+     */
     private static $plural_name = 'Slides';
 
+    /**
+     * @var array
+     */
     public static $summary_fields = array(
         'Thumbnail' => 'Thumbnail'
     );
 
+    /**
+     * @var string
+     */
+    private static $default_sort = 'SortOrder';
+
+    /**
+     * @return mixed
+     */
     public function getCMSValidator()
     {
         return RequiredFields::create(array(
             'Image'
         ));
     }
-
-    private static $default_sort = 'SortOrder';
 
     /**
      * @return string

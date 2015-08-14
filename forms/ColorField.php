@@ -17,6 +17,11 @@ class ColorField extends TextField
     private static $secondary_color = '#ff4081';
 
     /**
+     * @var array
+     */
+    private static $colors = array();
+
+    /**
      * @param string $name
      * @param null $title
      * @param string $value
@@ -40,11 +45,13 @@ class ColorField extends TextField
     public function Field($properties = array())
     {
         $this->addExtraClass('color-picker');
-        $style = 'background-image: none;background-color:' . ($this->value ? $this->value : '#ffffff') . '; color: ' . ($this->getTextColor()) . ';';
+        $style = 'background-image: none; background-color:' . ($this->value ? $this->value : '#ffffff') . '; color: ' . ($this->getTextColor()) . ';';
         $this->setAttribute('style', $style);
-        $this->setAttribute('data-palette',
-            '["' . $this->config()->primary_color . '", "' . $this->config()->secondary_color . '", "#212121", "#fff"]');
-
+        if ($colors = $this->config()->colors) {
+            $pallets = '"' . implode('", "', $colors) . '"';
+            $this->setAttribute('data-palette',
+                '[' . $pallets . ']');
+        }
         $properties['type'] = 'text';
         $properties['class'] = 'text' . ($this->extraClass() ? $this->extraClass() : '');
         $properties['tabindex'] = $this->getAttribute('tabindex');

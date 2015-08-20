@@ -13,6 +13,7 @@
     font-size: $font-size-base;
     line-height: $line-height-base;
     color: $brand-default-color;
+    height: ($line-height-computed + ($padding-base-vertical * 2) + 2px);
     background-color: $brand-default;
     background-image: none;
     border: 1px solid $brand-default-darker;

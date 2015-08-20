@@ -5,7 +5,8 @@
 .pagination {
     display: inline-block;
     padding-left: 0;
-    margin: $line-height-computed 0;
+    /** @todo */
+    //margin: $line-height-computed 0;
     border-radius: $border-radius-base;
     &__item {
         display: inline;
@@ -41,7 +42,7 @@
             }
             &.is-disabled {
                 opacity: $opacity-base;
-                color: $font-base-color;
+                color: $font-color-base;
             }
         }
     }

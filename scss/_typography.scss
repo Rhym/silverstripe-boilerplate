@@ -29,14 +29,14 @@ body {
 }
 
 html {
-    font-size: $font-size-base;
+    font-size: $font-size-root;
 }
 
 body {
     font-family: $font-family-base;
     font-size: $font-size-base;
     line-height: $line-height-base;
-    color: $font-base-color;
+    color: $font-color-base;
     background-color: $body-bg;
 }
 
@@ -86,12 +86,12 @@ h6,
 .h5,
 .h6 {
     margin-top: 0;
-    color: $font-heading-base-color;
+    color: $font-color-heading;
     font-family: $font-family-heading;
-    font-weight: $font-heading-weight;
+    font-weight: $font-weight-heading;
     line-height: $line-height-heading;
     a {
-        color: $font-heading-base-color;
+        color: $font-color-heading;
         text-decoration: none;
         &:hover, &:active {
             text-decoration: none;
@@ -169,7 +169,7 @@ a {
 
 p {
     margin: 0 0 $gap-md 0;
-    line-height: $line-height-large;
+    line-height: $line-height-lg;
     @include media-sm {
         line-height: $line-height-base;
     }

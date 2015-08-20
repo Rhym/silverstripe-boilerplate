@@ -103,13 +103,13 @@ class SliderItem extends DataObject
     }
 
     /**
-     * Before Write
+     * On Before Write
      */
     protected function onBeforeWrite()
     {
         /** Set SortOrder */
         if (!$this->SortOrder) {
-            $this->SortOrder = SliderItem::get()->max('SortOrder') + 1;
+            $this->SortOrder = DataObject::get($this->ClassName)->max('SortOrder') + 1;
         }
         parent::onBeforeWrite();
     }

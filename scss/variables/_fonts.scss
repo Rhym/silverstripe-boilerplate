@@ -2,14 +2,15 @@
  * Fonts
  ===========================================*/
 
-$font-base-color: #555B66 !default;
-$font-heading-base-color: $font-base-color !default;
-$font-size-base: 14px !default;
-$font-size-xs: ceil(($font-size-base * 0.7)) !default;
-$font-size-sm: ceil(($font-size-base * 0.85)) !default;
-$font-size-small: $font-size-sm !default;;
-$font-size-lg: ceil(($font-size-base * 1.25)) !default;
-$font-size-large: $font-size-lg !default;
+$font-color-base: #555B66 !default;
+$font-color-heading: $font-color-base !default;
+
+$font-size-root: 16px !default;
+$font-size-base: 1rem !default;
+$font-size-lg: 1.25rem !default;
+$font-size-sm: .85rem !default;
+$font-size-xs: .75rem !default;
+
 $font-family-base: sans-serif !default;
 $font-family-heading: sans-serif !default;
 
@@ -17,21 +18,21 @@ $font-family-heading: sans-serif !default;
  * Headings
  -------------------------------------------*/
 
-$font-size-h1: ceil(($font-size-base * 2)) !default;
-$font-size-h2: ceil(($font-size-base * 1.5)) !default;
-$font-size-h3: ceil(($font-size-base * 1.33)) !default;
-$font-size-h4: $font-size-base !default;
-$font-size-h5: ceil(($font-size-base * 0.83)) !default;
-$font-size-h6: ceil(($font-size-base * 0.67)) !default;
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
 
-$font-heading-weight: bold !default;
+$font-weight-heading: bold !default;
 
 /** -----------------------------------------
  * Line Height
  -------------------------------------------*/
 
-$line-height-base: 1.7 !default;
-$line-height-large: 2 !default;
-$line-height-small: 1.5 !default;
-$line-height-computed: ceil(($font-size-base * $line-height-base)) !default;
-$line-height-heading: 1 !default;
+$line-height-base: 1.5 !default;
+$line-height-lg: (4/3) !default;
+$line-height-sm: 1.5 !default;
+//$line-height-computed: ceil(($font-size-base * $line-height-base)) !default;
+$line-height-heading: 1.1 !default;

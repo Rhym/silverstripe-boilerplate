@@ -8,7 +8,7 @@
         height: auto;
         border-width: 0;
         width: 100%;
-        font-size: $font-size-large;
+        font-size: $font-size-lg;
         @include margin;
     }
     &__list {
@@ -43,7 +43,7 @@
                     }
                     path,
                     ellipse {
-                        fill: $font-base-color;
+                        fill: $font-color-base;
                         transition: $transition-default fill;
                     }
                 }

@@ -30,7 +30,7 @@
         &__summary,
         &__content {
             @include margin;
-            line-height: $line-height-large;
+            line-height: $line-height-lg;
             @include media-sm {
                 line-height: $line-height-base;
             }

@@ -93,13 +93,13 @@
                 $icon-size: 40px;
                 height: $icon-size;
                 width: $icon-size;
-                color: $font-base-color;
+                color: $font-color-base;
                 font-size: $font-size-h1;
                 display: inline-block;
-                fill: $font-base-color;
+                fill: $font-color-base;
             }
             &__text {
-                color: $font-base-color;
+                color: $font-color-base;
                 text-transform: uppercase;
                 font-size: $font-size-xs;
                 display: block;

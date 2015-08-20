@@ -6,10 +6,10 @@ $font-color-base: #555B66 !default;
 $font-color-heading: $font-color-base !default;
 
 $font-size-root: 16px !default;
-$font-size-base: 1rem !default;
-$font-size-lg: 1.25rem !default;
-$font-size-sm: .85rem !default;
-$font-size-xs: .75rem !default;
+$font-size-base: 14px !default;
+$font-size-lg: ceil(($font-size-base * 1.25)) !default;
+$font-size-sm: ceil(($font-size-base * 0.85)) !default;
+$font-size-xs: ceil(($font-size-base * 0.75)) !default;
 
 $font-family-base: sans-serif !default;
 $font-family-heading: sans-serif !default;
@@ -18,12 +18,12 @@ $font-family-heading: sans-serif !default;
  * Headings
  -------------------------------------------*/
 
-$font-size-h1: 2.5rem !default;
-$font-size-h2: 2rem !default;
-$font-size-h3: 1.75rem !default;
-$font-size-h4: 1.5rem !default;
-$font-size-h5: 1.25rem !default;
-$font-size-h6: 1rem !default;
+$font-size-h1: ceil(($font-size-base * 2.5)) !default;
+$font-size-h2: ceil(($font-size-base * 2)) !default;
+$font-size-h3: ceil(($font-size-base * 1.75)) !default;
+$font-size-h4: ceil(($font-size-base * 1.5)) !default;
+$font-size-h5: ceil(($font-size-base * 1.25)) !default;
+$font-size-h6: $font-size-base !default;
 
 $font-weight-heading: bold !default;
 

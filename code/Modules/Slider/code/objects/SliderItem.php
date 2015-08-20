@@ -99,6 +99,8 @@ class SliderItem extends DataObject
         $fields->addFieldToTab('Root.Main', $caption = HtmlEditorField::create('Caption'));
         $caption->setRows(15);
 
+        $this->extend('updateCMSFields', $fields);
+
         return $fields;
     }
 

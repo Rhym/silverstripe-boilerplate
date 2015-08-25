@@ -107,10 +107,8 @@ class EditProfileForm extends Form
      */
     public function Save($data, $form)
     {
-        /** =========================================
-         * @var Form $form
-         * @var RegistrationPage $registerPage
-        ===========================================*/
+        /** @var Form $form */
+        $data = $form->getData();
 
         if ($CurrentMember = Member::currentUser()) {
             if ($member = DataObject::get_one('Member',
@@ -129,7 +127,10 @@ class EditProfileForm extends Form
                 return $this->controller->redirect($this->controller->Link());
             }
         } else {
-            /** Get registration page otherwise display warning. */
+            /** Get registration page otherwise display warning.
+             *
+             * @var RegistrationPage $registerPage
+             */
             if ($registerPage = DataObject::get_one('RegistrationPage')) {
                 return Security::PermissionFailure($this->controller,
                     'You must <a href="' . $registerPage->Link() . '">registered</a> and logged in to edit your profile.');

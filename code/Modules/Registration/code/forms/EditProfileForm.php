@@ -46,15 +46,6 @@ class EditProfileForm extends Form
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
-        $jobTitle = TextField::create('JobTitle');
-        $jobTitle->setAttribute('placeholder', 'Enter your job title');
-
-        $website = TextField::create('Website');
-        $website->setAttribute('placeholder', 'Enter your website');
-
-        $blurb = TextareaField::create('Blurb');
-        $blurb->setAttribute('placeholder', 'Enter your blurb');
-
         $confirmPassword = ConfirmedPasswordField::create('Password', 'New Password');
         $confirmPassword->canBeEmpty = true;
         $confirmPassword->setAttribute('placeholder', 'Enter your password');
@@ -67,9 +58,6 @@ class EditProfileForm extends Form
             $firstName,
             $surname,
             $email,
-            $jobTitle,
-            $website,
-            $blurb,
             $passwordToggle,
             $confirmPassword,
             $passwordToggleClose

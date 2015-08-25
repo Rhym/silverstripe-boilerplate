@@ -13,7 +13,7 @@
     }
     &__list {
         padding: 0;
-        @include margin;
+        @include margin-none;
         &__item {
             display: inline-block;
             list-style: none;

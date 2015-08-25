@@ -2,10 +2,6 @@
 
 /**
  * Class MemberDecorator
- *
- * @property string JobTitle
- * @property string Blurb
- * @property string Website
  */
 class MemberDecorator extends DataExtension
 {
@@ -13,20 +9,14 @@ class MemberDecorator extends DataExtension
     /**
      * @var array
      */
-    private static $db = array(
-        'JobTitle' => 'Varchar',
-        'Blurb' => 'Text',
-        'Website' => 'Varchar(100)'
-    );
+    private static $db = array();
 
     /**
      * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields)
     {
-        $fields->addFieldToTab('Root.Profile', TextField::create('JobTitle', 'Job Title'));
-        $fields->addFieldToTab('Root.Profile', TextField::create('Website', 'Website', 'http://'));
-        $fields->addFieldToTab('Root.Profile', TextareaField::create('Blurb', 'Blurb'));
+
     }
 
     /**

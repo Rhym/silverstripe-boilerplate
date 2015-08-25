@@ -43,7 +43,9 @@
             &--form {
                 @include make-sm-column(8);
                 .form {
-                    @include make-row;
+                    fieldset {
+                        @include make-row;
+                    }
                     #FirstName,
                     #LastName {
                         @include make-sm-column(6);
@@ -51,9 +53,11 @@
                     #Email,
                     #Phone,
                     #Message,
-                    .recaptcha,
-                    .Actions {
+                    .recaptcha {
                         @include make-sm-column(12);
+                    }
+                    #ContactForm_ContactForm_error {
+                        @include margin-bottom;
                     }
                     .recaptcha {
                         &::after {

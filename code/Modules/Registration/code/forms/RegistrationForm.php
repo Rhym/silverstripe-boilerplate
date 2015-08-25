@@ -15,30 +15,26 @@ class RegistrationForm extends Form
      */
     public function __construct($controller, $name, $arguments = array())
     {
-        /** =========================================
-         * @var TextField $firstName
-         * @var EmailField $email
-         * @var PasswordField $password
-         * @var Form $form
-        ===========================================*/
-
         /** -----------------------------------------
          * Fields
          * ----------------------------------------*/
 
+        /** @var TextField $firstName */
         $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
+        /** @var EmailField $email */
         $email = EmailField::create('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
+        /** @var PasswordField $password */
         $password = PasswordField::create('Password');
         $password->setAttribute('placeholder', 'Enter your password')
-            ->setCustomValidationMessage('Please enter your <strong>Password</strong>', 'validation')
+            ->setCustomValidationMessage('Please enter your <strong>Password</strong>')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Password</strong>');
 
         $fields = FieldList::create(
@@ -64,6 +60,7 @@ class RegistrationForm extends Form
             'Password'
         );
 
+        /** @var Form $form */
         $form = Form::create($this, $name, $fields, $actions, $required);
         if ($formData = Session::get('FormInfo.Form_' . $name . '.data')) {
             $form->loadDataFrom($formData);
@@ -82,12 +79,8 @@ class RegistrationForm extends Form
      */
     public function Register($data, $form)
     {
-        /** =========================================
-         * @var Form $form
-         * @var Member $member
-         * @var Group $userGroup
-         * @var EditProfilePage $ProfilePage
-        ===========================================*/
+        /** @var Form $form */
+        $data = $form->getData();
 
         /** Set session array individually as setting the password breaks the form. */
         $sessionArray = array(
@@ -102,13 +95,19 @@ class RegistrationForm extends Form
             return $this->controller->redirectBack();
         }
 
-        /** Otherwise create new member and log them in */
+        /** Otherwise create new member and log them in
+         *
+         * @var Member $member
+         */
         $member = Member::create();
         $form->saveInto($member);
         $member->write();
         $member->login();
 
-        /** Find or create the 'user' group */
+        /** Find or create the 'user' group
+         *
+         * @var Group $userGroup
+         */
         if (!$userGroup = DataObject::get_one('Group', "Code = 'users'")) {
             $userGroup = Group::create();
             $userGroup->Code = 'users';

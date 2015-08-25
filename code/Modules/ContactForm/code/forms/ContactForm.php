@@ -14,57 +14,54 @@ class ContactForm extends Form
      */
     public function __construct($controller, $name, $arguments = array())
     {
-        /** =========================================
-         * @var TextField $firstName
-         * @var TextField $lastName
-         * @var EmailField $email
-         * @var TextField $phone
-         * @var TextField $suburb
-         * @var TextField $city
-         * @var TextareaField $message
-         * @var Form $form
-        ===========================================*/
-
         /** -----------------------------------------
          * Fields
          * ----------------------------------------*/
 
         $clearfix = LiteralField::create('', '<div class="clearfix"></div><!-- /.clearfix -->');
 
+        /** @var TextField $firstName */
         $firstName = TextField::create('FirstName', 'First Name');
         $firstName->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setAttribute('autocomplete', 'fname given-name')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
+        /** @var TextField $lastName */
         $lastName = TextField::create('LastName', 'Last Name');
         $lastName->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
             ->setAttribute('autocomplete', 'lname family-name')
             ->setCustomValidationMessage('Please enter your <strong>Last Name</strong>');
 
+        /** @var EmailField $email */
         $email = EmailField::create('Email', 'Email Address');
         $email->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setAttribute('autocomplete', 'email')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
+        /** @var TextField $phone */
         $phone = TextField::create('Phone', 'Phone Number (optional)')
             ->setAttribute('autocomplete', 'tel');
         $phone->addExtraClass('form-control');
 
+        /** @var TextField $suburb */
         $suburb = TextField::create('Suburb', 'Suburb');
         $suburb->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
             ->setAttribute('autocomplete', 'region')
             ->setCustomValidationMessage('Please enter your <strong>Suburb</strong>');
 
+        /** @var TextField $city */
         $city = TextField::create('City', 'City');
         $city->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
             ->setAttribute('autocomplete', 'city')
             ->setCustomValidationMessage('Please enter your <strong>City</strong>');
 
+        /** @var TextareaField $message */
         $message = TextareaField::create('Message', 'Message');
         $message->setAttribute('placeholder', 'Enter your message')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Message</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Message</strong>');
 
+        /** @var LiteralField $reCaptcha */
         $reCaptcha = LiteralField::create('', '');
         if (isset($arguments['ReCaptchaSiteKey']) && isset($arguments['ReCaptchaSecretKey'])) {
             $reCaptcha = LiteralField::create('ReCaptcha',
@@ -87,7 +84,7 @@ class ContactForm extends Form
          * ----------------------------------------*/
 
         $actions = FieldList::create(
-            $action = FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn--primary')
+            FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn--primary')
         );
 
         /** -----------------------------------------
@@ -101,6 +98,7 @@ class ContactForm extends Form
             'Message'
         );
 
+        /** @var Form $form */
         $form = Form::create($this, $name, $fields, $actions, $required);
         if ($formData = Session::get('FormInfo.Form_' . $name . '.data')) {
             $form->loadDataFrom($formData);
@@ -110,7 +108,6 @@ class ContactForm extends Form
 
         $this->setAttribute('data-parsley-validate', true);
         $this->setAttribute('autocomplete', 'on');
-
         $this->addExtraClass('form form--contact');
     }
 
@@ -123,11 +120,9 @@ class ContactForm extends Form
      */
     public function Submit($data, $form)
     {
-        /** =========================================
-         * @var Form $form
-         * @var HTMLText $errors
-         * @var ContactMessage $contactMessage
-        ===========================================*/
+        $recaptchaResponse = $recaptchaResponse = $data['g-recaptcha-response'];
+        /** @var Form $form */
+        $data = $form->getData();
 
         /** Set the form state */
         Session::set('FormInfo.Form_' . $this->name . '.data', $data);
@@ -137,7 +132,6 @@ class ContactForm extends Form
          * Based on https://github.com/google/recaptcha
          */
         if ($this->controller->data()->ReCaptchaSiteKey && $this->controller->data()->ReCaptchaSecretKey) {
-            $recaptchaResponse = $data['g-recaptcha-response'];
             $recaptcha = new \ReCaptcha\ReCaptcha($this->controller->data()->ReCaptchaSecretKey);
             $resp = $recaptcha->verify($recaptchaResponse);
             if ($resp->isSuccess()) {
@@ -147,6 +141,8 @@ class ContactForm extends Form
             } else {
                 /**
                  * Not Verified
+                 *
+                 * @var HTMLText $errors
                  */
                 $errors = HTMLText::create();
                 $html = '';
@@ -188,6 +184,7 @@ class ContactForm extends Form
         $From = $data['Email'];
         $To = $this->controller->data()->MailTo;
         $Subject = SiteConfig::current_site_config()->Title . ' - Contact message';
+        /** @var Email $email */
         $email = Email::create($From, $To, $Subject);
         if ($cc = $this->controller->data()->MailCC) {
             $email->setCc($cc);
@@ -209,6 +206,7 @@ class ContactForm extends Form
          * Records
          * ----------------------------------------*/
 
+        /** @var ContactMessage $contactMessage */
         $contactMessage = ContactMessage::create();
         $form->saveInto($contactMessage);
         $contactMessage->write();

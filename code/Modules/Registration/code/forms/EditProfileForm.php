@@ -15,41 +15,34 @@ class EditProfileForm extends Form
      */
     public function __construct($controller, $name, $arguments = array())
     {
-        /** =========================================
-         * @var TextField $firstName
-         * @var TextField $surname
-         * @var EmailField $email
-         * @var TextField $jobTitle
-         * @var TextField $website
-         * @var ConfirmedPasswordField $confirmPassword
-         * @var TextField $firstName
-         * @var TextField $firstName
-         * @var Form $form
-        ===========================================*/
-
         /** -----------------------------------------
          * Fields
          * ----------------------------------------*/
 
+        /** @var TextField $firstName */
         $firstName = TextField::create('FirstName');
         $firstName->setAttribute('placeholder', 'Enter your first name')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
             ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
 
+        /** @var TextField $surname */
         $surname = TextField::create('Surname');
         $surname->setAttribute('placeholder', 'Enter your surname')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Surname</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Surname</strong>');
 
+        /** @var EmailField $email */
         $email = EmailField::create('Email');
         $email->setAttribute('placeholder', 'Enter your email address')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
             ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
 
+        /** @var ConfirmedPasswordField $confirmPassword */
         $confirmPassword = ConfirmedPasswordField::create('Password', 'New Password');
         $confirmPassword->canBeEmpty = true;
         $confirmPassword->setAttribute('placeholder', 'Enter your password');
 
+        /** @var LiteralField $passwordToggle */
         $passwordToggle = LiteralField::create('',
             '<p><button class="btn--default" type="button" data-toggle="collapse" data-target="#togglePassword" aria-expanded="false" aria-controls="togglePassword">Change Password</button></p><div class="collapse" id="togglePassword">');
         $passwordToggleClose = LiteralField::create('', '</div>');
@@ -81,9 +74,7 @@ class EditProfileForm extends Form
             'Email'
         );
 
-        /**
-         * Create form
-         */
+        /** @var Form $form */
         $form = Form::create($this, $name, $fields, $actions, $required);
 
         /**

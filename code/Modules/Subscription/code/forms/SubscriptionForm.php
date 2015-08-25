@@ -14,15 +14,11 @@ class SubscriptionForm extends Form
      */
     public function __construct($controller, $name, $arguments = array())
     {
-        /** =========================================
-         * @var Form $form
-         * @var EmailField $email
-        ===========================================*/
-
         /** -----------------------------------------
          * Fields
          * ----------------------------------------*/
 
+        /** @var EmailField $email */
         $email = EmailField::create('Email', 'Email Address');
         $email->addExtraClass('form-control')
             ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
@@ -48,6 +44,7 @@ class SubscriptionForm extends Form
             'Email'
         );
 
+        /** @var Form $form */
         $form = Form::create($this, $name, $fields, $actions, $required);
         if ($formData = Session::get('FormInfo.Form_' . $name . '.data')) {
             $form->loadDataFrom($formData);
@@ -68,6 +65,8 @@ class SubscriptionForm extends Form
      */
     public function Subscribe($data, $form)
     {
+        /** @var Form $form */
+        $data = $form->getData();
 
         /** Set the form state */
         Session::set('FormInfo.Form_' . $this->name . '.data', $data);

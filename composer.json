@@ -16,7 +16,8 @@
   ],
   "require": {
     "silverstripe/framework": ">=3.0.1,<3.2",
-    "composer/installers": "*"
+    "composer/installers": "*",
+    "ryanpotter/silverstripe-color-field": "~0.1"
   },
   "support": {
     "issues": "https://github.com/Rhym/silverstripe-boilerplate/issues"

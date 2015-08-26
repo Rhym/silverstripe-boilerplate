@@ -20,7 +20,6 @@
  */
 class ContactPage extends Page
 {
-
     /**
      * @var string
      */
@@ -34,16 +33,16 @@ class ContactPage extends Page
         'MailCC' => 'Text',
         'MailBCC' => 'Text',
         'SubmitText' => 'Text',
-        'GoogleAPI' => 'Varchar(255)',
-        'Latitude' => 'Varchar(255)',
-        'Longitude' => 'Varchar(255)',
-        'MapColor' => 'Varchar(255)',
-        'WaterColor' => 'Varchar(255)',
+        'GoogleAPI' => 'Varchar(100)',
+        'Latitude' => 'Varchar(100)',
+        'Longitude' => 'Varchar(100)',
+        'MapColor' => 'Varchar(7)',
+        'WaterColor' => 'Varchar(7)',
         'MapZoom' => 'Int(14)',
         'MapSaturation' => 'Int(0)',
         'MapMarker' => 'Boolean(1)',
-        'ReCaptchaSiteKey' => 'Varchar(255)',
-        'ReCaptchaSecretKey' => 'Varchar(255)'
+        'ReCaptchaSiteKey' => 'Varchar(100)',
+        'ReCaptchaSecretKey' => 'Varchar(100)'
     );
 
     /**
@@ -65,15 +64,7 @@ class ContactPage extends Page
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var TextField $mailTo
-         * @var TextField $mailCC
-         * @var TextField $mailBCC
-         * @var TextareaField $submissionText
-         * @var NumericField $mapZoom
-         * @var TextField $mapSaturation
-        ===========================================*/
-
+        /** @var  $fields */
         $fields = parent::getCMSFields();
 
         /** =========================================
@@ -85,11 +76,15 @@ class ContactPage extends Page
          * ----------------------------------------*/
 
         $fields->addFieldToTab('Root.Main', HeaderField::create('Settings'), 'Content');
+        /** @var TextField $mailTo */
         $fields->addFieldToTab('Root.Main', $mailTo = TextField::create('MailTo', 'Email'), 'Content');
         $mailTo->setRightTitle('Choose an email address for the contact page to send to');
+        /** @var TextField $mailCC */
         $fields->addFieldToTab('Root.Main', $mailCC = TextField::create('MailCC', 'Cc'), 'Content');
         $mailCC->setRightTitle('Choose an email, or emails to CC (separate emails with a comma and no space e.g: email1@website.com,email2@website.com)');
+        /** @var TextField $mailBCC */
         $fields->addFieldToTab('Root.Main', $mailBCC = TextField::create('MailBCC', 'Bcc'), 'Content');
+        /** @var TextareaField $submissionText */
         $fields->addFieldToTab('Root.Main', $submissionText = TextareaField::create('SubmitText', 'Submission Text'),
             'Content');
         $submissionText->setRightTitle('Text for contact form submission once the email has been sent i.e "Thank you for your enquiry"');
@@ -116,6 +111,7 @@ class ContactPage extends Page
         $fields->addFieldToTab('Root.Map', Textfield::create('Longitude', 'Longitude'));
         $fields->addFieldToTab('Root.Map', LiteralField::create('',
             '<div class="field"><label class="right"><a href="https://support.google.com/maps/answer/18539" target="_blank">How do I find my latitude/longitude?</a></label></div>'));
+        /** @var NumericField $mapZoom */
         $fields->addFieldToTab('Root.Map', $mapZoom = NumericField::create('MapZoom', 'Zoom'));
         $mapZoom->setRightTitle('Zoom level: 1-22 - The higher the number the more zoomed in the map will be.');
         /**
@@ -128,6 +124,7 @@ class ContactPage extends Page
         }
         $fields->addFieldToTab('Root.Map', ColorField::create('MapColor', 'Map Colour (Optional)'));
         $fields->addFieldToTab('Root.Map', ColorField::create('WaterColor', 'Water Colour (Optional)'));
+        /** @var TextField $mapSaturation */
         $fields->addFieldToTab('Root.Map',
             $mapSaturation = TextField::create('MapSaturation', 'Saturation (Optional)'));
         $mapSaturation->setRightTitle('A range of -100 to 100, -100 being completely grayscale.');
@@ -144,12 +141,13 @@ class ContactPage extends Page
  */
 class ContactPage_Controller extends Page_Controller
 {
-
+    /**
+     * @var array
+     */
     private static $allowed_actions = array('ContactForm');
 
     public function init()
     {
-
         parent::init();
 
         /** reCaptcha */

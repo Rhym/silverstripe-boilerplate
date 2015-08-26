@@ -5,11 +5,10 @@
  *
  * @property string Subtitle
  *
- * @method HasManyList PortfolioImages
+ * @method PortfolioImage PortfolioImages
  */
 class PortfolioPage extends Page
 {
-
     /**
      * @var string
      */
@@ -90,16 +89,13 @@ class PortfolioPage extends Page
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var TextField $subTitle
-         * @var GridFieldConfig_RelationEditor $config
-        ===========================================*/
-
+        /** @var  $fields */
         $fields = parent::getCMSFields();
 
         $fields->removeByName('Slider');
         $fields->removeByName('PageBuilder');
 
+        /** @var TextField $subTitle */
         $fields->addFieldToTab('Root.Main', $subTitle = TextField::create('SubTitle', 'Sub Title'), 'Content');
         $subTitle->setRightTitle('Subtitles are displayed on PortfolioHolder pages under the title.');
 
@@ -111,6 +107,7 @@ class PortfolioPage extends Page
         $fields->addFieldToTab('Root.PortfolioImages', LiteralField::create('',
             '<p>Portfolio Images are displayed under the page\'s content. Items can be full width, or have content displayed to the left or right hand side of the image.</p>'
         ));
+        /** @var GridFieldConfig_RelationEditor $config */
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldOrderableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
@@ -128,7 +125,7 @@ class PortfolioPage extends Page
 
     /**
      * @param SS_HTTPRequest $request
-     * @return $this|HTMLText
+     * @return array|HTMLText
      */
     public function index(SS_HTTPRequest $request)
     {

@@ -5,12 +5,10 @@
  */
 class SubscriptionForm extends Form
 {
-
     /**
-     * Form constructor
-     *
      * @param Controller $controller
      * @param String $name
+     * @param array $arguments
      */
     public function __construct($controller, $name, $arguments = array())
     {

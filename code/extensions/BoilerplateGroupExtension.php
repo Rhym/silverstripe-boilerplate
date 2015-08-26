@@ -7,22 +7,19 @@
  */
 class BoilerplateGroupExtension extends DataExtension
 {
-
     /**
      * @throws ValidationException
      * @throws null
      */
     public function requireDefaultRecords()
     {
-        /** =========================================
-         * @var Group $siteAdminGroup
-        ===========================================*/
-
         parent::requireDefaultRecords();
 
         /**
          * Add default site admin group if none with
          * permission code SITE_ADMIN exists
+         *
+         * @var Group $siteAdminGroup
          */
         $siteAdminGroups = DataObject::get('Group')->filter(array('Code' => 'site-administrators'));
         if (!$siteAdminGroups->count()) {

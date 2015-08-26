@@ -7,7 +7,6 @@
  */
 class BoilerplateImageExtension extends DataExtension
 {
-
     /**
      * @var int
      */
@@ -28,21 +27,6 @@ class BoilerplateImageExtension extends DataExtension
      */
     public function SrcSet($desktop_vw = 100, $mobile_vw = 100)
     {
-        /** =========================================
-         * @var Image $owner
-         * @var float $vhScale
-         * @var int $width
-         * @var int $height
-         * @var int $mobileWidth
-         * @var int $mobileBreakPoint
-         * @var float $scale
-         * @var int $scaledWidth
-         * @var int $scaledHeight
-         * @var string $srcSet
-         * @var string $sizes
-         * @var array $data
-        ===========================================*/
-
         $owner = $this->owner;
 
         /** If the Image exists */

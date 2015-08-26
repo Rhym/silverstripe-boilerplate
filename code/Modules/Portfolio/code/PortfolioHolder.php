@@ -8,7 +8,6 @@
  */
 class PortfolioHolder extends Page
 {
-
     /**
      * @var string
      */
@@ -43,34 +42,30 @@ class PortfolioHolder extends Page
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var FieldList $fields
-         * @var NumericField $items
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = parent::getCMSFields();
 
         /** -----------------------------------------
          * Fields
          * ----------------------------------------*/
 
+        /** @var NumericField $items */
         $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
         $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
 
         return $fields;
     }
 
+    /**
+     * Return a ArrayList of all blog children of this page.
+     *
+     * @param SS_HTTPRequest $request
+     * @return array|HTMLText
+     * @throws Exception
+     */
     public function index(SS_HTTPRequest $request)
     {
-        /** =========================================
-         * @var PaginatedList $pagination
-        ===========================================*/
-
-        /**
-         * Return a ArrayList of all blog children of this page.
-         *
-         * @return PaginatedList
-         */
+        /** @var PaginatedList $pagination */
         $pagination = PaginatedList::create($this->liveChildren(true), Controller::curr()->request);
         $items = ($this->Items > 0 ? $this->Items : 10);
         $pagination->setPageLength($items);

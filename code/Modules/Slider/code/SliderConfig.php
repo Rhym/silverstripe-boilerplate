@@ -5,11 +5,11 @@
  *
  * @property string Height
  * @property boolean HideDefaultSlider
+ *
  * @method SliderItem SliderItems
  */
 class SliderConfig extends DataExtension
 {
-
     /**
      * @var array
      */
@@ -30,11 +30,6 @@ class SliderConfig extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        /** =========================================
-         * @var FieldList $fields
-         * @var GridFieldConfig_RelationEditor $config
-        ===========================================*/
-
         $fields->addFieldToTab('Root.Banner', HeaderField::create('', 'Banner'));
         $fields->addFieldToTab('Root.Banner', LiteralField::create('',
             '<p>The banner is displayed below the header of the page. If there is more than one slide, the banner will become a carousel.</p>'
@@ -42,6 +37,7 @@ class SliderConfig extends DataExtension
         $fields->addFieldToTab('Root.Banner', LiteralField::create('',
             '<div class="message"><p><strong>Note:</strong> A default banner image can be set across all pages under "Settings > Banner" in the left-hand menu</p></div>'
         ));
+        /** @var GridFieldConfig_RelationEditor $config */
         $config = GridFieldConfig_RelationEditor::create(10);
         $config->addComponent(new GridFieldOrderableRows('SortOrder'))
             ->addComponent(new GridFieldDeleteAction());
@@ -70,6 +66,7 @@ class SliderConfig extends DataExtension
      */
     public function updateSettingsFields(FieldList $fields)
     {
+        /** @var FieldGroup $hideDefaultSlider */
         $fields->addFieldToTab('Root.Settings', $hideDefaultSlider = FieldGroup::create(
             CheckboxField::create('HideDefaultSlider', 'Hide the slider from this page')
         ));

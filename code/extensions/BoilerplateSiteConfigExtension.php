@@ -54,18 +54,6 @@ class BoilerplateSiteConfigExtension extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        /** =========================================
-         * @var UploadField $logo
-         * @var UploadField $mobileLogo
-         * @var UploadField $favicon
-         * @var TextareaField $address
-         * @var TextareaField $postalAddress
-         * @var TextareaField $directions
-         * @var TextareaField $googleSiteVerification
-         * @var TextareaField $trackingCode
-         * @var FieldGroup $tagManagerFieldGroup
-        ===========================================*/
-
         /** -----------------------------------------
          * Settings
          * ----------------------------------------*/
@@ -79,6 +67,7 @@ class BoilerplateSiteConfigExtension extends DataExtension
          * ----------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Images', 'Images');
+        /** @var UploadField $favicon */
         $fields->addFieldsToTab('Root.Settings.Images',
             array(
                 HeaderField::create('', 'Images'),
@@ -94,6 +83,11 @@ class BoilerplateSiteConfigExtension extends DataExtension
          * ----------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Details', 'Details');
+        /**
+         * @var TextareaField $address
+         * @var TextareaField $postalAddress
+         * @var TextareaField $directions
+         */
         $fields->addFieldsToTab('Root.Settings.Details',
             array(
                 HeaderField::create('', 'General'),
@@ -120,6 +114,11 @@ class BoilerplateSiteConfigExtension extends DataExtension
 
         if (Permission::check('ADMIN')) {
             $fields->findOrMakeTab('Root.Settings.Analytics', 'Analytics');
+            /**
+             * @var TextareaField $googleSiteVerification
+             * @var TextareaField $trackingCode
+             * @var TextareaField $tagManagerFieldGroup
+             */
             $fields->addFieldsToTab('Root.Settings.Analytics',
                 array(
                     HeaderField::create('', 'Analytics'),
@@ -127,7 +126,7 @@ class BoilerplateSiteConfigExtension extends DataExtension
                         'Google Site Verification Code'),
                     $trackingCode = TextareaField::create('TrackingCode', 'Tracking Code'),
                     $tagManagerFieldGroup = FieldGroup::create(
-                        $tagManager = CheckboxField::create('TagManager',
+                        CheckboxField::create('TagManager',
                             'Does the tracking code above contain Google Tag Manager?')
                     )
                 )

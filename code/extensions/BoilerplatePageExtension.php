@@ -25,11 +25,8 @@ class BoilerplatePageExtension extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        /** =========================================
-         * @var HtmlEditorField $content
-        ===========================================*/
-
         $fields->removeByName('Content');
+        /** @var HtmlEditorField $content */
         $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'), 'Metadata');
         $content->setRows(20);
     }
@@ -40,11 +37,10 @@ class BoilerplatePageExtension extends DataExtension
      */
     public function updateSettingsFields(FieldList $fields)
     {
-        /** =========================================
+        /** Use FieldGroups to set left titles for the checkboxes.
+         *
          * @var FieldGroup $hideSidebar
-        ===========================================*/
-
-        /** Use FieldGroups to set left titles for the checkboxes. */
+         */
         $fields->addFieldToTab('Root.Settings', $hideSidebar = FieldGroup::create(
             CheckboxField::create('HideSidebar', 'Hide the sidebar from this page')
         ));
@@ -57,10 +53,6 @@ class BoilerplatePageExtension extends DataExtension
      */
     public function DirectionLink($direction = 'next')
     {
-        /** =========================================
-         * @var Page $page
-        ===========================================*/
-
         switch ($direction) {
             case 'previous':
                 $sortDirection = 'Sort:LessThan';
@@ -70,6 +62,7 @@ class BoilerplatePageExtension extends DataExtension
                 $sortDirection = 'Sort:GreaterThan';
                 $sort = 'Sort ASC';
         }
+        /** @var Page $page */
         $page = Page::get()->filter(array(
             'ParentID' => $this->owner->ParentID,
             $sortDirection => $this->owner->Sort

@@ -10,7 +10,6 @@
  */
 class BlogHolder extends Page
 {
-
     /**
      * @var string
      */
@@ -46,18 +45,14 @@ class BlogHolder extends Page
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var FieldList $fields
-         * @var NumericField $items
-         * @var HtmlEditorField $blogSidebarContent
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = parent::getCMSFields();
 
         /** -----------------------------------------
          * Fields
          * ----------------------------------------*/
 
+        /** @var NumericField $items */
         $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
         $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
 
@@ -69,6 +64,7 @@ class BlogHolder extends Page
         $fields->addFieldToTab('Root.BlogSidebar', LiteralField::create('',
             '<p>The content for the sidebar will be displayed in the left-hand side of this page.</p>'
         ));
+        /** @var HtmlEditorField $blogSidebarContent */
         $fields->addFieldToTab('Root.BlogSidebar',
             $blogSidebarContent = HtmlEditorField::create('BlogSidebarContent', 'Content (optional)'));
         $blogSidebarContent->setRows(10);
@@ -82,10 +78,6 @@ class BlogHolder extends Page
      */
     public function index(SS_HTTPRequest $request)
     {
-        /** =========================================
-         * @var PaginatedList $pagination
-        ===========================================*/
-
         /**
          * Return a ArrayList of all BlogPage children of this page.
          *
@@ -93,6 +85,7 @@ class BlogHolder extends Page
          */
         $pagination = PaginatedList::create($this->liveChildren(true), Controller::curr()->request);
         $items = ($this->Items > 0 ? $this->Items : 10);
+        /** @var PaginatedList $pagination */
         $pagination->setPageLength($items);
         $data = array(
             'PaginatedPages' => $pagination

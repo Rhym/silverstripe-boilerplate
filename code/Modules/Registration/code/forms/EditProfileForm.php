@@ -5,7 +5,6 @@
  */
 class EditProfileForm extends Form
 {
-
     /**
      * EditProfileForm constructor
      *

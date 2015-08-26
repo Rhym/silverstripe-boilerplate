@@ -9,7 +9,6 @@
  */
 class SubscriptionConfig extends DataExtension
 {
-
     /**
      * @var array
      */
@@ -31,16 +30,15 @@ class SubscriptionConfig extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        /** =========================================
-         * @var TextField $mailChimpAPI
-         * @var TextareaField $mailChimpSuccessMessage
-        ===========================================*/
-
         /** -----------------------------------------
          * Subscription
          * -------------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Subscription', 'Subscription');
+        /**
+         * @var TextField $mailChimpAPI
+         * @var TextareaField $mailChimpSuccessMessage
+         */
         $fields->addFieldsToTab('Root.Settings.Subscription',
             array(
                 HeaderField::create('', 'Newsletter Subscription'),

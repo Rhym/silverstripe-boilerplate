@@ -5,7 +5,6 @@
  */
 class EditProfilePage extends Page
 {
-
     /**
      * @var string
      */
@@ -23,7 +22,9 @@ class EditProfilePage extends Page
  */
 class EditProfilePage_Controller extends Page_Controller
 {
-
+    /**
+     * @var array
+     */
     private static $allowed_actions = array('Form');
 
     /**

@@ -5,12 +5,12 @@
  *
  * @property int SortOrder
  * @property string Caption
+ *
  * @method Page Page
  * @method Image Image
  */
 class SliderItem extends DataObject
 {
-
     /**
      * @var array
      */
@@ -76,15 +76,11 @@ class SliderItem extends DataObject
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var FieldList $fields
-         * @var Uploadfield $image
-         * @var HtmlEditorField $caption
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = FieldList::create(TabSet::create('Root'));
 
         $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Slide'));
+        /** @var UploadField $image */
         $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/slider');
         $image->setAllowedExtensions(array(
@@ -96,6 +92,7 @@ class SliderItem extends DataObject
         $fields->addFieldToTab('Root.Main', LiteralField::create('',
             '<div class="message"><p><strong>Note:</strong> Captions are optional</p></div>'
         ));
+        /** @var HtmlEditorField $caption */
         $fields->addFieldToTab('Root.Main', $caption = HtmlEditorField::create('Caption'));
         $caption->setRows(15);
 

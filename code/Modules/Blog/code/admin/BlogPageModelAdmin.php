@@ -5,7 +5,6 @@
  */
 class BlogPageModelAdmin extends CatalogPageAdmin
 {
-
     /**
      * @var string
      */
@@ -43,11 +42,7 @@ class BlogPageModelAdmin extends CatalogPageAdmin
 
     public function getEditForm($id = null, $fields = null)
     {
-        /** =========================================
-         * @var Form $form
-         * @var GridField $gridField
-        ===========================================*/
-
+        /** @var Form $form */
         $form = parent::getEditForm($id, $fields);
         if ($this->modelClass == 'BlogPage' && $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
             /**

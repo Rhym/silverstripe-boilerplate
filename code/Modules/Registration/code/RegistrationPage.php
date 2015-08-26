@@ -5,7 +5,6 @@
  */
 class RegistrationPage extends Page
 {
-
     /**
      * @var string
      */
@@ -23,7 +22,9 @@ class RegistrationPage extends Page
  */
 class RegistrationPage_Controller extends Page_Controller
 {
-
+    /**
+     * @var array
+     */
     private static $allowed_actions = array('Form');
 
     /**

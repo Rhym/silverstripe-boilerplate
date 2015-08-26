@@ -11,7 +11,6 @@
  */
 class ContactMessage extends DataObject
 {
-
     /**
      * @var array
      */
@@ -41,10 +40,7 @@ class ContactMessage extends DataObject
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var FieldList $fields
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = FieldList::create(TabSet::create('Root'));
 
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('FirstName'));
@@ -53,6 +49,8 @@ class ContactMessage extends DataObject
             '<div class="field"><label class="left">Email</label><div class="middlecolumn"><span class="readonly"><a href="mailto:' . $this->Email . '">' . $this->Email . '</a></span></div></div>'));
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('Phone'));
         $fields->addFieldToTab('Root.Main', ReadonlyField::create('Message'));
+
+        $this->extend('updateCMSFields', $fields);
 
         return $fields;
     }

@@ -7,7 +7,6 @@
  */
 class BlogConfig extends DataExtension
 {
-
     /**
      * @var array
      */
@@ -25,15 +24,12 @@ class BlogConfig extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        /** =========================================
-         * @var TextField $disqusForumShortName
-        ===========================================*/
-
         /** -----------------------------------------
          * Comments
          * ----------------------------------------*/
 
         $fields->findOrMakeTab('Root.Settings.Comments', 'Comments');
+        /** @var TextField $disqusForumShortName */
         $fields->addFieldsToTab('Root.Settings.Comments',
             array(
                 HeaderField::create('', 'Comments'),

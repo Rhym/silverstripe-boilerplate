@@ -5,16 +5,15 @@
  */
 class FlashMessageConfig extends DataExtension
 {
-
     /**
      * @param $message
      * @param string $type
      */
-    public function setFlash($message, $type = 'info')
+    public function setFlash($message = '', $type = 'info')
     {
         Session::set('FlashMessage', array(
-            'FlashMessageType' => $type,
-            'FlashMessage' => $message
+            'FlashMessageType' => (string)$type,
+            'FlashMessage' => (string)$message
         ));
     }
 
@@ -23,12 +22,9 @@ class FlashMessageConfig extends DataExtension
      */
     public function getFlashMessage()
     {
-        /** =========================================
-         * @var ArrayData $array
-        ===========================================*/
-
-        if ($message = Session::get('FlashMessage')) {
+        if ((string)$message = Session::get('FlashMessage')) {
             Session::clear('FlashMessage');
+            /** @var ArrayData $array */
             $array = ArrayData::create($message);
             return $array->renderWith('FlashMessage');
         }

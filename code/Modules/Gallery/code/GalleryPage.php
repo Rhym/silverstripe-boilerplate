@@ -4,11 +4,11 @@
  * Class GalleryPage
  *
  * @property boolean NoMargin
+ *
  * @method ManyManyList Images
  */
 class GalleryPage extends Page
 {
-
     /**
      * @var string
      */
@@ -38,10 +38,7 @@ class GalleryPage extends Page
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var UploadField $images
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = parent::getCMSFields();
 
         /** -----------------------------------------
@@ -52,8 +49,9 @@ class GalleryPage extends Page
         $fields->addFieldToTab('Root.Gallery', LiteralField::create('',
             '<p>Images below are displayed in a carousel above the content. All images are rescaled to 1140px by 640px.</p>'
         ));
+        /** @var UploadField $images */
         $fields->addFieldToTab('Root.Gallery',
-            $images = UploadField::create('Images', 'Images', $this->owner->Images()));
+            $images = UploadField::create('Images', 'Images', $this->Images()));
         $images->setFolderName('Uploads/gallery');
         $images->setAllowedExtensions(array(
             'jpg',
@@ -64,25 +62,6 @@ class GalleryPage extends Page
 
         return $fields;
 
-    }
-
-    /**
-     * @return PaginatedList
-     */
-    public function PaginatedPages()
-    {
-        /** =========================================
-         * @var PaginatedList $pagination
-        ===========================================*/
-
-        /** Protect against "Division by 0" error */
-        if ($this->Items == null || $this->Items == 0) {
-            $this->Items = 10;
-        }
-
-        $pagination = PaginatedList::create($this->Images(), Controller::curr()->request);
-        $pagination->setPageLength($this->Items);
-        return $pagination;
     }
 
 }

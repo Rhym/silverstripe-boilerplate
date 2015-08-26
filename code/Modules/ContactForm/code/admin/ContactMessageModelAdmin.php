@@ -5,7 +5,6 @@
  */
 class ContactMessageModelAdmin extends ModelAdmin
 {
-
     /**
      * @var string
      */
@@ -53,14 +52,11 @@ class ContactMessageModelAdmin extends ModelAdmin
      */
     public function getEditForm($id = null, $fields = null)
     {
-        /** =========================================
-         * @var Form $form
-         * @var GridField $gridField
-        ===========================================*/
-
+        /** @var Form $form */
         $form = parent::getEditForm($id, $fields);
 
         $gridFieldName = $this->sanitiseClassName($this->modelClass);
+        /** @var GridField $gridField */
         $gridField = $form->Fields()->fieldByName($gridFieldName);
         $gridField->getConfig()->removeComponentsByType($gridField->getConfig()->getComponentByType('GridFieldAddNewButton'));
         $gridField->getConfig()->removeComponentsByType($gridField->getConfig()->getComponentByType('GridFieldPrintButton'));

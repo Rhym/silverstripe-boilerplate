@@ -10,7 +10,6 @@
  */
 class BlogPage extends Page
 {
-
     /**
      * @var string
      */
@@ -102,14 +101,10 @@ class BlogPage extends Page
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var FieldList $fields
-         * @var UploadField $blogImage
-         * @var DateField $dateField
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = parent::getCMSFields();
 
+        /** @var UploadField $blogImage */
         $fields->addFieldToTab('Root.Main', $blogImage = UploadField::create('Image', 'Image'), 'Content');
         $blogImage->setRightTitle('Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.');
         $blogImage->setFolderName('Uploads/blog');
@@ -119,6 +114,7 @@ class BlogPage extends Page
             'gif',
             'png'
         ));
+        /** @var DateField $dateField */
         $fields->addFieldToTab('Root.Main', $dateField = DateField::create('Date', 'Article Date (optional)'),
             'Content');
         $dateField->setConfig('showcalendar', true);

@@ -5,7 +5,6 @@
  */
 class RegistrationForm extends Form
 {
-
     /**
      * RegistrationForm constructor
      *

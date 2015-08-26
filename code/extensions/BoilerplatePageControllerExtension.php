@@ -8,7 +8,6 @@ class BoilerplatePageControllerExtension extends Extension
 
     public function onBeforeInit()
     {
-
         $baseHref = Director::BaseURL();
 
         /** -----------------------------------------

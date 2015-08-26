@@ -5,7 +5,6 @@
  */
 class PortfolioPageModelAdmin extends CatalogPageAdmin
 {
-
     /**
      * @var string
      */
@@ -48,15 +47,13 @@ class PortfolioPageModelAdmin extends CatalogPageAdmin
      */
     public function getEditForm($id = null, $fields = null)
     {
-        /** =========================================
-         * @var Form $form
-         * @var GridField $gridField
-        ===========================================*/
-
+        /** @var Form $form */
         $form = parent::getEditForm($id, $fields);
         if ($this->modelClass == 'PortfolioPage' && $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
             /**
              * This is just a precaution to ensure we got a GridField from dataFieldByName() which you should have
+             *
+             * @var GridField $gridField
              */
             if ($gridField instanceof GridField) {
                 $gridField->getConfig()->addComponent(new GridFieldOrderableRows('Sort'));

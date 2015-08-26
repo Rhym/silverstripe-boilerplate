@@ -4,11 +4,11 @@
  * Class SliderSiteConfigExtension
  *
  * @property string DefaultSliderHeight
+ *
  * @method Image SliderImage
  */
 class SliderSiteConfigExtension extends Extension
 {
-
     /**
      * @var array
      */
@@ -35,16 +35,15 @@ class SliderSiteConfigExtension extends Extension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        /** =========================================
-         * @var UploadField $image
-         * @var NumericField $defaultSliderHeight
-        ===========================================*/
-
         if (!$fields->fieldByName('Root.Settings')) {
             $fields->addFieldToTab('Root', TabSet::create('Settings'));
         }
 
         $fields->findOrMakeTab('Root.Settings.Banner', 'Banner');
+        /**
+         * @var UploadField $image
+         * @var NumericField $defaultSliderHeight
+         */
         $fields->addFieldsToTab('Root.Settings.Banner',
             array(
                 HeaderField::create('', 'Banner'),

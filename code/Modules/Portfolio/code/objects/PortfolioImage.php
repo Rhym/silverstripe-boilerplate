@@ -11,7 +11,6 @@
  */
 class PortfolioImage extends DataObject
 {
-
     /**
      * @var array
      */
@@ -76,11 +75,9 @@ class PortfolioImage extends DataObject
      */
     protected function getContentSummary()
     {
-        /** =========================================
-         * @var HTMLText $html
-        ===========================================*/
 
         if ($this->Content) {
+            /** @var HTMLText $html */
             $html = HTMLText::create();
             $html->setValue($this->dbObject('Content')->summary());
             return $html;
@@ -105,16 +102,11 @@ class PortfolioImage extends DataObject
      */
     public function getCMSFields()
     {
-        /** =========================================
-         * @var FieldList $fields
-         * @var UploadField $image
-         * @var OptionsetField $contentPosition
-         * @var HtmlEditorField $content
-        ===========================================*/
-
+        /** @var FieldList $fields */
         $fields = FieldList::create(TabSet::create('Root'));
 
         $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Image'));
+        /** @var UploadField $image */
         $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
         $image->setFolderName('Uploads/portfolio');
         $image->setAllowedExtensions(array(
@@ -123,12 +115,16 @@ class PortfolioImage extends DataObject
             'gif',
             'png'
         ));
+        /** @var OptionsetField $contentPosition */
         $fields->addFieldToTab('Root.Main',
             $contentPosition = OptionsetField::create('ContentPosition', 'Content Position',
                 $this->dbObject('ContentPosition')->enumValues()));
         $contentPosition->setRightTitle('Display the content on the left or right hand side.');
+        /** @var HtmlEditorField $content */
         $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'));
         $content->setRows(5);
+
+        $this->extend('updateCMSFields', $fields);
 
         return $fields;
     }
@@ -140,7 +136,7 @@ class PortfolioImage extends DataObject
     {
         /** Set SortOrder */
         if (!$this->SortOrder) {
-            $this->SortOrder = PortfolioImage::get()->max('SortOrder') + 1;
+            $this->SortOrder = DataObject::get($this->ClassName)->max('SortOrder') + 1;
         }
         parent::onBeforeWrite();
     }

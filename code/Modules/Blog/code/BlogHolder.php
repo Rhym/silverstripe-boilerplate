@@ -53,20 +53,25 @@ class BlogHolder extends Page
          * ----------------------------------------*/
 
         /** @var NumericField $items */
-        $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
-        $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
+        $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', _t('BlogHolder.Items', 'Items')),
+            'Content');
+        $items->setRightTitle(_t('BlogHolder.ItemsRightTitle',
+            'Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."'));
 
         /** -----------------------------------------
          * Blog Sidebar
          * ----------------------------------------*/
 
-        $fields->addFieldToTab('Root.BlogSidebar', HeaderField::create('', 'Sidebar'));
-        $fields->addFieldToTab('Root.BlogSidebar', LiteralField::create('',
-            '<p>The content for the sidebar will be displayed in the left-hand side of this page.</p>'
+        $fields->addFieldToTab('Root.BlogSidebar',
+            HeaderField::create('BlogSideBarHeading', _t('BlogHolder.BlogSideBarHeading', 'Blog Sidebar')));
+        $fields->addFieldToTab('Root.BlogSidebar', LiteralField::create('BlogSideBarDescription',
+            _t('BlogHolder.BlogSideBarDescription',
+                '<p>The content will be displayed at the top of the sidebar.</p>')
         ));
         /** @var HtmlEditorField $blogSidebarContent */
         $fields->addFieldToTab('Root.BlogSidebar',
-            $blogSidebarContent = HtmlEditorField::create('BlogSidebarContent', 'Content (optional)'));
+            $blogSidebarContent = HtmlEditorField::create('BlogSidebarContent',
+                _t('BlogHolder.BlogSidebarContent', 'Content (optional)')));
         $blogSidebarContent->setRows(10);
 
         return $fields;

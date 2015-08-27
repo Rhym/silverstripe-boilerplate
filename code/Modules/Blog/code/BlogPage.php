@@ -105,8 +105,10 @@ class BlogPage extends Page
         $fields = parent::getCMSFields();
 
         /** @var UploadField $blogImage */
-        $fields->addFieldToTab('Root.Main', $blogImage = UploadField::create('Image', 'Image'), 'Content');
-        $blogImage->setRightTitle('Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.');
+        $fields->addFieldToTab('Root.Main', $blogImage = UploadField::create('Image', _t('BlogPage.Image', 'Image')),
+            'Content');
+        $blogImage->setRightTitle(_t('BlogPage.ImageRightTitle',
+            'Image is used on BlogHolder pages as a thumbnail, as well as at the top of this page\'s content.'));
         $blogImage->setFolderName('Uploads/blog');
         $blogImage->setAllowedExtensions(array(
             'jpg',
@@ -115,10 +117,12 @@ class BlogPage extends Page
             'png'
         ));
         /** @var DateField $dateField */
-        $fields->addFieldToTab('Root.Main', $dateField = DateField::create('Date', 'Article Date (optional)'),
+        $fields->addFieldToTab('Root.Main',
+            $dateField = DateField::create('Date', _t('BlogPage.Date', 'Article Date (optional)')),
             'Content');
         $dateField->setConfig('showcalendar', true);
-        $fields->addFieldToTab('Root.Main', TextField::create('Author', 'Author (optional)'), 'Content');
+        $fields->addFieldToTab('Root.Main', TextField::create('Author', _t('BlogPage.Author', 'Author (optional)')),
+            'Content');
 
         return $fields;
 

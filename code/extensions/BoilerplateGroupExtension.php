@@ -25,7 +25,7 @@ class BoilerplateGroupExtension extends DataExtension
         if (!$siteAdminGroups->count()) {
             $siteAdminGroup = Group::create();
             $siteAdminGroup->Code = 'site-administrators';
-            $siteAdminGroup->Title = 'Site Administrators';
+            $siteAdminGroup->Title = _t('BoilerplateGroupExtension.SiteAdminGroupTitle', 'Site Administrators');
             $siteAdminGroup->Sort = 0;
             $siteAdminGroup->write();
 

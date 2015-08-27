@@ -26,8 +26,9 @@ class BoilerplatePageExtension extends DataExtension
     public function updateCMSFields(FieldList $fields)
     {
         $fields->removeByName('Content');
+
         /** @var HtmlEditorField $content */
-        $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'), 'Metadata');
+        $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content', _t('BoilerplatePageExtension.Content', 'Content')), 'Metadata');
         $content->setRows(20);
     }
 
@@ -42,9 +43,9 @@ class BoilerplatePageExtension extends DataExtension
          * @var FieldGroup $hideSidebar
          */
         $fields->addFieldToTab('Root.Settings', $hideSidebar = FieldGroup::create(
-            CheckboxField::create('HideSidebar', 'Hide the sidebar from this page')
+            CheckboxField::create('HideSidebar', _t('BoilerplatePageExtension.HideSidebar', 'Hide the sidebar from this page'))
         ));
-        $hideSidebar->setTitle('Sidebar');
+        $hideSidebar->setTitle(_t('BoilerplatePageExtension.HideSidebarTitle', 'Sidebar'));
     }
 
     /**

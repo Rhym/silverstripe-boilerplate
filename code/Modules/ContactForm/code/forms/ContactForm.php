@@ -19,45 +19,57 @@ class ContactForm extends Form
         $clearfix = LiteralField::create('', '<div class="clearfix"></div><!-- /.clearfix -->');
 
         /** @var TextField $firstName */
-        $firstName = TextField::create('FirstName', 'First Name');
-        $firstName->setAttribute('data-parsley-required-message', 'Please enter your <strong>First Name</strong>')
+        $firstName = TextField::create('FirstName', _t('ContactForm.FirstName', 'First Name'));
+        $firstName->setAttribute('data-parsley-required-message',
+            _t('ContactForm.FirstNameRequiredMessage', 'Please enter your <strong>First Name</strong>'))
             ->setAttribute('autocomplete', 'fname given-name')
-            ->setCustomValidationMessage('Please enter your <strong>First Name</strong>');
+            ->setCustomValidationMessage(_t('ContactForm.FirstNameRequiredMessage',
+                'Please enter your <strong>First Name</strong>'));
 
         /** @var TextField $lastName */
-        $lastName = TextField::create('LastName', 'Last Name');
-        $lastName->setAttribute('data-parsley-required-message', 'Please enter your <strong>Last Name</strong>')
+        $lastName = TextField::create('LastName', _t('ContactForm.LastName', 'Last Name'));
+        $lastName->setAttribute('data-parsley-required-message',
+            _t('ContactForm.LastNameRequiredMessage', 'Please enter your <strong>Last Name</strong>'))
             ->setAttribute('autocomplete', 'lname family-name')
-            ->setCustomValidationMessage('Please enter your <strong>Last Name</strong>');
+            ->setCustomValidationMessage(_t('ContactForm.LastNameRequiredMessage',
+                'Please enter your <strong>Last Name</strong>'));
 
         /** @var EmailField $email */
-        $email = EmailField::create('Email', 'Email Address');
-        $email->setAttribute('data-parsley-required-message', 'Please enter your <strong>Email</strong>')
+        $email = EmailField::create('Email', _t('ContactForm.Email', 'Email Address'));
+        $email->setAttribute('data-parsley-required-message',
+            _t('ContactForm.EmailRequiredMessage', 'Please enter your <strong>Email</strong>'))
             ->setAttribute('autocomplete', 'email')
-            ->setCustomValidationMessage('Please enter your <strong>Email</strong>');
+            ->setCustomValidationMessage(_t('ContactForm.EmailRequiredMessage',
+                'Please enter your <strong>Email</strong>'));
 
         /** @var TextField $phone */
-        $phone = TextField::create('Phone', 'Phone Number (optional)')
+        $phone = TextField::create('Phone', _t('ContactForm.Phone', 'Phone Number (optional)'))
             ->setAttribute('autocomplete', 'tel');
         $phone->addExtraClass('form-control');
 
         /** @var TextField $suburb */
-        $suburb = TextField::create('Suburb', 'Suburb');
-        $suburb->setAttribute('data-parsley-required-message', 'Please enter your <strong>Suburb</strong>')
+        $suburb = TextField::create('Suburb', _t('ContactForm.Suburb', 'Suburb'));
+        $suburb->setAttribute('data-parsley-required-message',
+            _t('ContactForm.SuburbRequiredMessage', 'Please enter your <strong>Suburb</strong>'))
             ->setAttribute('autocomplete', 'region')
-            ->setCustomValidationMessage('Please enter your <strong>Suburb</strong>');
+            ->setCustomValidationMessage(_t('ContactForm.SuburbRequiredMessage',
+                'Please enter your <strong>Suburb</strong>'));
 
         /** @var TextField $city */
-        $city = TextField::create('City', 'City');
-        $city->setAttribute('data-parsley-required-message', 'Please enter your <strong>City</strong>')
+        $city = TextField::create('City', _t('ContactForm.City', 'City'));
+        $city->setAttribute('data-parsley-required-message',
+            _t('ContactForm.CityRequiredMessage', 'Please enter your <strong>City</strong>'))
             ->setAttribute('autocomplete', 'city')
-            ->setCustomValidationMessage('Please enter your <strong>City</strong>');
+            ->setCustomValidationMessage(_t('ContactForm.CityRequiredMessage',
+                'Please enter your <strong>City</strong>'));
 
         /** @var TextareaField $message */
-        $message = TextareaField::create('Message', 'Message');
-        $message->setAttribute('placeholder', 'Enter your message')
-            ->setAttribute('data-parsley-required-message', 'Please enter your <strong>Message</strong>')
-            ->setCustomValidationMessage('Please enter your <strong>Message</strong>');
+        $message = TextareaField::create('Message', _t('ContactForm.Message', 'Message'));
+        $message->setAttribute('placeholder', _t('ContactForm.MessagePlaceholder', 'Enter your message'))
+            ->setAttribute('data-parsley-required-message',
+                _t('ContactForm.MessageRequiredMessage', 'Please enter your <strong>Message</strong>'))
+            ->setCustomValidationMessage(_t('ContactForm.MessageRequiredMessage',
+                'Please enter your <strong>Message</strong>'));
 
         /** @var LiteralField $reCaptcha */
         $reCaptcha = LiteralField::create('', '');
@@ -82,7 +94,7 @@ class ContactForm extends Form
          * ----------------------------------------*/
 
         $actions = FieldList::create(
-            FormAction::create('Submit')->setTitle('Submit')->addExtraClass('btn--primary')
+            FormAction::create('Submit')->setTitle(_t('ContactForm.Submit', 'Submit'))->addExtraClass('btn--primary')
         );
 
         /** -----------------------------------------
@@ -151,23 +163,28 @@ class ContactForm extends Form
                 foreach ($resp->getErrorCodes() as $code) {
                     switch ($code) {
                         case 'missing-input-secret':
-                            $html .= 'The secret parameter is missing.';
+                            $html .= _t('ContactForm.RecaptchaMissingInputSecret', 'The secret parameter is missing.');
                             break;
                         case 'invalid-input-secret':
-                            $html .= 'The secret parameter is invalid or malformed.';
+                            $html .= _t('ContactForm.RecaptchaInvalidInputSecret',
+                                'The secret parameter is invalid or malformed.');
                             break;
                         case 'missing-input-response':
-                            $html .= 'Please check the reCAPTCHA below to confirm you\'re human.';
+                            $html .= _t('ContactForm.RecaptchaMissingInputResponse',
+                                'Please check the reCAPTCHA below to confirm you\'re human.');
                             break;
                         case 'invalid-input-response':
-                            $html .= 'The response parameter is invalid or malformed.';
+                            $html .= _t('ContactForm.RecaptchaInvalidInputResponse',
+                                'The response parameter is invalid or malformed.');
                             break;
                         default:
-                            $html .= 'There was an error submitting the reCAPTCHA, please try again.';
+                            $html .= _t('ContactForm.RecaptchaDefaultError',
+                                'There was an error submitting the reCAPTCHA, please try again.');
                     }
                 }
                 $errors->setValue($html);
-                $this->controller->setFlash('Your message has not been sent, please fill out all of the <strong>required fields.</strong>',
+                $this->controller->setFlash(_t('ContactForm.RecaptchaFormError',
+                    'Your message has not been sent, please fill out all of the <strong>required fields.</strong>'),
                     'warning');
                 $form->addErrorMessage('ReCaptcha', $errors, 'bad', false);
                 return $this->controller->redirect($this->controller->Link());
@@ -181,7 +198,7 @@ class ContactForm extends Form
         $data['Logo'] = SiteConfig::current_site_config()->LogoImage();
         $From = $data['Email'];
         $To = $this->controller->data()->MailTo;
-        $Subject = SiteConfig::current_site_config()->Title . ' - Contact message';
+        $Subject = SiteConfig::current_site_config()->Title . _t('ContactForm.EmailSubject', ' - Contact message');
         /** @var Email $email */
         $email = Email::create($From, $To, $Subject);
         if ($cc = $this->controller->data()->MailCC) {
@@ -196,7 +213,8 @@ class ContactForm extends Form
         if ($this->controller->data()->SubmitText) {
             $submitText = $this->controller->data()->SubmitText;
         } else {
-            $submitText = 'Thank you for contacting us, we will get back to you as soon as possible.';
+            $submitText = _t('ContactForm.SubmitText',
+                'Thank you for contacting us, we will get back to you as soon as possible.');
         }
         $this->controller->setFlash($submitText, 'success');
 
@@ -222,7 +240,8 @@ class ContactForm extends Form
     {
         $result = parent::validate();
         if (!$result) {
-            $this->controller->setFlash('Your message has not been sent, please fill out all of the <strong>required fields.</strong>',
+            $this->controller->setFlash(_t('ContactForm.ValidationError',
+                'Your message has not been sent, please fill out all of the <strong>required fields.</strong>'),
                 'warning');
         }
         return $result;

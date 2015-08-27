@@ -43,12 +43,14 @@ class ContactMessage extends DataObject
         /** @var FieldList $fields */
         $fields = FieldList::create(TabSet::create('Root'));
 
-        $fields->addFieldToTab('Root.Main', ReadonlyField::create('FirstName'));
-        $fields->addFieldToTab('Root.Main', ReadonlyField::create('LastName'));
+        $fields->addFieldToTab('Root.Main',
+            ReadonlyField::create('FirstName', _t('ContactMessage.FirstName', 'First Name')));
+        $fields->addFieldToTab('Root.Main',
+            ReadonlyField::create('LastName', _t('ContactMessage.LastName', 'Last Name')));
         $fields->addFieldToTab('Root.Main', LiteralField::create('',
             '<div class="field"><label class="left">Email</label><div class="middlecolumn"><span class="readonly"><a href="mailto:' . $this->Email . '">' . $this->Email . '</a></span></div></div>'));
-        $fields->addFieldToTab('Root.Main', ReadonlyField::create('Phone'));
-        $fields->addFieldToTab('Root.Main', ReadonlyField::create('Message'));
+        $fields->addFieldToTab('Root.Main', ReadonlyField::create('Phone', _t('ContactMessage.Phone', 'Phone')));
+        $fields->addFieldToTab('Root.Main', ReadonlyField::create('Message', _t('ContactMessage.Message', 'Message')));
 
         $this->extend('updateCMSFields', $fields);
 

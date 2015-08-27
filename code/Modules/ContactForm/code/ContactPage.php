@@ -75,60 +75,82 @@ class ContactPage extends Page
          * Contact Page
          * ----------------------------------------*/
 
-        $fields->addFieldToTab('Root.Main', HeaderField::create('Settings'), 'Content');
+        $fields->addFieldToTab('Root.Main',
+            HeaderField::create('Settings', _t('ContactPage.SettingsHeading', 'Settings')), 'Content');
         /** @var TextField $mailTo */
-        $fields->addFieldToTab('Root.Main', $mailTo = TextField::create('MailTo', 'Email'), 'Content');
+        $fields->addFieldToTab('Root.Main', $mailTo = TextField::create('MailTo', _t('ContactPage.Email', 'Email')),
+            'Content');
         $mailTo->setRightTitle('Choose an email address for the contact page to send to');
         /** @var TextField $mailCC */
-        $fields->addFieldToTab('Root.Main', $mailCC = TextField::create('MailCC', 'Cc'), 'Content');
-        $mailCC->setRightTitle('Choose an email, or emails to CC (separate emails with a comma and no space e.g: email1@website.com,email2@website.com)');
-        /** @var TextField $mailBCC */
-        $fields->addFieldToTab('Root.Main', $mailBCC = TextField::create('MailBCC', 'Bcc'), 'Content');
-        /** @var TextareaField $submissionText */
-        $fields->addFieldToTab('Root.Main', $submissionText = TextareaField::create('SubmitText', 'Submission Text'),
+        $fields->addFieldToTab('Root.Main', $mailCC = TextField::create('MailCC', _t('ContactPage.MailCC', 'Cc')),
             'Content');
-        $submissionText->setRightTitle('Text for contact form submission once the email has been sent i.e "Thank you for your enquiry"');
-        $fields->addFieldToTab('Root.Main', HeaderField::create('', 'reCaptcha', 4), 'Content');
-        $fields->addFieldToTab('Root.Main', LiteralField::create('',
-            '<p>By filling in the Site Key, and Secret Key fields a reCaptcha field will be added to the form to protect against spam.</p>'
+        $mailCC->setRightTitle(_t('ContactPage.MailCCRightTitle',
+            'Choose an email, or emails to CC (separate emails with a comma and no space e.g: email1@website.com,email2@website.com)'));
+        /** @var TextField $mailBCC */
+        $fields->addFieldToTab('Root.Main', $mailBCC = TextField::create('MailBCC', _t('ContactPage.MailBCC', 'Bcc')),
+            'Content');
+        /** @var TextareaField $submissionText */
+        $fields->addFieldToTab('Root.Main',
+            $submissionText = TextareaField::create('SubmitText', _t('ContactPage.SubmitText', 'Submission Text')),
+            'Content');
+        $submissionText->setRightTitle(_t('ContactPage.SubmitTextRightTitle',
+            'Text for contact form submission once the email has been sent i.e "Thank you for your enquiry"'));
+        $fields->addFieldToTab('Root.Main',
+            HeaderField::create('RecaptchaHeading', _t('ContactPage.RecaptchaHeading', 'reCaptcha'), 4), 'Content');
+        $fields->addFieldToTab('Root.Main', LiteralField::create('RecaptchaDescription',
+            _t('ContactPage.RecaptchaDescription',
+                '<p>By filling in the Site Key, and Secret Key fields a reCaptcha field will be added to the form to protect against spam.</p>')
         ), 'Content');
-        $fields->addFieldToTab('Root.Main', LiteralField::create('',
-            '<div class="message"><p><strong>Note:</strong> you can get your SiteKey, and SecretKey at this address <a href="https://www.google.com/recaptcha/" target="_blank">https://www.google.com/recaptcha/</a></p></div>'
+        $fields->addFieldToTab('Root.Main', LiteralField::create('RecaptchaDescriptionInstructions',
+            _t('ContactPage.RecaptchaDescriptionInstructions',
+                '<div class="message"><p><strong>Note:</strong> you can get your SiteKey, and SecretKey at this address <a href="https://www.google.com/recaptcha/" target="_blank">https://www.google.com/recaptcha/</a></p></div>')
         ), 'Content');
-        $fields->addFieldToTab('Root.Main', TextField::create('ReCaptchaSiteKey', 'Site Key'), 'Content');
-        $fields->addFieldToTab('Root.Main', TextField::create('ReCaptchaSecretKey', 'Secret Key'), 'Content');
+        $fields->addFieldToTab('Root.Main',
+            TextField::create('ReCaptchaSiteKey', _t('ContactPage.RecaptchaSiteKey', 'Site Key')), 'Content');
+        $fields->addFieldToTab('Root.Main',
+            TextField::create('ReCaptchaSecretKey', _t('ContactPage.RecaptchaSecretKey', 'Secret Key')), 'Content');
 
         /** -----------------------------------------
          * Google Map
          * ----------------------------------------*/
 
-        $fields->addFieldToTab('Root.Map', HeaderField::create('', 'Map'));
-        $fields->addFieldToTab('Root.Map', LiteralField::create('',
-            '<p>The map is displayed below the contact form. The Latitude and Longitude fields are required to be populated in order for the map to be displayed.</p>'
+        $fields->addFieldToTab('Root.Map', HeaderField::create('MapHeading', _t('ContactPage.MapHeading', 'Map')));
+        $fields->addFieldToTab('Root.Map', LiteralField::create('MapDescription',
+            _t('ContactPage.MapDescription',
+                '<p>The Latitude and Longitude fields are required to be populated in order for the map to be displayed.</p>')
         ));
-        $fields->addFieldToTab('Root.Map', Textfield::create('GoogleAPI', 'Maps API (Optional)'));
-        $fields->addFieldToTab('Root.Map', Textfield::create('Latitude', 'Latitude'));
-        $fields->addFieldToTab('Root.Map', Textfield::create('Longitude', 'Longitude'));
-        $fields->addFieldToTab('Root.Map', LiteralField::create('',
-            '<div class="field"><label class="right"><a href="https://support.google.com/maps/answer/18539" target="_blank">How do I find my latitude/longitude?</a></label></div>'));
+        $fields->addFieldToTab('Root.Map',
+            Textfield::create('GoogleAPI', _t('ContactPage.GoogleAPI', 'Maps API (Optional)')));
+        $fields->addFieldToTab('Root.Map', Textfield::create('Latitude', _t('ContactPage.Latitude', 'Latitude')));
+        $fields->addFieldToTab('Root.Map', Textfield::create('Longitude', _t('ContactPage.Longitude', 'Longitude')));
+        $fields->addFieldToTab('Root.Map', LiteralField::create('MapDescriptionInstructions',
+            _t('ContactPage.MapDescriptionInstructions',
+                '<div class="field"><label class="right"><a href="https://support.google.com/maps/answer/18539" target="_blank">How do I find my latitude/longitude?</a></label></div>')));
         /** @var NumericField $mapZoom */
-        $fields->addFieldToTab('Root.Map', $mapZoom = NumericField::create('MapZoom', 'Zoom'));
-        $mapZoom->setRightTitle('Zoom level: 1-22 - The higher the number the more zoomed in the map will be.');
+        $fields->addFieldToTab('Root.Map', $mapZoom = NumericField::create('MapZoom', _t('ContactPage.Zoom', 'Zoom')));
+        $mapZoom->setRightTitle(_t('ContactPage.Zoom',
+            'Zoom level: 1-22 - The higher the number the more zoomed in the map will be.'));
         /**
          * If only one of the colours is set, display a warning.
          */
         if (!$this->MapColor && $this->WaterColor || $this->MapColor && !$this->WaterColor) {
-            $fields->addFieldToTab('Root.Map', LiteralField::create('',
-                '<div class="message warning"><p><strong>Note:</strong> To activate the map styling, both Map Colour and Water Colour must be set.</p></div>'
+            $fields->addFieldToTab('Root.Map', LiteralField::create('MApColorWarning',
+                _t('ContactPage.MapColorWarning',
+                    '<div class="message warning"><p><strong>Note:</strong> To activate the map styling, both Map Colour and Water Colour must be set.</p></div>')
             ));
         }
-        $fields->addFieldToTab('Root.Map', ColorField::create('MapColor', 'Map Colour (Optional)'));
-        $fields->addFieldToTab('Root.Map', ColorField::create('WaterColor', 'Water Colour (Optional)'));
+        $fields->addFieldToTab('Root.Map',
+            ColorField::create('MapColor', _t('ContactPage.MapColor', 'Map Colour (Optional)')));
+        $fields->addFieldToTab('Root.Map',
+            ColorField::create('WaterColor', _t('ContactPage.WaterColor', 'Water Colour (Optional)')));
         /** @var TextField $mapSaturation */
         $fields->addFieldToTab('Root.Map',
-            $mapSaturation = TextField::create('MapSaturation', 'Saturation (Optional)'));
-        $mapSaturation->setRightTitle('A range of -100 to 100, -100 being completely grayscale.');
-        $fields->addFieldToTab('Root.Map', CheckboxField::create('MapMarker', 'Show map marker'));
+            $mapSaturation = TextField::create('MapSaturation',
+                _t('ContactPage.MapSaturation', 'Saturation (Optional)')));
+        $mapSaturation->setRightTitle(_t('ContactPage.MapSaturationRightTitle',
+            'A range of -100 to 100, -100 being completely grayscale.'));
+        $fields->addFieldToTab('Root.Map',
+            CheckboxField::create('MapMarker', _t('ContactPage.MapMarker', 'Show map marker')));
 
         return $fields;
 

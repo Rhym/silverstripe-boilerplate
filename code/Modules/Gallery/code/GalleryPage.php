@@ -45,13 +45,15 @@ class GalleryPage extends Page
          * Gallery Images
          * ----------------------------------------*/
 
-        $fields->addFieldToTab('Root.Gallery', HeaderField::create('', 'Gallery'));
-        $fields->addFieldToTab('Root.Gallery', LiteralField::create('',
-            '<p>Images below are displayed in a carousel above the content. All images are rescaled to 1140px by 640px.</p>'
+        $fields->addFieldToTab('Root.Gallery',
+            HeaderField::create('GalleryHeading', _t('GalleryPage.Heading', 'Gallery')));
+        $fields->addFieldToTab('Root.Gallery', LiteralField::create('Description',
+            _t('GalleryPage.Description',
+                '<p>Images below are displayed in a carousel above the content. All images are rescaled to 1140px by 640px.</p>')
         ));
         /** @var UploadField $images */
         $fields->addFieldToTab('Root.Gallery',
-            $images = UploadField::create('Images', 'Images', $this->Images()));
+            $images = UploadField::create('Images', _t('GalleryPage.Images', 'Images'), $this->Images()));
         $images->setFolderName('Uploads/gallery');
         $images->setAllowedExtensions(array(
             'jpg',

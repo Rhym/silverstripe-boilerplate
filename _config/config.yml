@@ -10,10 +10,6 @@ Page:
   extensions:
     - BoilerplatePageExtension
 
-ContentController:
-  extensions:
-    - BoilerplatePageControllerExtension
-
 SiteConfig:
   extensions:
     - BoilerplateSiteConfigExtension

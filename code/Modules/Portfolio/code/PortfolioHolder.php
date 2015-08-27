@@ -50,8 +50,10 @@ class PortfolioHolder extends Page
          * ----------------------------------------*/
 
         /** @var NumericField $items */
-        $fields->addFieldToTab('Root.Main', $items = NumericField::create('Items', 'Items'), 'Content');
-        $items->setRightTitle('Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."');
+        $fields->addFieldToTab('Root.Main',
+            $items = NumericField::create('Items', _t('PortfolioHolder.Items', 'Items')), 'Content');
+        $items->setRightTitle(_t('PortfolioHolder.ItemsRightTitle',
+            'Items outside of this limit will be displayed in a paginated list i.e "Page 1 - 2 - 3."'));
 
         return $fields;
     }

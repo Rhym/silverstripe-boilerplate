@@ -105,9 +105,9 @@ class PortfolioImage extends DataObject
         /** @var FieldList $fields */
         $fields = FieldList::create(TabSet::create('Root'));
 
-        $fields->addFieldToTab('Root.Main', HeaderField::create('', 'Image'));
+        $fields->addFieldToTab('Root.Main', HeaderField::create('Heading', _t('PortfolioImage.Heading', 'Image')));
         /** @var UploadField $image */
-        $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image'));
+        $fields->addFieldToTab('Root.Main', $image = UploadField::create('Image', _t('PortfolioImage.Image', 'Image')));
         $image->setFolderName('Uploads/portfolio');
         $image->setAllowedExtensions(array(
             'jpg',
@@ -117,11 +117,14 @@ class PortfolioImage extends DataObject
         ));
         /** @var OptionsetField $contentPosition */
         $fields->addFieldToTab('Root.Main',
-            $contentPosition = OptionsetField::create('ContentPosition', 'Content Position',
+            $contentPosition = OptionsetField::create('ContentPosition',
+                _t('PortfolioImage.ContentPosition', 'Content Position'),
                 $this->dbObject('ContentPosition')->enumValues()));
-        $contentPosition->setRightTitle('Display the content on the left or right hand side.');
+        $contentPosition->setRightTitle(_t('PortfolioImage.ContentPositionRightTitle',
+            'Display the content on the left or right hand side.'));
         /** @var HtmlEditorField $content */
-        $fields->addFieldToTab('Root.Main', $content = HtmlEditorField::create('Content'));
+        $fields->addFieldToTab('Root.Main',
+            $content = HtmlEditorField::create('Content', _t('PortfolioImage.Content', 'Content')));
         $content->setRows(5);
 
         $this->extend('updateCMSFields', $fields);

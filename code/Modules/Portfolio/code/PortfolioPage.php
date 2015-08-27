@@ -96,16 +96,20 @@ class PortfolioPage extends Page
         $fields->removeByName('PageBuilder');
 
         /** @var TextField $subTitle */
-        $fields->addFieldToTab('Root.Main', $subTitle = TextField::create('SubTitle', 'Sub Title'), 'Content');
-        $subTitle->setRightTitle('Subtitles are displayed on PortfolioHolder pages under the title.');
+        $fields->addFieldToTab('Root.Main',
+            $subTitle = TextField::create('SubTitle', _t('PortfolioPage.Subtitle', 'Sub Title')), 'Content');
+        $subTitle->setRightTitle(_t('PortfolioPage.SubTitleRightTitle',
+            'Subtitles are displayed on PortfolioHolder pages under the title.'));
 
         /** -----------------------------------------
          * Portfolio Images
          * ----------------------------------------*/
 
-        $fields->addFieldToTab('Root.PortfolioImages', HeaderField::create('', 'Portfolio Images'));
-        $fields->addFieldToTab('Root.PortfolioImages', LiteralField::create('',
-            '<p>Portfolio Images are displayed under the page\'s content. Items can be full width, or have content displayed to the left or right hand side of the image.</p>'
+        $fields->addFieldToTab('Root.PortfolioImages',
+            HeaderField::create('Heading', _t('PortfolioPage.Heading', 'Portfolio Images')));
+        $fields->addFieldToTab('Root.PortfolioImages', LiteralField::create('Description',
+            _t('PortfolioPage.Description',
+                '<p>Portfolio Images are displayed under the page\'s content. Items can be full width, or have content displayed to the left or right hand side of the image.</p>')
         ));
         /** @var GridFieldConfig_RelationEditor $config */
         $config = GridFieldConfig_RelationEditor::create(10);
